@@ -1,0 +1,50 @@
+:root {
+  --gold: #F7931A;
+  --text-color: #FFFFFF;
+  --bg-dark: #161931;
+  --alert: #F94439;
+  --dark-light: #1A1F34;
+  --dark-gradient: #1A1F34;
+  --dark-opacity: rgba(141, 217, 252, 0.5);
+  --black: #000000;
+  --down: #FF453A;
+  --up: #32D74B;
+}
+
+@font-face {
+  font-family: Roc Grotesk Regular;
+  src: url("fonts/RocGrotesk.ttf") format("truetype");
+}
+
+*, *:after, *:before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Roc Grotesk, sans-serif;
+  font-size: 16px;
+  color: var(--text-color);
+  letter-spacing: 1px;
+}
+
+#root {
+  //padding: 0 5%;
+  min-height: 100vh;
+  background-image: url("images/main_bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: url("images/globe.svg");
+    background-repeat: no-repeat;
+    background-position: 30% 25%;
+    background-size: 25%;
+  }
+}
+
