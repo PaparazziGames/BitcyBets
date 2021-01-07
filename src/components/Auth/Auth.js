@@ -6,24 +6,30 @@ class Auth extends Component {
         super(props);
         this.state = {
             login: true,
-            pass: false
+            pass: true
         }
+        this.togglePass = this.togglePass.bind(this);
+    }
+
+    togglePass() {
+        this.setState(state => ({...state, ...{pass: !this.state.pass}}));
     }
 
     render() {
-        const {login,pass} = this.state
+        const {login, pass} = this.state
         if (login) {
             return (
-                <div className="round-dark auth  col-3">
-                    <h2 className="">Welcome</h2>
+                <div className="round-dark auth col-3">
+                    <h2>Welcome</h2>
                     <form>
                         <div className="">
                             <label htmlFor="phone">Phone</label>
-                            <input name="phone" type="tel"/>
+                            <input id="phone" name="phone" type="tel" required/>
                         </div>
-                        <div className="">
-                            <label>Password</label>
-                            <input name="password" type={pass ? 'password' : 'text'}/>
+                        <div className={pass ? 'pass' : 'text'}>
+                            <span onClick={this.togglePass} className="eye"/>
+                            <label htmlFor="password">Password</label>
+                            <input id="password" name="password" type={pass ? 'password' : 'text'} required/>
                         </div>
                         <a className="forgot mb-3">Forgot password?</a>
                         <button>SIGN IN</button>
