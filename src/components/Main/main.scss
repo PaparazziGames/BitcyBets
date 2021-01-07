@@ -1,8 +1,10 @@
 main {
   padding: 60px;
-.dashboard {
-  margin-bottom: 0;
-}
+
+  .dashboard {
+    margin-bottom: 0;
+  }
+
   .row {
     justify-content: space-between;
 
@@ -10,8 +12,8 @@ main {
       background: rgba(26, 31, 52, 0.7);
       backdrop-filter: blur(2px);
       border-radius: 24px;
-      padding: 15px 30px;
-      margin: 20px 0;
+      padding: 10px 30px;
+      margin: 10px 0;
       position: relative;
       z-index: 2;
 
@@ -104,13 +106,21 @@ main {
       }
     }
   }
+
+  h2 {
+    padding-top: 0 !important;
+  }
 }
 
 .round-dark {
   background: var(--dark-gradient);
   border-radius: 24px;
-  padding: 20px;
-  margin: 20px 0;
+  padding: 10px 20px;
+  margin: 15px 0;
+
+  .round-dark:nth-child(1) {
+    margin-top: 10px;
+  }
 
   h2 {
     font-size: 24px;
@@ -124,7 +134,7 @@ main {
 .wrap-table {
   border: 1px solid var(--dark-opacity);
   border-radius: 8px;
-  margin: 10px auto;
+  margin: 5px auto;
   min-width: 292px;
   height: 130px;
 
@@ -143,7 +153,7 @@ main {
 
     tr:nth-child(1) {
       td:nth-child(1) {
-        padding: 5px 10px;
+        padding: 10px;
         border-right: 1px solid var(--dark-opacity);
         border-bottom: 1px solid var(--dark-opacity);
       }
@@ -184,6 +194,7 @@ form {
     h2 {
       font-size: 24px;
     }
+
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
@@ -223,8 +234,8 @@ form {
     text-transform: uppercase;
     border-radius: 8px;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-    margin: 20px auto 0;
-    padding: 12px 64px;
+    margin: 10px auto 0;
+    padding: 10px 64px;
     white-space: nowrap;
 
     &:hover {
@@ -237,6 +248,7 @@ form {
   }
 
   .wrap-btn {
+    margin-top: 5px;
     display: flex;
     justify-content: space-between;
     gap: 10px;
@@ -248,10 +260,10 @@ form {
       text-transform: uppercase;
       border-radius: 8px;
       background-color: rgba(0, 0, 0, 0.5);
-      margin-top: 20px;
+      margin-top: 10px;
       white-space: nowrap;
-      padding-top: 12px;
-      padding-bottom: 12px;
+      padding-top: 10px;
+      padding-bottom: 10px;
       font-weight: bold;
 
       &.red {
@@ -291,6 +303,7 @@ form {
 .right-sector {
   z-index: 2;
 }
+
 .banner {
   position: relative;
   padding: 0;
@@ -349,6 +362,7 @@ form {
       width: 100%;
       padding: 12px 0;
       font-weight: bold;
+
       img {
         margin-left: 5px;
         margin-bottom: 5px;
@@ -367,6 +381,7 @@ form {
   }
 
 }
+
 .time {
   background-image: url("../../images/bull.png"), url("../../images/bear.png");
   background-repeat: no-repeat;
@@ -375,15 +390,16 @@ form {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   .label {
     opacity: 0.6;
   }
-  h2 {
-    margin: 0 auto;
-    display: inline;
-    padding: 0 5px;
+
+  &-text {
     font-size: 2rem;
     line-height: 35px;
-    background-color: var(--dark-gradient);
   }
+
 }

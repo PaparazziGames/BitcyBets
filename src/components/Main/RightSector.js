@@ -49,7 +49,7 @@ const RightSector = () => {
             </div>
             <div className="time round-dark">
                 <div className="label text-center">Kyiv</div>
-                <h2 className="text-center">10:42</h2>
+                <h2 className="time-text">10:42</h2>
             </div>
         </div>
     );

@@ -18,10 +18,8 @@ class Dashboard extends React.Component {
         this.setState((state) => ({...state, ...newBet}));
     }
 
-
     render() {
         const { bet, balance } = this.state;
-        console.log(720/810)
         return (
             <div className="round dashboard">
                 <div className="row">

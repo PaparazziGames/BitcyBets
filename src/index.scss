@@ -15,7 +15,9 @@
   font-family: Roc Grotesk Regular;
   src: url("fonts/RocGrotesk.ttf") format("truetype");
 }
-
+body {
+  overflow: hidden;
+}
 *, *:after, *:before {
   box-sizing: border-box;
   padding: 0;
