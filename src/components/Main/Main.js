@@ -11,7 +11,7 @@ const Main = () => {
         <div>
             <main>
                 <div className="row">
-                    <div className="col-md-9">
+                    <div className="col-md-9 left-sector">
                         <div className="round globe">
                             <div>
                                 <h2 className="text-center"><img src={bitcoin} className="m-2" alt="course"/>

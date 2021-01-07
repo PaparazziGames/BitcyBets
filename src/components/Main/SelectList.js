@@ -17,14 +17,11 @@ class SelectList extends React.Component {
     }
 
     toggleShow(e) {
-        this.setState(state => ({
-            showSelectList: !state.showSelectList
-        }));
+        this.setState(state => ({showSelectList: !state.showSelectList}));
         periods.forEach(period => {
             period.active = period.type === e.target.textContent;
         })
     }
-
 
     render() {
         if (this.state.showSelectList) {
