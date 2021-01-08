@@ -77,7 +77,7 @@ class Dashboard extends React.Component {
                                     <input min="0" max="1" step="0.001"
                                            type="range"
                                            onInput={this.setBet}
-                                           className="form-range"
+                                           className={balance - bet >= 0 ? 'green-range form-range' : 'red-range form-range'}
                                            id="range"/>
                                 </div>
                                 { balance - bet >= 0

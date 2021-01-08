@@ -242,6 +242,16 @@ form {
       background-color: var(--bg-dark);
       margin-top: -10px;
     }
+    &.green-range::-moz-range-progress {
+      background-color: green;
+      height: .6rem;
+      border-radius: 5px;
+    }
+    &.red-range::-moz-range-progress {
+      background-color: red;
+      height: .6rem;
+      border-radius: 5px;
+    }
   }
 
   .bet-btn {
@@ -263,7 +273,7 @@ form {
     color: var(--text-color);
     text-transform: uppercase;
     border-radius: 8px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background: var(--btn-color);
     margin: 10px auto 0;
     padding: 10px 64px;
     white-space: nowrap;
@@ -289,7 +299,7 @@ form {
       letter-spacing: 0.04em;
       text-transform: uppercase;
       border-radius: 8px;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: var(--btn-color);
       margin-top: 10px;
       white-space: nowrap;
       padding-top: 10px;
