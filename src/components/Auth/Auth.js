@@ -16,7 +16,8 @@ class Auth extends Component {
     }
 
     render() {
-        const {login, pass} = this.state
+        const {login, pass} = this.state;
+        const { toggleEnter } = this.props
         if (login) {
             return (
                 <div className="round-dark auth col-3">
@@ -31,8 +32,8 @@ class Auth extends Component {
                             <label htmlFor="password">Password</label>
                             <input id="password" name="password" type={pass ? 'password' : 'text'} required/>
                         </div>
-                        <a className="forgot mb-3">Forgot password?</a>
-                        <button>SIGN IN</button>
+                        <a href="#" className="forgot mb-3">Forgot password?</a>
+                        <button onClick={toggleEnter}>SIGN IN</button>
                         <span>or</span>
                         <button>REGISTER</button>
                     </form>
