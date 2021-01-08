@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// let BaseApi = axios.create({baseURL: ''});
+// let BaseApi = axios.create({baseURL: 'http://localhost:3000'});
 let BaseApi = axios.create();
 
 let Api = function() {

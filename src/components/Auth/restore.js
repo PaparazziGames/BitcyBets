@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
-
-let restore = true;
-const toggleRestore = () => restore = true;
+import { Link } from "react-router-dom";
 
 class Restore extends Component {
     constructor(props) {

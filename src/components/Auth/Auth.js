@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
+import { userIn, showPassword } from "../../actions";
+
 import './auth.scss';
-import {Link} from "react-router-dom";
 
 class Auth extends Component {
     constructor(props) {
@@ -21,7 +24,8 @@ class Auth extends Component {
     togglePassRepeat() {
         this.setState(state => ({...state, ...{passRepeat: !this.state.passRepeat}}));
     }
-    toggleLogin() {
+    toggleLogin(e) {
+        e.preventDefault();
         this.setState(state => ({...state, ...{login: !this.state.login}}));
     }
 
@@ -42,7 +46,7 @@ class Auth extends Component {
                             <label htmlFor="password">Password</label>
                             <input id="password" name="password" type={pass ? 'password' : 'text'} required/>
                         </div>
-                        <Link exact to="/restore" className="forgot mb-3">Forgot password?</Link>
+                        <Link to="/restore" className="forgot mb-3">Forgot password?</Link>
                         <button>SIGN IN</button>
                         <span>or</span>
                         <button  onClick={this.toggleLogin}>REGISTER</button>
@@ -83,5 +87,17 @@ class Auth extends Component {
         }
     }
 }
+const mapStateToProps = state => {
+    return {
+        isLogin: state.userIn,
+        pass: state.showPassword
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        login: (bool) => dispatch(userIn(bool)),
+        pass: (bool) => dispatch(showPassword(bool))
+    }
+}
 
-export default Auth;
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
