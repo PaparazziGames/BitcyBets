@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './auth.scss';
+import {Link} from "react-router-dom";
 
 class Auth extends Component {
     constructor(props) {
@@ -41,7 +42,7 @@ class Auth extends Component {
                             <label htmlFor="password">Password</label>
                             <input id="password" name="password" type={pass ? 'password' : 'text'} required/>
                         </div>
-                        <span className="forgot mb-3">Forgot password?</span>
+                        <Link exact to="/restore" className="forgot mb-3">Forgot password?</Link>
                         <button>SIGN IN</button>
                         <span>or</span>
                         <button  onClick={this.toggleLogin}>REGISTER</button>

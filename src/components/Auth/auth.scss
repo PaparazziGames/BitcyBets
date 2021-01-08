@@ -4,19 +4,31 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 30px;
+  width: 320px;
 
   form {
     display: flex;
     flex-direction: column;
-
+    .ok {
+      background-color: rgba(0, 0, 0, .5);
+      border: 1px solid var(--text-color);
+      color: var(--text-color);
+      border-radius: 8px;
+      height: 40px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-decoration: none;
+      text-align: center;
+      padding: 7px;
+    }
     div {
       display: flex;
       flex-direction: column;
       text-align: left;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
 
       label {
-        margin-bottom: 5px;
+        margin-bottom: 3px;
         position: relative;
       }
 
@@ -24,7 +36,7 @@
         background-color: inherit;
         border: 1px solid #FFFFFF;
         border-radius: 8px;
-        height: 48px;
+        height: 40px;
         padding: 10px;
       }
     }
@@ -34,7 +46,7 @@
 
       .eye {
         position: absolute;
-        top: 45px;
+        top: 40px;
         right: 10px;
         width: 22px;
         height: 15px;
@@ -50,7 +62,7 @@
 
       .eye {
         position: absolute;
-        top: 45px;
+        top: 40px;
         right: 10px;
         width: 22px;
         height: 15px;
@@ -61,16 +73,16 @@
     }
 
     span {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     button {
       background-color: rgba(0, 0, 0, .5);
       border: 1px solid #FFFFFF;
       border-radius: 8px;
-      height: 48px;
+      height: 40px;
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     .forgot {

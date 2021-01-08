@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
             <div className="round dashboard">
                 <div className="row">
                     <div className="col-xl-4 best">
-                        <h2 className="text-center">Best in progress</h2>
+                        <h2 className="text-center">Bets in progress</h2>
                         <div className="wrap-table">
                             <table className="p-3 table-responsive">
                                 <tbody>
