@@ -6,23 +6,32 @@ class Auth extends Component {
         super(props);
         this.state = {
             login: true,
-            pass: true
+            pass: true,
+            passRepeat: true
         }
         this.togglePass = this.togglePass.bind(this);
+        this.togglePassRepeat = this.togglePassRepeat.bind(this);
+        this.toggleLogin = this.toggleLogin.bind(this);
     }
 
     togglePass() {
         this.setState(state => ({...state, ...{pass: !this.state.pass}}));
     }
+    togglePassRepeat() {
+        this.setState(state => ({...state, ...{passRepeat: !this.state.passRepeat}}));
+    }
+    toggleLogin() {
+        this.setState(state => ({...state, ...{login: !this.state.login}}));
+    }
 
     render() {
-        const {login, pass} = this.state;
+        const {login, pass, passRepeat} = this.state;
         const { toggleEnter } = this.props
         if (login) {
             return (
                 <div className="round-dark auth col-3">
                     <h2>Welcome</h2>
-                    <form>
+                    <form onSubmit={toggleEnter}>
                         <div className="">
                             <label htmlFor="phone">Phone</label>
                             <input id="phone" name="phone" type="tel" required/>
@@ -32,17 +41,42 @@ class Auth extends Component {
                             <label htmlFor="password">Password</label>
                             <input id="password" name="password" type={pass ? 'password' : 'text'} required/>
                         </div>
-                        <a href="#" className="forgot mb-3">Forgot password?</a>
-                        <button onClick={toggleEnter}>SIGN IN</button>
+                        <span className="forgot mb-3">Forgot password?</span>
+                        <button>SIGN IN</button>
                         <span>or</span>
-                        <button>REGISTER</button>
+                        <button  onClick={this.toggleLogin}>REGISTER</button>
                     </form>
                 </div>
             );
         } else {
             return (
                 <div className="round-dark auth">
-                    <h2 className="">Registration</h2>
+                    <span onClick={this.toggleLogin} className="back">&larr;</span><h2 className="">Registration</h2>
+                    <form>
+                        <div className="">
+                            <label htmlFor="name">Name</label>
+                            <input id="name" name="name" type="text" required/>
+                        </div>
+                        <div className="">
+                            <label htmlFor="phone">Phone</label>
+                            <input id="phone" name="phone" type="tel" required/>
+                        </div>
+                        <div className="">
+                            <label htmlFor="email">Email</label>
+                            <input id="email" name="email" type="email" required/>
+                        </div>
+                        <div className={pass ? 'pass' : 'text'}>
+                            <span onClick={this.togglePass} className="eye"/>
+                            <label htmlFor="password">Password</label>
+                            <input id="password" name="password" type={pass ? 'password' : 'text'} required/>
+                        </div>
+                        <div className={passRepeat ? 'pass' : 'text'}>
+                            <span onClick={this.togglePassRepeat} className="eye"/>
+                            <label htmlFor="passwordRepeat">Repeat password</label>
+                            <input id="passwordRepeat" name="passwordRepeat" type={passRepeat ? 'password' : 'text'} required/>
+                        </div>
+                        <button>REGISTER</button>
+                    </form>
                 </div>
             );
         }

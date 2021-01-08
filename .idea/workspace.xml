@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/api/Api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/User.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mock-data/mock-dashboard.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mock-data/mock-statistic.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mock-data/mock-user.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/auth.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/auth.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,11 +60,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Layout\bytcasino\src\mock-data" />
       <recent name="D:\Layout\bytcasino\src\images" />
       <recent name="C:\Users\PC-002\WebstormProjects\bitcoin\src\fonts" />
       <recent name="C:\Users\PC-002\WebstormProjects\bitcoin\src\components\header" />
       <recent name="C:\Users\PC-002\WebstormProjects\bitcoin\src" />
-      <recent name="C:\Users\PC-002\WebstormProjects\bitcoin\images" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -72,7 +80,7 @@
       <workItem from="1609705720432" duration="4846000" />
       <workItem from="1609791578792" duration="153000" />
       <workItem from="1609792098293" duration="15214000" />
-      <workItem from="1610018993178" duration="15300000" />
+      <workItem from="1610018993178" duration="21640000" />
     </task>
     <servers />
   </component>
