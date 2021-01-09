@@ -1,7 +1,7 @@
-export function authorization(state = false, action) {
+export function authorization(state = true, action) {
     switch (action.type) {
         case 'AUTHORIZATION':
-            return action.auth;
+            return {...state, ...{authIn: action.authIn}};
         default:
             return state;
     }
@@ -9,15 +9,23 @@ export function authorization(state = false, action) {
 export function userIn(state = false, action) {
     switch (action.type) {
         case 'IS_LOGIN':
-            return action.isLogin;
+            return {...state, ...{isLogin: action.isLogin}};
         default:
             return state;
     }
 }
-export function showPassword(state = false, action) {
+export function showPassword(state = true, action) {
     switch (action.type) {
         case 'SHOW_PASSWORD':
-            return action.pass;
+            return {...state, ...{passShow: action.passShow}};
+        default:
+            return state;
+    }
+}
+export function showPasswordRepeat(state = false, action) {
+    switch (action.type) {
+        case 'SHOW_PASSWORD_REPEAT':
+            return {...state, ...{passRepeat: action.passRepeat}};
         default:
             return state;
     }

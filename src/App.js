@@ -2,27 +2,28 @@ import './App.scss';
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Auth from "./components/Auth/Auth";
-import React, { Component } from "react";
+import React, {Component} from "react";
+import {connect} from "react-redux";
 
-class App extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {enter: true}
-        this.toggleEnter = this.toggleEnter.bind(this)
+class App extends Component {
+    componentDidMount() {
+        console.log(this.props)
     }
-    toggleEnter(e) {
-        e.preventDefault();
-       this.setState(state=> ({...state, ...{enter: !this.state.enter}}))
-    }
+
     render() {
-        const { enter } = this.state;
+        const {authIn} = this.props;
         return (
             <div>
                 <Header/>
-                {enter ? <Auth toggleEnter={this.toggleEnter}/> : <Main/>}
+                {authIn ? <Auth/> : <Main/>}
             </div>
         );
     }
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        authIn: state.authorization
+    }
+}
+export default connect(mapStateToProps, null)(App);

@@ -15,7 +15,14 @@ export function userIn(bool) {
 export function showPassword(bool) {
     return {
         type: 'SHOW_PASSWORD',
-        pass: bool
+        passShow: bool
+    };
+}
+
+export function showPasswordRepeat(bool) {
+    return {
+        type: 'SHOW_PASSWORD_REPEAT',
+        passRepeat: bool
     };
 }
 // export function betsProgress(items) {

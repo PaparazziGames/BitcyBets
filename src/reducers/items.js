@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
-import {authorization, showPassword, userIn} from "./entry";
+import {authorization, showPassword, showPasswordRepeat, userIn} from "./entry";
 
 export default combineReducers({
     authorization,
     userIn,
-    showPassword
+    showPassword,
+    showPasswordRepeat
 })
