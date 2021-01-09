@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/src/components/Main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/main.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/images/bear.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/bear.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/images/bull.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/bull.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +74,8 @@
       <workItem from="1609705720432" duration="4846000" />
       <workItem from="1609791578792" duration="153000" />
       <workItem from="1609792098293" duration="15214000" />
-      <workItem from="1610018993178" duration="35687000" />
+      <workItem from="1610018993178" duration="35793000" />
+      <workItem from="1610177122468" duration="5690000" />
     </task>
     <servers />
   </component>

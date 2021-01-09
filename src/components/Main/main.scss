@@ -221,6 +221,8 @@ form {
   }
 
   #range {
+    width: 100%;
+    padding: 0;
     h2 {
       font-size: 24px;
     }
@@ -232,7 +234,8 @@ form {
       height: 30px;
       background-image: url('../../images/logo.svg');
       background-color: var(--bg-dark);
-      margin-top: -10px;
+      border-radius: 50%;
+      border: none;
     }
 
     &::-moz-range-thumb {
@@ -240,17 +243,34 @@ form {
       height: 30px;
       background-image: url('../../images/logo.svg');
       background-color: var(--bg-dark);
-      margin-top: -10px;
+      border-radius: 50%;
+      border: none;
     }
     &.green-range::-moz-range-progress {
-      background-color: green;
+      background-color: var(--up);
       height: .6rem;
       border-radius: 5px;
     }
     &.red-range::-moz-range-progress {
-      background-color: red;
+      background-color: var(--down);
       height: .6rem;
       border-radius: 5px;
+    }
+    &.green-range {
+      background: linear-gradient(to right, green 0%, #fff 100%);
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      -webkit-appearance: none;
+      height: .6rem;
+    }
+    &.red-range {
+      background: linear-gradient(to right, red 0%, #fff 100%);
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      -webkit-appearance: none;
+      height: .6rem;
     }
   }
 

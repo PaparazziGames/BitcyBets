@@ -6,6 +6,7 @@ import down from "../../images/down.svg";
 import arrowUp from "../../images/arrowUp.svg";
 import arrowDown from "../../images/arrowDown.svg";
 
+
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
@@ -16,10 +17,11 @@ class Dashboard extends React.Component {
     setBet(e) {
         const newBet = {bet: e.target.value}
         this.setState((state) => ({...state, ...newBet}));
+
     }
 
     render() {
-        const { bet, balance } = this.state;
+        const {bet, balance} = this.state;
         return (
             <div className="round dashboard">
                 <div className="row">
@@ -65,7 +67,7 @@ class Dashboard extends React.Component {
                     <div className="range col-xl-7">
                         <h2 className="text-center">Make your bet</h2>
                         <form>
-                            <div className="form row" >
+                            <div className="form row">
                                 <div className="bet col-sm-8">
                                     <label className="form-label d-flex justify-content-between">
                                         <span>Bet</span>
@@ -76,21 +78,22 @@ class Dashboard extends React.Component {
                                     </label>
                                     <input min="0" max="1" step="0.001"
                                            type="range"
+                                           style={{backgroundImage: `linear-gradient(to right, ${balance - bet >= 0 ? 'green' : 'red'} 0%, ${balance - bet >= 0 ? 'green' : 'red'} ${bet * 100}%, #fff ${bet * 100}%, white 100%)`}}
                                            onInput={this.setBet}
-                                           className={balance - bet >= 0 ? 'green-range form-range' : 'red-range form-range'}
+                                           className={balance - bet >= 0 ? 'green-range' : 'red-range'}
                                            id="range"/>
                                 </div>
-                                { balance - bet >= 0
+                                {balance - bet >= 0
                                     ? <>
                                     </>
-                                    :  <>
+                                    : <>
                                         <input value="Not enough" type="button" className="btn bet-btn col-sm-4"/>
                                         <button className="btn refill-btn">Refill
                                             <img src={bitcoin} width="15" height="20" alt="b"/>
                                         </button>
-                                    </> }
+                                    </>}
                             </div>
-                            { balance - bet >= 0
+                            {balance - bet >= 0
                                 ? <div className='wrap-btn'>
                                     <button className="btn green predict-btn">PREDICT UP
                                         <img src={arrowUp} width="15" height="20" alt="b"/>
@@ -99,8 +102,8 @@ class Dashboard extends React.Component {
                                         <img src={arrowDown} width="15" height="20" alt="b"/>
                                     </button>
                                 </div>
-                                :  <>
-                                </> }
+                                : <>
+                                </>}
                         </form>
                     </div>
                 </div>
