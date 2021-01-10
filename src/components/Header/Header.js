@@ -1,8 +1,11 @@
 import React from 'react';
 import './header.scss';
 import logo from '../../images/logo.svg';
+import ava from '../../images/ava.png';
+import {connect} from "react-redux";
+import {prohibition} from "../../redux/actions";
 
-const Header = () => {
+const Header = ({prohibition}) => {
     return (
         <div>
             <header className="header">
@@ -14,9 +17,16 @@ const Header = () => {
                     </a>
                 </nav>
                 <h4 className="text-center">Bitcoin Live price</h4>
+                <img onClick={e => {
+                    e.preventDefault();
+                    prohibition();
+                }} src={ava} alt="icon"/>
             </header>
         </div>
     );
 };
 
-export default Header;
+const mapDispatchToProps = {
+    prohibition
+}
+export default connect(null, mapDispatchToProps)(Header);
