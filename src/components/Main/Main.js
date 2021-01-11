@@ -12,17 +12,17 @@ const Main = ({course}) => {
     return (
         <div className="main">
             <main>
-                <div className="row">
+                <div className="row main">
                     <div className=" left-sector">
                         <div className="round globe">
-                            <div>
+                            {course.length ? (<div>
                                 <h2 className="text-center"><img src={bitcoin} className="m-2" alt="course"/>
                                     {currentCourse} <span>$</span>
                                 </h2>
                                 <div>
                                     <SelectList />
                                 </div>
-                            </div>
+                            </div>) : <h1 className="text-center">Loading...</h1>}
                             <div className="graph-wrapper">
                                 <div className="graph">
                                     <Graph/>
