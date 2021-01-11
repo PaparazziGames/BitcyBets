@@ -56,7 +56,7 @@ const RightSector = ({geoposition, geo}) => {
                 </div>
             </div>
             <div className="time round-dark">
-                <div className="label text-center">{geo}</div>
+                <div className="label text-center">{geo || 'Kyiv'}</div>
                 <h2 className="time-text">{time}</h2>
             </div>
         </div>
