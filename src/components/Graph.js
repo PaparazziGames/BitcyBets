@@ -28,12 +28,13 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
         },
         responsive: true,
         maintainAspectRatio: false,
+        aspectRatio: .9,
         scales: {
             yAxes: [{
                 ticks: {
                     fontColor: "white",
                     fontSize: 14,
-                    // stepSize: 1,
+                    stepSize: 0,
                     // beginAtZero: true
                 },
                 gridLines: {
@@ -70,7 +71,7 @@ class Graph extends Component {
     render() {
 
         return (
-            <canvas id="myChart" width='400' height='300'/>
+            <canvas id="myChart"/>
         )
     }
 }

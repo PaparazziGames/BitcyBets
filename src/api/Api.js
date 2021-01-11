@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// let BaseApi = axios.create({baseURL: 'http://localhost:3000'});
-let BaseApi = axios.create();
+let BaseApi = axios.create({baseURL: 'https://bitcybets.com/api'});
+// let BaseApi = axios.create();
 
 let Api = function() {
   let token = localStorage.getItem('token');

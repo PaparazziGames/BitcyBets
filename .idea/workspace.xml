@@ -4,10 +4,10 @@
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/Api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Graph.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Graph.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/entry.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +79,7 @@
       <workItem from="1610290758230" duration="944000" />
       <workItem from="1610300803639" duration="8357000" />
       <workItem from="1610346175088" duration="16223000" />
-      <workItem from="1610369907762" duration="12680000" />
+      <workItem from="1610369907762" duration="19392000" />
     </task>
     <servers />
   </component>

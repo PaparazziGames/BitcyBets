@@ -13,7 +13,6 @@ export const authReducer = (state = initialState, action) => {
         case PROHIBITION:
             return {...state, auth: false};
         case REGISTRATION:
-            console.log(!state.reg)
             return {...state, reg: !state.reg}
         default:
             return state;
