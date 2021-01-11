@@ -1,9 +1,10 @@
-import {AUTHORIZATION, GET_LOCATION, PROHIBITION, REGISTRATION} from "../types";
+import {AUTHORIZATION, GET_COURSE, GET_LOCATION, PROHIBITION, REGISTRATION} from "../types";
 
 const initialState = {
     auth: false,
     reg: false,
-    geoposition: ''
+    geoposition: '',
+    course: []
 }
 export const authReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -23,6 +24,15 @@ export const geoReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_LOCATION:
             return {...state, geoposition: action.payload};
+        default:
+            return state;
+    }
+}
+
+export const courseReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case GET_COURSE:
+            return {...state, course: action.payload};
         default:
             return state;
     }

@@ -1,13 +1,27 @@
 main {
   padding: 60px;
+  height: 100%;
+  margin: 0 auto;
 
   .dashboard {
     margin-bottom: 0;
   }
 
   .row {
+    flex-direction: row;
     justify-content: space-between;
+
+    .left-sector {
+      width: 75%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
     .globe {
+      height: 70%;
+
       &:after {
         position: absolute;
         top: 0;
@@ -21,6 +35,7 @@ main {
         background-size: 40%;
         z-index: -2;
       }
+
       &:before {
         position: absolute;
         top: 0;
@@ -34,10 +49,13 @@ main {
         z-index: -1;
       }
     }
+
     .dashboard {
+      height: 25%;
       backdrop-filter: blur(2px);
       background-color: rgba(26, 31, 52, 0.7);
     }
+
     .round {
 
       border-radius: 24px;
@@ -45,14 +63,17 @@ main {
       margin: 10px 0;
       position: relative;
       z-index: 2;
+
       div h2 {
         z-index: 3;
       }
+
       h2 {
         font-size: 24px;
         line-height: 35px;
         color: var(--text-color);
         padding-top: 15px;
+
         span {
           color: var(--gold);
           font-size: 24px;
@@ -166,7 +187,7 @@ main {
   border-radius: 8px;
   margin: 5px auto;
   min-width: 292px;
-  height: 130px;
+  height: 100px;
 
   table {
     width: 100%;
@@ -174,7 +195,7 @@ main {
 
     td span {
       font-weight: 500;
-      font-size: 24px;
+      font-size: 20px;
     }
 
     td span:nth-child(2) {
@@ -183,46 +204,52 @@ main {
 
     tr:nth-child(1) {
       td:nth-child(1) {
-        padding: 10px;
+        padding: 0 5px;
         border-right: 1px solid var(--dark-opacity);
         border-bottom: 1px solid var(--dark-opacity);
       }
 
       td:nth-child(2) {
-        padding: 10px;
+        padding: 0 5px;
         border-bottom: 1px solid var(--dark-opacity);
       }
     }
 
     tr:nth-child(2) {
       td:nth-child(1) {
-        padding: 10px;
+        padding: 0 5px;
         border-right: 1px solid var(--dark-opacity);
       }
 
       td:nth-child(2) {
-        padding: 10px;
+        padding: 0 5px;
       }
     }
   }
 }
 
 .range {
-  gap: 5px;
-
+  h2 {
+    margin-bottom: 3px;
+  }
 }
 
 form {
   text-align: center;
 
-  .form-label span img {
-    margin-left: .1em;
-    margin-bottom: 3px;
+  .form-label {
+    margin-bottom: 0;
+
+    span img {
+      margin-left: .1em;
+      margin-bottom: 0;
+    }
   }
 
   #range {
     width: 100%;
     padding: 0;
+
     h2 {
       font-size: 24px;
     }
@@ -246,16 +273,19 @@ form {
       border-radius: 50%;
       border: none;
     }
+
     &.green-range::-moz-range-progress {
       background-color: var(--up);
       height: .6rem;
       border-radius: 5px;
     }
+
     &.red-range::-moz-range-progress {
       background-color: var(--down);
       height: .6rem;
       border-radius: 5px;
     }
+
     &.green-range {
       background: linear-gradient(to right, green 0%, #fff 100%);
       border: none;
@@ -264,6 +294,7 @@ form {
       -webkit-appearance: none;
       height: .6rem;
     }
+
     &.red-range {
       background: linear-gradient(to right, red 0%, #fff 100%);
       border: none;
@@ -308,7 +339,6 @@ form {
   }
 
   .wrap-btn {
-    margin-top: 5px;
     display: flex;
     justify-content: space-between;
     gap: 10px;
@@ -361,7 +391,12 @@ form {
 
 /*<<<<<<<<<<<<<<<<<   RIGHT SECTOR   >>>>>>>>>>>>>>>>>>*/
 .right-sector {
+  height: 100%;
   z-index: 2;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .banner {
@@ -375,9 +410,6 @@ form {
     background-size: contain;
     background-position: top 0;
     min-height: 60%;
-    //position: absolute;
-    //top: 0;
-    //left: 0;
     width: 100%;
     margin: 0;
   }
@@ -400,7 +432,7 @@ form {
     width: 100%;
 
     td {
-      padding-bottom: 20px;
+      padding-bottom: 15px;
 
       .label {
         opacity: 0.8;

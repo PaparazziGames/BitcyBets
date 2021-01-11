@@ -7,12 +7,12 @@ import {geoposition} from "../../redux/actions";
 const RightSector = ({geoposition, geo}) => {
     useEffect(() => {
         geoposition()
-    },[])
+    },[geoposition]);
     let [time, setTime] = useState(new Date().toLocaleTimeString())
-    clearInterval()
-    setInterval(() => setTime(new Date().toLocaleTimeString()))
+    clearInterval();
+    setInterval(() => setTime(new Date().toLocaleTimeString()));
     return (
-        <div className="col-md-3 right-sector">
+        <div className="right-sector">
             <div className="banner round-dark">
                 <div className="row img"/>
                 <div className="text">
@@ -57,7 +57,7 @@ const RightSector = ({geoposition, geo}) => {
             </div>
             <div className="time round-dark">
                 <div className="label text-center">{geo || 'Kyiv'}</div>
-                <h2 className="time-text">{time}</h2>
+                <h2 className="time-text">{time.slice(0, 5)}</h2>
             </div>
         </div>
     );

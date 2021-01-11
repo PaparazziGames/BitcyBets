@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
-import {authReducer, geoReducer} from "./entry";
+import {authReducer, courseReducer, geoReducer} from "./entry";
 
 export const rootReducer = combineReducers({
     authReducer,
-    geoReducer
+    geoReducer,
+    courseReducer
 })

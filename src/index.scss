@@ -16,6 +16,7 @@
   font-family: Roc Grotesk Regular;
   src: url("fonts/RocGrotesk.ttf") format("truetype");
 }
+
 *, *:after, *:before {
   box-sizing: border-box;
   padding: 0;
@@ -27,10 +28,10 @@
 }
 
 #root {
+  max-height: calc(100vh + 60px);
   min-height: 100vh;
   background-image: url("images/main_bg.png");
   background-size: cover;
   background-repeat: no-repeat;
-
 }
 

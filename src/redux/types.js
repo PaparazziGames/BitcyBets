@@ -1,4 +1,5 @@
 export const AUTHORIZATION = 'AUTHORIZATION';
 export const PROHIBITION = 'PROHIBITION';
 export const REGISTRATION = 'REGISTRATION';
-export const GET_LOCATION ='GET_LOCATION'
+export const GET_LOCATION ='GET_LOCATION';
+export const GET_COURSE ='GET_COURSE';

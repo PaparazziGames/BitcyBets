@@ -5,17 +5,19 @@ import Graph from "../Graph";
 import RightSector from "./RightSector";
 import Dashboard from "./Dashboard";
 import SelectList from "./SelectList";
+import {connect} from "react-redux";
 
-const Main = () => {
+const Main = ({course}) => {
+    let currentCourse = course[course.length - 1];
     return (
-        <div>
+        <div className="main">
             <main>
                 <div className="row">
-                    <div className="col-md-9 left-sector">
+                    <div className=" left-sector">
                         <div className="round globe">
                             <div>
                                 <h2 className="text-center"><img src={bitcoin} className="m-2" alt="course"/>
-                                    23 552.86 <span>$</span>
+                                    {currentCourse} <span>$</span>
                                 </h2>
                                 <div>
                                     <SelectList />
@@ -37,5 +39,9 @@ const Main = () => {
         </div>
     );
 };
-
-export default Main;
+const mapStateToProps = state => {
+    return {
+        course: state.courseReducer.course
+    }
+}
+export default connect(mapStateToProps, null)(Main);

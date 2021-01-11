@@ -1,4 +1,4 @@
-import {AUTHORIZATION, GET_LOCATION, PROHIBITION, REGISTRATION} from "../types";
+import {AUTHORIZATION, GET_COURSE, GET_LOCATION, PROHIBITION, REGISTRATION} from "../types";
 
 export function authorization() {
     return {type: AUTHORIZATION}
@@ -24,4 +24,9 @@ export function geoposition() {
         })
     }
 
+}
+export function bitcoinCourse(data) {
+    return dispatch => {
+        dispatch({type: GET_COURSE, payload: data});
+    }
 }
