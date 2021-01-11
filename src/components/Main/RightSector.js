@@ -1,8 +1,16 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import deposit from '../../images/deposit.svg';
 import withdraw from '../../images/withdraw.svg';
+import {connect} from "react-redux";
+import {geoposition} from "../../redux/actions";
 
-const RightSector = () => {
+const RightSector = ({geoposition, geo}) => {
+    useEffect(() => {
+        geoposition()
+    },[])
+    let [time, setTime] = useState(new Date().toLocaleTimeString())
+    clearInterval()
+    setInterval(() => setTime(new Date().toLocaleTimeString()))
     return (
         <div className="col-md-3 right-sector">
             <div className="banner round-dark">
@@ -48,11 +56,19 @@ const RightSector = () => {
                 </div>
             </div>
             <div className="time round-dark">
-                <div className="label text-center">Kyiv</div>
-                <h2 className="time-text">10:42</h2>
+                <div className="label text-center">{geo}</div>
+                <h2 className="time-text">{time}</h2>
             </div>
         </div>
     );
 };
 
-export default RightSector;
+const mapStateToProps = state => {
+    return {
+        geo: state.geoReducer.geoposition
+    }
+}
+const mapDispatchToProps = {
+    geoposition
+}
+export default connect(mapStateToProps, mapDispatchToProps)(RightSector);

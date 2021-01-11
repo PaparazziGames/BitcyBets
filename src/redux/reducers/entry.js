@@ -1,8 +1,9 @@
-import {AUTHORIZATION, PROHIBITION, REGISTRATION} from "../types";
+import {AUTHORIZATION, GET_LOCATION, PROHIBITION, REGISTRATION} from "../types";
 
 const initialState = {
     auth: false,
-    reg: false
+    reg: false,
+    geoposition: ''
 }
 export const authReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -13,6 +14,15 @@ export const authReducer = (state = initialState, action) => {
         case REGISTRATION:
             console.log(!state.reg)
             return {...state, reg: !state.reg}
+        default:
+            return state;
+    }
+}
+
+export const geoReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case GET_LOCATION:
+            return {...state, geoposition: action.payload};
         default:
             return state;
     }
