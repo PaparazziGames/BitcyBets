@@ -3,7 +3,15 @@ import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
 import './auth.scss';
 import {authorization, registration} from "../../redux/actions";
-import User from "../../api/User";
+import {User} from "../../api/User";
+
+const parse = (obj)=> {
+    let string = '';
+    for (const argumentsKey in obj) {
+        string += `${argumentsKey}=${obj[argumentsKey]}&`
+    }
+    return string;
+}
 
 const Auth = ({reg, authorization, registration}) => {
     const [pass, setPass] = useState(true)
@@ -19,7 +27,7 @@ const Auth = ({reg, authorization, registration}) => {
     }
     if (!reg) {
         return (
-            <div className="round-dark auth col-3">
+            <div className="round-dark auth">
                 <h2>Welcome</h2>
                 <form onSubmit={e => {
                     e.preventDefault();

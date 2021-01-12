@@ -26,12 +26,25 @@
   color: var(--text-color);
   letter-spacing: 1px;
 }
-
+button {
+  transition: all 0.2s!important;
+  &:hover {
+    transform: scale(1.01);
+  }
+}
 #root {
-  //max-height: calc(100vh + 60px);
-  min-height: 95vh;
+  min-height: 100vh;
   background-image: url("images/main_bg.png");
   background-size: cover;
   background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1200px) {
+  *, *:after, *:before {
+    //font-size: 12px;
+  }
 }
 

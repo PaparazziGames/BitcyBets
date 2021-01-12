@@ -15,22 +15,24 @@ class Restore extends Component {
         const { restore } = this.state;
         if (restore) {
             return (
-                <div className="round-dark auth col-3">
+                <div className="round-dark restore auth col-3">
                     <form onSubmit={this.toggleRestore}>
                         <div>
-                            <label htmlFor="phone">Enter your phone number</label>
-                            <input id="phone" name="phone" type="tel" required/>
+                            <h2>Forgot password?</h2>
+                            <label htmlFor="phone">E-mail</label>
+                            <input placeholder="lucky@mail.com" id="phone" name="phone" type="email" required/>
                         </div>
-                        <button>Submit</button>
+                        <button>Send reset link</button>
                     </form>
                 </div>
             );
         } else {
             return (
-                <div className="round-dark auth col-3">
+                <div className="round-dark restore auth col-3">
                     <form onSubmit={e => e.preventDefault()}>
-                        <h2>Successfully</h2>
-                        <Link className="ok" to="/">OK</Link>
+                        <h2>Link has been sent</h2>
+                        <p>We have sent a reset link on your mail lucky@gmail.com. Please, check your email and press the link</p>
+                        <Link className="ok" to="/">Go to main</Link>
                     </form>
                 </div>
             );

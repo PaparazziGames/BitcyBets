@@ -13,7 +13,7 @@ const Main = ({course}) => {
         <div className="main">
             <main>
                 <div className="row main">
-                    <div className=" left-sector">
+                    <div className="left-sector">
                         <div className="round globe">
                             {course.length ? (<div>
                                 <h2 className="text-center"><img src={bitcoin} className="m-2" alt="course"/>

@@ -33,8 +33,8 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
             yAxes: [{
                 ticks: {
                     fontColor: "white",
-                    fontSize: 14,
-                    stepSize: 0,
+                    fontSize: 12,
+                    stepSize: false,
                     // beginAtZero: true
                 },
                 gridLines: {
@@ -53,7 +53,7 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
 class Graph extends Component {
     componentDidMount() {
         socket.onmessage = e => {
-            if(exam) {exam.destroy()};
+            // if(exam) {exam.destroy()}
             let data = e.data.slice(1, -1).split(',');
             this.props.bitcoinCourse(data);
             let ctx = document.getElementById('myChart').getContext('2d');
@@ -71,7 +71,7 @@ class Graph extends Component {
     render() {
 
         return (
-            <canvas id="myChart"/>
+            <canvas id="myChart" />
         )
     }
 }

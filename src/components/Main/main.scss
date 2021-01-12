@@ -2,9 +2,12 @@ main {
   padding: 60px;
   height: 100%;
   margin: 0 auto;
-.main {
-  height: 100vh;
-}
+
+  .main {
+    height: 100%;
+
+  }
+
   .dashboard {
     margin-bottom: 0;
   }
@@ -13,16 +16,18 @@ main {
     flex-direction: row;
     justify-content: space-between;
 
+
     .left-sector {
       width: 75%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 100%;
+      height: auto;
     }
 
     .globe {
       height: 70%;
+      min-width: 100%;
 
       &:after {
         position: absolute;
@@ -393,7 +398,7 @@ form {
 
 /*<<<<<<<<<<<<<<<<<   RIGHT SECTOR   >>>>>>>>>>>>>>>>>>*/
 .right-sector {
-  height: 100%;
+  height: auto;
   z-index: 2;
   width: 25%;
   display: flex;
@@ -430,6 +435,11 @@ form {
 }
 
 .score-wrap {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
   table {
     width: 100%;
 

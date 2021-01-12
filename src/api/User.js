@@ -1,6 +1,6 @@
 import Api from './Api';
 
-export default  {
+export const User = {
   register(form) {
     return Api().post('/register', form);
   },
