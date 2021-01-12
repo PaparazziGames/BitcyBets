@@ -5,25 +5,24 @@ import './auth.scss';
 import {authorization, registration} from "../../redux/actions";
 import {User} from "../../api/User";
 
-const parse = (obj)=> {
-    let string = '';
-    for (const argumentsKey in obj) {
-        string += `${argumentsKey}=${obj[argumentsKey]}&`
-    }
-    return string;
-}
-
 const Auth = ({reg, authorization, registration}) => {
-    const [pass, setPass] = useState(true)
-    const [confPass, setConfPass] = useState(true)
+    const [password, setPassword] = useState(true)
+    const [passwordConfirm, setPasswordConfirm] = useState(true)
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [passwordConfirm, setPasswordConfirm] = useState('')
+    const [pass, setPass] = useState('')
+    const [confpass, setConfpass] = useState('')
     const handleSubmit = event => {
         event.preventDefault();
-        User.register(JSON.stringify({name, phone, email, password, passwordConfirm})).then(res => res.json()).then(data => console.log(data))
+        const body = JSON.stringify({name, phone, email, pass, confpass});
+        User.register(body).then(res => res)
+            .then(data => {
+                if(data.data.data.accessToken !== undefined) {
+                    localStorage.setItem('token', data.data.data.accessToken)
+                }
+            })
+            .catch(e => console.log(e))
     }
     if (!reg) {
         return (
@@ -37,10 +36,10 @@ const Auth = ({reg, authorization, registration}) => {
                         <label htmlFor="phone">Phone</label>
                         <input id="phone" name="phone" type="tel" required/>
                     </div>
-                    <div className={pass ? 'pass' : 'text'}>
-                        <span onClick={() => setPass(!pass)} className="eye"/>
+                    <div className={password ? 'pass' : 'text'}>
+                        <span onClick={() => setPassword(!password)} className="eye"/>
                         <label htmlFor="password">Password</label>
-                        <input id="password" name="password" type={pass ? 'password' : 'text'} required/>
+                        <input id="password" name="password" type={password ? 'password' : 'text'} required/>
                     </div>
                     <Link to="/restore" className="forgot mb-3">Forgot password?</Link>
                     <button>SIGN IN</button>
@@ -76,19 +75,19 @@ const Auth = ({reg, authorization, registration}) => {
                                value={email}
                                id="email" name="email" type="email" required/>
                     </div>
-                    <div className={pass ? 'pass' : 'text'}>
-                        <span onClick={() => setPass(!pass)} className="eye"/>
+                    <div className={password ? 'pass' : 'text'}>
+                        <span onClick={() => setPassword(!password)} className="eye"/>
                         <label htmlFor="password">Password</label>
-                        <input onChange={e => setPassword(e.target.value)}
-                               value={password}
-                               id="password" name="password" type={pass ? 'password' : 'text'} required/>
+                        <input onChange={e => setPass(e.target.value)}
+                               value={pass}
+                               id="password" name="password" type={password ? 'password' : 'text'} required/>
                     </div>
-                    <div className={confPass ? 'pass' : 'text'}>
-                        <span onClick={() => setConfPass(!confPass)} className="eye"/>
+                    <div className={passwordConfirm ? 'pass' : 'text'}>
+                        <span onClick={() => setPasswordConfirm(!passwordConfirm)} className="eye"/>
                         <label htmlFor="passwordConfirm">Repeat password</label>
-                        <input onChange={e => setPasswordConfirm(e.target.value)}
-                               value={passwordConfirm}
-                               id="passwordConfirm" name="passwordConfirm" type={confPass ? 'password' : 'text'}
+                        <input onChange={e => setConfpass(e.target.value)}
+                               value={confpass}
+                               id="passwordConfirm" name="passwordConfirm" type={passwordConfirm ? 'password' : 'text'}
                                required/>
                     </div>
                     <button>REGISTER</button>

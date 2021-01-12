@@ -87,7 +87,7 @@ class Dashboard extends React.Component {
                                     ? <>
                                     </>
                                     : <>
-                                        <input value="Not enough" type="button" className="btn bet-btn col-sm-4"/>
+                                        <p className="btn bet-btn col-sm-4">Not enough</p>
                                         <button className="btn refill-btn">Refill
                                             <img src={bitcoin} width="15" height="20" alt="b"/>
                                         </button>

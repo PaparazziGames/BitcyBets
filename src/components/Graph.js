@@ -57,7 +57,7 @@ class Graph extends Component {
 
             let ctx = document.getElementById('myChart').getContext('2d');
             const my_gradient = ctx.createLinearGradient(0, 100, 0, 400);
-            my_gradient.addColorStop(0, "rgba(141,217,252,0.7)");
+            my_gradient.addColorStop(0, "rgba(141,217,252,0.6)");
             my_gradient.addColorStop(1, "transparent");
 
             let data = e.data.slice(1, -1).split(',');

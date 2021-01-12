@@ -17,7 +17,7 @@ const Main = ({course}) => {
                         <div className="round globe">
                             {course.length ? (<div>
                                 <h2 className="text-center"><img src={bitcoin} className="m-2" alt="course"/>
-                                    {currentCourse} <span>$</span>
+                                    {currentCourse.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} <span>$</span>
                                 </h2>
                                 <div>
                                     <SelectList />

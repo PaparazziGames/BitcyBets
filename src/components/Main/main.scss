@@ -8,9 +8,6 @@ main {
 
   }
 
-  .dashboard {
-    margin-bottom: 0;
-  }
 
   .row {
     flex-direction: row;
@@ -28,6 +25,15 @@ main {
     .globe {
       height: 70%;
       min-width: 100%;
+
+      div {
+        h2 {
+          font-family: "roc-grotesk-wide";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 24px;
+        }
+      }
 
       &:after {
         position: absolute;
@@ -61,12 +67,29 @@ main {
       //height: 25%;
       backdrop-filter: blur(2px);
       background-color: rgba(26, 31, 52, 0.7);
+      padding: 20px 30px;
+
+      .row {
+        .best {
+          min-width: 292px;
+          padding: 0;
+          h2 {
+            width: 100%;
+            font-family: "roc-grotesk-wide";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            white-space: nowrap;
+
+          }
+        }
+      }
     }
 
     .round {
 
       border-radius: 24px;
-      padding: 10px 30px;
+      padding: 20px 30px;
       margin: 10px 0;
       position: relative;
       z-index: 2;
@@ -184,6 +207,7 @@ main {
     font-size: 24px;
     line-height: 35px;
     text-align: center;
+
   }
 }
 
@@ -201,12 +225,16 @@ main {
     height: 100%;
 
     td span {
-      font-weight: 500;
+      font-weight: 300;
       font-size: 20px;
+      img {
+        margin-bottom: 3px;
+        margin-left: 3px;
+      }
     }
 
     td span:nth-child(2) {
-      margin-left: 1em;
+      margin-left: .5em;
     }
 
     tr:nth-child(1) {
@@ -238,6 +266,10 @@ main {
 .range {
   h2 {
     margin-bottom: 3px;
+    font-family: "roc-grotesk-wide";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
   }
 }
 
@@ -264,8 +296,8 @@ form {
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       background-image: url('../../images/logo.svg');
       background-color: var(--bg-dark);
       border-radius: 50%;
@@ -273,8 +305,8 @@ form {
     }
 
     &::-moz-range-thumb {
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       background-image: url('../../images/logo.svg');
       background-color: var(--bg-dark);
       border-radius: 50%;
@@ -283,13 +315,13 @@ form {
 
     &.green-range::-moz-range-progress {
       background-color: var(--up);
-      height: .6rem;
+      height: 3px;
       border-radius: 5px;
     }
 
     &.red-range::-moz-range-progress {
       background-color: var(--down);
-      height: .6rem;
+      height: 3px;
       border-radius: 5px;
     }
 
@@ -299,7 +331,7 @@ form {
       border-radius: 8px;
       outline: none;
       -webkit-appearance: none;
-      height: .6rem;
+      height: 3px;
     }
 
     &.red-range {
@@ -308,7 +340,7 @@ form {
       border-radius: 8px;
       outline: none;
       -webkit-appearance: none;
-      height: .6rem;
+      height: 3px;
     }
   }
 
@@ -319,6 +351,7 @@ form {
     color: var(--text-color);
     height: 40px;
     align-self: baseline;
+    pointer-events: none;
   }
 
   .bet-btn:hover {
@@ -351,9 +384,9 @@ form {
     gap: 10px;
 
     .predict-btn {
-      width: 50%;
+      width: 200px;
       color: var(--text-color);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
       border-radius: 8px;
       background-color: var(--btn-color);
@@ -361,15 +394,16 @@ form {
       white-space: nowrap;
       padding-top: 10px;
       padding-bottom: 10px;
-      font-weight: 500;
-
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 23px;
       &.red {
         color: var(--down);
         border: 1px solid var(--down);
         background-image: url("../../images/bear.svg");
         background-repeat: no-repeat;
         background-size: contain;
-        background-position: right 0;
+        background-position: 103% 0;
         padding-right: 40px;
       }
 
@@ -424,9 +458,13 @@ form {
   .text {
     margin: 0 20px 10px;
     min-height: 40%;
-
+    p {
+      opacity: 0.8;
+      font-style: normal;
+      font-weight: 200;
+    }
     h5 {
-      font-weight: 500;
+      font-weight: 400;
       line-height: 23px;
       margin-bottom: 0;
       margin-top: -10px;
@@ -448,10 +486,11 @@ form {
 
       .label {
         opacity: 0.8;
+        font-weight: 300;
       }
 
       .score {
-        font-weight: 500;
+        font-weight: 400;
       }
     }
   }
@@ -465,7 +504,7 @@ form {
       border-radius: 8px;
       width: 100%;
       padding: 12px 0;
-      font-weight: 500;
+      font-weight: 400;
 
       img {
         margin-left: 5px;
@@ -490,15 +529,22 @@ form {
   background-image: url("../../images/bull.png"), url("../../images/bear.png");
   background-repeat: no-repeat;
   background-position: left 50%, right 50%;
-  background-size: contain;
+  background-size: 30%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 114px;
 
   .label {
     opacity: 0.6;
+  }
+  .time-text {
+    font-family: "roc-grotesk-wide";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
   }
 
   &-text {

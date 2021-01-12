@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/images/logo1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/Logo2.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/bitcoin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bitcoin.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/restore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/restore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Graph.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Graph.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/main.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/images/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/logo1.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +87,8 @@
       <workItem from="1610369907762" duration="20983000" />
       <workItem from="1610429201691" duration="16096000" />
       <workItem from="1610451969750" duration="331000" />
-      <workItem from="1610452957677" duration="5366000" />
+      <workItem from="1610452957677" duration="14017000" />
+      <workItem from="1610484352812" duration="3875000" />
     </task>
     <servers />
   </component>
