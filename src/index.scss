@@ -13,15 +13,15 @@
 }
 
 @font-face {
-  font-family: Roc Grotesk Regular;
-  src: url("fonts/RocGrotesk.ttf") format("truetype");
+  //font-family: Roc Grotesk Regular;
+  //src: url("fonts/RocGrotesk.ttf") format("truetype");
 }
 
 *, *:after, *:before {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: Roc Grotesk, sans-serif;
+  font-family: "roc-grotesk", sans-serif;
   font-size: 16px;
   color: var(--text-color);
   letter-spacing: 1px;

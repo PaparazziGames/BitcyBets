@@ -34,7 +34,7 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                 ticks: {
                     fontColor: "white",
                     fontSize: 12,
-                    stepSize: false,
+                    // stepSize: false,
                     // beginAtZero: true
                 },
                 gridLines: {
@@ -51,16 +51,32 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
 }))
 
 class Graph extends Component {
+
     componentDidMount() {
         socket.onmessage = e => {
-            // if(exam) {exam.destroy()}
-            let data = e.data.slice(1, -1).split(',');
-            this.props.bitcoinCourse(data);
+
             let ctx = document.getElementById('myChart').getContext('2d');
             const my_gradient = ctx.createLinearGradient(0, 100, 0, 400);
             my_gradient.addColorStop(0, "rgba(141,217,252,0.7)");
             my_gradient.addColorStop(1, "transparent");
-            graph(this.props.course, ctx, my_gradient)
+
+            let data = e.data.slice(1, -1).split(',');
+            this.props.bitcoinCourse(data);
+
+            if (exam) {
+
+                if (exam.config.data.datasets[0].data.length > 0) {
+                    if(exam.config.data.datasets[0].data.length === 40) {
+                        exam.config.data.datasets[0].data.splice(0, 1);
+                    }
+                    exam.config.data.datasets[0].data.push(data.pop());
+                    exam.update();
+                } else {
+                    graph(data, ctx, my_gradient)
+                }
+            } else {
+                graph(data, ctx, my_gradient)
+            }
         }
     }
 
@@ -71,18 +87,25 @@ class Graph extends Component {
     render() {
 
         return (
-            <canvas id="myChart" />
+            <canvas id="myChart"/>
         )
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        course: state.courseReducer.course
+const
+    mapStateToProps = state => {
+        return {
+            course: state.courseReducer.course
+        }
     }
-}
-const mapDispatchToProps = {
-    bitcoinCourse
-}
+const
+    mapDispatchToProps = {
+        bitcoinCourse
+    }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Graph);
+export default connect(mapStateToProps, mapDispatchToProps)
+
+(
+    Graph
+)
+;
