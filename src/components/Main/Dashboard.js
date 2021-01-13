@@ -5,23 +5,32 @@ import bitcoin from "../../images/bitcoin.svg";
 import down from "../../images/down.svg";
 import arrowUp from "../../images/arrowUp.svg";
 import arrowDown from "../../images/arrowDown.svg";
+import {connect} from "react-redux";
 
 
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {bet: .5, balance: .5};
+        this.state = {bet: .5, predict: false};
         this.setBet = this.setBet.bind(this);
+        this.predictSubmit = this.predictSubmit.bind(this);
     }
 
     setBet(e) {
         const newBet = {bet: e.target.value}
         this.setState((state) => ({...state, ...newBet}));
-
+    }
+    predictSubmit(e) {
+        e.preventDefault();
+        this.setState((state) => ({...state, predict: true}));
+        return setTimeout(() => {
+            this.setState((state) => ({...state, predict: false}))
+        }, 5000)
     }
 
     render() {
-        const {bet, balance} = this.state;
+        const {bet, predict} = this.state;
+        const {balance} = this.props;
         return (
             <div className="round dashboard">
                 <div className="row">
@@ -97,10 +106,10 @@ class Dashboard extends React.Component {
                             </div>
                             {balance - bet >= 0
                                 ? <div className='wrap-btn'>
-                                    <button className="btn green predict-btn">PREDICT UP
+                                    <button disabled={predict} onClick={this.predictSubmit} className="btn green predict-btn">PREDICT UP
                                         <img src={arrowUp} width="15" height="20" alt="b"/>
                                     </button>
-                                    <button className="btn red predict-btn">PREDICT DOWN
+                                    <button disabled={predict} onClick={this.predictSubmit} className="btn red predict-btn">PREDICT DOWN
                                         <img src={arrowDown} width="15" height="20" alt="b"/>
                                     </button>
                                 </div>
@@ -113,5 +122,8 @@ class Dashboard extends React.Component {
         );
     }
 }
+const mapStateToProps = state => {
+    return {balance: state.balanceReducer.balance}
+}
 
-export default Dashboard;
+export default connect(mapStateToProps, null)(Dashboard);

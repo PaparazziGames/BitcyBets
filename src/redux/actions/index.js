@@ -1,4 +1,4 @@
-import {AUTHORIZATION, GET_COURSE, GET_LOCATION, PROHIBITION, REGISTRATION} from "../types";
+import {AUTHORIZATION, BET_LOSE, BET_WIN, GET_COURSE, GET_LOCATION, PROHIBITION, REGISTRATION} from "../types";
 
 export function authorization() {
     return {type: AUTHORIZATION}
@@ -23,10 +23,21 @@ export function geoposition() {
             dispatch({type: GET_LOCATION, payload: namePlace})
         })
     }
-
 }
+
 export function bitcoinCourse(data) {
     return dispatch => {
         dispatch({type: GET_COURSE, payload: data});
+    }
+}
+
+export function betWin(data) {
+    return dispatch => {
+        dispatch({type: BET_WIN, payload: data});
+    }
+}
+export function betLose(data) {
+    return dispatch => {
+        dispatch({type: BET_LOSE, payload: data});
     }
 }
