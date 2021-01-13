@@ -12,11 +12,6 @@
   --btn-color: #250e25;
 }
 
-@font-face {
-  //font-family: Roc Grotesk Regular;
-  //src: url("fonts/RocGrotesk.ttf") format("truetype");
-}
-
 *, *:after, *:before {
   box-sizing: border-box;
   padding: 0;
@@ -26,12 +21,15 @@
   color: var(--text-color);
   letter-spacing: 1px;
 }
+
 button {
-  transition: all 0.2s!important;
+  transition: all 0.2s !important;
+
   &:hover {
     transform: scale(1.01);
   }
 }
+
 #root {
   min-height: 100vh;
   background-image: url("images/main_bg.png");
@@ -46,4 +44,5 @@ button {
   *, *:after, *:before {
   }
 }
+
 

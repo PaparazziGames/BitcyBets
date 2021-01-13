@@ -55,7 +55,9 @@ const Auth = ({reg, authorization, registration}) => {
     } else {
         return (
             <div className="round-dark auth">
-                <span onClick={registration} className="back">&larr;</span><h2 className="">Registration</h2>
+                <span onClick={() => {
+                    registration();
+                }} className="back">&larr;</span><h2 className="">Registration</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="">
                         <label htmlFor="name">Name</label>

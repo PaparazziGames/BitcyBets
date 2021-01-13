@@ -73,6 +73,7 @@ main {
         .best {
           min-width: 292px;
           padding: 0;
+
           h2 {
             width: 100%;
             font-family: "roc-grotesk-wide";
@@ -216,7 +217,7 @@ main {
 .wrap-table {
   border: 1px solid var(--dark-opacity);
   border-radius: 8px;
-  margin: 5px auto;
+  margin: 20px auto 0;
   min-width: 292px;
   height: 100px;
 
@@ -227,6 +228,7 @@ main {
     td span {
       font-weight: 300;
       font-size: 20px;
+
       img {
         margin-bottom: 3px;
         margin-left: 3px;
@@ -326,7 +328,7 @@ form {
     }
 
     &.green-range {
-      background: linear-gradient(to right, green 0%, #fff 100%);
+      background: linear-gradient(to right, var(--up) 0%, var(--text-color) 100%);
       border: none;
       border-radius: 8px;
       outline: none;
@@ -335,7 +337,7 @@ form {
     }
 
     &.red-range {
-      background: linear-gradient(to right, red 0%, #fff 100%);
+      background: linear-gradient(to right, var(--down) 0%, var(--text-color) 100%);
       border: none;
       border-radius: 8px;
       outline: none;
@@ -350,38 +352,50 @@ form {
     border-radius: 24px;
     color: var(--text-color);
     height: 40px;
+    width: 110px;
+    padding: 8px 10px;
     align-self: baseline;
     pointer-events: none;
+    margin-bottom: 0;
+    span {
+      width: 90px;
+      white-space: nowrap;
+      letter-spacing: 0;
+      font-weight: 300;
+      font-size: 16px;
+    }
   }
 
   .bet-btn:hover {
     color: var(--alert);
   }
 
-  .refill-btn {
-    width: 60%;
-    border: 1px solid var(--text-color);
-    color: var(--text-color);
-    text-transform: uppercase;
-    border-radius: 8px;
-    background: var(--btn-color);
-    margin: 10px auto 0;
-    padding: 10px 64px;
-    white-space: nowrap;
-
-    &:hover {
-      color: var(--gold);
-    }
-
-    img {
-      margin-left: .3em;
-    }
-  }
 
   .wrap-btn {
     display: flex;
     justify-content: space-between;
     gap: 10px;
+    margin-top: 10px;
+
+    .refill-btn {
+      width: 60%;
+      border: 1px solid var(--text-color);
+      color: var(--text-color);
+      text-transform: uppercase;
+      border-radius: 8px;
+      background: var(--btn-color);
+      margin: 10px auto 0;
+      padding: 10px 64px;
+      white-space: nowrap;
+
+      &:hover {
+        color: var(--gold);
+      }
+
+      img {
+        margin-left: .3em;
+      }
+    }
 
     .predict-btn {
       width: 200px;
@@ -397,6 +411,7 @@ form {
       font-weight: 400;
       font-size: 16px;
       line-height: 23px;
+
       &.red {
         color: var(--down);
         border: 1px solid var(--down);
@@ -458,11 +473,13 @@ form {
   .text {
     margin: 0 20px 10px;
     min-height: 40%;
+
     p {
       opacity: 0.8;
       font-style: normal;
       font-weight: 200;
     }
+
     h5 {
       font-weight: 400;
       line-height: 23px;
@@ -540,6 +557,7 @@ form {
   .label {
     opacity: 0.6;
   }
+
   .time-text {
     font-family: "roc-grotesk-wide";
     font-style: normal;

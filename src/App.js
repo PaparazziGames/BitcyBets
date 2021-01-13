@@ -7,8 +7,8 @@ import {connect} from "react-redux";
 const App = ({auth}) => {
     return (
         <div className="App">
-            <Header/>
-            {auth ? <Main/> : <Auth/>}
+            <Header />
+            {auth ? <Main /> : <Auth />}
         </div>
     );
 }

@@ -76,9 +76,9 @@ class Dashboard extends React.Component {
                                             <img width="15" src={bitcoin} alt="up"/>
                                         </span>
                                     </label>
-                                    <input min="0" max="1" step="0.001"
+                                    <input min="0.001" max="1" step="0.001"
                                            type="range"
-                                           style={{backgroundImage: `linear-gradient(to right, ${balance - bet >= 0 ? 'green' : 'red'} 0%, ${balance - bet >= 0 ? 'green' : 'red'} ${bet * 100}%, #fff ${bet * 100}%, white 100%)`}}
+                                           style={{backgroundImage: `linear-gradient(to right, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} 0%, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} ${bet * 100}%, #fff ${bet * 100}%, white 100%)`}}
                                            onInput={this.setBet}
                                            className={balance - bet >= 0 ? 'green-range' : 'red-range'}
                                            id="range"/>
@@ -87,10 +87,12 @@ class Dashboard extends React.Component {
                                     ? <>
                                     </>
                                     : <>
-                                        <p className="btn bet-btn col-sm-4">Not enough</p>
-                                        <button className="btn refill-btn">Refill
-                                            <img src={bitcoin} width="15" height="20" alt="b"/>
-                                        </button>
+                                        <p className="btn bet-btn col-sm-4"><span>Not enough</span></p>
+                                        <div className='wrap-btn'>
+                                            <button className="btn refill-btn">Refill
+                                                <img src={bitcoin} width="15" height="20" alt="b"/>
+                                            </button>
+                                        </div>
                                     </>}
                             </div>
                             {balance - bet >= 0

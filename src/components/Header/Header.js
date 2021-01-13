@@ -1,6 +1,6 @@
 import React from 'react';
 import './header.scss';
-import logo from '../../images/logo.svg';
+import logo from '../../images/Logo2.svg';
 import ava from '../../images/ava.png';
 import {connect} from "react-redux";
 import {prohibition} from "../../redux/actions";
@@ -11,15 +11,16 @@ const Header = ({prohibition, auth}) => {
             <header className="header">
                 <nav className="navbar">
                     <a className="navbar-brand" href="https://google.com">
-                        <img src={logo} alt="" width="32" height="32"
+                        <img src={logo} alt="logo" height="32"
                              className="d-inline-block align-top"/>
-                        BITCY<span>BETS</span>
+                        {/*BITCY<span>BETS</span>*/}
                     </a>
                 </nav>
                 <h4 style={auth ? {display: 'block'} : {display: 'none'}} className="text-center">Bitcoin Live price</h4>
-                <img style={auth ? {display: 'block'} : {display: 'none'}} onClick={e => {
+                <img className="ava" style={auth ? {display: 'block'} : {display: 'none'}} onClick={e => {
                     e.preventDefault();
                     prohibition();
+                    clearInterval();
                 }} src={ava} alt="icon"/>
             </header>
         </div>

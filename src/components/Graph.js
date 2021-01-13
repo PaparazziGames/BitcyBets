@@ -3,7 +3,7 @@ import Chart from "chart.js";
 import {connect} from "react-redux";
 import {bitcoinCourse} from "../redux/actions";
 
-let socket = new WebSocket("wss://bitcybets.com:8000/serv");
+const socket = new WebSocket("wss://bitcybets.com:8000/serv");
 let exam;
 let graph = (course, ctx, color) => (exam = new Chart(ctx, {
     type: 'line',
@@ -34,7 +34,7 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                 ticks: {
                     fontColor: "white",
                     fontSize: 12,
-                    // stepSize: false,
+                    stepSize: 10,
                     // beginAtZero: true
                 },
                 gridLines: {
@@ -42,6 +42,11 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                 }
             }],
             xAxes: [{
+                ticks: {
+                    max: 30,
+                    min: 0,
+                    stepSize: 0.5
+                },
                 gridLines: {
                     color: "rgba(255, 255, 255, 0.5)"
                 }
@@ -66,7 +71,7 @@ class Graph extends Component {
             if (exam) {
 
                 if (exam.config.data.datasets[0].data.length > 0) {
-                    if(exam.config.data.datasets[0].data.length === 40) {
+                    if (exam.config.data.datasets[0].data.length === 40) {
                         exam.config.data.datasets[0].data.splice(0, 1);
                     }
                     exam.config.data.datasets[0].data.push(data.pop());
@@ -92,20 +97,6 @@ class Graph extends Component {
     }
 }
 
-const
-    mapStateToProps = state => {
-        return {
-            course: state.courseReducer.course
-        }
-    }
-const
-    mapDispatchToProps = {
-        bitcoinCourse
-    }
-
-export default connect(mapStateToProps, mapDispatchToProps)
-
-(
-    Graph
-)
-;
+const mapStateToProps = state => ({course: state.courseReducer.course});
+const mapDispatchToProps = {bitcoinCourse};
+export default connect(mapStateToProps, mapDispatchToProps)(Graph);

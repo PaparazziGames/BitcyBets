@@ -8,9 +8,12 @@ const RightSector = ({geoposition, geo}) => {
     useEffect(() => {
         geoposition()
     },[geoposition]);
-    let [time, setTime] = useState(new Date().toLocaleTimeString())
-    clearInterval();
-    setInterval(() => setTime(new Date().toLocaleTimeString()));
+    useEffect(() => {
+        const clock = setInterval(() => setTime(new Date().toLocaleTimeString()), 1000);
+        return () => clearInterval(clock);
+    }, [])
+    let [time, setTime] = useState(new Date().toLocaleTimeString());
+
     return (
         <div className="right-sector">
             <div className="banner round-dark">
