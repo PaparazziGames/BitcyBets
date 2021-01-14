@@ -87,6 +87,8 @@ class Graph extends Component {
 
     componentWillUnmount() {
         socket.close();
+        this.props.bitcoinCourse([]);
+        exam = '';
     }
 
     render() {

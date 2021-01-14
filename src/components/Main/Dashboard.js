@@ -6,6 +6,7 @@ import down from "../../images/down.svg";
 import arrowUp from "../../images/arrowUp.svg";
 import arrowDown from "../../images/arrowDown.svg";
 import {connect} from "react-redux";
+import {betLose, betWin} from "../../redux/actions";
 
 
 class Dashboard extends React.Component {
@@ -29,7 +30,15 @@ class Dashboard extends React.Component {
         this.setState((state) => ({...state, predict: true}));
         return setTimeout(() => {
             clearInterval(timer);
-            this.setState((state) => ({...state, predict: false, counter: 10}))
+            this.setState((state) => ({...state, predict: false, counter: 10}));
+            let currentCourse = this.props.course[this.props.course.length - 1];
+            let lastCourse = this.props.course[this.props.course.length - 2];
+            let bet = this.state.bet;
+            if(currentCourse > lastCourse) {
+                this.props.betWin(bet);
+            } else if(currentCourse < lastCourse) {
+                this.props.betLose(bet);
+            }
         }, 10000)
     }
 
@@ -109,22 +118,24 @@ class Dashboard extends React.Component {
                                         </div>
                                     </>}
 
-                            {balance - bet >= 0
-                                ? <>
-                                    <p style={{display: predict ? 'block' : 'none'}} className="btn bet-btn col-sm-4"><span>00:{counter > 9 ? counter : '0' + counter}</span></p>
-                                    <div className='wrap-btn'>
-                                        <button disabled={predict} onClick={this.predictSubmit}
-                                                className="btn green predict-btn">PREDICT UP
-                                            <img src={arrowUp} width="15" height="20" alt="b"/>
-                                        </button>
-                                        <button disabled={predict} onClick={this.predictSubmit}
-                                                className="btn red predict-btn">PREDICT DOWN
-                                            <img src={arrowDown} width="15" height="20" alt="b"/>
-                                        </button>
-                                    </div>
-                                </>
-                                : <>
-                                </>}
+                                {balance - bet >= 0
+                                    ? <>
+                                        <p style={{display: predict ? 'block' : 'none'}}
+                                           className="btn bet-btn col-sm-4">
+                                            <span>00:{counter > 9 ? counter : '0' + counter}</span></p>
+                                        <div className='wrap-btn'>
+                                            <button disabled={predict} onClick={this.predictSubmit}
+                                                    className="btn green predict-btn">PREDICT UP
+                                                <img src={arrowUp} width="15" height="20" alt="b"/>
+                                            </button>
+                                            <button disabled={predict} onClick={this.predictSubmit}
+                                                    className="btn red predict-btn">PREDICT DOWN
+                                                <img src={arrowDown} width="15" height="20" alt="b"/>
+                                            </button>
+                                        </div>
+                                    </>
+                                    : <>
+                                    </>}
                             </div>
                         </form>
                     </div>
@@ -135,7 +146,14 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return {balance: state.balanceReducer.balance}
+    return {
+        balance: state.balanceReducer.balance,
+        course: state.courseReducer.course
+    }
+}
+const mapDispatchToProps = {
+    betWin,
+    betLose
 }
 
-export default connect(mapStateToProps, null)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

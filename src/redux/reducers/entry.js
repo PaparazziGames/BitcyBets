@@ -37,13 +37,4 @@ export const courseReducer = (state = initialState, action) => {
             return state;
     }
 }
-export const balanceReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case BET_WIN:
-            return {...state, balance: state.balance + action.payload};
-        case BET_LOSE:
-            return {...state, balance: state.balance - action.payload};
-        default:
-            return state;
-    }
-}
+

@@ -288,7 +288,7 @@ form {
   }
 
   #range {
-    width: 100%;
+    min-width: 100%;
     padding: 0;
 
     h2 {
@@ -370,15 +370,12 @@ form {
     color: var(--alert);
   }
 
-
   .wrap-btn {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    gap: 2em;
     margin-top: 10px;
 
     .refill-btn {
-      width: 60%;
       border: 1px solid var(--text-color);
       color: var(--text-color);
       text-transform: uppercase;
@@ -439,10 +436,10 @@ form {
 
 }
 
-.btn:active {
-  transform: scale(0.97);
-  color: var(--alert);
-}
+  .btn:active {
+    transform: scale(0.97);
+    color: var(--alert);
+  }
 
 
 /*<<<<<<<<<<<<<<<<<   RIGHT SECTOR   >>>>>>>>>>>>>>>>>>*/
@@ -570,4 +567,11 @@ form {
     line-height: 35px;
   }
 
+}
+
+@media screen and (min-width: 1280px){
+  .range {
+    width: 520px;
+    padding-left: 90px;
+  }
 }
