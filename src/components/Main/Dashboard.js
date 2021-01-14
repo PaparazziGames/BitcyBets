@@ -133,7 +133,7 @@ class Dashboard extends React.Component {
                                             <button disabled={predict} onClick={(e) => {
                                                 e.preventDefault();
                                                 this.predictSubmit();
-                                                this.setRate(false)
+                                                this.setRate(true)
                                             }}
                                                     className="btn green predict-btn">PREDICT UP
                                                 <img src={arrowUp} width="15" height="20" alt="b"/>
@@ -141,7 +141,7 @@ class Dashboard extends React.Component {
                                             <button disabled={predict} onClick={(e) => {
                                                 e.preventDefault();
                                                 this.predictSubmit();
-                                                this.setRate(true)
+                                                this.setRate(false)
                                             }}
                                                     className="btn red predict-btn">PREDICT DOWN
                                                 <img src={arrowDown} width="15" height="20" alt="b"/>
