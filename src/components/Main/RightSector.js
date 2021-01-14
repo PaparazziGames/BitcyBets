@@ -4,7 +4,10 @@ import withdraw from '../../images/withdraw.svg';
 import {connect} from "react-redux";
 import {geoposition} from "../../redux/actions";
 
-const RightSector = ({geoposition, geo, balance, lastWin, wins}) => {
+
+const RightSector = ({geoposition, geo, balance, lastWin, wins, predict}) => {
+    const balanceColor = {color: predict === 'green' ? '#32D74B' : predict === 'red' ? '#FF453A' : '#FFFFFF'}
+
     useEffect(() => {
         geoposition()
     },[geoposition]);
@@ -40,7 +43,7 @@ const RightSector = ({geoposition, geo, balance, lastWin, wins}) => {
                     <tr>
                         <td>
                             <div className="label">Balance</div>
-                            <div className="score" id="balance">{balance.toFixed(3)} BTC</div>
+                            <div style={balanceColor} className="score" id="balance">{balance.toFixed(3)} BTC</div>
                         </td>
                         <td>
                             <div className="label">Last Win</div>
@@ -71,6 +74,7 @@ const mapStateToProps = state => {
         geo: state.geoReducer.geoposition,
         balance: state.balanceReducer.balance,
         lastWin: state.balanceReducer.lastWin,
+        predict: state.balanceReducer.predict,
         wins: state.balanceReducer.wins
     }
 }

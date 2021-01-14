@@ -7,6 +7,7 @@ import arrowUp from "../../images/arrowUp.svg";
 import arrowDown from "../../images/arrowDown.svg";
 import {connect} from "react-redux";
 import {betLose, betWin} from "../../redux/actions";
+import {Link} from "react-router-dom";
 
 
 class Dashboard extends React.Component {
@@ -19,8 +20,7 @@ class Dashboard extends React.Component {
     }
 
     setBet(e) {
-        const newBet = {bet: e.target.value}
-        this.setState((state) => ({...state, ...newBet}));
+        this.setState((state) => ({...state, ...{bet: e.target.value}}));
     }
 
     setRate(rate) {
@@ -39,7 +39,6 @@ class Dashboard extends React.Component {
             let currentCourse = this.props.currentCourse;
             let lastCourse = this.props.course[this.props.course.length - 1];
             let bet = this.state.bet;
-            console.log(currentCourse, lastCourse)
             if (currentCourse > lastCourse) {
                 this.state.rate ? this.props.betWin(bet) : this.props.betLose(bet);
             } else if (currentCourse < lastCourse) {
@@ -54,7 +53,7 @@ class Dashboard extends React.Component {
         return (
             <div className="round dashboard">
                 <div className="row">
-                    <div className="col-xl-4 best">
+                    <div className="col-xl-3 best">
                         <h2 className="text-center">Bets in progress</h2>
                         <div className="wrap-table">
                             <table className="p-3 table-responsive">
@@ -93,7 +92,7 @@ class Dashboard extends React.Component {
                             </table>
                         </div>
                     </div>
-                    <div className="range col-xl-7">
+                    <div className="range col-xl-6">
                         <h2 className="text-center">Make your bet</h2>
                         <form>
                             <div className="form row">
@@ -118,9 +117,10 @@ class Dashboard extends React.Component {
                                     : <>
                                         <p className="btn bet-btn col-sm-4"><span>Not enough</span></p>
                                         <div className='wrap-btn'>
-                                            <button className="btn refill-btn">Refill
+                                            <Link to='/refill' className="btn refill-btn"><span>Refill</span>
                                                 <img src={bitcoin} width="15" height="20" alt="b"/>
-                                            </button>
+                                            </Link>
+
                                         </div>
                                     </>}
 

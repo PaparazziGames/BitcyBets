@@ -375,6 +375,8 @@ form {
     display: flex;
     gap: 2em;
     margin-top: 10px;
+    padding-left: 0;
+    padding-right: 0;
 
     .refill-btn {
       border: 1px solid var(--text-color);
@@ -384,12 +386,13 @@ form {
       background: var(--btn-color);
       margin: 10px auto 0;
       padding: 10px 64px;
-      white-space: nowrap;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
 
       &:hover {
         color: var(--gold);
       }
-
       img {
         margin-left: .3em;
       }
@@ -427,6 +430,7 @@ form {
         background-repeat: no-repeat;
         background-size: contain;
         background-position: left 0;
+        padding-left: 40px;
       }
 
       img {
@@ -608,9 +612,9 @@ form {
 }
 
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1200px) {
   .range {
-    width: 520px;
+    width: 500px;
     padding-left: 90px;
   }
 }

@@ -3,7 +3,7 @@ import Chart from "chart.js";
 import {connect} from "react-redux";
 import {bitcoinCourse} from "../redux/actions";
 
-const socket = new WebSocket("wss://bitcybets.com:8000/serv");
+let socket = new WebSocket("wss://bitcybets.com:8000/serv");
 let exam;
 let graph = (course, ctx, color) => (exam = new Chart(ctx, {
     type: 'line',
@@ -12,10 +12,9 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
         datasets: [{
             label: 'Bitcoin Live price',
             backgroundColor: color,
-            borderColor: '#8DD9FC',
-            boxShadow: 'inset 7px 7px 2px white',
+            borderColor: '#FFFFFF',//'#8DD9FC',
             borderWidth: '1',
-            data: course
+            data: course,
         }]
     },
     options: {
@@ -36,6 +35,7 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                     fontColor: "white",
                     fontSize: 12,
                     stepSize: 20,
+                    fontFamily: "roc-grotesk"
                     // beginAtZero: true
                 },
                 gridLines: {
@@ -44,7 +44,8 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
             }],
             xAxes: [{
                 ticks: {
-                    stepSize: 0.5
+                    stepSize: 0.5,
+                    fontFamily: "roc-grotesk"
                 },
                 gridLines: {
                     color: "rgba(255, 255, 255, 0.1)"
@@ -57,6 +58,9 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
 class Graph extends Component {
 
     componentDidMount() {
+        if(socket.readyState === 2) {
+            socket = new WebSocket("wss://bitcybets.com:8000/serv");
+        }
         socket.onmessage = e => {
             let ctx = document.getElementById('myChart').getContext('2d');
             const my_gradient = ctx.createLinearGradient(0, 100, 0, 400);

@@ -4,17 +4,18 @@ import logo from '../../images/Logo2.svg';
 import ava from '../../images/ava.png';
 import {connect} from "react-redux";
 import {prohibition} from "../../redux/actions";
+import {Link} from "react-router-dom";
 
 const Header = ({prohibition, auth}) => {
     return (
         <div>
             <header className="header">
                 <nav className="navbar">
-                    <a className="navbar-brand" href="https://google.com">
+                    <Link className="navbar-brand" to="/">
                         <img src={logo} alt="logo" height="32"
                              className="d-inline-block align-top"/>
                         {/*BITCY<span>BETS</span>*/}
-                    </a>
+                    </Link>
                 </nav>
                 <h4 style={auth ? {display: 'block'} : {display: 'none'}} className="text-center">Bitcoin Live price</h4>
                 <img className="ava" style={auth ? {display: 'block'} : {display: 'none'}} onClick={e => {

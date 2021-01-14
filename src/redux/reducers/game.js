@@ -4,7 +4,8 @@ const initialState = {
     balance: 1,
     lastWin: 0,
     wins: 0,
-    congratulation: false
+    congratulation: false,
+    predict: 'white'
 }
 export const balanceReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -14,10 +15,15 @@ export const balanceReducer = (state = initialState, action) => {
                 balance: state.balance + parseFloat(action.payload),
                 wins: state.wins + 1,
                 lastWin: action.payload,
-                congratulation: true
+                congratulation: true,
+                predict: 'green'
             };
         case BET_LOSE:
-            return {...state, balance: state.balance - parseFloat(action.payload)};
+            return {
+                ...state,
+                balance: state.balance - parseFloat(action.payload),
+                predict: 'red'
+            };
         case CLOSE_CONGRATULATION:
             return {...state, congratulation: false};
         default:

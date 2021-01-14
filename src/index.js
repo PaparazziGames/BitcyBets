@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import store from "./redux/store";
 import Restore from "./components/Auth/restore";
+import Refill from "./components/Refill/Refill";
 
 
 render(
@@ -14,6 +15,7 @@ render(
         <Router>
             <Route exact path="/" component={App}/>
             <Route path="/restore" component={Restore}/>
+            <Route path="/refill" component={Refill}/>
         </Router>
     </Provider>,
     document.getElementById('root')

@@ -9,7 +9,6 @@ import {connect} from "react-redux";
 import {closeCongratulation} from "../../redux/actions";
 
 const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse}) => {
-    // let currentCourse = course.pop()
     return (
         <div className="main">
             <div style={{display: congratulation ? "block" : "none"}} className="blur">
