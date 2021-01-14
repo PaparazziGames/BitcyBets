@@ -34,9 +34,9 @@ class Dashboard extends React.Component {
             let currentCourse = this.props.course[this.props.course.length - 1];
             let lastCourse = this.props.course[this.props.course.length - 2];
             let bet = this.state.bet;
-            if(currentCourse > lastCourse) {
+            if (currentCourse > lastCourse) {
                 this.props.betWin(bet);
-            } else if(currentCourse < lastCourse) {
+            } else if (currentCourse < lastCourse) {
                 this.props.betLose(bet);
             }
         }, 10000)
@@ -148,7 +148,8 @@ class Dashboard extends React.Component {
 const mapStateToProps = state => {
     return {
         balance: state.balanceReducer.balance,
-        course: state.courseReducer.course
+        course: state.courseReducer.course,
+        lastWin: state.balanceReducer.lastWin
     }
 }
 const mapDispatchToProps = {

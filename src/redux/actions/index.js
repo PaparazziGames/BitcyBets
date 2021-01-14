@@ -1,4 +1,13 @@
-import {AUTHORIZATION, BET_LOSE, BET_WIN, GET_COURSE, GET_LOCATION, PROHIBITION, REGISTRATION} from "../types";
+import {
+    AUTHORIZATION,
+    BET_LOSE,
+    BET_WIN,
+    CLOSE_CONGRATULATION,
+    GET_COURSE,
+    GET_LOCATION,
+    PROHIBITION,
+    REGISTRATION
+} from "../types";
 
 export function authorization() {
     return {type: AUTHORIZATION}
@@ -39,5 +48,10 @@ export function betWin(data) {
 export function betLose(data) {
     return dispatch => {
         dispatch({type: BET_LOSE, payload: data});
+    }
+}
+export function closeCongratulation(data) {
+    return dispatch => {
+        dispatch({type: CLOSE_CONGRATULATION});
     }
 }

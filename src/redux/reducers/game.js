@@ -1,9 +1,10 @@
-import {BET_LOSE, BET_WIN} from "../types";
+import {BET_LOSE, BET_WIN, CLOSE_CONGRATULATION} from "../types";
 
 const initialState = {
-    balance: .3,
+    balance: 1,
     lastWin: 0,
-    wins: 0
+    wins: 0,
+    congratulation: false
 }
 export const balanceReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -12,10 +13,13 @@ export const balanceReducer = (state = initialState, action) => {
                 ...state,
                 balance: state.balance + parseFloat(action.payload),
                 wins: state.wins + 1,
-                lastWin: action.payload
+                lastWin: action.payload,
+                congratulation: true
             };
         case BET_LOSE:
             return {...state, balance: state.balance - parseFloat(action.payload)};
+        case CLOSE_CONGRATULATION:
+            return {...state, congratulation: false};
         default:
             return state;
     }

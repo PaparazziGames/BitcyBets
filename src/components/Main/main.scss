@@ -357,6 +357,7 @@ form {
     align-self: baseline;
     pointer-events: none;
     margin-bottom: 0;
+
     span {
       width: 90px;
       white-space: nowrap;
@@ -366,9 +367,9 @@ form {
     }
   }
 
-  .bet-btn:hover {
-    color: var(--alert);
-  }
+  //.bet-btn:hover {
+  //  color: var(--alert);
+  //}
 
   .wrap-btn {
     display: flex;
@@ -436,10 +437,10 @@ form {
 
 }
 
-  .btn:active {
-    transform: scale(0.97);
-    color: var(--alert);
-  }
+.btn:active {
+  transform: scale(0.97);
+  //color: var(--alert);
+}
 
 
 /*<<<<<<<<<<<<<<<<<   RIGHT SECTOR   >>>>>>>>>>>>>>>>>>*/
@@ -568,8 +569,46 @@ form {
   }
 
 }
+.blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark-block);
+  z-index: 10;
+  .win {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 30px;
+    min-width: 320px;
+    max-height: 80%;
+    z-index: 3;
 
-@media screen and (min-width: 1280px){
+    &-btn {
+      display: flex;
+      flex-direction: column;
+
+      button {
+        background-color: rgba(0, 0, 0, .5);
+        border: 1px solid #FFFFFF;
+        border-radius: 8px;
+        min-height: 40px;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        &:active {
+          transform: scale(0.97);
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 1280px) {
   .range {
     width: 520px;
     padding-left: 90px;
