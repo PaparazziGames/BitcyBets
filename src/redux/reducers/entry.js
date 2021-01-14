@@ -1,10 +1,17 @@
-import {AUTHORIZATION, BET_LOSE, BET_WIN, GET_COURSE, GET_LOCATION, PROHIBITION, REGISTRATION} from "../types";
+import {
+    AUTHORIZATION,
+    GET_COURSE,
+    GET_LOCATION,
+    PROHIBITION,
+    REGISTRATION
+} from "../types";
 
 const initialState = {
     auth: false,
     reg: false,
     geoposition: '',
     course: [],
+    currentCourse: 0,
     balance: .5
 }
 export const authReducer = (state = initialState, action) => {
@@ -32,7 +39,7 @@ export const geoReducer = (state = initialState, action) => {
 export const courseReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_COURSE:
-            return {...state, course: action.payload};
+            return {...state, course: action.payload, currentCourse: action.payload.pop()};
         default:
             return state;
     }

@@ -3,7 +3,7 @@ import {
     BET_LOSE,
     BET_WIN,
     CLOSE_CONGRATULATION,
-    GET_COURSE,
+    GET_COURSE, GET_CURRENT_COURSE,
     GET_LOCATION,
     PROHIBITION,
     REGISTRATION
@@ -39,7 +39,11 @@ export function bitcoinCourse(data) {
         dispatch({type: GET_COURSE, payload: data});
     }
 }
-
+export function bitcoinCurrentCourse() {
+    return dispatch => {
+        dispatch({type: GET_CURRENT_COURSE});
+    }
+}
 export function betWin(data) {
     return dispatch => {
         dispatch({type: BET_WIN, payload: data});

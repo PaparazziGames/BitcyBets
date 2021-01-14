@@ -8,11 +8,12 @@ let exam;
 let graph = (course, ctx, color) => (exam = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39],
+        labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
         datasets: [{
             label: 'Bitcoin Live price',
             backgroundColor: color,
-            borderColor: '#FFFFFF',
+            borderColor: '#8DD9FC',
+            boxShadow: 'inset 7px 7px 2px white',
             borderWidth: '1',
             data: course
         }]
@@ -34,21 +35,19 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                 ticks: {
                     fontColor: "white",
                     fontSize: 12,
-                    stepSize: 10,
+                    stepSize: 20,
                     // beginAtZero: true
                 },
                 gridLines: {
-                    color: "rgba(255, 255, 255, 0.5)"
+                    color: "rgba(255, 255, 255, 0.1)"
                 }
             }],
             xAxes: [{
                 ticks: {
-                    max: 30,
-                    min: 0,
                     stepSize: 0.5
                 },
                 gridLines: {
-                    color: "rgba(255, 255, 255, 0.5)"
+                    color: "rgba(255, 255, 255, 0.1)"
                 }
             }]
         },
@@ -59,28 +58,24 @@ class Graph extends Component {
 
     componentDidMount() {
         socket.onmessage = e => {
-
             let ctx = document.getElementById('myChart').getContext('2d');
             const my_gradient = ctx.createLinearGradient(0, 100, 0, 400);
             my_gradient.addColorStop(0, "rgba(141,217,252,0.6)");
             my_gradient.addColorStop(1, "transparent");
-
-            let data = e.data.slice(1, -1).split(',');
-            this.props.bitcoinCourse(data);
-
+            let msg = e.data.slice(1, -1);
+            let data = msg.split(',');
+            let sliceData = data.slice(-17);
+            this.props.bitcoinCourse(sliceData);
             if (exam) {
-
                 if (exam.config.data.datasets[0].data.length > 0) {
-                    if (exam.config.data.datasets[0].data.length === 40) {
-                        exam.config.data.datasets[0].data.splice(0, 1);
-                    }
+                    exam.config.data.datasets[0].data.splice(0, 1);
                     exam.config.data.datasets[0].data.push(data.pop());
                     exam.update();
                 } else {
-                    graph(data, ctx, my_gradient)
+                    graph(sliceData, ctx, my_gradient)
                 }
             } else {
-                graph(data, ctx, my_gradient)
+                graph(sliceData, ctx, my_gradient)
             }
         }
     }

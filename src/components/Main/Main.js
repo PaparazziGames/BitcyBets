@@ -8,8 +8,8 @@ import SelectList from "./SelectList";
 import {connect} from "react-redux";
 import {closeCongratulation} from "../../redux/actions";
 
-const Main = ({course, lastWin, closeCongratulation, congratulation}) => {
-    let currentCourse = course[course.length - 1];
+const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse}) => {
+    // let currentCourse = course.pop()
     return (
         <div className="main">
             <div style={{display: congratulation ? "block" : "none"}} className="blur">
@@ -53,6 +53,7 @@ const Main = ({course, lastWin, closeCongratulation, congratulation}) => {
 const mapStateToProps = state => {
     return {
         course: state.courseReducer.course,
+        currentCourse: state.courseReducer.currentCourse,
         lastWin: state.balanceReducer.lastWin,
         congratulation: state.balanceReducer.congratulation,
     }

@@ -12,9 +12,10 @@ import {betLose, betWin} from "../../redux/actions";
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {bet: .5, predict: false, counter: 10};
+        this.state = {bet: .5, predict: false, counter: 10, rate: false};
         this.setBet = this.setBet.bind(this);
         this.predictSubmit = this.predictSubmit.bind(this);
+        this.setRate = this.setRate.bind(this);
     }
 
     setBet(e) {
@@ -22,8 +23,12 @@ class Dashboard extends React.Component {
         this.setState((state) => ({...state, ...newBet}));
     }
 
+    setRate(rate) {
+        this.setState((state) => ({...state, rate: rate}));
+    }
+
     predictSubmit(e) {
-        e.preventDefault();
+        // e.preventDefault();
         const timer = setInterval(() => {
             this.setState((state) => ({...state, counter: state.counter - 1}));
         }, 1000)
@@ -31,13 +36,14 @@ class Dashboard extends React.Component {
         return setTimeout(() => {
             clearInterval(timer);
             this.setState((state) => ({...state, predict: false, counter: 10}));
-            let currentCourse = this.props.course[this.props.course.length - 1];
-            let lastCourse = this.props.course[this.props.course.length - 2];
+            let currentCourse = this.props.currentCourse;
+            let lastCourse = this.props.course[this.props.course.length - 1];
             let bet = this.state.bet;
+            console.log(currentCourse, lastCourse)
             if (currentCourse > lastCourse) {
-                this.props.betWin(bet);
+                this.state.rate ? this.props.betWin(bet) : this.props.betLose(bet);
             } else if (currentCourse < lastCourse) {
-                this.props.betLose(bet);
+                !this.state.rate ? this.props.betWin(bet) : this.props.betLose(bet);
             }
         }, 10000)
     }
@@ -124,11 +130,19 @@ class Dashboard extends React.Component {
                                            className="btn bet-btn col-sm-4">
                                             <span>00:{counter > 9 ? counter : '0' + counter}</span></p>
                                         <div className='wrap-btn'>
-                                            <button disabled={predict} onClick={this.predictSubmit}
+                                            <button disabled={predict} onClick={(e) => {
+                                                e.preventDefault();
+                                                this.predictSubmit();
+                                                this.setRate(false)
+                                            }}
                                                     className="btn green predict-btn">PREDICT UP
                                                 <img src={arrowUp} width="15" height="20" alt="b"/>
                                             </button>
-                                            <button disabled={predict} onClick={this.predictSubmit}
+                                            <button disabled={predict} onClick={(e) => {
+                                                e.preventDefault();
+                                                this.predictSubmit();
+                                                this.setRate(true)
+                                            }}
                                                     className="btn red predict-btn">PREDICT DOWN
                                                 <img src={arrowDown} width="15" height="20" alt="b"/>
                                             </button>
@@ -149,6 +163,7 @@ const mapStateToProps = state => {
     return {
         balance: state.balanceReducer.balance,
         course: state.courseReducer.course,
+        currentCourse: state.courseReducer.currentCourse,
         lastWin: state.balanceReducer.lastWin
     }
 }
