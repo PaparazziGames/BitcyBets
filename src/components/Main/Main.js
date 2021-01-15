@@ -37,7 +37,7 @@ const fire = () => {
 const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money}) => {
     useEffect(() => {
         fire();
-    })
+    }, [])
     return (
         <div className="main">
             <div style={{display: congratulation ? "block" : "none"}} className="blur">
