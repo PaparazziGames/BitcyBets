@@ -1,4 +1,4 @@
-import {PLAY_BELL, PLAY_CLACK, PLAY_CLICK, PLAY_MONEY, PLAY_TIC, STOP_ALL} from "../types";
+import {MUTE, PLAY_BELL, PLAY_CLACK, PLAY_CLICK, PLAY_MONEY, PLAY_TIC, STOP_ALL} from "../types";
 
 export function click() {
     return {type: PLAY_CLICK}
@@ -17,4 +17,7 @@ export function tic() {
 }
 export function stop() {
     return {type: STOP_ALL}
+}
+export function muteToggle() {
+    return {type: MUTE}
 }

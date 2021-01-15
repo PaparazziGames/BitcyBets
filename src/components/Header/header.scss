@@ -8,7 +8,12 @@ header {
   background: var(--dark-gradient);
   display: flex;
   align-items: center;
-
+.sound {
+  position: fixed;
+  right: 200px;
+  top: 20px;
+  cursor: pointer;
+}
   h4 {
     margin-left: -10%;
     display: inline;
