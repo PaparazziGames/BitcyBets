@@ -21,6 +21,7 @@ const Header = ({prohibition, auth}) => {
                 <img className="ava" style={auth ? {display: 'block'} : {display: 'none'}} onClick={e => {
                     e.preventDefault();
                     prohibition();
+                    window.location.href = '/';
                     clearInterval();
                 }} src={ava} alt="icon"/>
             </header>

@@ -58,7 +58,7 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
 class Graph extends Component {
 
     componentDidMount() {
-        if(socket.readyState === 2) {
+        if(socket.readyState !== 1) {
             socket = new WebSocket("wss://bitcybets.com:8000/serv");
         }
         socket.onmessage = e => {

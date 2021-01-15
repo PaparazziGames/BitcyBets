@@ -8,6 +8,8 @@ import {Provider} from "react-redux";
 import store from "./redux/store";
 import Restore from "./components/Auth/restore";
 import Refill from "./components/Refill/Refill";
+import Btc from "./components/Refill/Btc";
+import Usd from "./components/Refill/Usd";
 
 
 render(
@@ -15,7 +17,9 @@ render(
         <Router>
             <Route exact path="/" component={App}/>
             <Route path="/restore" component={Restore}/>
-            <Route path="/refill" component={Refill}/>
+            <Route exact path="/refill" component={Refill}/>
+            <Route exact path="/refill/btc" component={Btc}/>
+            <Route exact path="/refill/usd" component={Usd}/>
         </Router>
     </Provider>,
     document.getElementById('root')

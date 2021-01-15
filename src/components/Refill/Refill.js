@@ -4,6 +4,7 @@ import bitcoin from "../../images/bitcoin.svg";
 import dollar from "../../images/dollar.svg";
 import arrows from "../../images/arrows.svg";
 import back from "../../images/back.svg";
+import {Link} from "react-router-dom";
 
 const Refill = (props) => {
     return (
@@ -15,17 +16,17 @@ const Refill = (props) => {
                 <div className="amount">Amount</div><br/>
                 <div className="refill-input">
                     <div className="input-wrap">
-                        <input placeholder="0.000" type="text"/><img src={bitcoin} width="15" alt="bit"/>
+                        <input placeholder="0.000" type="text"/><img className="currency" src={bitcoin} width="15" alt="btc"/>
                     </div>
                     <img className="arrows" src={arrows} alt="arrows"/>
                     <div className="input-wrap">
-                        <input placeholder="0.000" type="text"/><img src={dollar} width="15" alt="bit"/>
+                        <input placeholder="0.000" type="text"/><img className="currency" src={dollar} width="15" alt="usd"/>
                     </div>
                 </div>
                 <div className="refill-btn">
-                    <button className="">PAY<img src={bitcoin} width="15" alt="bit"/></button>
+                    <Link to="/refill/btc" className="pay"><span>PAY</span><img src={bitcoin} width="15" alt="bit"/></Link>
 
-                    <button className="">PAY<img src={dollar} width="15" alt="bit"/></button>
+                    <Link to="/refill/usd" className="pay"><span>PAY</span><img src={dollar} width="15" alt="bit"/></Link>
                 </div>
             </div>
         </div>
