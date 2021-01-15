@@ -3,6 +3,7 @@ import deposit from '../../images/deposit.svg';
 import withdraw from '../../images/withdraw.svg';
 import {connect} from "react-redux";
 import {geoposition} from "../../redux/actions";
+import {Link} from "react-router-dom";
 
 
 const RightSector = ({geoposition, geo, balance, lastWin, wins, predict}) => {
@@ -53,9 +54,9 @@ const RightSector = ({geoposition, geo, balance, lastWin, wins, predict}) => {
                     </tbody>
                 </table>
                 <div>
-                    <button type="btn" className="btn money-btn green">DEPOSIT
+                    <Link to='/refill' className="btn money-btn green">DEPOSIT
                         <img src={deposit} alt="deposit"/>
-                    </button>
+                    </Link>
                     <button type="btn" className="btn money-btn red">WITHDRAW
                         <img src={withdraw} alt="withdraw"/>
                     </button>
