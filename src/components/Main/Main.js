@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import './main.scss';
 import bitcoin from '../../images/bitcoin.svg';
@@ -33,8 +33,11 @@ const fire = () => {
     });
     firework.start();
 };
-fire();
+
 const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money}) => {
+    useEffect(() => {
+        fire();
+    })
     return (
         <div className="main">
             <div style={{display: congratulation ? "block" : "none"}} className="blur">
