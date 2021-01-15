@@ -7,3 +7,11 @@ export const GET_CURRENT_COURSE ='GET_CURRENT_COURSE';
 export const BET_WIN ='BET_WIN';
 export const BET_LOSE ='BET_LOSE';
 export const CLOSE_CONGRATULATION ='CLOSE_CONGRATULATION';
+
+export const PLAY_CLICK ='PLAY_CLICK';
+export const PLAY_CLACK ='PLAY_CLACK';
+export const PLAY_BELL ='PLAY_BELL';
+export const PLAY_MONEY ='PLAY_MONEY';
+export const PLAY_TIC ='PLAY_TIC';
+export const STOP_ALL ='STOP_ALL';
+

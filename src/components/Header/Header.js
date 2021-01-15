@@ -14,14 +14,12 @@ const Header = ({prohibition, auth}) => {
                     <Link className="navbar-brand" to="/">
                         <img src={logo} alt="logo" height="32"
                              className="d-inline-block align-top"/>
-                        {/*BITCY<span>BETS</span>*/}
                     </Link>
                 </nav>
                 <h4 style={auth ? {display: 'block'} : {display: 'none'}} className="text-center">Bitcoin Live price</h4>
                 <img className="ava" style={auth ? {display: 'block'} : {display: 'none'}} onClick={e => {
                     e.preventDefault();
                     prohibition();
-                    window.location.href = '/';
                     clearInterval();
                 }} src={ava} alt="icon"/>
             </header>

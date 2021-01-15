@@ -101,3 +101,4 @@ class Graph extends Component {
 const mapStateToProps = state => ({course: state.courseReducer.course});
 const mapDispatchToProps = {bitcoinCourse};
 export default connect(mapStateToProps, mapDispatchToProps)(Graph);
+

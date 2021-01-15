@@ -8,6 +8,7 @@ import arrowDown from "../../images/arrowDown.svg";
 import {connect} from "react-redux";
 import {betLose, betWin} from "../../redux/actions";
 import {Link} from "react-router-dom";
+import {bell, clack, click, tic} from "../../redux/actions/music";
 
 
 class Dashboard extends React.Component {
@@ -44,12 +45,15 @@ class Dashboard extends React.Component {
             } else if (currentCourse < lastCourse) {
                 !this.state.rate ? this.props.betWin(bet) : this.props.betLose(bet);
             }
+            if(this.props.congratulation) {
+                this.props.bell();
+            }
         }, 10000)
     }
 
     render() {
         const {bet, predict, counter} = this.state;
-        const {balance} = this.props;
+        const {balance, click, clack, tic} = this.props;
         return (
             <div className="round dashboard">
                 <div className="row">
@@ -133,7 +137,9 @@ class Dashboard extends React.Component {
                                             <button disabled={predict} onClick={(e) => {
                                                 e.preventDefault();
                                                 this.predictSubmit();
-                                                this.setRate(true)
+                                                this.setRate(true);
+                                                click();
+                                                tic();
                                             }}
                                                     className="btn green predict-btn">PREDICT UP
                                                 <img src={arrowUp} width="15" height="20" alt="b"/>
@@ -141,7 +147,9 @@ class Dashboard extends React.Component {
                                             <button disabled={predict} onClick={(e) => {
                                                 e.preventDefault();
                                                 this.predictSubmit();
-                                                this.setRate(false)
+                                                this.setRate(false);
+                                                click();
+                                                tic();
                                             }}
                                                     className="btn red predict-btn">PREDICT DOWN
                                                 <img src={arrowDown} width="15" height="20" alt="b"/>
@@ -162,6 +170,7 @@ class Dashboard extends React.Component {
 const mapStateToProps = state => {
     return {
         balance: state.balanceReducer.balance,
+        congratulation: state.balanceReducer.congratulation,
         course: state.courseReducer.course,
         currentCourse: state.courseReducer.currentCourse,
         lastWin: state.balanceReducer.lastWin
@@ -169,7 +178,11 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     betWin,
-    betLose
+    betLose,
+    click,
+    clack,
+    tic,
+    bell
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

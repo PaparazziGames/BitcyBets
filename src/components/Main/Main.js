@@ -1,14 +1,15 @@
 import React from 'react';
+import {connect} from "react-redux";
 import './main.scss';
 import bitcoin from '../../images/bitcoin.svg';
 import Graph from "../Graph";
 import RightSector from "./RightSector";
 import Dashboard from "./Dashboard";
 import SelectList from "./SelectList";
-import {connect} from "react-redux";
 import {closeCongratulation} from "../../redux/actions";
+import {money} from "../../redux/actions/music";
 
-const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse}) => {
+const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money}) => {
     return (
         <div className="main">
             <div style={{display: congratulation ? "block" : "none"}} className="blur">
@@ -16,8 +17,14 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                     <h2>Congratulations</h2>
                     <div className="text-center">You won {lastWin} <img src={bitcoin} width="15" alt="bit"/></div>
                     <div className="win-btn">
-                        <button onClick={closeCongratulation} className="btn btn-primary">Invest in my wallet</button>
-                        <button onClick={closeCongratulation} className="btn btn-primary">Withdraw</button>
+                        <button onClick={() => {
+                            closeCongratulation();
+                            money();
+                        }} className="btn btn-primary">Invest in my wallet</button>
+                        <button onClick={() => {
+                            closeCongratulation();
+                            money();
+                        }} className="btn btn-primary">Withdraw</button>
                     </div>
                 </div>
             </div>
@@ -58,7 +65,8 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    closeCongratulation
+    closeCongratulation,
+    money
 
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

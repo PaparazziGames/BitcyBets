@@ -2,8 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/redux/actions/music.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/sound.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/Playlist.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/bell.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/clack.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/low.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/money.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/tic.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Graph.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Graph.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sound/Click.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sound/Sound.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +69,9 @@
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\components\Refill" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\sound" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\images" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\public" />
-      <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\sound" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\redux" />
       <recent name="D:\Layout\bytcasino\src\mock-data" />
     </key>
@@ -86,7 +102,7 @@
       <workItem from="1610525344611" duration="9120000" />
       <workItem from="1610544106200" duration="20811000" />
       <workItem from="1610607903177" duration="33084000" />
-      <workItem from="1610694793273" duration="8357000" />
+      <workItem from="1610694793273" duration="24511000" />
     </task>
     <servers />
   </component>
