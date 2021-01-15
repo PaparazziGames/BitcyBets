@@ -8,11 +8,37 @@ import Dashboard from "./Dashboard";
 import SelectList from "./SelectList";
 import {closeCongratulation} from "../../redux/actions";
 import {money} from "../../redux/actions/music";
+import JS_FIREWORKS from "../fireworks";
 
+const fire = () => {
+    document.getElementById('fireworks-canvas').style.width = '100%'
+    document.getElementById('fireworks-canvas').style.height = '100%'
+    const firework = JS_FIREWORKS.Fireworks({
+        id : 'fireworks-canvas',
+        hue : 120,
+        particleCount : 100,
+        delay : 0,
+        minDelay : 5,
+        maxDelay : 10,
+        boundaries : {
+            top: 50,
+            bottom: 240,
+            left: 50,
+            right: 590
+        },
+        fireworkSpeed : 2,
+        fireworkAcceleration : 1.05,
+        particleFriction : .95,
+        particleGravity : 1.5
+    });
+    firework.start();
+};
+fire();
 const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money}) => {
     return (
         <div className="main">
             <div style={{display: congratulation ? "block" : "none"}} className="blur">
+                <canvas width="640" height="480" id="fireworks-canvas" style={{background: 'rgba(0,0,0, .2)'}}/>
                 <div className="round-dark win">
                     <h2>Congratulations</h2>
                     <div className="text-center">You won {lastWin} <img src={bitcoin} width="15" alt="bit"/></div>
