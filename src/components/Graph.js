@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Chart from "chart.js";
 import {connect} from "react-redux";
 import {bitcoinCourse} from "../redux/actions";
+import bull from '../images/bull_tooltip.svg';
+import bear from '../images/bear_tooltip.svg';
 
 let socket = new WebSocket("wss://bitcybets.com:8000/serv");
 let exam;
@@ -99,8 +101,10 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                     var innerHtml = '<thead>';
 
                     titleLines.forEach(function (title) {
+
                         innerHtml += '<tr><th>' + title + '</th></tr>';
                     });
+                    // const date = new Date().toLocaleDateString();
                     innerHtml += '</thead><tbody>';
 
                     bodyLines.forEach(function (body, i) {
@@ -114,7 +118,11 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                         style += '; border-color:' + colors.borderColor;
                         style += '; border-width: 2px';
                         var span = '<span style="' + style + '"></span>';
-                        innerHtml += '<tr><td>' + span + icon + body + '</td></tr>';
+                        if(courseDirection) {
+                            innerHtml += '<tr><td>' + span + '<img src="' + icon + '" />' + body + '</td></tr>';
+                        } else {
+                            innerHtml += '<tr><td>' + span + body + '<img style="margin-left: 5px; margin-right: -5px;" src="' + icon + '" />' + '</td></tr>';
+                        }
                     });
                     innerHtml += '</tbody>';
 
