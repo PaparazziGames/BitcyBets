@@ -17,6 +17,7 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
             borderColor: '#FFFFFF',//'#8DD9FC',
             borderWidth: '1',
             data: course,
+            pointHitRadius: 10
         }]
     },
     options: {
