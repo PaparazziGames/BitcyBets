@@ -29,7 +29,6 @@ var JS_FIREWORKS = JS_FIREWORKS || {};
  *      firework.stop();
  */
 JS_FIREWORKS.Fireworks = function (options) {
-    'use strict';
     if (!(this instanceof JS_FIREWORKS.Fireworks)) {
         return new JS_FIREWORKS.Fireworks(options);
     }
