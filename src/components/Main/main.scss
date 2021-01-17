@@ -277,7 +277,15 @@ main {
 
 form {
   text-align: center;
-
+  p {
+    border: none!important;
+    border-radius: 8px!important;
+  span {
+    font-family: "roc-grotesk-wide" !important;
+    font-size: 24px;
+    font-weight: 400;
+  }
+  }
   .form-label {
     margin-bottom: 0;
 
