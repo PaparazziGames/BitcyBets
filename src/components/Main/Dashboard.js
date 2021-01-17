@@ -6,7 +6,7 @@ import down from "../../images/down.svg";
 import arrowUp from "../../images/arrowUp.svg";
 import arrowDown from "../../images/arrowDown.svg";
 import {connect} from "react-redux";
-import {betLose, betWin} from "../../redux/actions";
+import {betLose, betWin, closeCongratulation} from "../../redux/actions";
 import {Link} from "react-router-dom";
 import {bell, clack, click, tic} from "../../redux/actions/music";
 
@@ -104,7 +104,7 @@ class Dashboard extends React.Component {
                                     <label className="form-label d-flex justify-content-between">
                                         <span>Bet</span>
                                         <span>
-                                            <span>{bet}</span>
+                                            <input type="number" step="0.001" min="0.001" max="1" onInput={this.setBet} value={bet} />
                                             <img width="15" src={bitcoin} alt="up"/>
                                         </span>
                                     </label>
@@ -131,7 +131,7 @@ class Dashboard extends React.Component {
                                 {balance - bet >= 0
                                     ? <>
                                         <p style={{display: predict ? 'block' : 'none'}}
-                                           className="btn bet-btn col-sm-4">
+                                           className="btn bet-btn col-sm-4 predict">
                                             <span>00:{counter > 9 ? counter : '0' + counter}</span></p>
                                         <div className='wrap-btn'>
                                             <button disabled={predict} onClick={(e) => {
@@ -182,7 +182,8 @@ const mapDispatchToProps = {
     click,
     clack,
     tic,
-    bell
+    bell,
+    closeCongratulation
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
