@@ -8,10 +8,11 @@ header {
   background: var(--dark-gradient);
   display: flex;
   align-items: center;
+  justify-content: space-between;
 .sound {
   position: absolute;
   right: 200px;
-  top: 20px;
+  top: 16px;
   cursor: pointer;
 }
   h4 {

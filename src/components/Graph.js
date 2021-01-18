@@ -131,8 +131,6 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                     tableRoot.innerHTML = innerHtml;
                 }
 
-
-
                 // `this` will be the overall tooltip
                 var position = this._chart.canvas.getBoundingClientRect();
 

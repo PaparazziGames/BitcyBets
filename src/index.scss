@@ -10,7 +10,8 @@
   --black: #000000;
   --down: #FF453A;
   --up: #32D74B;
-  --btn-color: #250e25;
+  --btn-color: rgba(37, 14, 37, 1);
+  --btn-color-hover: rgba(37, 14, 37, 1);
 }
 
 *, *:after, *:before {
@@ -31,10 +32,6 @@ a {
 }
 button {
   transition: all 0.2s !important;
-
-  &:hover {
-    transform: scale(1.01);
-  }
 }
 
 #root {

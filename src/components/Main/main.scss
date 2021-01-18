@@ -25,7 +25,7 @@ main {
     .globe {
       height: 70%;
       min-width: 100%;
-      padding-bottom: 10px!important;
+      padding-bottom: 10px !important;
 
       div {
         h2 {
@@ -267,6 +267,8 @@ main {
 }
 
 .range {
+  width: 500px;
+  padding-left: 50px;
   h2 {
     margin-bottom: 3px;
     font-family: "roc-grotesk-wide";
@@ -278,17 +280,21 @@ main {
 
 form {
   text-align: center;
+  width: 430px;
   .predict {
-    border: none!important;
-    border-radius: 8px!important;
-  span {
-    font-family: "roc-grotesk-wide";
-    font-size: 24px;
-    font-weight: 400;
+    border: none !important;
+    border-radius: 8px !important;
+
+    span {
+      font-family: "roc-grotesk-wide";
+      font-size: 24px;
+      font-weight: 400;
+    }
   }
-  }
+
   .form-label {
     margin-bottom: 0;
+
     input {
       background: none;
       border: none;
@@ -298,11 +304,13 @@ form {
       -moz-appearance: textfield;
       outline: none;
     }
+
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
+
     span img {
       margin-left: .1em;
       margin-bottom: 0;
@@ -394,6 +402,7 @@ form {
   //}
 
   .wrap-btn {
+    width: 100%;
     display: flex;
     gap: 2em;
     margin-top: 10px;
@@ -413,8 +422,9 @@ form {
       flex-wrap: nowrap;
 
       &:hover {
-        color: var(--gold);
+        background: var(--btn-color-hover);
       }
+
       img {
         margin-left: .3em;
       }
@@ -595,6 +605,7 @@ form {
   }
 
 }
+
 .blur {
   position: fixed;
   top: 0;
@@ -603,6 +614,7 @@ form {
   height: 100%;
   background-color: var(--dark-block);
   z-index: 10;
+
   .win {
     position: absolute;
     top: 50%;
@@ -625,6 +637,7 @@ form {
         font-weight: bold;
         margin-top: 20px;
         margin-bottom: 10px;
+
         &:active {
           transform: scale(0.97);
         }
@@ -647,6 +660,7 @@ form {
   }
   .range {
     width: 100%;
+
     h2 {
       margin-top: 15px;
     }
@@ -655,21 +669,30 @@ form {
     width: 100%;
   }
   .form {
-    justify-content: center!important;
+    margin-left: 0;
+  }
+  .form, .range form {
+    justify-content: center !important;
+    align-items: center;
+    margin: 0 auto;
+
     .wrap-btn {
       width: auto;
     }
   }
 }
+
 @media screen and (max-width: 1280px) {
   .form {
-    justify-content: center!important;
+    justify-content: center !important;
+
     .wrap-btn {
       width: auto;
     }
   }
   .range {
     width: 100%;
+
     h2 {
       margin-top: 15px;
     }

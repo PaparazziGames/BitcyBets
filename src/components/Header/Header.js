@@ -1,6 +1,7 @@
 import React from 'react';
 import './header.scss';
-import logo from '../../images/Logo2.svg';
+import logo from '../../images/logoLeft.svg';
+import logo2 from '../../images/logoCentre.svg';
 import ava from '../../images/ava.png';
 import sound from '../../images/volume-up-solid.svg';
 import noSound from '../../images/volume-mute-solid.svg';
@@ -18,11 +19,13 @@ const Header = ({prohibition, auth, mute, muteToggle}) => {
             <header className="header">
                 <nav className="navbar">
                     <Link className="navbar-brand" to="/">
-                        <img src={logo} alt="logo" height="32"
-                             className="d-inline-block align-top"/>
+                        <img src={logo} alt="logo" height="32" />
                     </Link>
                 </nav>
-                <h4 style={auth ? {display: 'block'} : {display: 'none'}} className="text-center">Bitcoin Live price</h4>
+                <Link to="/">
+                    <img className="mt-3" src={logo2} alt="logo" width="96" />
+                </Link>
+                {/*<h4 style={auth ? {display: 'block'} : {display: 'none'}} className="text-center">Bitcoin Live price</h4>*/}
                 <img onClick={handleMute} className="sound" src={mute ? sound : noSound} height="25" width="25" alt="sound"/>
                 <img className="ava" style={auth ? {display: 'block'} : {display: 'none'}} onClick={e => {
                     e.preventDefault();
