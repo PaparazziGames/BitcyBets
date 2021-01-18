@@ -113,7 +113,7 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                         item =course.filter((item, i) => +item === +currentHover) + '';
                         index = course.indexOf(item);
                         courseDirection = course[index] - course[index - 1] < 0;
-                        const icon = courseDirection ? bull : bear;
+                        const icon = !courseDirection ? bull : bear;
                         var colors = tooltipModel.labelColors[i];
                         var style = 'background:' + colors.backgroundColor;
                         style += '; border-color:' + colors.borderColor;
