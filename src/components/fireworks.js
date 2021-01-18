@@ -66,7 +66,7 @@ JS_FIREWORKS.Fireworks = function (options) {
 
 
     _Class.settings = {
-        fireworkSpeed : options.fireworkSpeed || 2,
+        fireworkSpeed : options.fireworkSpeed || 5,
         fireworkAcceleration : options.fireworkAcceleration || 1.05,
         particleFriction : options.particleFriction || .95,
         particleGravity : options.particleGravity || 1.5

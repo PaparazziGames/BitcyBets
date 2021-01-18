@@ -1,4 +1,4 @@
-import {MUTE, PLAY_BELL, PLAY_CLACK, PLAY_CLICK, PLAY_MONEY, PLAY_TIC, STOP_ALL} from "../types";
+import {MUTE, PLAY_BELL, PLAY_CLACK, PLAY_CLICK, PLAY_FIREWORKS, PLAY_MONEY, PLAY_TIC, STOP_ALL} from "../types";
 
 export function click() {
     return {type: PLAY_CLICK}
@@ -14,6 +14,9 @@ export function money() {
 }
 export function tic() {
     return {type: PLAY_TIC}
+}
+export function fireworks() {
+    return {type: PLAY_FIREWORKS}
 }
 export function stop() {
     return {type: STOP_ALL}

@@ -13,6 +13,7 @@ export const PLAY_CLACK ='PLAY_CLACK';
 export const PLAY_BELL ='PLAY_BELL';
 export const PLAY_MONEY ='PLAY_MONEY';
 export const PLAY_TIC ='PLAY_TIC';
+export const PLAY_FIREWORKS ='PLAY_FIREWORKS';
 export const STOP_ALL ='STOP_ALL';
 export const MUTE ='MUTE';
 

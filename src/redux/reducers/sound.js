@@ -1,4 +1,4 @@
-import {MUTE, PLAY_BELL, PLAY_CLACK, PLAY_CLICK, PLAY_MONEY, PLAY_TIC, STOP_ALL} from "../types";
+import {MUTE, PLAY_BELL, PLAY_CLACK, PLAY_CLICK, PLAY_FIREWORKS, PLAY_MONEY, PLAY_TIC, STOP_ALL} from "../types";
 
 const initialState = {
     play: '',
@@ -16,6 +16,8 @@ export const soundReducer = (state = initialState, action) => {
             return {...state, play: 'money'}
         case PLAY_TIC:
             return {...state, play: 'tic'}
+        case PLAY_FIREWORKS:
+            return {...state, play: 'fireworks'}
         case STOP_ALL:
             return {...state, play: ''}
         case MUTE:

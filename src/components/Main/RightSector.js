@@ -4,9 +4,10 @@ import withdraw from '../../images/withdraw.svg';
 import {connect} from "react-redux";
 import {geoposition} from "../../redux/actions";
 import {Link} from "react-router-dom";
+import {click} from "../../redux/actions/music";
 
 
-const RightSector = ({geoposition, geo, balance, lastWin, wins, predict}) => {
+const RightSector = ({geoposition, geo, balance, lastWin, wins, predict, click}) => {
     const balanceColor = {color: predict === 'green' ? '#32D74B' : predict === 'red' ? '#FF453A' : '#FFFFFF'}
 
     useEffect(() => {
@@ -54,10 +55,10 @@ const RightSector = ({geoposition, geo, balance, lastWin, wins, predict}) => {
                     </tbody>
                 </table>
                 <div>
-                    <Link to='/refill' className="btn money-btn green">DEPOSIT
+                    <Link to="/refill" className="btn money-btn green">DEPOSIT
                         <img src={deposit} alt="deposit"/>
                     </Link>
-                    <button type="btn" className="btn money-btn red">WITHDRAW
+                    <button onClick={click} type="btn" className="btn money-btn red">WITHDRAW
                         <img src={withdraw} alt="withdraw"/>
                     </button>
                 </div>
@@ -80,6 +81,7 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    geoposition
+    geoposition,
+    click
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RightSector);

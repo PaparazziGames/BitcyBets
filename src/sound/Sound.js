@@ -6,20 +6,21 @@ const Sound = ({play, param, stop, mute}) => {
     const audRef = useRef(null);
     const handlePlay = () => {
         audRef.current.play();
-        stop();
     }
     const muted = () => {
         audRef.current.muted = !mute;
     }
     useEffect(() => {
         if (param.id === play) {
+            audRef.current.id === 'fireworks' ? audRef.current.volume = 0.3 : audRef.current.volume = 0.7;
             handlePlay();
         }
-        return stop();
-    }, [param.id, play, handlePlay])
+        stop();
+    }, [param.id, play, handlePlay]);
     useEffect(() => {
         muted();
-    }, [mute])
+    }, [mute]);
+
     return (
         <div className="sound">
             <audio ref={audRef} id={param.id} src={param.effect}/>

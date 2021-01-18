@@ -8,7 +8,7 @@ import arrowDown from "../../images/arrowDown.svg";
 import {connect} from "react-redux";
 import {betLose, betWin, closeCongratulation} from "../../redux/actions";
 import {Link} from "react-router-dom";
-import {bell, clack, click, tic} from "../../redux/actions/music";
+import {bell, clack, click, tic, fireworks} from "../../redux/actions/music";
 
 
 class Dashboard extends React.Component {
@@ -32,9 +32,11 @@ class Dashboard extends React.Component {
         // e.preventDefault();
         const timer = setInterval(() => {
             this.setState((state) => ({...state, counter: state.counter - 1}));
+            this.props.tic();
         }, 1000)
         this.setState((state) => ({...state, predict: true}));
         return setTimeout(() => {
+            this.props.fireworks();
             clearInterval(timer);
             this.setState((state) => ({...state, predict: false, counter: 10}));
             let currentCourse = this.props.currentCourse;
@@ -45,17 +47,20 @@ class Dashboard extends React.Component {
             } else if (currentCourse < lastCourse) {
                 !this.state.rate ? this.props.betWin(bet) : this.props.betLose(bet);
             }
-            if(this.props.congratulation) {
+            if (this.props.congratulation) {
                 this.props.bell();
+                setTimeout(() => this.props.fireworks(), 300);
             }
+
         }, 10000)
     }
 
     render() {
         const {bet, predict, counter} = this.state;
-        const {balance, click, clack, tic} = this.props;
+        const {balance, click, clack} = this.props;
         return (
             <div className="round dashboard">
+                <button onClick={this.props.fireworks} className="btn btn-primary">fireworks</button>
                 <div className="row">
                     <div className="col-xl-3 best">
                         <h2 className="text-center">Bets in progress</h2>
@@ -104,7 +109,8 @@ class Dashboard extends React.Component {
                                     <label className="form-label d-flex justify-content-between">
                                         <span>Bet</span>
                                         <span>
-                                            <input type="number" step="0.001" min="0.001" max="1" onInput={this.setBet} value={bet} />
+                                            <input type="number" step="0.001" min="0.001" max="1" onInput={this.setBet}
+                                                   value={bet}/>
                                             <img width="15" src={bitcoin} alt="up"/>
                                         </span>
                                     </label>
@@ -139,7 +145,6 @@ class Dashboard extends React.Component {
                                                 this.predictSubmit();
                                                 this.setRate(true);
                                                 click();
-                                                tic();
                                             }}
                                                     className="btn green predict-btn">PREDICT UP
                                                 <img src={arrowUp} width="15" height="20" alt="b"/>
@@ -149,7 +154,6 @@ class Dashboard extends React.Component {
                                                 this.predictSubmit();
                                                 this.setRate(false);
                                                 click();
-                                                tic();
                                             }}
                                                     className="btn red predict-btn">PREDICT DOWN
                                                 <img src={arrowDown} width="15" height="20" alt="b"/>
@@ -183,6 +187,7 @@ const mapDispatchToProps = {
     clack,
     tic,
     bell,
+    fireworks,
     closeCongratulation
 }
 

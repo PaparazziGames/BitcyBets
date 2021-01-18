@@ -7,7 +7,7 @@ import RightSector from "./RightSector";
 import Dashboard from "./Dashboard";
 import SelectList from "./SelectList";
 import {closeCongratulation} from "../../redux/actions";
-import {money} from "../../redux/actions/music";
+import {money, stop} from "../../redux/actions/music";
 import JS_FIREWORKS from "../fireworks";
 
 const fire = () => {
@@ -34,7 +34,7 @@ const fire = () => {
     firework.start();
 };
 
-const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money}) => {
+const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money, muteToggle}) => {
     useEffect(() => {
         fire();
     }, [])
@@ -48,10 +48,12 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                     <div className="win-btn">
                         <button onClick={() => {
                             closeCongratulation();
+                            document.getElementById('fireworks').pause();
                             money();
                         }} className="btn btn-primary">Invest in my wallet</button>
                         <button onClick={() => {
                             closeCongratulation();
+                            document.getElementById('fireworks').pause();
                             money();
                         }} className="btn btn-primary">Withdraw</button>
                     </div>
@@ -95,7 +97,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     closeCongratulation,
-    money
+    money,
+    stop
 
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
