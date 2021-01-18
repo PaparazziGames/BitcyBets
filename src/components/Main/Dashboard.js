@@ -60,7 +60,6 @@ class Dashboard extends React.Component {
         const {balance, click, clack} = this.props;
         return (
             <div className="round dashboard">
-                <button onClick={this.props.fireworks} className="btn btn-primary">fireworks</button>
                 <div className="row">
                     <div className="col-xl-3 best">
                         <h2 className="text-center">Bets in progress</h2>
