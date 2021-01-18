@@ -96,7 +96,7 @@ class Dashboard extends React.Component {
                             </table>
                         </div>
                     </div>
-                    <div className="range col-xl-6">
+                    <div className="range col-xl-6 col-lg-6">
                         <h2 className="text-center">Make your bet</h2>
                         <form>
                             <div className="form row">

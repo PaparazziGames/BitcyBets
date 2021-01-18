@@ -120,9 +120,9 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                         style += '; border-width: 2px';
                         var span = '<span style="' + style + '"></span>';
                         if(courseDirection) {
-                            innerHtml += '<tr><td>' + span + '<img src="' + icon + '" />' + body + '</td></tr>';
+                            innerHtml += '<tr><td>' + span + body.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '<img src="' + icon + '" />'  + '</td></tr>';
                         } else {
-                            innerHtml += '<tr><td>' + span + body + '<img style="margin-left: 5px; margin-right: -5px;" src="' + icon + '" />' + '</td></tr>';
+                            innerHtml += '<tr><td>' + span + '<img style="margin-left: 5px; margin-right: -5px;" src="' + icon + '" />'  + body.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '</td></tr>';
                         }
                     });
                     innerHtml += '</tbody>';
@@ -137,10 +137,10 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                 var position = this._chart.canvas.getBoundingClientRect();
 
                 // Display, position, and set styles for font
-
+                const offset = index > 13 ? 125 : 0;
                 tooltipEl.style.opacity = 1;
                 tooltipEl.style.position = 'absolute';
-                tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+                tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX - offset + 'px';
                 tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
                 tooltipEl.style.fontFamily = "roc-grotesk";
                 tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
@@ -171,6 +171,7 @@ class Graph extends Component {
             let msg = e.data.slice(1, -1);
             let data = msg.split(',');
             let sliceData = data.slice(-17);
+            // sliceData.map(item => console.log(item.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")))
             this.props.bitcoinCourse(sliceData);
             if (exam) {
                 if (exam.config.data.datasets[0].data.length > 0) {

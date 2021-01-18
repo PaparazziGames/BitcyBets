@@ -28,7 +28,7 @@ const RightSector = ({geoposition, geo, balance, lastWin, wins, predict}) => {
                 </div>
             </div>
             <div className="score-wrap round-dark">
-                <h2>Score</h2>
+                <h2>Demo wallet</h2>
                 <table>
                     <tbody>
                     <tr>

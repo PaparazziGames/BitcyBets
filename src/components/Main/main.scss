@@ -1,5 +1,5 @@
 main {
-  padding: 60px;
+  padding: 60px 60px 0 60px;
   height: 100%;
   margin: 0 auto;
 
@@ -25,6 +25,7 @@ main {
     .globe {
       height: 70%;
       min-width: 100%;
+      padding-bottom: 10px!important;
 
       div {
         h2 {
@@ -149,7 +150,7 @@ main {
           width: 100%;
           position: absolute;
           top: -25px;
-          left: 0;
+          right: 0;
           text-align: center;
 
           &:after {
@@ -633,9 +634,47 @@ form {
 }
 
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1100px) and (max-width: 1280px) {
   .range {
     width: 500px;
     padding-left: 90px;
+  }
+  .main {
+    padding-bottom: 0;
+  }
+  .globe {
+    padding-bottom: 10px;
+  }
+  .range {
+    width: 100%;
+    h2 {
+      margin-top: 15px;
+    }
+  }
+  .best {
+    width: 100%;
+  }
+  .form {
+    justify-content: center!important;
+    .wrap-btn {
+      width: auto;
+    }
+  }
+}
+@media screen and (max-width: 1280px) {
+  .form {
+    justify-content: center!important;
+    .wrap-btn {
+      width: auto;
+    }
+  }
+  .range {
+    width: 100%;
+    h2 {
+      margin-top: 15px;
+    }
+  }
+  .best {
+    width: 100%;
   }
 }
