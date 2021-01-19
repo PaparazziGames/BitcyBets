@@ -37,7 +37,6 @@ class Dashboard extends React.Component {
         }, 1000)
         this.setState((state) => ({...state, predict: true}));
         return setTimeout(() => {
-            this.setRate('');
             clearInterval(timer);
             this.setState((state) => ({...state, predict: false, counter: 10}));
             let currentCourse = this.props.currentCourse;
@@ -46,12 +45,13 @@ class Dashboard extends React.Component {
             if (currentCourse > lastCourse) {
                 this.state.rate === 'up' ? this.props.betWin(bet) : this.props.betLose(bet);
             } else if (currentCourse < lastCourse) {
-                !this.state.rate === 'down' ? this.props.betWin(bet) : this.props.betLose(bet);
+                this.state.rate === 'down' ? this.props.betWin(bet) : this.props.betLose(bet);
             }
             if (this.props.congratulation) {
                 this.props.bell();
                 setTimeout(() => this.props.fireworks(), 300);
             }
+            this.setRate('');
 
         }, 10000)
     }
