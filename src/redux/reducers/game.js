@@ -1,7 +1,7 @@
 import {BET_LOSE, BET_WIN, CLOSE_CONGRATULATION} from "../types";
 
 const initialState = {
-    balance: 0.999,
+    balance: 1,
     lastWin: 0,
     wins: 0,
     congratulation: false,

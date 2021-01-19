@@ -12,7 +12,6 @@ const initialState = {
     geoposition: '',
     course: [],
     currentCourse: 0,
-    balance: .5
 }
 export const authReducer = (state = initialState, action) => {
     switch (action.type) {
