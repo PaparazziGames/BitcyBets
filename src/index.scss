@@ -49,6 +49,13 @@ button {
 .nowrap {
   white-space: nowrap;
 }
+.red {
+  color: var(--down);
+}
+.green {
+  color: var(--up);
+}
+
 @media screen and (max-width: 1200px) {
   *, *:after, *:before {
   }
