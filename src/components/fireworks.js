@@ -159,8 +159,6 @@ JS_FIREWORKS.Fireworks = function (options) {
  */
 JS_FIREWORKS.Firework = function (x1, y1, x2, y2, context, hue) {
 
-    'use strict';
-
     if (!(this instanceof JS_FIREWORKS.Firework)) {
         return new JS_FIREWORKS.Firework(x1, y1, x2, y2, context, hue);
     }
@@ -231,11 +229,9 @@ JS_FIREWORKS.Firework = function (x1, y1, x2, y2, context, hue) {
 };
 
 /**
- * 
+ *
  */
 JS_FIREWORKS.Particle = function (x, y, context, hue) {
-
-    'use strict';
 
     if (!(this instanceof JS_FIREWORKS.Particle)) {
         return new JS_FIREWORKS.Particle(x, y, context, hue);

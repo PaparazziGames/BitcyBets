@@ -1,7 +1,7 @@
 main {
   padding: 60px 60px 0 60px;
   height: 100%;
-  margin: 0 auto;
+  margin: 10px auto 0;
 
   .main {
     height: 100%;
@@ -20,9 +20,14 @@ main {
       flex-direction: column;
       justify-content: space-between;
       height: auto;
+
+      .bottom-container {
+        gap: 20px;
+        margin: 0;
+      }
     }
 
-    .globe {
+    .globe, .bottom-container {
       height: 70%;
       min-width: 100%;
       padding-bottom: 10px !important;
@@ -65,14 +70,24 @@ main {
     }
 
     .dashboard {
-      //height: 25%;
+      width: 58%;
+      max-width: 483px;
+    }
+
+    .rates {
+      width: 38%;
+      max-width: 363px;
+    }
+
+    .dashboard, .rates {
+      height: 240px;
       backdrop-filter: blur(2px);
       background-color: rgba(26, 31, 52, 0.7);
       padding: 20px 30px;
 
       .row {
         .best {
-          min-width: 292px;
+          //min-width: 292px;
           padding: 0;
 
           h2 {
@@ -89,7 +104,6 @@ main {
     }
 
     .round {
-
       border-radius: 24px;
       padding: 20px 30px;
       margin: 10px 0;
@@ -215,60 +229,10 @@ main {
 
 
 /*<<<<<<<<<<<<<<<<<---------- BOTTOM CONTAINER ---------->>>>>>>>>>>>>>>>>>*/
-.wrap-table {
-  border: 1px solid var(--dark-opacity);
-  border-radius: 8px;
-  margin: 20px auto 0;
-  min-width: 292px;
-  height: 100px;
-
-  table {
-    width: 100%;
-    height: 100%;
-
-    td span {
-      font-weight: 300;
-      font-size: 20px;
-
-      img {
-        margin-bottom: 3px;
-        margin-left: 3px;
-      }
-    }
-
-    td span:nth-child(2) {
-      margin-left: .5em;
-    }
-
-    tr:nth-child(1) {
-      td:nth-child(1) {
-        padding: 0 5px;
-        border-right: 1px solid var(--dark-opacity);
-        border-bottom: 1px solid var(--dark-opacity);
-      }
-
-      td:nth-child(2) {
-        padding: 0 5px;
-        border-bottom: 1px solid var(--dark-opacity);
-      }
-    }
-
-    tr:nth-child(2) {
-      td:nth-child(1) {
-        padding: 0 5px;
-        border-right: 1px solid var(--dark-opacity);
-      }
-
-      td:nth-child(2) {
-        padding: 0 5px;
-      }
-    }
-  }
-}
 
 .range {
-  width: 500px;
-  padding-left: 50px;
+  //width: 500px;
+  //padding-left: 50px;
   h2 {
     margin-bottom: 3px;
     font-family: "roc-grotesk-wide";
@@ -280,7 +244,7 @@ main {
 
 form {
   text-align: center;
-  width: 430px;
+  //width: 430px;
   .predict {
     border: none !important;
     border-radius: 8px !important;
@@ -409,6 +373,10 @@ form {
     padding-left: 0;
     padding-right: 0;
 
+    p.bet-btn {
+      width: 200px;
+    }
+
     .refill-btn {
       border: 1px solid var(--text-color);
       color: var(--text-color);
@@ -448,20 +416,20 @@ form {
       &.red {
         color: var(--down);
         border: 1px solid var(--down);
-        background-image: url("../../images/bear.svg");
+        background-image: url("../../images/Bear_button.png");
         background-repeat: no-repeat;
-        background-size: contain;
-        background-position: 103% 0;
+        background-size: 20%;
+        background-position: right;
         padding-right: 40px;
       }
 
       &.green {
         color: var(--up);
         border: 1px solid var(--up);
-        background-image: url("../../images/bull.svg");
+        background-image: url("../../images/Bull_button.png");
         background-repeat: no-repeat;
-        background-size: contain;
-        background-position: left 0;
+        background-size: 20%;
+        background-position: left;
         padding-left: 40px;
       }
 
@@ -577,31 +545,31 @@ form {
 }
 
 .time {
-  background-image: url("../../images/bull.png"), url("../../images/bear.png");
-  background-repeat: no-repeat;
-  background-position: left 50%, right 50%;
-  background-size: 30%;
+  //background-image: url("../../images/bull.png"), url("../../images/bear.png");
+  //background-repeat: no-repeat;
+  //background-position: left 50%, right 50%;
+  //background-size: 30%;
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  flex-wrap: nowrap;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   min-height: 114px;
+  position: absolute;
+  top: -15px;
+  left: 33px;
+  gap: .5em;
 
   .label {
     opacity: 0.6;
+    font-weight: 300
   }
 
   .time-text {
-    font-family: "roc-grotesk-wide";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-  }
-
-  &-text {
-    font-size: 2rem;
-    line-height: 35px;
+    font-weight: 300 !important;
+    font-size: 16px !important;
+    margin: 0;
+    color: var(--gold) !important;
   }
 
 }
@@ -649,8 +617,8 @@ form {
 
 @media screen and (min-width: 1100px) and (max-width: 1280px) {
   .range {
-    width: 500px;
-    padding-left: 90px;
+    //width: 500px;
+    //padding-left: 90px;
   }
   .main {
     padding-bottom: 0;

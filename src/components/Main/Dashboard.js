@@ -8,7 +8,8 @@ import arrowDown from "../../images/arrowDown.svg";
 import {connect} from "react-redux";
 import {betLose, betWin, closeCongratulation} from "../../redux/actions";
 import {Link} from "react-router-dom";
-import {bell, clack, click, tic, fireworks} from "../../redux/actions/music";
+import {bell, click, tic, fireworks} from "../../redux/actions/music";
+import Rates from "./Rates";
 
 
 class Dashboard extends React.Component {
@@ -57,112 +58,77 @@ class Dashboard extends React.Component {
 
     render() {
         const {bet, predict, counter} = this.state;
-        const {balance, click, clack} = this.props;
+        const {balance, click} = this.props;
         return (
-            <div className="round dashboard">
-                <div className="row">
-                    <div className="col-xl-3 best">
-                        <h2 className="text-center">Bets in progress</h2>
-                        <div className="wrap-table">
-                            <table className="p-3 table-responsive">
-                                <tbody>
-                                <tr>
-                                    <td className="text-center">
-                                        <img src={up} alt="up"/>
-                                    </td>
-                                    <td className="text-center">
-                                        <span>
-                                            <span>10</span>
-                                            <img src={person} alt="up"/>
-                                        </span>
-                                        <span>
-                                            <span>0.125</span>
-                                            <img width="15" src={bitcoin} alt="up"/>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-center">
-                                        <img src={down} alt="up"/>
-                                    </td>
-                                    <td className="text-center">
-                                        <span>
-                                            <span>20</span>
-                                            <img src={person} alt="up"/>
-                                        </span>
-                                        <span>
-                                            <span>0.185</span>
-                                            <img width="15" src={bitcoin} alt="up"/>
-                                        </span>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div className="range col-xl-6 col-lg-6">
-                        <h2 className="text-center">Make your bet</h2>
-                        <form>
-                            <div className="form row">
-                                <div className="bet col-sm-8">
-                                    <label className="form-label d-flex justify-content-between">
-                                        <span>Bet</span>
-                                        <span>
+                <div className="row bottom-container">
+                <Rates />
+                    <div className="round dashboard">
+                    <div>
+                        <div className="range">
+                            <h2 className="text-center">Make your bet</h2>
+                            <form onSubmit={e => e.preventDefault()}>
+                                <div className="form row">
+                                    <div className="bet">
+                                        <label className="form-label d-flex justify-content-between">
+                                            <span>Bet</span>
+                                            <span>
                                             <input type="number" step="0.001" min="0.001" max="1" onInput={this.setBet}
                                                    value={bet}/>
                                             <img width="15" src={bitcoin} alt="up"/>
                                         </span>
-                                    </label>
-                                    <input min="0.001" max="1" step="0.001"
-                                           type="range"
-                                           disabled={predict}
-                                           style={{backgroundImage: `linear-gradient(to right, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} 0%, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} ${bet * 100}%, #fff ${bet * 100}%, white 100%)`}}
-                                           onInput={this.setBet}
-                                           className={balance - bet >= 0 ? 'green-range' : 'red-range'}
-                                           id="range"/>
+                                        </label>
+                                        <input min="0.001" max="1" step="0.001"
+                                               type="range"
+                                               disabled={predict}
+                                               style={{backgroundImage: `linear-gradient(to right, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} 0%, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} ${bet * 100}%, #fff ${bet * 100}%, white 100%)`}}
+                                               onInput={this.setBet}
+                                               className={balance - bet >= 0 ? 'green-range' : 'red-range'}
+                                               id="range"/>
+                                    </div>
+                                    {balance - bet >= 0
+                                        ? <></>
+                                        : <>
+
+                                            <div className='wrap-btn'>
+                                                <p className="btn bet-btn"><span>Not enough</span></p>
+                                                <Link to='/refill' className="btn refill-btn"><span>Refill</span>
+                                                    <img src={bitcoin} width="15" height="20" alt="b"/>
+                                                </Link>
+
+                                            </div>
+                                        </>}
+
+                                    {balance - bet >= 0
+                                        ? <>
+                                            <p style={{display: predict ? 'block' : 'none'}}
+                                               className="btn bet-btn col-sm-4 predict">
+                                                <span>00:{counter > 9 ? counter : '0' + counter}</span></p>
+                                            <div className='wrap-btn'>
+                                                <button disabled={predict} onClick={(e) => {
+                                                    e.preventDefault();
+                                                    this.predictSubmit();
+                                                    this.setRate(true);
+                                                    click();
+                                                }}
+                                                        className="btn green predict-btn">PREDICT UP
+                                                    <img src={arrowUp} width="15" height="20" alt="b"/>
+                                                </button>
+                                                <button disabled={predict} onClick={(e) => {
+                                                    e.preventDefault();
+                                                    this.predictSubmit();
+                                                    this.setRate(false);
+                                                    click();
+                                                }}
+                                                        className="btn red predict-btn">PREDICT DOWN
+                                                    <img src={arrowDown} width="15" height="20" alt="b"/>
+                                                </button>
+                                            </div>
+                                        </>
+                                        : <>
+                                        </>}
                                 </div>
-                                {balance - bet >= 0
-                                    ? <></>
-                                    : <>
-                                        <p className="btn bet-btn col-sm-4"><span>Not enough</span></p>
-                                        <div className='wrap-btn'>
-                                            <Link to='/refill' className="btn refill-btn"><span>Refill</span>
-                                                <img src={bitcoin} width="15" height="20" alt="b"/>
-                                            </Link>
-
-                                        </div>
-                                    </>}
-
-                                {balance - bet >= 0
-                                    ? <>
-                                        <p style={{display: predict ? 'block' : 'none'}}
-                                           className="btn bet-btn col-sm-4 predict">
-                                            <span>00:{counter > 9 ? counter : '0' + counter}</span></p>
-                                        <div className='wrap-btn'>
-                                            <button disabled={predict} onClick={(e) => {
-                                                e.preventDefault();
-                                                this.predictSubmit();
-                                                this.setRate(true);
-                                                click();
-                                            }}
-                                                    className="btn green predict-btn">PREDICT UP
-                                                <img src={arrowUp} width="15" height="20" alt="b"/>
-                                            </button>
-                                            <button disabled={predict} onClick={(e) => {
-                                                e.preventDefault();
-                                                this.predictSubmit();
-                                                this.setRate(false);
-                                                click();
-                                            }}
-                                                    className="btn red predict-btn">PREDICT DOWN
-                                                <img src={arrowDown} width="15" height="20" alt="b"/>
-                                            </button>
-                                        </div>
-                                    </>
-                                    : <>
-                                    </>}
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -183,7 +149,6 @@ const mapDispatchToProps = {
     betWin,
     betLose,
     click,
-    clack,
     tic,
     bell,
     fireworks,

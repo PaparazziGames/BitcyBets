@@ -46,6 +46,9 @@ button {
 #chartjs-tooltip {
   transition: all .5s;
 }
+.nowrap {
+  white-space: nowrap;
+}
 @media screen and (max-width: 1200px) {
   *, *:after, *:before {
   }

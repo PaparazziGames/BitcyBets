@@ -9,27 +9,28 @@ import SelectList from "./SelectList";
 import {closeCongratulation} from "../../redux/actions";
 import {money, stop} from "../../redux/actions/music";
 import JS_FIREWORKS from "../fireworks";
+import Time from "./Time";
 
 const fire = () => {
     document.getElementById('fireworks-canvas').style.width = '100%'
     document.getElementById('fireworks-canvas').style.height = '100%'
     const firework = JS_FIREWORKS.Fireworks({
-        id : 'fireworks-canvas',
-        hue : 120,
-        particleCount : 100,
-        delay : 0,
-        minDelay : 5,
-        maxDelay : 10,
-        boundaries : {
+        id: 'fireworks-canvas',
+        hue: 120,
+        particleCount: 100,
+        delay: 0,
+        minDelay: 5,
+        maxDelay: 10,
+        boundaries: {
             top: 50,
             bottom: 240,
             left: 50,
             right: 590
         },
-        fireworkSpeed : 2,
-        fireworkAcceleration : 1.05,
-        particleFriction : .95,
-        particleGravity : 1.5
+        fireworkSpeed: 2,
+        fireworkAcceleration: 1.05,
+        particleFriction: .95,
+        particleGravity: 1.5
     });
     firework.start();
 };
@@ -50,12 +51,14 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                             closeCongratulation();
                             document.getElementById('fireworks').pause();
                             money();
-                        }} className="btn btn-primary">Invest in my wallet</button>
+                        }} className="btn btn-primary">Invest in my wallet
+                        </button>
                         <button onClick={() => {
                             closeCongratulation();
                             document.getElementById('fireworks').pause();
                             money();
-                        }} className="btn btn-primary">Withdraw</button>
+                        }} className="btn btn-primary">Withdraw
+                        </button>
                     </div>
                 </div>
             </div>
@@ -63,6 +66,7 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                 <div className="row main">
                     <div className="left-sector">
                         <div className="round globe">
+                            <Time/>
                             {course.length ? (<div>
                                 <h2 className="text-center"><img src={bitcoin} className="m-2" alt="course"/>
                                     {currentCourse.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} <span>$</span>
@@ -77,9 +81,7 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <Dashboard/>
-                        </div>
+                        <Dashboard/>
                     </div>
                     <RightSector/>
                 </div>

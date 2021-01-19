@@ -19,7 +19,7 @@ const Sound = ({play, param, stop, mute}) => {
     }, [param.id, play, handlePlay]);
     useEffect(() => {
         muted();
-    }, [mute]);
+    }, []);
 
     return (
         <div className="sound">
