@@ -384,24 +384,24 @@ form {
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 32px;
-      height: 32px;
+      width: 40px;
+      height: 40px;
       background-image: url('../../images/bitcoin.svg');
       background-repeat: no-repeat;
       background-size: 40%;
-      background-position: center;
+      background-position: 55%;
       background-color: var(--bg-dark);
       border-radius: 50%;
       border: .5px solid var(--text-color);
     }
 
     &::-moz-range-thumb {
-      width: 32px;
-      height: 32px;
+      width: 40px;
+      height: 40px;
       background-image: url('../../images/bitcoin.svg');
       background-repeat: no-repeat;
       background-size: 40%;
-      background-position: center;
+      background-position: 55%;
       background-color: var(--bg-dark);
       border-radius: 50%;
       border: .5px solid var(--text-color);
@@ -409,13 +409,13 @@ form {
 
     &.green-range::-moz-range-progress {
       background-color: var(--up);
-      height: 3px;
+      height: 5px;
       border-radius: 5px;
     }
 
     &.red-range::-moz-range-progress {
       background-color: var(--down);
-      height: 3px;
+      height: 5px;
       border-radius: 5px;
     }
 
@@ -425,7 +425,7 @@ form {
       border-radius: 8px;
       outline: none;
       -webkit-appearance: none;
-      height: 3px;
+      height: 5px;
     }
 
     &.red-range {
@@ -434,7 +434,7 @@ form {
       border-radius: 8px;
       outline: none;
       -webkit-appearance: none;
-      height: 3px;
+      height: 5px;
     }
   }
 
@@ -615,7 +615,11 @@ form {
   flex-direction: column;
   justify-content: space-around;
   margin: 10px 0;
-
+h2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
   table {
     width: 100%;
 
