@@ -1,35 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import deposit from '../../images/deposit.svg';
 import withdraw from '../../images/withdraw.svg';
+import arrowsGroup from '../../images/group_arrows.svg';
 import {connect} from "react-redux";
-import {geoposition} from "../../redux/actions";
 import {Link} from "react-router-dom";
 import {click} from "../../redux/actions/music";
 
 
-const RightSector = ({geoposition, geo, balance, lastWin, wins, predict, click}) => {
+const RightSector = ({balance, lastWin, wins, predict, click}) => {
     const balanceColor = {color: predict === 'green' ? '#32D74B' : predict === 'red' ? '#FF453A' : '#FFFFFF'}
-
-    useEffect(() => {
-        geoposition()
-    },[geoposition]);
-    useEffect(() => {
-        const clock = setInterval(() => setTime(new Date().toLocaleTimeString()), 1000);
-        return () => clearInterval(clock);
-    }, [])
-    let [time, setTime] = useState(new Date().toLocaleTimeString());
 
     return (
         <div className="right-sector">
-            <div className="banner round-dark">
-                <div className="row img"/>
-                <div className="text">
-                    <h5>Ad banner</h5>
-                    <p>Your ad can be here</p>
-                </div>
-            </div>
+
             <div className="score-wrap round-dark">
-                <h2>Demo wallet</h2>
+                <h2>Demo wallet <img src={arrowsGroup} alt=""/></h2>
                 <table>
                     <tbody>
                     <tr>
@@ -63,9 +48,9 @@ const RightSector = ({geoposition, geo, balance, lastWin, wins, predict, click})
                     </button>
                 </div>
             </div>
-            <div className="time round-dark">
-                <div className="label text-center">{geo || 'Kyiv'}</div>
-                <h2 className="time-text">{time.slice(0, 5)}</h2>
+            <div className="banner round-dark">
+                <hr/>
+                <p className="text-center">Your ad can be <span className="gold">here</span></p>
             </div>
         </div>
     );
@@ -73,7 +58,6 @@ const RightSector = ({geoposition, geo, balance, lastWin, wins, predict, click})
 
 const mapStateToProps = state => {
     return {
-        geo: state.geoReducer.geoposition,
         balance: state.balanceReducer.balance,
         lastWin: state.balanceReducer.lastWin,
         predict: state.balanceReducer.predict,
@@ -81,7 +65,6 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    geoposition,
     click
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RightSector);

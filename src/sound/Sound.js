@@ -19,8 +19,7 @@ const Sound = ({play, param, stop, mute}) => {
     }, [param.id, play, handlePlay]);
     useEffect(() => {
         muted();
-    }, [mute]);
-
+    }, [muted]);
     return (
         <div className="sound">
             <audio ref={audRef} id={param.id} src={param.effect}/>

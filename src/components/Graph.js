@@ -84,7 +84,7 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                 } else {
                     tooltipEl.classList.add('no-transform');
                 }
-
+                //Value
                 function getBody(bodyItem) {
                     return bodyItem.lines;
                 }
@@ -105,7 +105,7 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
 
                         innerHtml += '<tr><th>' + title + '</th></tr>';
                     });
-                    // const date = new Date().toLocaleDateString();
+
                     innerHtml += '</thead><tbody>';
 
                     bodyLines.forEach(function (body, i) {
@@ -120,9 +120,9 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                         style += '; border-width: 2px';
                         var span = '<span style="' + style + '"></span>';
                         if(courseDirection) {
-                            innerHtml += '<tr><td>' + span + body.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '<img src="' + icon + '" />'  + '</td></tr>';
+                            innerHtml += '<tr><td>' + span + body.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '<img style="margin-left: 5px; margin-right: -5px;" alt="logo" src="' + icon + '" /></td></tr>';
                         } else {
-                            innerHtml += '<tr><td>' + span + '<img style="margin-left: 5px; margin-right: -5px;" src="' + icon + '" />'  + body.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '</td></tr>';
+                            innerHtml += '<tr><td>' + span + '<img alt="logo" style="margin-right: 5px;" src="' + icon + '" />'  + body.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '</td></tr>';
                         }
                     });
                     innerHtml += '</tbody>';
@@ -133,9 +133,8 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
 
                 // `this` will be the overall tooltip
                 var position = this._chart.canvas.getBoundingClientRect();
-
                 // Display, position, and set styles for font
-                const offset = index > 13 ? 125 : 0;
+                const offset = index > 12 ? 125 : 0;
                 tooltipEl.style.opacity = 1;
                 tooltipEl.style.position = 'absolute';
                 tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX - offset + 'px';
@@ -194,7 +193,7 @@ class Graph extends Component {
     render() {
 
         return (
-            <canvas id="myChart"/>
+            <canvas height="265" id="myChart"/>
         )
     }
 }
