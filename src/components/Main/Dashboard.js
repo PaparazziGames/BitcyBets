@@ -1,8 +1,5 @@
 import React from 'react';
-import up from "../../images/up.svg";
-import person from "../../images/person.svg";
 import bitcoin from "../../images/bitcoin.svg";
-import down from "../../images/down.svg";
 import arrowUp from "../../images/arrowUp.svg";
 import arrowDown from "../../images/arrowDown.svg";
 import {connect} from "react-redux";
@@ -61,7 +58,7 @@ class Dashboard extends React.Component {
         const {balance, click} = this.props;
 
         const arrBet = bet.toString().split('.');
-        const newBet = arrBet.length === 2 ? bet + '00' : arrBet.length === 3 ? bet + '0' : arrBet.length === 1 ? bet + '.000' : bet;
+        const newBet = /*arrBet.length === 2 ? bet + '00' : arrBet.length === 3 ? bet + '0' : arrBet.length === 1 ? bet + '.000' :*/ bet;
         return (
             <div className="row bottom-container">
                 <Rates/>
@@ -87,6 +84,7 @@ class Dashboard extends React.Component {
                                     <input min="0.001" max="1" step="0.001"
                                            type="range"
                                            disabled={predict}
+                                           value={newBet}
                                            style={{backgroundImage: `linear-gradient(to right, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} 0%, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} ${bet * 100}%, #fff ${bet * 100}%, white 100%)`}}
                                            onInput={this.setBet}
                                            className={balance - bet >= 0 ? 'green-range' : 'red-range'}
@@ -127,12 +125,14 @@ class Dashboard extends React.Component {
                                             <img src={arrowUp} width="15" height="20" alt="b"/>
                                         </button>
                                     </div>
-                                    <p style={{display: predict && rate === 'up' ? 'flex' : 'none', margin: '0 59px'}} id="predict"
+                                    <p style={{display: predict && rate === 'up' ? 'flex' : 'none', margin: '0 59px'}}
+                                       id="predict"
                                        className="btn bet-btn col-sm-4">
                                         <span>{counter}</span>
                                     </p>
                                     <Circle timer={{rate, counter}}/>
-                                    <p style={{display: predict && rate === 'down' ? 'flex' : 'none', margin: '0 59px'}} id="predict"
+                                    <p style={{display: predict && rate === 'down' ? 'flex' : 'none', margin: '0 59px'}}
+                                       id="predict"
                                        className="btn bet-btn col-sm-4">
                                         <span>{counter}</span>
                                     </p>

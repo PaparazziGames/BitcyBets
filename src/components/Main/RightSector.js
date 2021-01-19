@@ -1,6 +1,7 @@
 import React from 'react';
 import deposit from '../../images/deposit.svg';
 import withdraw from '../../images/withdraw.svg';
+import arrowsGroup from '../../images/group_arrows.svg';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {click} from "../../redux/actions/music";
@@ -11,15 +12,9 @@ const RightSector = ({balance, lastWin, wins, predict, click}) => {
 
     return (
         <div className="right-sector">
-            <div className="banner round-dark">
-                <div className="row img"/>
-                <div className="text">
-                    <h5>Ad banner</h5>
-                    <p>Your ad can be here</p>
-                </div>
-            </div>
+
             <div className="score-wrap round-dark">
-                <h2>Demo wallet</h2>
+                <h2>Demo wallet <img src={arrowsGroup} alt=""/></h2>
                 <table>
                     <tbody>
                     <tr>
@@ -53,7 +48,10 @@ const RightSector = ({balance, lastWin, wins, predict, click}) => {
                     </button>
                 </div>
             </div>
-
+            <div className="banner round-dark">
+                <hr/>
+                <p className="text-center">Your ad can be <span className="gold">here</span></p>
+            </div>
         </div>
     );
 };
