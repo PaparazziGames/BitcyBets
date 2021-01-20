@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from "react-redux";
 import './main.scss';
 import bitcoin from '../../images/bitcoin.svg';
@@ -37,12 +37,16 @@ const fire = () => {
 };
 
 const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money, muteToggle}) => {
+    const [show, setShow] = useState(false);
+    setTimeout(() => {
+        setShow(true)
+    }, 5000)
     useEffect(() => {
         fire();
     }, [])
     return (
         <div className="main">
-            <Preloader show={false}/>
+            <Preloader show={course.length}/>
             <div style={{display: congratulation ? "block" : "none"}} className="blur">
                 <canvas width="640" height="480" id="fireworks-canvas" style={{background: 'rgba(0,0,0, .2)'}}/>
                 <div className="round-dark win">
@@ -64,7 +68,7 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                     </div>
                 </div>
             </div>
-            <main style={false ? {display: 'block'} : {display: 'none'}}>
+            <main style={{display: course.length ? 'block':'none'}}>
                 <div className="row main">
                     <div className="left-sector">
                         <div className="round globe">
