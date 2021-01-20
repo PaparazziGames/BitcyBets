@@ -90,32 +90,14 @@ class Dashboard extends React.Component {
                                            className={balance - bet >= 0 ? 'green-range' : 'red-range'}
                                            id="range"/>
                                 </div>
-                                {/*{balance - bet >= 0*/}
-                                {/*    ? <></>*/}
-                                {/*    : <>*/}
-
-                                {/*        <div className='wrap-btn'>*/}
-                                {/*            <p className="btn bet-btn"><span>Not enough</span></p>*/}
-                                {/*            <Link to='/refill' className="btn refill-btn"><span>Refill</span>*/}
-                                {/*                <img src={bitcoin} width="15" height="20" alt="b"/>*/}
-                                {/*            </Link>*/}
-
-                                {/*        </div>*/}
-                                {/*    </>}*/}
-
-                                {/*{balance - bet >= 0*/}
-                                {/*    ? <>*/}
-
                                 <div className='wrap-btn'>
-
-
                                     <div style={{display: rate === 'up' || !rate ? 'block' : 'none'}} className="up">
                                         <div className="profit">
                                             <span className="green">Your ptofit</span>
                                             <span>0.85</span>
                                             <img src={bitcoin} width="15" height="20" alt="b"/>
                                         </div>
-                                        <button disabled={predict || balance - bet <= 0} onClick={(e) => {
+                                        <button disabled={predict || balance - bet < 0} onClick={(e) => {
                                             e.preventDefault();
                                             this.predictSubmit();
                                             this.setRate('up');
@@ -143,7 +125,7 @@ class Dashboard extends React.Component {
                                             <span>0.85</span>
                                             <img src={bitcoin} width="15" height="20" alt="b"/>
                                         </div>
-                                        <button disabled={predict || balance - bet <= 0} onClick={(e) => {
+                                        <button disabled={predict || balance - bet < 0} onClick={(e) => {
                                             e.preventDefault();
                                             this.predictSubmit();
                                             this.setRate('down');

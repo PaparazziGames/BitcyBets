@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './header.scss';
 import logo from '../../images/logoLeft.svg';
 import logo2 from '../../images/logoCentre.svg';
-import ava from '../../images/ava.png';
+import burger from '../../images/burger.png';
 import sound from '../../images/volume-up-solid.svg';
 import noSound from '../../images/volume-mute-solid.svg';
 import {connect} from "react-redux";
@@ -11,6 +11,7 @@ import {Link} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
 
 const Header = ({prohibition, auth, mute, muteToggle}) => {
+    const [menu, setMenu] = useState(false);
     const handleMute = () => {
         muteToggle();
     }
@@ -19,19 +20,36 @@ const Header = ({prohibition, auth, mute, muteToggle}) => {
             <header className="header">
                 <nav className="navbar">
                     <Link className="navbar-brand" to="/">
-                        <img src={logo} alt="logo" height="32" />
+                        <img src={logo} alt="logo" height="32"/>
                     </Link>
                 </nav>
                 <Link id="logoCentre" to="/">
-                    <img className="mt-3" src={logo2} alt="logo" width="96" />
+                    <img className="mt-3" src={logo2} alt="logo" width="96"/>
                 </Link>
                 {/*<h4 style={auth ? {display: 'block'} : {display: 'none'}} className="text-center">Bitcoin Live price</h4>*/}
-                <img onClick={handleMute} className="sound" src={mute ? sound : noSound} height="25" width="25" alt="sound"/>
-                <img className="ava" style={auth ? {display: 'block'} : {display: 'none'}} onClick={e => {
-                    e.preventDefault();
-                    prohibition();
-                    clearInterval();
-                }} src={ava} alt="icon"/>
+                <div className="header-right">
+                    <img onClick={handleMute} className="sound" src={mute ? sound : noSound} height="18" width="18"
+                         alt="sound"/>
+                    <div style={auth ? {display: 'flex'} : {display: 'none'}} className="menu">
+                        Menu
+                        <img className="burger"
+                             onClick={() => {
+                                 setMenu(!menu)
+                             }}
+
+                             src={burger} alt="icon"/>
+                        <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
+                            <li className="burger-menu-item bord"><span>Create ad</span></li>
+                            <li className="burger-menu-item bord"><span>Settings</span></li>
+                            <li className="burger-menu-item bord"><span>My ads</span></li>
+                            <li className="burger-menu-item" onClick={() => {
+                                localStorage.removeItem('token');
+                                prohibition();
+                                clearInterval();
+                            }}><span>Log out</span></li>
+                        </ul>
+                    </div>
+                </div>
             </header>
         </div>
     );

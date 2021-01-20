@@ -8,6 +8,8 @@ let Api = function() {
 
   if (token) {
     BaseApi.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  } else {
+    delete BaseApi.defaults.headers.common['Authorization'];
   }
 
   return BaseApi;
