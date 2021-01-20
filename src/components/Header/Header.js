@@ -38,7 +38,6 @@ const Header = ({prohibition, auth, mute, muteToggle}) => {
                                  setMenu(false)
                              }}
                              style={auth ? {display: 'flex'} : {display: 'none'}} className="menu">
-                            Menu
                             <img className="burger"
                                  src={burger} alt="icon"/>
                             <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">

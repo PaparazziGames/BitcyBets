@@ -10,6 +10,7 @@ import {closeCongratulation} from "../../redux/actions";
 import {money, stop} from "../../redux/actions/music";
 import JS_FIREWORKS from "../fireworks";
 import Time from "./Time";
+import Preloader from "./Preloader";
 
 const fire = () => {
     document.getElementById('fireworks-canvas').style.width = '100%'
@@ -41,6 +42,7 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
     }, [])
     return (
         <div className="main">
+            <Preloader show={course.length}/>
             <div style={{display: congratulation ? "block" : "none"}} className="blur">
                 <canvas width="640" height="480" id="fireworks-canvas" style={{background: 'rgba(0,0,0, .2)'}}/>
                 <div className="round-dark win">
@@ -62,7 +64,7 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                     </div>
                 </div>
             </div>
-            <main>
+            <main style={course.length ? {display: 'block'} : {display: 'none'}}>
                 <div className="row main">
                     <div className="left-sector">
                         <div className="round globe">

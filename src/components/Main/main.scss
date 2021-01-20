@@ -98,6 +98,7 @@ main {
           position: relative;
           border: .5px solid rgba(196, 196, 196, .1);
           border-radius: 8px;
+
           h6 {
             font-weight: 300;
             position: absolute;
@@ -106,15 +107,23 @@ main {
             transform: translate(-50%, 0);
           }
 
-          #bank-sum {
-            position: absolute;
-            bottom: -7px;
-            margin: 0 auto;
-            left: 50%;
-            transform: translate(-50%, 0);
-            font-size: 24px;
-            letter-spacing: 0;
-            width: 100%;
+          .middle {
+            filter: blur(.8px);
+          }
+
+          //#bank-sum {
+          //  position: absolute;
+          //  bottom: -7px;
+          //  margin: 0 auto;
+          //  left: 50%;
+          //  transform: translate(-50%, 0);
+          //  font-size: 24px;
+          //  letter-spacing: 0;
+          //  width: 100%;
+          //}
+          span .bank-img {
+            margin-top: 6px;
+            margin-left: 5px;
           }
 
           .arrow {
@@ -123,12 +132,13 @@ main {
           }
 
           .backgroundRate {
-            filter: blur(1px);
+            filter: blur(.6px);
             background-image: linear-gradient(0deg, rgba(87, 45, 111, 1) 2px, rgba(26, 31, 52, 0) 100%);
             width: 100%;
             position: absolute;
             z-index: 0;
             border-radius: 8px;
+
             &:after {
               content: '';
               width: 100%;
@@ -138,7 +148,7 @@ main {
               top: -3px;
               border-radius: 50% 50% 0 0;
               z-index: -5;
-              filter: blur(1px);
+              filter: blur(.6px);
               background-image: linear-gradient(0deg, rgba(26, 31, 52, 0.1) 0%, rgba(26, 31, 52, 0) 10%);
             }
           }
@@ -458,10 +468,6 @@ form {
     }
   }
 
-  //.bet-btn:hover {
-  //  color: var(--alert);
-  //}
-
   .wrap-btn {
     width: 100%;
     display: flex;
@@ -568,25 +574,16 @@ form {
   padding: 0;
   margin-bottom: 25px;
   height: 233px;
-  background-image: url("../../images/banner.png");
+  background-image: url("../../images/banner.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
   cursor: pointer;
 
-  hr {
-    margin-top: 208px;
-    margin-bottom: 0;
-  }
-
-  p, p span {
-    font-size: 12px;
-    font-weight: 300;
-
-    .gold {
-      color: var(--gold);
-      cursor: pointer;
-    }
+.btn {
+  position: absolute;
+  bottom: 50px;
+  right: 20px;
   }
 
   .text {
@@ -615,11 +612,13 @@ form {
   flex-direction: column;
   justify-content: space-around;
   margin: 10px 0;
-h2 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+
+  h2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   table {
     width: 100%;
 
@@ -747,6 +746,10 @@ h2 {
   outline: none;
 }
 
+#numberBet.red {
+  border: 1px solid var(--down);
+}
+
 #numberBet::-webkit-inner-spin-button,
 #numberBet::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -758,26 +761,38 @@ h2 {
   margin-bottom: 0;
 }
 
-#canvasUp {
-  top: 92px;
-  right: -40px;
-}
 .gold {
   position: relative;
 }
+
 .circle {
   position: absolute;
   top: -61px;
   left: -35px;
   transform: scale(.6);
+
   svg {
     transform: scale(1, -1) rotate(90deg);
+
     .circle_animation {
       transition: all 1s linear;
     }
   }
 }
 
+// <<<<<<<<<<<<<<<< PRELOADER  >>>>>>>>>>>>>>>>>
+
+.load {
+  height: 35vh;
+  width: 50vw;
+  background-color: rgba(26, 31, 52, 0.5);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+}
 
 
 @media screen and (min-width: 1100px) and (max-width: 1280px) {
@@ -835,6 +850,7 @@ h2 {
     width: 100%;
   }
 }
+
 @media screen and (min-width: 1280px) {
 
 }

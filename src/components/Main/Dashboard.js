@@ -70,8 +70,9 @@ class Dashboard extends React.Component {
                                 <span>Set bet size</span>
                             </div>
                             <div>
-                                <span>
+                                <span className={balance - bet >= 0 ? '' : 'red'}>
                                 <input id="numberBet" type="number" step="0.001" min="0.001" max="1"
+                                       className={balance - bet >= 0 ? '' : 'red'}
                                        onChange={this.setBet}
                                        value={newBet}/>
                                 <img className="numberBet" width="15" src={bitcoin} alt="up"/>
@@ -93,7 +94,7 @@ class Dashboard extends React.Component {
                                 <div className='wrap-btn'>
                                     <div style={{display: rate === 'up' || !rate ? 'block' : 'none'}} className="up">
                                         <div className="profit">
-                                            <span className="green">Your ptofit</span>
+                                            <span className="green">Your profit</span>
                                             <span>0.85</span>
                                             <img src={bitcoin} width="15" height="20" alt="b"/>
                                         </div>
@@ -119,7 +120,7 @@ class Dashboard extends React.Component {
                                                         strokeDasharray={440}
                                                         strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}
                                                         id="circle" className="circle_animation" r="69.85699" cy="81"
-                                                        cx="81" stroke-width="4"
+                                                        cx="81" strokeWidth="6"
                                                         stroke="#F7931A" fill="none"/>
                                                 </g>
                                             </svg>
@@ -139,7 +140,7 @@ class Dashboard extends React.Component {
                                                         strokeDasharray={440}
                                                         strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}
                                                         id="circle" className="circle_animation" r="69.85699" cy="81"
-                                                        cx="81" stroke-width="4"
+                                                        cx="81" strokeWidth="6"
                                                         stroke="#F7931A" fill="none"/>
                                                 </g>
                                             </svg>
@@ -149,7 +150,7 @@ class Dashboard extends React.Component {
                                     <div style={{display: rate === 'down' || !rate ? 'block' : 'none'}}
                                          className="down">
                                         <div className="profit">
-                                            <span className="red">Your ptofit</span>
+                                            <span className="red">Your profit</span>
                                             <span>0.85</span>
                                             <img src={bitcoin} width="15" height="20" alt="b"/>
                                         </div>

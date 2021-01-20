@@ -14,7 +14,7 @@ const Time = ({geo}) => {
     return (
         <div className="time">
             <h2 className="time-text">{time.slice(0, 5)}</h2>
-            <div className="label text-center">{geo || 'Kyiv'}</div>
+            <div className="label text-center">{geo || 'Tel Aviv'}</div>
         </div>
     );
 };
