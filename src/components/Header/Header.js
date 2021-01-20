@@ -18,36 +18,38 @@ const Header = ({prohibition, auth, mute, muteToggle}) => {
     return (
         <div>
             <header className="header">
-                <nav className="navbar">
-                    <Link className="navbar-brand" to="/">
-                        <img src={logo} alt="logo" height="32"/>
+                <div className="wrap-header">
+                    <nav className="navbar">
+                        <Link className="navbar-brand" to="/">
+                            <img src={logo} alt="logo" height="32"/>
+                        </Link>
+                    </nav>
+                    <Link id="logoCentre" to="/">
+                        <img className="mt-3" src={logo2} alt="logo" width="96"/>
                     </Link>
-                </nav>
-                <Link id="logoCentre" to="/">
-                    <img className="mt-3" src={logo2} alt="logo" width="96"/>
-                </Link>
-                {/*<h4 style={auth ? {display: 'block'} : {display: 'none'}} className="text-center">Bitcoin Live price</h4>*/}
-                <div className="header-right">
-                    <img onClick={handleMute} className="sound" src={mute ? sound : noSound} height="18" width="18"
-                         alt="sound"/>
-                    <div style={auth ? {display: 'flex'} : {display: 'none'}} className="menu">
-                        Menu
-                        <img className="burger"
-                             onClick={() => {
-                                 setMenu(!menu)
-                             }}
+                    {/*<h4 style={auth ? {display: 'block'} : {display: 'none'}} className="text-center">Bitcoin Live price</h4>*/}
+                    <div className="header-right">
+                        <img onClick={handleMute} className="sound" src={mute ? sound : noSound} height="18" width="18"
+                             alt="sound"/>
+                        <div style={auth ? {display: 'flex'} : {display: 'none'}} className="menu">
+                            Menu
+                            <img className="burger"
+                                 onClick={() => {
+                                     setMenu(!menu)
+                                 }}
 
-                             src={burger} alt="icon"/>
-                        <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
-                            <li className="burger-menu-item bord"><span>Create ad</span></li>
-                            <li className="burger-menu-item bord"><span>Settings</span></li>
-                            <li className="burger-menu-item bord"><span>My ads</span></li>
-                            <li className="burger-menu-item" onClick={() => {
-                                localStorage.removeItem('token');
-                                prohibition();
-                                clearInterval();
-                            }}><span>Log out</span></li>
-                        </ul>
+                                 src={burger} alt="icon"/>
+                            <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
+                                <li className="burger-menu-item bord"><span>Create ad</span></li>
+                                <li className="burger-menu-item bord"><span>Settings</span></li>
+                                <li className="burger-menu-item bord"><span>My ads</span></li>
+                                <li className="burger-menu-item" onClick={() => {
+                                    localStorage.removeItem('token');
+                                    prohibition();
+                                    clearInterval();
+                                }}><span>Log out</span></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </header>
