@@ -6,13 +6,11 @@ import {connect} from "react-redux";
 import {betLose, betWin, closeCongratulation} from "../../redux/actions";
 import {bell, click, tic, fireworks} from "../../redux/actions/music";
 import Rates from "./Rates";
-import Circle from "./Circle";
-
 
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {bet: .5, predict: false, counter: 10, rate: ''};
+        this.state = {bet: .5, predict: false, counter: 10, rate: '', initialOffset: 440};
         this.setBet = this.setBet.bind(this);
         this.predictSubmit = this.predictSubmit.bind(this);
         this.setRate = this.setRate.bind(this);
@@ -54,13 +52,15 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        const {bet, predict, counter, rate} = this.state;
+        const {bet, predict, counter, rate, initialOffset} = this.state;
         const {balance, click} = this.props;
-
+        const time = 10;
+        const i = 10 - counter || 1;
         const arrBet = bet.toString().split('.');
         const newBet = /*arrBet.length === 2 ? bet + '00' : arrBet.length === 3 ? bet + '0' : arrBet.length === 1 ? bet + '.000' :*/ bet;
         return (
             <div className="row bottom-container">
+
                 <Rates/>
                 <div className="round dashboard">
                     <div className="range">
@@ -72,7 +72,7 @@ class Dashboard extends React.Component {
                             <div>
                                 <span>
                                 <input id="numberBet" type="number" step="0.001" min="0.001" max="1"
-                                       onInput={this.setBet}
+                                       onChange={this.setBet}
                                        value={newBet}/>
                                 <img className="numberBet" width="15" src={bitcoin} alt="up"/>
                             </span>
@@ -86,7 +86,7 @@ class Dashboard extends React.Component {
                                            disabled={predict}
                                            value={newBet}
                                            style={{backgroundImage: `linear-gradient(to right, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} 0%, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} ${bet * 100}%, #fff ${bet * 100}%, white 100%)`}}
-                                           onInput={this.setBet}
+                                           onChange={this.setBet}
                                            className={balance - bet >= 0 ? 'green-range' : 'red-range'}
                                            id="range"/>
                                 </div>
@@ -110,13 +110,41 @@ class Dashboard extends React.Component {
                                     <p style={{display: predict && rate === 'up' ? 'flex' : 'none', margin: '0 59px'}}
                                        id="predict"
                                        className="btn bet-btn col-sm-4">
-                                        <span>{counter}</span>
+                                        <span className="gold">{counter}
+                                            <span className='circle'>
+                                                <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+                                                <g>
+                                                    <title>Layer 1</title>
+                                                    <circle
+                                                        strokeDasharray={440}
+                                                        strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}
+                                                        id="circle" className="circle_animation" r="69.85699" cy="81"
+                                                        cx="81" stroke-width="4"
+                                                        stroke="#F7931A" fill="none"/>
+                                                </g>
+                                            </svg>
+                                            </span>
+                                        </span>
+
                                     </p>
-                                    <Circle timer={{rate, counter}}/>
                                     <p style={{display: predict && rate === 'down' ? 'flex' : 'none', margin: '0 59px'}}
                                        id="predict"
                                        className="btn bet-btn col-sm-4">
-                                        <span>{counter}</span>
+                                        <span className="gold">{counter}
+                                            <span className='circle'>
+                                                <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+                                                <g>
+                                                    <title>Layer 1</title>
+                                                    <circle
+                                                        strokeDasharray={440}
+                                                        strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}
+                                                        id="circle" className="circle_animation" r="69.85699" cy="81"
+                                                        cx="81" stroke-width="4"
+                                                        stroke="#F7931A" fill="none"/>
+                                                </g>
+                                            </svg>
+                                            </span>
+                                        </span>
                                     </p>
                                     <div style={{display: rate === 'down' || !rate ? 'block' : 'none'}}
                                          className="down">
@@ -135,11 +163,7 @@ class Dashboard extends React.Component {
                                             <img src={arrowDown} width="15" height="20" alt="b"/>
                                         </button>
                                     </div>
-                                    <Circle timer={{rate, counter}}/>
                                 </div>
-                                {/*</>*/}
-                                {/*: <>*/}
-                                {/*</>}*/}
                             </div>
                         </form>
                     </div>

@@ -31,13 +31,15 @@ const Header = ({prohibition, auth, mute, muteToggle}) => {
                     <div className="header-right">
                         <img onClick={handleMute} className="sound" src={mute ? sound : noSound} height="18" width="18"
                              alt="sound"/>
-                        <div style={auth ? {display: 'flex'} : {display: 'none'}} className="menu">
+                        <div onMouseEnter={() => {
+                            setMenu(true)
+                        }}
+                             onMouseLeave={() => {
+                                 setMenu(false)
+                             }}
+                             style={auth ? {display: 'flex'} : {display: 'none'}} className="menu">
                             Menu
                             <img className="burger"
-                                 onClick={() => {
-                                     setMenu(!menu)
-                                 }}
-
                                  src={burger} alt="icon"/>
                             <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
                                 <li className="burger-menu-item bord"><span>Create ad</span></li>
