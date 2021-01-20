@@ -17,10 +17,10 @@ const RightSector = ({balance, lastWin, wins, predict, click}) => {
             <div style={{display: switcher ? "block" : "none"}} className="blur">
 
                 <div className="round-dark win">
-                    <h2>Swtiching to real</h2>
+                    <h2>My bitcoin wallet</h2>
                     <div className="text-center">You are going to play on real <br/> money. Are you sure? </div>
                     <div className="win-btn">
-                        <button onClick={() => setSwitcher(false)} className="btn btn-primary">Switch on real money
+                        <button onClick={() => setSwitcher(false)} className="btn btn-primary">Bet real bitcoin
                         </button>
                         <button onClick={() => setSwitcher(false)} className="btn btn-primary">Contunue demo
                         </button>

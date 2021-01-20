@@ -57,7 +57,7 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                             closeCongratulation();
                             document.getElementById('fireworks').pause();
                             money();
-                        }} className="btn btn-primary">Invest in my wallet
+                        }} className="btn btn-primary">Add to my wallet
                         </button>
                         <button onClick={() => {
                             closeCongratulation();
