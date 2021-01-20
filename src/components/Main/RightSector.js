@@ -51,7 +51,7 @@ const RightSector = ({balance, lastWin, wins, predict, click}) => {
             <div onClick={() => {
                 window.location.href = 'https://bitrxapp.com/?gb';
             }} className="banner round-dark">
-                <button className="btn btn-link">Learn more</button>
+                <button className="btn learn-more">Learn more</button>
             </div>
         </div>
     );

@@ -580,10 +580,21 @@ form {
   background-position: bottom;
   cursor: pointer;
 
-.btn {
-  position: absolute;
-  bottom: 50px;
-  right: 20px;
+  .learn-more {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #60BDFF;
+    width: 234px;
+    height: 27px;
+    padding: 0;
+    color: var(--text-color);
   }
 
   .text {
