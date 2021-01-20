@@ -1,20 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import deposit from '../../images/deposit.svg';
 import withdraw from '../../images/withdraw.svg';
 import arrowsGroup from '../../images/group_arrows.svg';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {click} from "../../redux/actions/music";
+import bitcoin from "../../images/bitcoin.svg";
 
 
 const RightSector = ({balance, lastWin, wins, predict, click}) => {
+    const [switcher, setSwitcher] = useState(false);
     const balanceColor = {color: predict === 'green' ? '#32D74B' : predict === 'red' ? '#FF453A' : '#FFFFFF'}
 
     return (
         <div className="right-sector">
+            <div style={{display: switcher ? "block" : "none"}} className="blur">
 
+                <div className="round-dark win">
+                    <h2>Swtiching to real</h2>
+                    <div className="text-center">You are going to play on real <br/> money. Are you sure? </div>
+                    <div className="win-btn">
+                        <button onClick={() => setSwitcher(false)} className="btn btn-primary">Switch on real money
+                        </button>
+                        <button onClick={() => setSwitcher(false)} className="btn btn-primary">Contunue demo
+                        </button>
+                    </div>
+                </div>
+            </div>
             <div className="score-wrap round-dark">
-                <h2>Demo wallet <img src={arrowsGroup} alt=""/></h2>
+                <h2>Demo wallet <img onClick={()=> setSwitcher(true)} src={arrowsGroup} alt=""/></h2>
                 <table>
                     <tbody>
                     <tr>
