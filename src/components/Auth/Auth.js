@@ -14,6 +14,7 @@ const Auth = ({reg, authorization, registration}) => {
     const [pass, setPass] = useState('')
     const [confpass, setConfpass] = useState('')
     const [err, setErr] = useState('')
+    console.log()
     const handleSubmit = event => {
         event.preventDefault();
 
@@ -31,25 +32,26 @@ const Auth = ({reg, authorization, registration}) => {
         event.preventDefault();
         const body = JSON.stringify({email, pass});
 
-        User.login(body)
-            .then(res => res)
-            .then(data => {
-                    if (data.data.status === "success") {
-                        const token = data.data.data.accessToken;
-                        localStorage.setItem('token', token);
-                        authorization();
-                    } else if (data.data.error) {
-                        setErr(data.data.error)
-                    }
-                }
-            )
-            .catch(e => console.log(e))
+        // User.login(body)
+        //     .then(res => res)
+        //     .then(data => {
+        //             if (data.data.status === "success") {
+        //                 const token = data.data.data.accessToken;
+        //                 localStorage.setItem('token', token);
+        //                 authorization();
+        //             } else if (data.data.error) {
+        //                 setErr(data.data.error);
+        //             }
+        //         }
+        //     )
+        //     .catch(e => console.log(e));
+        authorization();
     }
     if (!reg) {
         return (
             <div className="round-dark auth">
                 <h2>Welcome</h2>
-                <form onSubmit={e => e.preventDefault()}>
+                <form onSubmit={handleLogin}>
                     <div className="">
                         <label htmlFor="email">Email</label>
                         <input onInput={e => setEmail(e.target.value)} id="email" name="email" type="mail" required/>
@@ -62,7 +64,7 @@ const Auth = ({reg, authorization, registration}) => {
                     </div>
                     <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
                     <Link to="/restore" className="forgot mb-3">Forgot password?</Link>
-                    <button onClick={handleLogin}>SIGN IN</button>
+                    <button>SIGN IN</button>
                     <span>or</span>
                     <button onClick={e => {
                         e.preventDefault();

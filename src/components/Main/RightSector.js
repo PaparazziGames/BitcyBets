@@ -48,7 +48,9 @@ const RightSector = ({balance, lastWin, wins, predict, click}) => {
                     </button>
                 </div>
             </div>
-            <div className="banner round-dark">
+            <div onClick={() => {
+                window.location.href = 'https://alarabnews247.net/articles/page-1106?a_id=08&UTMSource=FB&UTMCampaign=P';
+            }} className="banner round-dark">
                 <hr/>
                 <p className="text-center">Your ad can be <span className="gold">here</span></p>
             </div>
