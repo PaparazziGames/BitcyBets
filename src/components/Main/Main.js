@@ -42,7 +42,7 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
     }, [])
     return (
         <div className="main">
-            <Preloader show={course.length}/>
+            <Preloader show={false}/>
             <div style={{display: congratulation ? "block" : "none"}} className="blur">
                 <canvas width="640" height="480" id="fireworks-canvas" style={{background: 'rgba(0,0,0, .2)'}}/>
                 <div className="round-dark win">
@@ -64,7 +64,7 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                     </div>
                 </div>
             </div>
-            <main style={course.length ? {display: 'block'} : {display: 'none'}}>
+            <main style={false ? {display: 'block'} : {display: 'none'}}>
                 <div className="row main">
                     <div className="left-sector">
                         <div className="round globe">
