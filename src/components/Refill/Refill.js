@@ -30,9 +30,9 @@ const Refill = (props) => {
                         </div>
                     </div>
                     <div className="refill-btn">
-                        <Link to="/refill/btc" className="pay"><span>PAY</span><img src={bitcoin} width="15" alt="bit"/></Link>
+                        <Link to="/refill/btc" className="pay"><span>DEPOSIT</span><img src={bitcoin} width="15" alt="bit"/></Link>
 
-                        <Link to="/refill/usd" className="pay"><span>PAY</span><img src={dollar} width="15" alt="bit"/></Link>
+                        <Link to="/refill/usd" className="pay"><span>DEPOSIT</span><img src={dollar} width="15" alt="bit"/></Link>
                     </div>
                 </div>
             </div>

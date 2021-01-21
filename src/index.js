@@ -10,11 +10,13 @@ import Restore from "./components/Auth/restore";
 import Refill from "./components/Refill/Refill";
 import Btc from "./components/Refill/Btc";
 import Usd from "./components/Refill/Usd";
+import Header from "./components/Header/Header";
 
 
 render(
     <Provider store={store}>
         <Router>
+            <Header />
             <Route exact path="/" component={App}/>
             <Route path="/restore" component={Restore}/>
             <Route exact path="/refill" component={Refill}/>

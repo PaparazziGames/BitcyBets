@@ -57,13 +57,13 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                             closeCongratulation();
                             document.getElementById('fireworks').pause();
                             money();
-                        }} className="btn btn-primary">Add to my wallet
+                        }} className="btn btn-primary">ADD TO MY WALLET
                         </button>
-                        <button onClick={() => {
+                        <button disabled onClick={() => {
                             closeCongratulation();
                             document.getElementById('fireworks').pause();
                             money();
-                        }} className="btn btn-primary">Withdraw
+                        }} className="btn btn-primary">WITHDRAW
                         </button>
                     </div>
                 </div>

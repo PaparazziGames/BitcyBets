@@ -449,7 +449,7 @@ form {
 
   .bet-btn {
     background: var(--bg-dark);
-    border: 1px solid var(--alert);
+    border: 1px solid var(--down);
     border-radius: 24px;
     color: var(--text-color);
     height: 40px;
@@ -558,7 +558,6 @@ form {
   //color: var(--alert);
 }
 
-
 /*<<<<<<<<<<<<<<<<<   RIGHT SECTOR   >>>>>>>>>>>>>>>>>>*/
 .right-sector {
   height: auto;
@@ -628,9 +627,28 @@ form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    img {
+    .switch-wrapper{
+      width: 48px;
+      height: 26px;
+      border-radius: 16px;
+      background: linear-gradient(0deg, rgba(26, 31, 52, 0.7), rgba(26, 31, 52, 0.7)), #F7931A;
       cursor: pointer;
+      display: flex;
+      img {
+        margin-left: -3px;
+        border-radius: 50%;
+      }
     }
+    .demo {
+      justify-content: flex-start;
+    }
+    .real {
+      justify-content: flex-end;
+      img {
+        margin-right: -3px;
+      }
+    }
+
   }
   table {
     width: 100%;
@@ -733,10 +751,9 @@ form {
         border: 1px solid #FFFFFF;
         border-radius: 8px;
         min-height: 40px;
-        font-weight: bold;
+        font-weight: 400;
         margin-top: 20px;
         margin-bottom: 10px;
-
         &:active {
           transform: scale(0.97);
         }

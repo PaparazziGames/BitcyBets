@@ -31,12 +31,9 @@ const Header = ({prohibition, auth, mute, muteToggle}) => {
                     <div className="header-right">
                         <img onClick={handleMute} className="sound" src={mute ? sound : noSound} height="18" width="18"
                              alt="sound"/>
-                        <div onMouseEnter={() => {
-                            setMenu(true)
+                        <div onClick={(e) => {
+                            setMenu(!menu)
                         }}
-                             onMouseLeave={() => {
-                                 setMenu(false)
-                             }}
                              style={auth ? {display: 'flex'} : {display: 'none'}} className="menu">
                             <img className="burger"
                                  src={burger} alt="icon"/>

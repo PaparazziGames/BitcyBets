@@ -104,6 +104,7 @@ const Auth = ({reg, authorization, registration}) => {
                             setErr('');
                         }}
                                value={name}
+                               placeholder="John Lucky"
                                id="name" name="name" type="text" required/>
                     </div>
                     <div className="">
@@ -120,6 +121,7 @@ const Auth = ({reg, authorization, registration}) => {
                             setErr('');
                         }}
                                value={email}
+                               placeholder="lucky@mail.com"
                                id="email" name="email" type="email" required/>
                     </div>
                     <div className={password ? 'pass' : 'text'}>

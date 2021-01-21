@@ -17,13 +17,14 @@ class Dashboard extends React.Component {
     }
 
     setBet(e) {
-        let bet = e.target.value.slice(0, 5);
-        if(bet === 0) {
+        let bet = +e.target.value.slice(0, 5);
+        if (!bet) {
             bet = 0.001;
-        }else if(bet > 1) {
-           bet = 1;
         }
-        this.setState((state) => ({...state, ...{bet: bet}}));
+        if (bet > 1) {
+            bet = 1;
+        }
+        this.setState((state) => ({...state, ...{bet: bet ? bet : 0.001}}));
     }
 
     setRate(rate) {

@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import deposit from '../../images/deposit.svg';
 import withdraw from '../../images/withdraw.svg';
-import arrowsGroup from '../../images/group_arrows.svg';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {click} from "../../redux/actions/music";
-import bitcoin from "../../images/bitcoin.svg";
+import switchWallet from "../../images/switch_wallet.svg";
 
 
 const RightSector = ({balance, lastWin, wins, predict, click}) => {
@@ -28,7 +27,7 @@ const RightSector = ({balance, lastWin, wins, predict, click}) => {
                 </div>
             </div>
             <div className="score-wrap round-dark">
-                <h2>Demo wallet <img onClick={()=> setSwitcher(true)} src={arrowsGroup} alt=""/></h2>
+                <h2>Demo wallet <span className={!switcher ? "switch-wrapper demo" : "switch-wrapper real"}><img onClick={()=> setSwitcher(true)} src={switchWallet} alt=""/></span></h2>
                 <table>
                     <tbody>
                     <tr>
