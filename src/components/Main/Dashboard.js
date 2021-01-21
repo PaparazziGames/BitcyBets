@@ -17,7 +17,15 @@ class Dashboard extends React.Component {
     }
 
     setBet(e) {
-        this.setState((state) => ({...state, ...{bet: e.target.value}}));
+        let bet1 = +e.target.value;
+        let bet = bet1.toFixed(3);
+
+        if(bet === 0) {
+            bet = 0.001;
+        }else if(bet > 1) {
+           bet = 1;
+        }
+        this.setState((state) => ({...state, ...{bet: bet}}));
     }
 
     setRate(rate) {
@@ -73,7 +81,7 @@ class Dashboard extends React.Component {
                                 <span className={balance - bet >= 0 ? '' : 'red'}>
                                 <input id="numberBet" type="number" step="0.001" min="0.001" max="1"
                                        className={balance - bet >= 0 ? '' : 'red'}
-                                       onChange={this.setBet}
+                                       onInput={this.setBet}
                                        value={newBet}/>
                                 <img className="numberBet" width="15" src={bitcoin} alt="up"/>
                             </span>

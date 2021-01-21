@@ -176,26 +176,23 @@
     border: 1px solid #FFFFFF;
     border-radius: 8px;
     height: 40px;
-    padding-left: 45px;
+    padding-left: 60px;
   }
   select {
-    width: 50px;
+    width: 55px;
     height: 40px;
     position: absolute;
     z-index: 5;
     background-color: transparent;
+    background: url('../../images/select.png') no-repeat right center;
     border: none;
     color: transparent;
-    &:after {
-      content: "&#9660;";
-      width: 5px;
-      height: 5px;
-      position: absolute;
-      right: 0;
+    &:focus {
+      background: url('../../images/select2.png') no-repeat right center;
     }
     option {
       background-color: var(--dark-light);
-      font-weight: 200;
+      font-weight: 300;
     }
   }
 }

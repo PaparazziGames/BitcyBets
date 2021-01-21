@@ -65,7 +65,7 @@ const Auth = ({reg, authorization, registration}) => {
                         <PhoneInput onChange={e => {
                             setPhone(e);
                             setErr('');
-                        }} id="phone" value={phone} international displayInitialValueAsLocalNumber required/>
+                        }} id="phone" limitMaxLength={true} placeholder='+123-456-78-90' value={phone} international displayInitialValueAsLocalNumber required/>
                     </div>
                     <div className={password ? 'pass' : 'text'}>
                         <span onClick={() => setPassword(!password)} className="eye"/>
@@ -111,7 +111,7 @@ const Auth = ({reg, authorization, registration}) => {
                         <PhoneInput onChange={e => {
                             setPhone(e);
                             setErr('');
-                        }} id="phone" value={phone} international displayInitialValueAsLocalNumber required/>
+                        }} id="phone" limitMaxLength={true} placeholder='+123-456-78-90' value={phone} international displayInitialValueAsLocalNumber required/>
                     </div>
                     <div className="">
                         <label htmlFor="email">Email</label>
