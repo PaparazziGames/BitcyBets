@@ -17,9 +17,7 @@ class Dashboard extends React.Component {
     }
 
     setBet(e) {
-        let bet1 = +e.target.value;
-        let bet = bet1.toFixed(3);
-
+        let bet = e.target.value.slice(0, 5);
         if(bet === 0) {
             bet = 0.001;
         }else if(bet > 1) {
