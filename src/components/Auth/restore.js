@@ -17,9 +17,11 @@ class Restore extends Component {
     }
     render() {
         const { restore } = this.state;
+        const { history } = this.props;
         if (restore) {
             return (
                 <div className="round-dark restore auth col-3">
+                    <span onClick={() => history.push('/')} className="back restore-arrow">&larr;</span>
                     <form onSubmit={this.toggleRestore}>
                         <div>
                             <h2>Forgot password?</h2>

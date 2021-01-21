@@ -111,6 +111,11 @@
       transform: scale(1.2);
     }
   }
+  .restore-arrow {
+    left: 15px;
+    top: 0.5em;
+    font-size: 20px;
+  }
 }
 .restore {
   form {
@@ -137,6 +142,65 @@
     }
   }
 }
+
+
+.PhoneInput {
+  width: 100%;
+  //height: 20px;
+  .PhoneInputCountry {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 30px;
+    position: absolute;
+    .PhoneInputCountryIcon {
+      position: relative;
+      svg {
+        height: 20px;
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+      img {
+        height: 20px;
+        margin-top: 10px;
+        margin-left: 10px;
+        //position: absolute;
+        //top: -23px;
+        //left: 0;
+      }
+    }
+
+  }
+  #phone {
+    background-color: inherit;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+    height: 40px;
+    padding-left: 45px;
+  }
+  select {
+    width: 50px;
+    height: 40px;
+    position: absolute;
+    z-index: 5;
+    background-color: transparent;
+    border: none;
+    color: transparent;
+    &:after {
+      content: "&#9660;";
+      width: 5px;
+      height: 5px;
+      position: absolute;
+      right: 0;
+    }
+    option {
+      background-color: var(--dark-light);
+      font-weight: 200;
+    }
+  }
+}
+
+
 @media screen and (min-width: 320px) and (max-width: 756px) {
   .auth {
     height: 90%;

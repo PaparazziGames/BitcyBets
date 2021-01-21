@@ -9,6 +9,7 @@ const Preloader = ({show}) => {
         setHide(hide + 700 > 2800 ? 700 : hide + 700)
         return clearInterval(timerOpacity)
     }, 500)
+    // useEffect(() => clearInterval(timerOpacity), [])
     return (
         <div style={show ? {display: 'none'} : {display: 'flex'}} className="load">
             <img src={bitsybets} alt=""/>
