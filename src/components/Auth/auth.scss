@@ -183,6 +183,9 @@
     height: 40px;
     position: absolute;
     z-index: 5;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     background-color: transparent;
     background: url('../../images/select.png') no-repeat right center;
     border: none;
