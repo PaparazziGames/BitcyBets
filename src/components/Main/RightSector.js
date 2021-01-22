@@ -5,12 +5,15 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {click} from "../../redux/actions/music";
 import switchWallet from "../../images/switch_wallet.svg";
-
+import {User} from "../../api/User";
 
 const RightSector = ({balance, lastWin, wins, predict, click}) => {
     const [switcher, setSwitcher] = useState(false);
     const balanceColor = {color: predict === 'green' ? '#32D74B' : predict === 'red' ? '#FF453A' : '#FFFFFF'}
-
+    const getUser = () => {
+       User.userdata(JSON.stringify({accessToken: localStorage.getItem('token')}))
+            .then(response => console.log(response.data.data))
+    }
     return (
         <div className="right-sector">
             <div style={{display: switcher ? "block" : "none"}} className="blur">
@@ -27,7 +30,8 @@ const RightSector = ({balance, lastWin, wins, predict, click}) => {
                 </div>
             </div>
             <div className="score-wrap round-dark">
-                <h2>Demo wallet <span className={!switcher ? "switch-wrapper demo" : "switch-wrapper real"}><img onClick={()=> setSwitcher(true)} src={switchWallet} alt=""/></span></h2>
+                <h2>Demo wallet <span className={!switcher ? "switch-wrapper demo" : "switch-wrapper real"}><img
+                    onClick={() => setSwitcher(true)} src={switchWallet} alt=""/></span></h2>
                 <table>
                     <tbody>
                     <tr>
@@ -56,7 +60,7 @@ const RightSector = ({balance, lastWin, wins, predict, click}) => {
                     <Link to="/refill" className="btn money-btn green">DEPOSIT
                         <img src={deposit} alt="deposit"/>
                     </Link>
-                    <button onClick={click} type="btn" className="btn money-btn red">WITHDRAW
+                    <button onClick={getUser} type="btn" className="btn money-btn red">WITHDRAW
                         <img src={withdraw} alt="withdraw"/>
                     </button>
                 </div>

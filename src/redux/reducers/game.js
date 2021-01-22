@@ -1,4 +1,4 @@
-import {BET_LOSE, BET_WIN, CLOSE_CONGRATULATION} from "../types";
+import {BET_LOSE, BET_WIN, CLOSE_CONGRATULATION, GET_USER_DATA} from "../types";
 
 const initialState = {
     balance: 1,
@@ -9,6 +9,15 @@ const initialState = {
 }
 export const balanceReducer = (state = initialState, action) => {
     switch (action.type) {
+        case GET_USER_DATA:
+            return {
+                ...state,
+                balance: state.balance + parseFloat(action.payload),
+                wins: state.wins + 1,
+                lastWin: action.payload,
+                congratulation: true,
+                predict: 'green'
+            };
         case BET_WIN:
             return {
                 ...state,

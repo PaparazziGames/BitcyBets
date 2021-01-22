@@ -11,5 +11,12 @@ export const User = {
 
   auth() {
     return Api().get('/user');
-  }
+  },
+  rate(token) {
+    return Api().post('/rates', token);
+  },
+  userdata(token) {
+    return Api().post('/getUser', token);
+  },
+
 };

@@ -27,13 +27,17 @@ const Auth = ({reg, authorization, registration}) => {
         event.preventDefault();
 
         const body = JSON.stringify({name, phone, email, pass, confpass});
+        if(confpass.length < 8 || confpass.length < 8) {
+            setErr('Password length must be 8 characters')
+        } else {
+            User.register(body)
+                .then(res => res)
+                .then(data => {
+                    return data.data.status === "success" ? registration() : data.data.error ? setErr(data.data.error) : false;
+                })
+                .catch(error => setErr(error.response.data.error))
+        }
 
-        User.register(body)
-            .then(res => res)
-            .then(data => {
-                return data.data.status === "success" ? registration() : data.data.error ? setErr(data.data.error) : false;
-            })
-            .catch(error => setErr(error.response.data.error))
     }
 
     const handleLogin = event => {
@@ -53,7 +57,7 @@ const Auth = ({reg, authorization, registration}) => {
                 }
             )
             .catch(error => setErr(error.response.data.error));
-        authorization();
+        // authorization();
     }
     if (!reg) {
         return (
@@ -127,7 +131,7 @@ const Auth = ({reg, authorization, registration}) => {
                     <div className={password ? 'pass' : 'text'}>
                         <span onClick={() => setPassword(!password)} className="eye"/>
                         <label htmlFor="password">Password</label>
-                        <input onChange={e => {
+                        <input min='8' onChange={e => {
                             setPass(e.target.value);
                             setErr('');
                         }}
@@ -137,7 +141,7 @@ const Auth = ({reg, authorization, registration}) => {
                     <div className={passwordConfirm ? 'pass' : 'text'}>
                         <span onClick={() => setPasswordConfirm(!passwordConfirm)} className="eye"/>
                         <label htmlFor="passwordConfirm">Repeat password</label>
-                        <input onChange={e => {
+                        <input min='8' onChange={e => {
                             setConfpass(e.target.value);
                             setErr('');
                         }}

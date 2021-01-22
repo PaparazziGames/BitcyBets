@@ -107,6 +107,5 @@ const mapDispatchToProps = {
     closeCongratulation,
     money,
     stop
-
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
