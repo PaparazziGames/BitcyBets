@@ -175,15 +175,18 @@ class Graph extends Component {
                     exam.config.data.datasets[0].data.splice(0, 1);
                     exam.config.data.datasets[0].data.push(data.pop());
                     exam.update();
+                    console.log(exam);
                 } else {
                     graph(sliceData, ctx, my_gradient)
                 }
             } else {
                 graph(sliceData, ctx, my_gradient)
             }
-        }
-    }
 
+        }
+
+    }
+//defaults.global.elements
     componentWillUnmount() {
         socket.close();
         this.props.bitcoinCourse([]);

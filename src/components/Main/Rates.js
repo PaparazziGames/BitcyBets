@@ -3,7 +3,6 @@ import arrup from "../../images/arrup.png";
 import person from "../../images/person.svg";
 import bitcoin from "../../images/bitcoin.svg";
 import arrdown from "../../images/arrdown.png";
-import {User} from "../../api/User";
 import {rates} from "../../redux/actions/game";
 import {connect} from "react-redux";
 

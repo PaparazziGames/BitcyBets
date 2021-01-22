@@ -19,4 +19,6 @@ export const MUTE ='MUTE';
 
 export const GET_USER_DATA = 'GET_USER_DATA';
 export const GET_RATES = 'GET_RATES';
+export const SET_BET_UP = 'SET_BET_UP';
+export const SET_BET_DOWN = 'SET_BET_DOWN';
 

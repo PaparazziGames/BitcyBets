@@ -20,7 +20,7 @@ export const balanceReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case GET_USER_DATA:
-            if(action.payload.isDemo){
+            if (action.payload.isDemo) {
                 return {
                     ...state,
                     '3wins': action.payload['3wins'],

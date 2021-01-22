@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {betLose, betWin, closeCongratulation} from "../../redux/actions";
 import {bell, click, tic, fireworks} from "../../redux/actions/music";
 import Rates from "./Rates";
+import {predictDown, predictUp} from "../../redux/actions/game";
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -60,16 +61,17 @@ class Dashboard extends React.Component {
 
     render() {
         const {bet, predict, counter, rate, initialOffset} = this.state;
-        const {balance, click} = this.props;
+        const {balance, click, predictDown, predictUp} = this.props;
         const time = 10;
         const i = 10 - counter || 1;
-        const arrBet = bet.toString().split('.');
         const newBet = /*arrBet.length === 2 ? bet + '00' : arrBet.length === 3 ? bet + '0' : arrBet.length === 1 ? bet + '.000' :*/ bet;
         return (
             <div className="row bottom-container">
 
                 <Rates/>
-                <div className="round dashboard">
+                <div onClick={() => {
+                    predictUp({value: bet});
+                }} className="round dashboard">
                     <div className="range">
                         <div className="form-label d-flex justify-content-between">
                             <div>
@@ -110,6 +112,7 @@ class Dashboard extends React.Component {
                                             this.predictSubmit();
                                             this.setRate('up');
                                             click();
+                                            predictUp({value: bet.toString()});
                                         }}
                                                 className="btn green predict-btn">PREDICT UP
                                             <img src={arrowUp} width="15" height="20" alt="b"/>
@@ -165,6 +168,7 @@ class Dashboard extends React.Component {
                                             e.preventDefault();
                                             this.predictSubmit();
                                             this.setRate('down');
+                                            predictDown({value: bet.toString()});
                                             click();
                                         }}
                                                 className="btn red predict-btn">PREDICT DOWN
@@ -197,7 +201,9 @@ const mapDispatchToProps = {
     tic,
     bell,
     fireworks,
-    closeCongratulation
+    closeCongratulation,
+    predictUp,
+    predictDown
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

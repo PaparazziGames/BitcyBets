@@ -3,6 +3,7 @@
  */
 
 
+// eslint-disable-next-line no-use-before-define
 var JS_FIREWORKS = JS_FIREWORKS || {};
 
 /**
@@ -38,6 +39,7 @@ JS_FIREWORKS.Fireworks = function (options) {
     var _self   = this,
         _NS     = JS_FIREWORKS,
         _Class  = _NS.Fireworks,
+        // eslint-disable-next-line no-unused-vars
         _proto  = _Class.prototype,
         _canvas = document.getElementById(options.id || 'fireworks-canvas'),
         _ctx    = _canvas.getContext ? _canvas.getContext('2d') : null,
@@ -59,6 +61,7 @@ JS_FIREWORKS.Fireworks = function (options) {
             right  : _width - 50
         },
         _loop         = _NS.getRenderLoop(),
+        // eslint-disable-next-line no-unused-vars
         _randRange    = _NS.randomRange,
         _randIntRange = _NS.randomIntRange,
         _Firework     = _NS.Firework,
@@ -117,6 +120,7 @@ JS_FIREWORKS.Fireworks = function (options) {
         // render fireworks
         while (tmp--) {
             _fireworks[tmp].draw();
+            // eslint-disable-next-line no-loop-func
             _fireworks[tmp].update( function (x, y, hue) {
                 count = _particleCount;
                 while (count--) {
@@ -129,6 +133,7 @@ JS_FIREWORKS.Fireworks = function (options) {
         tmp = _particles.length;
         while (tmp--) {
             _particles[tmp].draw();
+            // eslint-disable-next-line no-loop-func
             _particles[tmp].update( function () {
                 _particles.splice(tmp, 1);
             });
@@ -166,6 +171,7 @@ JS_FIREWORKS.Firework = function (x1, y1, x2, y2, context, hue) {
     var _self     = this,
         _NS       = JS_FIREWORKS,
         _Class    = _NS.Firework,
+        // eslint-disable-next-line no-unused-vars
         _proto    = _Class.prototype,
         _settings = JS_FIREWORKS.Fireworks.settings,
         _x   = x1,
@@ -240,6 +246,7 @@ JS_FIREWORKS.Particle = function (x, y, context, hue) {
     var _self     = this,
         _NS       = JS_FIREWORKS,
         _Class    = _NS.Particle,
+        // eslint-disable-next-line no-unused-vars
         _proto    = _Class.prototype,
         _settings = JS_FIREWORKS.Fireworks.settings,
         _x        = x,

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import './main.scss';
 import bitcoin from '../../images/bitcoin.svg';
@@ -37,10 +37,10 @@ const fire = () => {
 };
 
 const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money, muteToggle}) => {
-    const [show, setShow] = useState(false);
-    setTimeout(() => {
-        setShow(true)
-    }, 5000)
+    // const [show, setShow] = useState(false);
+    // setTimeout(() => {
+    //     setShow(true)
+    // }, 5000)
     useEffect(() => {
         fire();
     }, [])
