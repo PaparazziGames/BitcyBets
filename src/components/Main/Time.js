@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {geoposition} from "../../redux/actions";
 import {connect} from "react-redux";
 
-const Time = ({geo}) => {
+const Time = ({geo, geoposition}) => {
     useEffect(() => {
         geoposition()
     },[]);

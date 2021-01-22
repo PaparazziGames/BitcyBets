@@ -1,5 +1,7 @@
 import Api from './Api';
 
+const token = JSON.stringify({"accessToken": localStorage.getItem('token')});
+
 export const User = {
   register(form) {
     return Api().post('/register', form);
@@ -9,13 +11,10 @@ export const User = {
     return Api().post('/login', form);
   },
 
-  auth() {
-    return Api().get('/user');
-  },
-  rate(token) {
+  rate() {
     return Api().post('/rates', token);
   },
-  userdata(token) {
+  userdata() {
     return Api().post('/getUser', token);
   },
 

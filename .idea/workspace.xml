@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Main/Offer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/actions/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/Api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/Rates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Rates.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/RightSector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/RightSector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Time.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Time.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/entry.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types.js" afterDir="false" />
     </list>
@@ -108,7 +105,7 @@
       <workItem from="1611124490859" duration="8045000" />
       <workItem from="1611134287533" duration="20301000" />
       <workItem from="1611211663901" duration="30346000" />
-      <workItem from="1611299019591" duration="1461000" />
+      <workItem from="1611299019591" duration="16457000" />
     </task>
     <servers />
   </component>

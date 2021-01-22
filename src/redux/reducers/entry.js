@@ -27,6 +27,7 @@ export const authReducer = (state = initialState, action) => {
 }
 
 export const geoReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case GET_LOCATION:
             return {...state, geoposition: action.payload};

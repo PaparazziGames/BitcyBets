@@ -18,4 +18,5 @@ export const STOP_ALL ='STOP_ALL';
 export const MUTE ='MUTE';
 
 export const GET_USER_DATA = 'GET_USER_DATA';
+export const GET_RATES = 'GET_RATES';
 

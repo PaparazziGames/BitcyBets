@@ -1,14 +1,18 @@
+import {GET_RATES, GET_USER_DATA} from "../types";
+import {User} from "../../api/User";
 
-export function geoposition() {
-
-    return dispatch => {
-        dispatch({type: GET_LOCATION, payload: namePlace})
+export function userdata() {
+    return async dispatch => {
+        const response = await User.userdata();
+        const payload = await response.data.data;
+        await dispatch({type: GET_USER_DATA, payload});
     }
 }
-
-export function bitcoinCourse(data) {
-    return dispatch => {
-        dispatch({type: GET_USER_DATA, payload: data});
+export function rates() {
+    return async dispatch => {
+        const response = await User.rate();
+        const payload = await response.data.data;
+        await dispatch({type: GET_RATES, payload});
     }
 }
 
