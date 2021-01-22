@@ -58,7 +58,6 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
         tooltips: {
             // Disable the on-canvas tooltip
             enabled: false,
-
             custom: function (tooltipModel) {
                 // Tooltip Element
                 var tooltipEl = document.getElementById('chartjs-tooltip');
@@ -133,6 +132,7 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
 
                 // `this` will be the overall tooltip
                 var position = this._chart.canvas.getBoundingClientRect();
+
                 // Display, position, and set styles for font
                 const offset = index > 12 ? 125 : 0;
                 tooltipEl.style.opacity = 1;
@@ -168,14 +168,12 @@ class Graph extends Component {
             let msg = e.data.slice(1, -1);
             let data = msg.split(',');
             let sliceData = data.slice(-17);
-            // sliceData.map(item => console.log(item.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")))
             this.props.bitcoinCourse(sliceData);
             if (exam) {
                 if (exam.config.data.datasets[0].data.length > 0) {
                     exam.config.data.datasets[0].data.splice(0, 1);
                     exam.config.data.datasets[0].data.push(data.pop());
                     exam.update();
-                    console.log(exam);
                 } else {
                     graph(sliceData, ctx, my_gradient)
                 }
