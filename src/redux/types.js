@@ -1,6 +1,9 @@
 export const AUTHORIZATION = 'AUTHORIZATION';
 export const PROHIBITION = 'PROHIBITION';
 export const REGISTRATION = 'REGISTRATION';
+export const LOGOUT = 'LOGOUT';
+
+
 export const GET_LOCATION ='GET_LOCATION';
 export const GET_COURSE ='GET_COURSE';
 export const GET_CURRENT_COURSE ='GET_CURRENT_COURSE';

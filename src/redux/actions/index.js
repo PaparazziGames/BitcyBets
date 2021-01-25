@@ -4,7 +4,7 @@ import {
     BET_WIN,
     CLOSE_CONGRATULATION,
     GET_COURSE, GET_CURRENT_COURSE,
-    GET_LOCATION,
+    GET_LOCATION, LOGOUT,
     PROHIBITION,
     REGISTRATION
 } from "../types";
@@ -19,6 +19,9 @@ export function prohibition() {
 
 export function registration() {
     return {type: REGISTRATION}
+}
+export function logoutQuestion() {
+    return {type: LOGOUT}
 }
 
 export function geoposition() {

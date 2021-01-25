@@ -11,7 +11,7 @@ import {predictDown, predictUp} from "../../redux/actions/game";
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {bet: .5, predict: false, counter: 10, rate: '', initialOffset: 440};
+        this.state = {bet: .001, predict: false, counter: 10, rate: '', initialOffset: 440};
         this.setBet = this.setBet.bind(this);
         this.predictSubmit = this.predictSubmit.bind(this);
         this.setRate = this.setRate.bind(this);
@@ -67,7 +67,6 @@ class Dashboard extends React.Component {
         const newBet = /*arrBet.length === 2 ? bet + '00' : arrBet.length === 3 ? bet + '0' : arrBet.length === 1 ? bet + '.000' :*/ bet;
         return (
             <div className="row bottom-container">
-
                 <Rates/>
                 <div onClick={() => {
                     predictUp({value: bet});

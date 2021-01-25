@@ -6,7 +6,7 @@ import Graph from "../Graph";
 import RightSector from "./RightSector";
 import Dashboard from "./Dashboard";
 import SelectList from "./SelectList";
-import {closeCongratulation} from "../../redux/actions";
+import {closeCongratulation, logoutQuestion, prohibition} from "../../redux/actions";
 import {money, stop} from "../../redux/actions/music";
 import JS_FIREWORKS from "../fireworks";
 import Time from "./Time";
@@ -36,7 +36,7 @@ const fire = () => {
     firework.start();
 };
 
-const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money, muteToggle}) => {
+const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition}) => {
     // const [show, setShow] = useState(false);
     // setTimeout(() => {
     //     setShow(true)
@@ -64,6 +64,24 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                             document.getElementById('fireworks').pause();
                             money();
                         }} className="btn btn-primary">WITHDRAW
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div style={{display: logout ? "block" : "none"}} className="blur">
+                <div className="round-dark win">
+                    <h2>Are you sure?</h2>
+                    <div className="win-btn">
+                        <button onClick={() => {
+                            logoutQuestion();
+                            localStorage.removeItem('token');
+                            prohibition();
+                            clearInterval();
+                        }} className="btn btn-primary">LOG OUT
+                        </button>
+                        <button onClick={() => {
+                            logoutQuestion();
+                        }} className="btn btn-primary">CONTINUE
                         </button>
                     </div>
                 </div>
@@ -101,11 +119,14 @@ const mapStateToProps = state => {
         currentCourse: state.courseReducer.currentCourse,
         lastWin: state.balanceReducer.lastWin,
         congratulation: state.balanceReducer.congratulation,
+        logout: state.authReducer.logoutQuestion,
     }
 }
 const mapDispatchToProps = {
     closeCongratulation,
     money,
-    stop
+    stop,
+    logoutQuestion,
+    prohibition
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

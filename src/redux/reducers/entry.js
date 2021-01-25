@@ -1,7 +1,7 @@
 import {
     AUTHORIZATION,
     GET_COURSE,
-    GET_LOCATION,
+    GET_LOCATION, LOGOUT,
     PROHIBITION,
     REGISTRATION
 } from "../types";
@@ -12,6 +12,7 @@ const initialState = {
     geoposition: '',
     course: [],
     currentCourse: 0,
+    logoutQuestion: false
 }
 export const authReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -21,6 +22,8 @@ export const authReducer = (state = initialState, action) => {
             return {...state, auth: false};
         case REGISTRATION:
             return {...state, reg: !state.reg}
+        case LOGOUT:
+            return {...state, logoutQuestion: !state.logoutQuestion}
         default:
             return state;
     }

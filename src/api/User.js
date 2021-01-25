@@ -19,10 +19,10 @@ export const User = {
   },
   predictUp(value) {
       console.log(JSON.stringify(({...token, ...value})))
-    return Api().post('/game/predictUp', JSON.stringify(({...token, ...value})));
+    return Api().post('/predictUp', JSON.stringify(({...token, ...value})));
   },
   predictDown(value) {
-    return Api().post('/game/predictDown', JSON.stringify(({...token, ...value})));
+    return Api().post('/predictDown', JSON.stringify(({...token, ...value})));
   },
 
 };
