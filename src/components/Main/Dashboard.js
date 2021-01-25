@@ -61,16 +61,23 @@ class Dashboard extends React.Component {
 
     render() {
         const {bet, predict, counter, rate, initialOffset} = this.state;
-        const {balance, click, predictDown, predictUp} = this.props;
+        const {balance, click, predictDown, predictUp, currentTime} = this.props;
         const time = 10;
         const i = 10 - counter || 1;
         const newBet = /*arrBet.length === 2 ? bet + '00' : arrBet.length === 3 ? bet + '0' : arrBet.length === 1 ? bet + '.000' :*/ bet;
+        const currentTimeSec = currentTime ? +currentTime.substr(6) : 0;
+        let timeBet = false;
+        let startGame = false;
+        // const trueArray = [0, 5, 20, 25, 40, 45];
+        if(currentTimeSec) {
+            timeBet = !(currentTimeSec === 0 || currentTimeSec === 5 || currentTimeSec === 20 || currentTimeSec === 25 || currentTimeSec === 40 || currentTimeSec === 45);
+            startGame = currentTimeSec === 10 || currentTimeSec === 30 || currentTimeSec === 50;
+
+        }
         return (
             <div className="row bottom-container">
                 <Rates/>
-                <div onClick={() => {
-                    predictUp({value: bet});
-                }} className="round dashboard">
+                <div className="round dashboard">
                     <div className="range">
                         <div className="form-label d-flex justify-content-between">
                             <div>
@@ -81,6 +88,7 @@ class Dashboard extends React.Component {
                                 <span className={balance - bet >= 0 ? '' : 'red'}>
                                 <input id="numberBet" type="number" step="0.001" min="0.001" max="1"
                                        className={balance - bet >= 0 ? '' : 'red'}
+                                       disabled={predict || timeBet}
                                        onInput={this.setBet}
                                        value={newBet}/>
                                 <img className="numberBet" width="15" src={bitcoin} alt="up"/>
@@ -92,7 +100,7 @@ class Dashboard extends React.Component {
                                 <div className="bet">
                                     <input min="0.001" max="1" step="0.001"
                                            type="range"
-                                           disabled={predict}
+                                           disabled={predict || timeBet}
                                            value={newBet}
                                            style={{backgroundImage: `linear-gradient(to right, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} 0%, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} ${bet * 100}%, #fff ${bet * 100}%, white 100%)`}}
                                            onChange={this.setBet}
@@ -106,7 +114,7 @@ class Dashboard extends React.Component {
                                             <span>0.85</span>
                                             <img src={bitcoin} width="15" height="20" alt="b"/>
                                         </div>
-                                        <button disabled={predict || balance - bet < 0} onClick={(e) => {
+                                        <button disabled={predict || balance - bet < 0 || timeBet} onClick={(e) => {
                                             e.preventDefault();
                                             this.predictSubmit();
                                             this.setRate('up');
@@ -117,7 +125,7 @@ class Dashboard extends React.Component {
                                             <img src={arrowUp} width="15" height="20" alt="b"/>
                                         </button>
                                     </div>
-                                    <p style={{display: predict && rate === 'up' ? 'flex' : 'none', margin: '0 59px'}}
+                                    <p style={{display: predict && rate === 'up' && timeBet ? 'flex' : 'none', margin: '0 59px'}}
                                        id="predict"
                                        className="btn bet-btn col-sm-4">
                                         <span className="gold">{counter}
@@ -137,7 +145,7 @@ class Dashboard extends React.Component {
                                         </span>
 
                                     </p>
-                                    <p style={{display: predict && rate === 'down' ? 'flex' : 'none', margin: '0 59px'}}
+                                    <p style={{display: predict && rate === 'down' && timeBet ? 'flex' : 'none', margin: '0 59px'}}
                                        id="predict"
                                        className="btn bet-btn col-sm-4">
                                         <span className="gold">{counter}
@@ -163,7 +171,7 @@ class Dashboard extends React.Component {
                                             <span>0.85</span>
                                             <img src={bitcoin} width="15" height="20" alt="b"/>
                                         </div>
-                                        <button disabled={predict || balance - bet < 0} onClick={(e) => {
+                                        <button disabled={predict || balance - bet < 0 || timeBet} onClick={(e) => {
                                             e.preventDefault();
                                             this.predictSubmit();
                                             this.setRate('down');
@@ -190,6 +198,7 @@ const mapStateToProps = state => {
         congratulation: state.balanceReducer.congratulation,
         course: state.courseReducer.course,
         currentCourse: state.courseReducer.currentCourse,
+        currentTime: state.courseReducer.currentTime,
         lastWin: state.balanceReducer.lastWin
     }
 }

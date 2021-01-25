@@ -5,12 +5,12 @@ import {bitcoinCourse} from "../redux/actions";
 import bull from '../images/bull_tooltip.svg';
 import bear from '../images/bear_tooltip.svg';
 
-let socket = new WebSocket("wss://bitcybets.com:8000/serv");
+let socket = new WebSocket("wss://bitcybets.com:8080/serv");
 let exam;
-let graph = (course, ctx, color) => (exam = new Chart(ctx, {
+let graph = (course, labels, ctx, color) => (exam = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+        labels: labels,
         datasets: [{
             label: '',
             backgroundColor: color,
@@ -35,10 +35,12 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
         scales: {
             yAxes: [{
                 ticks: {
+                    maxTicksLimit: 6,
                     fontColor: "white",
                     fontSize: 12,
-                    stepSize: 20,
-                    fontFamily: "roc-grotesk"
+                    // stepSize: 50,
+                    fontFamily: "roc-grotesk",
+
                     // beginAtZero: true
                 },
                 gridLines: {
@@ -47,7 +49,7 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
             }],
             xAxes: [{
                 ticks: {
-                    stepSize: 0.5,
+                    maxTicksLimit: 15,
                     fontFamily: "roc-grotesk"
                 },
                 gridLines: {
@@ -83,6 +85,7 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                 } else {
                     tooltipEl.classList.add('no-transform');
                 }
+
                 //Value
                 function getBody(bodyItem) {
                     return bodyItem.lines;
@@ -109,7 +112,7 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
 
                     bodyLines.forEach(function (body, i) {
                         currentHover = body;
-                        item =course.filter((item, i) => +item === +currentHover) + '';
+                        item = course.filter((item, i) => +item === +currentHover) + '';
                         index = course.indexOf(item);
                         courseDirection = course[index] - course[index - 1] < 0;
                         const icon = !courseDirection ? bull : bear;
@@ -118,10 +121,10 @@ let graph = (course, ctx, color) => (exam = new Chart(ctx, {
                         style += '; border-color:' + colors.borderColor;
                         style += '; border-width: 2px';
                         var span = '<span style="' + style + '"></span>';
-                        if(courseDirection) {
+                        if (courseDirection) {
                             innerHtml += '<tr><td>' + span + body.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '<img style="margin-left: 5px; margin-right: -5px;" alt="logo" src="' + icon + '" /></td></tr>';
                         } else {
-                            innerHtml += '<tr><td>' + span + '<img alt="logo" style="margin-right: 5px;" src="' + icon + '" />'  + body.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '</td></tr>';
+                            innerHtml += '<tr><td>' + span + '<img alt="logo" style="margin-right: 5px;" src="' + icon + '" />' + body.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + '</td></tr>';
                         }
                     });
                     innerHtml += '</tbody>';
@@ -158,33 +161,43 @@ class Graph extends Component {
 
     componentDidMount() {
         if (socket.readyState !== 1) {
-            socket = new WebSocket("wss://bitcybets.com:8000/serv");
+            socket = new WebSocket("wss://bitcybets.com:8080/serv");
         }
-        socket.onmessage = e => {
+
+        socket.onmessage = async e => {
+            let bitcoins = [];
+            let times = [];
+            (JSON.parse(e.data)).forEach(course => {
+                const localTime = new Date(course.Time * 1000).toLocaleTimeString();
+                times.push(localTime);
+                bitcoins.push(course.Bitcoin)
+            });
             let ctx = document.getElementById('myChart').getContext('2d');
             const my_gradient = ctx.createLinearGradient(0, 100, 0, 400);
             my_gradient.addColorStop(0, "rgba(141,217,252,0.6)");
             my_gradient.addColorStop(1, "transparent");
-            let msg = e.data.slice(1, -1);
-            let data = msg.split(',');
-            let sliceData = data.slice(-17);
-            this.props.bitcoinCourse(sliceData);
+
+            let sliceData = await bitcoins;
+            let sliceLabels = await times;
+            this.props.bitcoinCourse({bitcoins: sliceData, times: sliceLabels});
             if (exam) {
                 if (exam.config.data.datasets[0].data.length > 0) {
                     exam.config.data.datasets[0].data.splice(0, 1);
-                    exam.config.data.datasets[0].data.push(data.pop());
+                    exam.config.data.datasets[0].data.push(bitcoins.pop());
+                    exam.config.data.labels.splice(0, 1);
+                    exam.config.data.labels.push(times.pop());
                     exam.update();
                 } else {
-                    graph(sliceData, ctx, my_gradient)
+                    graph(sliceData, sliceLabels, ctx, my_gradient)
                 }
             } else {
-                graph(sliceData, ctx, my_gradient)
+                graph(sliceData, sliceLabels, ctx, my_gradient)
             }
 
         }
 
     }
-//defaults.global.elements
+
     componentWillUnmount() {
         socket.close();
         this.props.bitcoinCourse([]);

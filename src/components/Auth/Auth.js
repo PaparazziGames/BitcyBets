@@ -48,11 +48,11 @@ const Auth = ({reg, authorization, registration}) => {
             .then(res => res)
             .then(data => {
                     if (data.data.status === "success") {
-                        const token = data.data.data.accessToken;
+                        let token = data.data.data.accessToken;
                         localStorage.setItem('token', token);
-                        authorization();
+                        return authorization();
                     } else if (data.data.error) {
-                        setErr(data.data.error);
+                        return setErr(data.data.error);
                     }
                 }
             )

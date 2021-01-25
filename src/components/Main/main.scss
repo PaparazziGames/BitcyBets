@@ -511,7 +511,6 @@ form {
     }
 
     .predict-btn {
-      width: 200px;
       color: var(--text-color);
       letter-spacing: 0.03em;
       text-transform: uppercase;
@@ -843,6 +842,13 @@ form {
   }
 }
 
+#chartjs-tooltip {
+  th {
+    text-align: center;
+    font-weight: 300;
+    font-size: 12px;
+  }
+}
 
 @media screen and (min-width: 1100px) and (max-width: 1280px) {
   .range {
@@ -886,6 +892,16 @@ form {
 
     .wrap-btn {
       width: auto;
+      .predict-btn {
+        font-size: 12px;
+        &.red {
+          padding-right: 30px;
+        }
+
+        &.green {
+          padding-left: 40px;
+        }
+      }
     }
   }
   .range {
@@ -898,6 +914,7 @@ form {
   .best {
     width: 100%;
   }
+
 }
 
 @media screen and (min-width: 1280px) {

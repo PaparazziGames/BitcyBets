@@ -48,7 +48,7 @@ const RightSector = ({balance, lastWin, lastgame, wins, predict, click, userdata
                     <tr>
                         <td>
                             <div className="label">Balance</div>
-                            <div style={balanceColor} className="score" id="balance">{balance.toFixed(3)} BTC</div>
+                            <div style={balanceColor} className="score" id="balance">{balance} BTC</div>
                         </td>
                         <td>
                             <div className="label">Last Win</div>

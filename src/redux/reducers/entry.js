@@ -12,6 +12,7 @@ const initialState = {
     geoposition: '',
     course: [],
     currentCourse: 0,
+    currentTime: 0,
     logoutQuestion: false
 }
 export const authReducer = (state = initialState, action) => {
@@ -42,7 +43,12 @@ export const geoReducer = (state = initialState, action) => {
 export const courseReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_COURSE:
-            return {...state, course: action.payload, currentCourse: action.payload.pop()};
+            return {
+                ...state,
+                course: action.payload.bitcoins,
+                currentCourse: action.payload.bitcoins ? action.payload.bitcoins.pop() : 0,
+                currentTime: action.payload.times ? action.payload.times.pop() : 0,
+            };
         default:
             return state;
     }

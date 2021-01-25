@@ -37,16 +37,13 @@ const fire = () => {
 };
 
 const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition}) => {
-    // const [show, setShow] = useState(false);
-    // setTimeout(() => {
-    //     setShow(true)
-    // }, 5000)
     useEffect(() => {
         fire();
     }, [])
+    let flag = course ? course.length : false;
     return (
         <div className="main">
-            <Preloader show={course.length}/>
+            <Preloader show={flag}/>
             <div style={{display: congratulation ? "block" : "none"}} className="blur">
                 <canvas width="640" height="480" id="fireworks-canvas" style={{background: 'rgba(0,0,0, .2)'}}/>
                 <div className="round-dark win">
@@ -76,7 +73,7 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                             logoutQuestion();
                             localStorage.removeItem('token');
                             prohibition();
-                            clearInterval();
+                            // clearInterval();
                         }} className="btn btn-primary">LOG OUT
                         </button>
                         <button onClick={() => {
@@ -86,14 +83,14 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                     </div>
                 </div>
             </div>
-            <main style={{display: course.length ? 'block':'none'}}>
+            <main style={{display: flag ? 'block':'none'}}>
                 <div className="row main">
                     <div className="left-sector">
                         <div className="round globe">
                             <Time/>
-                            {course.length ? (<div>
+                            {flag ? (<div>
                                 <h2 className="text-center"><img src={bitcoin} className="m-2" alt="course"/>
-                                    {currentCourse.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} <span>$</span>
+                                    {currentCourse} <span>$</span>
                                 </h2>
                                 <div>
                                     <SelectList/>

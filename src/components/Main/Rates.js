@@ -29,8 +29,9 @@ const Rates = ({rates, down, up, downBets, upBets}) => {
                     <img className="arrow middle" src={bitcoin} alt="arrow"/>
                     <div style={{height: '60%'}} className="gold-bg backgroundRate"/>
                     <div className="text">
-                        <span className="mb-1 nowrap persons">{bank || '0.000'}<img className="bank-img" width="15" height="20"
-                                                                        src={bitcoin} alt=""/></span>
+                        <span className="mb-1 nowrap persons">{bank || '0.000'}<img className="bank-img" width="15"
+                                                                                    height="20"
+                                                                                    src={bitcoin} alt=""/></span>
                     </div>
                 </div>
                 <div className="rates-col rates-down">

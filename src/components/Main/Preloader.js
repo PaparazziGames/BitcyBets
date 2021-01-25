@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import coin from '../../images/coin.svg';
 import bitsybets from '../../images/BITCYBETS.svg';
 

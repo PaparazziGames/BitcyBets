@@ -20,13 +20,13 @@ export const balanceReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case GET_USER_DATA:
-            if (action.payload.isDemo) {
+            if (!action.payload.isDemo) {
                 return {
                     ...state,
                     '3wins': action.payload['3wins'],
                     balance: action.payload.balance,
                     btcWallet: action.payload.btcWallet,
-                    wins: action.payload.wins + 1,
+                    wins: action.payload.wins,
                     lastWin: action.payload.lastWin,
                     lastgame: action.payload.lastgame,
                     name: action.payload.name,
