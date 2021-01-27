@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import arrup from "../../images/arrup.png";
 import person from "../../images/person.svg";
 import bitcoin from "../../images/bitcoin.svg";
@@ -8,7 +8,10 @@ import {connect} from "react-redux";
 
 const Rates = ({rates, down, up, downBets, upBets}) => {
     useEffect(() => {
-        rates();
+        const getRates = setInterval(() => {
+            rates();
+        }, 1000);
+        return () => clearInterval(getRates);
     }, [])
     const bank = downBets + upBets;
     const rateUp = 10 * ((up / down) ? (up / down) : 1);

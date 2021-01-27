@@ -20,7 +20,7 @@ export function predictUp(value) {
         const response = await User.predictUp(value);
         const payload = await response.data.data;
         // console.log('up', payload)
-        await dispatch({type: SET_BET_UP, payload});
+        // await dispatch({type: SET_BET_UP, payload});
     }
 }
 export function predictDown(value) {
@@ -28,7 +28,7 @@ export function predictDown(value) {
         const response = await User.predictDown(value);
         const payload = await response.data.data;
         // console.log('down', payload)
-        await dispatch({type: SET_BET_DOWN, payload});
+        // await dispatch({type: SET_BET_DOWN, payload});
     }
 }
 

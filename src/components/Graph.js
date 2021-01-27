@@ -49,7 +49,7 @@ let graph = (course, labels, ctx, color) => (exam = new Chart(ctx, {
             }],
             xAxes: [{
                 ticks: {
-                    maxTicksLimit: 15,
+                    maxTicksLimit: 16,
                     fontFamily: "roc-grotesk"
                 },
                 gridLines: {
