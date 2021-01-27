@@ -46,8 +46,8 @@ export const courseReducer = (state = initialState, action) => {
             return {
                 ...state,
                 course: action.payload.bitcoins,
-                currentCourse: action.payload.bitcoins ? action.payload.bitcoins.pop() : 0,
-                currentTime: action.payload.times ? action.payload.times.pop() : 0,
+                currentCourse: action.payload.bitcoins ? action.payload.bitcoins[action.payload.bitcoins.length - 1] : 0,
+                currentTime: action.payload.times ? action.payload.times[action.payload.times.length - 1] : 0,
             };
         default:
             return state;

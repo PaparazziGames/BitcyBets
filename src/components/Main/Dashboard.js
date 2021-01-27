@@ -11,7 +11,14 @@ import {User} from "../../api/User";
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {bet: .001, predict: false, counter: 10, rate: '', initialOffset: 440};
+        this.state = {
+            bet: .001,
+            predict: false,
+            counter: 10,
+            rate: '',
+            initialOffset: 440,
+            gameStart: undefined
+        };
         this.setBet = this.setBet.bind(this);
         this.predictSubmit = this.predictSubmit.bind(this);
         this.setRate = this.setRate.bind(this);
@@ -34,37 +41,28 @@ class Dashboard extends React.Component {
     }
 
     betDone(e) {
-        this.setRate(e.targer.id);
+        this.setRate(e.target.id);
         click();
-        e.targer.id === 'up' ? User.predictUp({value: this.state.bet.toString()}) : User.predictDown({value: this.bet.state.toString()});
+        e.target.id === 'up' ? User.predictUp({value: this.state.bet.toString()}) : User.predictDown({value: this.state.bet.toString()});
         this.setState((state) => ({...state, predict: true}));
     }
 
     predictSubmit() {
-        // const timer = setInterval(() => {
-        //     this.setState((state) => ({...state, counter: state.counter - 1}));
-        //     this.props.tic();
-        // }, 1000)
+        const timer = setInterval(() => {
+            this.setState((state) => ({...state, counter: state.counter - 1}));
+            this.props.tic();
+        }, 1000)
 
         return setTimeout(() => {
-            // clearInterval(timer);
+            clearInterval(timer);
             this.setState((state) => ({...state, predict: false, counter: 10}));
-            // let currentCourse = this.props.currentCourse;
-            // let lastCourse = this.props.course[this.props.course.length - 1];
-            let bet = this.state.bet;
-            console.log(this.state)
-            // if (currentCourse > lastCourse) {
-            //     this.state.rate === 'up' ? this.props.betWin(bet) : this.props.betLose(bet);
-            // } else if (currentCourse < lastCourse) {
-            //     this.state.rate === 'down' ? this.props.betWin(bet) : this.props.betLose(bet);
-            // }
+            //
             // if (this.props.congratulation) {
             //     this.props.bell();
             //     setTimeout(() => this.props.fireworks(), 300);
             // }
-            // this.setRate('');
-
-
+            this.setRate('');
+            this.setState((state) => ({...state, gameStart: undefined}));
         }, 10000)
     }
 
@@ -75,11 +73,12 @@ class Dashboard extends React.Component {
         const i = 10 - counter || 1;
         const newBet = /*arrBet.length === 2 ? bet + '00' : arrBet.length === 3 ? bet + '0' : arrBet.length === 1 ? bet + '.000' :*/ bet;
         const currentTimeSec = currentTime ? +currentTime.substr(6) : 0;
-        let timeBet = false;
-        let startGame = false;
-        if (currentTimeSec) {
-            timeBet = currentTimeSec === 0 || currentTimeSec === 20 || currentTimeSec === 40;
-            startGame = currentTimeSec === 10 || currentTimeSec === 30 || currentTimeSec === 50;
+        let timeBet = currentTimeSec === 0 || currentTimeSec === 20 || currentTimeSec === 40 || currentTimeSec === 5 || currentTimeSec === 25 || currentTimeSec === 45;
+        let startGame = currentTimeSec === 10 || currentTimeSec === 30 || currentTimeSec === 50 || currentTimeSec === 15 || currentTimeSec === 35 || currentTimeSec === 55;
+
+        if (startGame && this.state.gameStart === undefined) {
+            this.predictSubmit();
+            this.setState((state) => ({...state, gameStart: currentTimeSec}));
         }
         return (
             <div className="row bottom-container">
@@ -116,8 +115,12 @@ class Dashboard extends React.Component {
                                 </div>
                                 <div className='wrap-btn'>
 
-
-                                    <div style={{display: rate === 'up' || !rate ? 'block' : 'none'}} className="up">
+                                    {startGame && (rate === 'up' || !rate)
+                                        ? <span style={{display: startGame && !rate ? 'flex' : 'none'}} className="red off">All bets are off</span>
+                                        : <div style={{
+                                        display: rate === 'up' || !rate ? 'block' : 'none',
+                                        transform: startGame && (rate === 'down' || !rate) ? 'scale(0)' : 'scale(1)'
+                                    }} className="up">
                                         <div className="profit">
                                             <span className="green">Your profit</span>
                                             <span>0.85</span>
@@ -125,75 +128,80 @@ class Dashboard extends React.Component {
                                         </div>
                                         <button disabled={predict || balance - bet < 0 || !timeBet} onClick={(e) => {
                                             e.preventDefault();
-                                            this.betDone();
+                                            this.betDone(e);
                                         }}
                                                 className="btn green predict-btn" id="up">PREDICT UP
                                             <img src={arrowUp} width="15" height="20" alt="b"/>
                                         </button>
-                                    </div>
+                                    </div>}
 
-                                    <p style={{
-                                        display: startGame && rate === 'up' && !timeBet ? 'flex' : 'none',
-                                        margin: '0 59px'
-                                    }}
-                                       id="predict"
-                                       className="btn bet-btn col-sm-4">
-                                        <span className="gold">{counter}
-                                            <span className='circle'>
-                                                <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
-                                                <g>
-                                                    <title>Layer 1</title>
-                                                    <circle
-                                                        strokeDasharray={440}
-                                                        strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}
-                                                        id="circle" className="circle_animation" r="69.85699" cy="81"
-                                                        cx="81" strokeWidth="6"
-                                                        stroke="#F7931A" fill="none"/>
-                                                </g>
-                                            </svg>
-                                            </span>
-                                        </span>
-                                    </p>
-
-
-                                    <p style={{
-                                        display: startGame && rate === 'down' && !timeBet ? 'flex' : 'none',
-                                        margin: '0 59px'
-                                    }}
-                                       id="predict"
-                                       className="btn bet-btn col-sm-4">
-                                        <span className="gold">{counter}
-                                            <span className='circle'>
-                                                <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
-                                                <g>
-                                                    <title>Layer 1</title>
-                                                    <circle
-                                                        strokeDasharray={440}
-                                                        strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}
-                                                        id="circle" className="circle_animation" r="69.85699" cy="81"
-                                                        cx="81" strokeWidth="6"
-                                                        stroke="#F7931A" fill="none"/>
-                                                </g>
-                                            </svg>
-                                            </span>
-                                        </span>
-                                    </p>
-
-                                    <div style={{display: rate === 'down' || !rate ? 'block' : 'none'}}
-                                         className="down">
-                                        <div className="profit">
-                                            <span className="red">Your profit</span>
-                                            <span>0.85</span>
-                                            <img src={bitcoin} width="15" height="20" alt="b"/>
-                                        </div>
-                                        <button disabled={predict || balance - bet < 0 || !timeBet} onClick={(e) => {
-                                            e.preventDefault();
-                                            this.betDone();
+                                    <p
+                                        style={{
+                                            display: startGame && rate === 'up' ? 'flex' : 'none',
+                                            margin: '0 59px'
                                         }}
-                                                className="btn red predict-btn" id="down">PREDICT DOWN
-                                            <img src={arrowDown} width="15" height="20" alt="b"/>
-                                        </button>
-                                    </div>
+                                        id="predict"
+                                        className="btn bet-btn col-sm-4">
+                                        <span className="gold">{counter}
+                                            <span className='circle'>
+                                                <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+                                                <g>
+                                                    <title>Layer 1</title>
+                                                    <circle
+                                                        strokeDasharray={440}
+                                                        strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}
+                                                        id="circle" className="circle_animation" r="69.85699" cy="81"
+                                                        cx="81" strokeWidth="6"
+                                                        stroke="#F7931A" fill="none"/>
+                                                </g>
+                                            </svg>
+                                            </span>
+                                        </span>
+                                    </p>
+
+
+                                    <p style={{
+                                        display: startGame && (rate === 'down' || !rate) ? 'flex' : 'none',
+                                        margin: '0 59px'
+                                    }}
+                                       id="predict"
+                                       className="btn bet-btn col-sm-4">
+                                        <span className="gold">{counter}
+                                            <span className='circle'>
+                                                <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+                                                <g>
+                                                    <title>Layer 1</title>
+                                                    <circle
+                                                        strokeDasharray={440}
+                                                        strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}
+                                                        id="circle" className="circle_animation" r="69.85699" cy="81"
+                                                        cx="81" strokeWidth="6"
+                                                        stroke="#F7931A" fill="none"/>
+                                                </g>
+                                            </svg>
+                                            </span>
+                                        </span>
+                                    </p>
+
+                                    {startGame && (rate === 'up' || !rate)
+                                        ?<></>
+                                        : <div style={{display: (rate === 'down' || !rate) ? 'block' : 'none'}}
+                                               className="down">
+                                            <div className="profit">
+                                                <span className="red">Your profit</span>
+                                                <span>0.85</span>
+                                                <img src={bitcoin} width="15" height="20" alt="b"/>
+                                            </div>
+                                            <button disabled={predict || balance - bet < 0 || !timeBet}
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        this.betDone(e);
+                                                    }}
+                                                    className="btn red predict-btn" id="down">PREDICT DOWN
+                                                <img src={arrowDown} width="15" height="20" alt="b"/>
+                                            </button>
+                                        </div>
+                                    }
 
 
                                 </div>
