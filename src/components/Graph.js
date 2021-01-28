@@ -175,7 +175,6 @@ class Graph extends Component {
             const my_gradient = ctx.createLinearGradient(0, 100, 0, 400);
             my_gradient.addColorStop(0, "rgba(141,217,252,0.6)");
             my_gradient.addColorStop(1, "transparent");
-
             this.props.bitcoinCourse({bitcoins: bitcoins, times: times});
             if (exam) {
                 if (exam.config.data.datasets[0].data.length > 0) {

@@ -39,7 +39,6 @@ const Header = ({auth, mute, muteToggle, logoutQuestion}) => {
                                  src={burger} alt="icon"/>
                             <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
                                 <li className="burger-menu-item bord"><span>Create ad</span></li>
-                                <li className="burger-menu-item bord"><span>Settings</span></li>
                                 <li className="burger-menu-item bord"><span>My ads</span></li>
                                 <li className="burger-menu-item" onClick={() => {
                                     logoutQuestion();

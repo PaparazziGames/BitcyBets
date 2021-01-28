@@ -4,7 +4,7 @@ import arrowUp from "../../images/arrowUp.svg";
 import arrowDown from "../../images/arrowDown.svg";
 import {connect} from "react-redux";
 import {betLose, betWin, closeCongratulation} from "../../redux/actions";
-import {bell, click, tic, fireworks} from "../../redux/actions/music";
+import {bell, click, tic, fireworks, muteToggle} from "../../redux/actions/music";
 import Rates from "./Rates";
 import {User} from "../../api/User";
 
@@ -50,7 +50,7 @@ class Dashboard extends React.Component {
     predictSubmit() {
         const timer = setInterval(() => {
             this.setState((state) => ({...state, counter: state.counter - 1}));
-            this.props.tic();
+            // this.props.tic();
         }, 1000)
 
         return setTimeout(() => {
@@ -68,7 +68,7 @@ class Dashboard extends React.Component {
 
     render() {
         const {bet, predict, counter, rate, initialOffset} = this.state;
-        const {balance, click, currentTime} = this.props;
+        const {balance, click, currentTime, muteToggle} = this.props;
         const time = 10;
         const i = 10 - counter || 1;
         const newBet = /*arrBet.length === 2 ? bet + '00' : arrBet.length === 3 ? bet + '0' : arrBet.length === 1 ? bet + '.000' :*/ bet;
@@ -77,8 +77,10 @@ class Dashboard extends React.Component {
         let startGame = currentTimeSec === 10 || currentTimeSec === 30 || currentTimeSec === 50 || currentTimeSec === 15 || currentTimeSec === 35 || currentTimeSec === 55;
 
         if (startGame && this.state.gameStart === undefined) {
-            this.predictSubmit();
             this.setState((state) => ({...state, gameStart: currentTimeSec}));
+            this.predictSubmit();
+        } else {
+            // muteToggle();
         }
         return (
             <div className="row bottom-container">
@@ -116,24 +118,26 @@ class Dashboard extends React.Component {
                                 <div className='wrap-btn'>
 
                                     {startGame && (rate === 'up' || !rate)
-                                        ? <span style={{display: startGame && !rate ? 'flex' : 'none'}} className="red off">All bets are off</span>
+                                        ? <span style={{display: startGame && !rate ? 'flex' : 'none'}}
+                                                className="red off">All bets are off</span>
                                         : <div style={{
-                                        display: rate === 'up' || !rate ? 'block' : 'none',
-                                        transform: startGame && (rate === 'down' || !rate) ? 'scale(0)' : 'scale(1)'
-                                    }} className="up">
-                                        <div className="profit">
-                                            <span className="green">Your profit</span>
-                                            <span>0.85</span>
-                                            <img src={bitcoin} width="15" height="20" alt="b"/>
-                                        </div>
-                                        <button disabled={predict || balance - bet < 0 || !timeBet} onClick={(e) => {
-                                            e.preventDefault();
-                                            this.betDone(e);
-                                        }}
-                                                className="btn green predict-btn" id="up">PREDICT UP
-                                            <img src={arrowUp} width="15" height="20" alt="b"/>
-                                        </button>
-                                    </div>}
+                                            display: rate === 'up' || !rate ? 'block' : 'none',
+                                            transform: startGame && (rate === 'down' || !rate) ? 'scale(0)' : 'scale(1)'
+                                        }} className="up">
+                                            <div className="profit">
+                                                <span className="green">Your profit</span>
+                                                <span>0.85</span>
+                                                <img src={bitcoin} width="15" height="20" alt="b"/>
+                                            </div>
+                                            <button disabled={predict || balance - bet < 0 || !timeBet}
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        this.betDone(e);
+                                                    }}
+                                                    className="btn green predict-btn" id="up">PREDICT UP
+                                                <img src={arrowUp} width="15" height="20" alt="b"/>
+                                            </button>
+                                        </div>}
 
                                     <p
                                         style={{
@@ -184,7 +188,7 @@ class Dashboard extends React.Component {
                                     </p>
 
                                     {startGame && (rate === 'up' || !rate)
-                                        ?<></>
+                                        ? <></>
                                         : <div style={{display: (rate === 'down' || !rate) ? 'block' : 'none'}}
                                                className="down">
                                             <div className="profit">
@@ -231,7 +235,8 @@ const mapDispatchToProps = {
     tic,
     bell,
     fireworks,
-    closeCongratulation
+    closeCongratulation,
+    muteToggle
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
