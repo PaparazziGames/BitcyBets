@@ -477,6 +477,13 @@ form {
     padding-right: 0;
     justify-content: space-around;
 
+    span.red.off {
+      font-weight: 500;
+      font-size: 24px;
+      margin-left: 20px;
+      align-items: center;
+    }
+
     .up, .down {
       .profit {
         span {
@@ -486,7 +493,7 @@ form {
     }
 
     p.bet-btn {
-      width: 200px;
+      //width: 200px;
     }
 
     .refill-btn {
@@ -626,29 +633,35 @@ form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    .switch-wrapper{
+
+    .switch-wrapper {
       width: 48px;
       height: 26px;
       border-radius: 16px;
       background: linear-gradient(0deg, rgba(26, 31, 52, 0.7), rgba(26, 31, 52, 0.7)), #F7931A;
       cursor: pointer;
       display: flex;
+
       img {
         margin-left: -3px;
         border-radius: 50%;
       }
     }
+
     .demo {
       justify-content: flex-start;
     }
+
     .real {
       justify-content: flex-end;
+
       img {
         margin-right: -3px;
       }
     }
 
   }
+
   table {
     width: 100%;
 
@@ -690,6 +703,7 @@ form {
       &.green {
         color: var(--up);
         border: 1px solid var(--up);
+        margin-bottom: 15px;
       }
     }
   }
@@ -753,6 +767,7 @@ form {
         font-weight: 400;
         margin-top: 20px;
         margin-bottom: 10px;
+
         &:active {
           transform: scale(0.97);
         }
@@ -813,9 +828,9 @@ form {
   .blur {
     .win {
       &-btn {
-  .btn {
-    font-weight: 300;
-  }
+        .btn {
+          font-weight: 300;
+        }
       }
     }
   }
@@ -892,8 +907,10 @@ form {
 
     .wrap-btn {
       width: auto;
+
       .predict-btn {
         font-size: 12px;
+
         &.red {
           padding-right: 30px;
         }

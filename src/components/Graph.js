@@ -49,7 +49,7 @@ let graph = (course, labels, ctx, color) => (exam = new Chart(ctx, {
             }],
             xAxes: [{
                 ticks: {
-                    maxTicksLimit: 15,
+                    maxTicksLimit: 16,
                     fontFamily: "roc-grotesk"
                 },
                 gridLines: {
@@ -168,30 +168,26 @@ class Graph extends Component {
             let bitcoins = [];
             let times = [];
             (JSON.parse(e.data)).forEach(course => {
-                const localTime = new Date(course.Time * 1000).toLocaleTimeString();
-                times.push(localTime);
-                bitcoins.push(course.Bitcoin)
+                times.push(new Date(course.Time * 1000).toLocaleTimeString());
+                bitcoins.push(course.Bitcoin);
             });
             let ctx = document.getElementById('myChart').getContext('2d');
             const my_gradient = ctx.createLinearGradient(0, 100, 0, 400);
             my_gradient.addColorStop(0, "rgba(141,217,252,0.6)");
             my_gradient.addColorStop(1, "transparent");
-
-            let sliceData = await bitcoins;
-            let sliceLabels = await times;
-            this.props.bitcoinCourse({bitcoins: sliceData, times: sliceLabels});
+            this.props.bitcoinCourse({bitcoins: bitcoins, times: times});
             if (exam) {
                 if (exam.config.data.datasets[0].data.length > 0) {
                     exam.config.data.datasets[0].data.splice(0, 1);
-                    exam.config.data.datasets[0].data.push(bitcoins.pop());
+                    exam.config.data.datasets[0].data.push(bitcoins[bitcoins.length - 1]);
                     exam.config.data.labels.splice(0, 1);
-                    exam.config.data.labels.push(times.pop());
+                    exam.config.data.labels.push(times[times.length - 1]);
                     exam.update();
                 } else {
-                    graph(sliceData, sliceLabels, ctx, my_gradient)
+                    graph(bitcoins, times, ctx, my_gradient)
                 }
             } else {
-                graph(sliceData, sliceLabels, ctx, my_gradient)
+                graph(bitcoins, times, ctx, my_gradient)
             }
 
         }

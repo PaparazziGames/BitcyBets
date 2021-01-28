@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import back from "../../images/back.svg";
+import add from "../../images/add_photo_alternate.svg";
 import Header from "../Header/Header";
 
 const Btc = (props) => {
@@ -13,8 +14,9 @@ const Btc = (props) => {
         <div>
             <Header/>
             <div className="refill btc">
-                <span onClick={() => props.history.goBack()} className="back"><img src={back} alt="back"/></span>
+
                 <div className="round-dark">
+                    <span onClick={() => props.history.goBack()} className="back"><img src={back} alt="back"/></span>
                     <h2>Payment by BTC</h2>
                     <div className="amount label-payment"><span className="nowrap">Our BTC address</span><span
                         style={{display: copied ? "block" : "none"}} className="green">Link is copied</span></div>
@@ -24,11 +26,30 @@ const Btc = (props) => {
                                    defaultValue="1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2" type="text"/>
                         </div>
                     </div>
+
                     <div className="refill-btn">
                         <button onClick={copy} className="pay">COPY LINK</button>
-                        <button onClick={() => {
-                            props.history.push('/');
-                        }} className="pay">GO TO MAIN
+                        <div className="refill-btn">
+                            <div className="">
+                                <span className="nowrap">Upload payment screenshot</span>
+                                <label className="label">
+                                    <span className="drag">Drag and drop file here or</span>
+                                    <img src={add} alt=""/>
+                                    <span className="title">Choose file</span>
+                                    <input type="file"/>
+                                </label>
+                            </div>
+                        </div>
+                        <div className="refill-input mt-5">
+                            <div className="input-wrap">
+                                <span className="nowrap">Transaction ID</span>
+                                <input required name="trans" id='trans' className="card-number"
+                                       placeholder="11223344"
+                                        type="text"/>
+                            </div>
+                        </div>
+                        <button type="submit" onClick={() => {
+                        }} className="pay mt-5">SEND
                         </button>
                     </div>
                 </div>

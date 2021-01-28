@@ -12,8 +12,8 @@ const Usd = (props) => {
             <div>
                 <Header/>
                 <div className="refill false">
-                    <span onClick={() => props.history.goBack()} className="back"><img src={back} alt="back"/></span>
                     <div className="round-dark main-usd">
+                        <span onClick={() => props.history.goBack()} className="back"><img src={back} alt="back"/></span>
                         <h2>Payment by USD</h2>
                         <p>Enter your bank card</p>
                         <div className="wrap-img"><img src={visa} alt="visa"/><img src={mastercard} alt="master"/></div>
@@ -33,6 +33,13 @@ const Usd = (props) => {
                             </div>
                             <div className="input-wrap">
                                 <input placeholder="_ _ _" type="text"/>
+                            </div>
+                        </div>
+                        <div className="refill-input mt-3 mb-3">
+                            <div className="input-wrap">
+                                <span className="nowrap">Holder’s name</span>
+                                <input className="card-number" placeholder="Michael Vasques"
+                                       type="text"/>
                             </div>
                         </div>
                         <div className="refill-btn">

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import arrup from "../../images/arrup.png";
 import person from "../../images/person.svg";
 import bitcoin from "../../images/bitcoin.svg";
@@ -8,7 +8,10 @@ import {connect} from "react-redux";
 
 const Rates = ({rates, down, up, downBets, upBets}) => {
     useEffect(() => {
-        rates();
+        const getRates = setInterval(() => {
+            rates();
+        }, 1000);
+        return () => clearInterval(getRates);
     }, [])
     const bank = downBets + upBets;
     const rateUp = 10 * ((up / down) ? (up / down) : 1);
@@ -19,7 +22,7 @@ const Rates = ({rates, down, up, downBets, upBets}) => {
             <div className="wrap-table">
                 <div className="rates-col rates-up">
                     <img className="arrow" src={arrup} alt="arrow"/>
-                    <div style={{height: `${rateUp <= 80 ? rateUp : 80}%`}} className="green-bg backgroundRate"/>
+                    <div style={{height: `${rateUp <= 70 ? rateUp : 70}%`}} className="green-bg backgroundRate"/>
                     <div className="text">
                         <span className="mb-1 persons">{up}<img className="mb-1" src={person} alt=""/></span>
                         {/*<span className='pr-2'>0.125<img className="mb-1" width="15" height="20" src={bitcoin} alt=""/></span>*/}
@@ -36,7 +39,7 @@ const Rates = ({rates, down, up, downBets, upBets}) => {
                 </div>
                 <div className="rates-col rates-down">
                     <img className="arrow" src={arrdown} alt="arrow"/>
-                    <div style={{height: `${rateDown <= 80 ? rateDown : 80}%`}} className="red-bg backgroundRate"/>
+                    <div style={{height: `${rateDown <= 70 ? rateDown : 70}%`}} className="red-bg backgroundRate"/>
                     <div className="text">
                         <span className="mb-1 persons">{down}<img className="mb-1" src={person} alt=""/></span>
                         {/*<span className='pr-2'>0.185<img className="mb-1" width="15" height="20" src={bitcoin} alt=""/></span>*/}

@@ -48,11 +48,12 @@ const Auth = ({reg, authorization, registration}) => {
             .then(res => res)
             .then(data => {
                     if (data.data.status === "success") {
-                        let token = data.data.data.accessToken;
-                        localStorage.setItem('token', token);
+                        localStorage.setItem('token', data.data.data.accessToken);
                         return authorization();
                     } else if (data.data.error) {
                         return setErr(data.data.error);
+                    } else {
+                        return setErr('error, try again after 2-3 minutes')
                     }
                 }
             )

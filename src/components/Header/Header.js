@@ -24,9 +24,9 @@ const Header = ({auth, mute, muteToggle, logoutQuestion}) => {
                             <img src={logo} alt="logo" height="32"/>
                         </Link>
                     </nav>
-                    <Link id="logoCentre" to="/">
-                        <img className="mt-3" src={logo2} alt="logo" width="96"/>
-                    </Link>
+                    {/*<Link id="logoCentre" to="/">*/}
+                    {/*    <img className="mt-3" src={logo2} alt="logo" width="96"/>*/}
+                    {/*</Link>*/}
                     {/*<h4 style={auth ? {display: 'block'} : {display: 'none'}} className="text-center">Bitcoin Live price</h4>*/}
                     <div className="header-right">
                         <img onClick={handleMute} className="sound" src={mute ? sound : noSound} height="18" width="18"
@@ -39,7 +39,6 @@ const Header = ({auth, mute, muteToggle, logoutQuestion}) => {
                                  src={burger} alt="icon"/>
                             <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
                                 <li className="burger-menu-item bord"><span>Create ad</span></li>
-                                <li className="burger-menu-item bord"><span>Settings</span></li>
                                 <li className="burger-menu-item bord"><span>My ads</span></li>
                                 <li className="burger-menu-item" onClick={() => {
                                     logoutQuestion();
