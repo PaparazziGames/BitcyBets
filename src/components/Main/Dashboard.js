@@ -7,6 +7,7 @@ import {betLose, betWin, closeCongratulation} from "../../redux/actions";
 import {bell, click, tic, fireworks, muteToggle} from "../../redux/actions/music";
 import Rates from "./Rates";
 import {User} from "../../api/User";
+import {userdata} from "../../redux/actions/game";
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -56,13 +57,26 @@ class Dashboard extends React.Component {
         return setTimeout(() => {
             clearInterval(timer);
             this.setState((state) => ({...state, predict: false, counter: 10}));
-            //
+            User.userdata()
+                .then(data =>{
+                    this.props.bell();
+                    if(+data.data.data.lastWin === 1 && !!this.state.rate) {
+                        console.log(data.data.data.lastWin)
+                        this.props.betWin();
+                        this.props.fireworks();
+                    } else if(+data.data.data.lastWin === -1 && !!this.state.rate) {
+                        console.log(data.data.data.lastWin)
+                        this.props.betLose();
+                    }
+                    console.log(data.data.data.lastWin)
+                })
             // if (this.props.congratulation) {
             //     this.props.bell();
-            //     setTimeout(() => this.props.fireworks(), 300);
+            //     setTimeout(() => , 300);
             // }
             this.setRate('');
             this.setState((state) => ({...state, gameStart: undefined}));
+            this.props.userdata();
         }, 10000)
     }
 
@@ -119,7 +133,7 @@ class Dashboard extends React.Component {
 
                                     {startGame && (rate === 'up' || !rate)
                                         ? <span style={{display: startGame && !rate ? 'flex' : 'none'}}
-                                                className="red off">All bets are off</span>
+                                                className="off">All bets are off</span>
                                         : <div style={{
                                             display: rate === 'up' || !rate ? 'block' : 'none',
                                             transform: startGame && (rate === 'down' || !rate) ? 'scale(0)' : 'scale(1)'
@@ -236,7 +250,8 @@ const mapDispatchToProps = {
     bell,
     fireworks,
     closeCongratulation,
-    muteToggle
+    muteToggle,
+    userdata
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

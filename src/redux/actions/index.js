@@ -31,7 +31,7 @@ export function geoposition() {
             let locationPlace = pos.coords.latitude + "," + pos.coords.longitude;
             const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=abd620940ef44119b1f161639201704&q=${locationPlace}`);
             const data = await response.json();
-            namePlace = data.location.name
+            namePlace = data.location.tz_id
             dispatch({type: GET_LOCATION, payload: namePlace})
         })
     }

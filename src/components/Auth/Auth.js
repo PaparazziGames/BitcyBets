@@ -27,17 +27,23 @@ const Auth = ({reg, authorization, registration}) => {
         event.preventDefault();
 
         const body = JSON.stringify({name, phone, email, pass, confpass});
-        if(confpass.length < 8 || confpass.length < 8) {
+        if (confpass.length < 8 || confpass.length < 8) {
             setErr('Password length must be 8 characters')
         } else {
             User.register(body)
                 .then(res => res)
                 .then(data => {
-                    return data.data.status === "success" ? registration() : data.data.error ? setErr(data.data.error) : false;
+                    if (data.data.status === "success") {
+                        localStorage.setItem('token', data.data.data.accessToken);
+                        authorization();
+                    } else {
+                        if (data.data.error) {
+                            setErr(data.data.error);
+                        } else return false;
+                    }
                 })
                 .catch(error => setErr(error.response.data.error))
         }
-
     }
 
     const handleLogin = event => {
@@ -70,7 +76,8 @@ const Auth = ({reg, authorization, registration}) => {
                         <PhoneInput onChange={e => {
                             setPhone(e);
                             setErr('');
-                        }} id="phone" limitMaxLength={true} placeholder='+123-456-78-90' value={phone} international displayInitialValueAsLocalNumber required/>
+                        }} id="phone" limitMaxLength={true} placeholder='+123-456-78-90' value={phone} international
+                                    displayInitialValueAsLocalNumber required/>
                     </div>
                     <div className={password ? 'pass' : 'text'}>
                         <span onClick={() => setPassword(!password)} className="eye"/>
@@ -117,7 +124,8 @@ const Auth = ({reg, authorization, registration}) => {
                         <PhoneInput onChange={e => {
                             setPhone(e);
                             setErr('');
-                        }} id="phone" limitMaxLength={true} placeholder='+123-456-78-90' value={phone} international displayInitialValueAsLocalNumber required/>
+                        }} id="phone" limitMaxLength={true} placeholder='+123-456-78-90' value={phone} international
+                                    displayInitialValueAsLocalNumber required/>
                     </div>
                     <div className="">
                         <label htmlFor="email">Email</label>

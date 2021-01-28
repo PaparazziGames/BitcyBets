@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './refill.scss';
 import bitcoin from "../../images/bitcoin.svg";
 import dollar from "../../images/dollar.svg";
@@ -19,14 +19,16 @@ const Refill = (props) => {
     const [bit, setBit] = useState(0);
     const [usd, setUsd] = useState(0);
     const [reverse, setReverse] = useState(false);
+    useEffect(() => socket.close())
     return (
         <div>
             <Header/>
             <div className="refill">
                 <div className="round-dark">
                     <span onClick={() => props.history.goBack()} className="back"><img src={back} alt="back"/></span>
-                    <h2>How to fulfill</h2>
-                    <p>We are glad that you are going to be with us</p>
+                    {/*<h2>How to fulfill</h2>*/}
+                    {/*<p>We are glad that you are going to be with us</p>*/}
+                    <h2>Deposit options</h2>
                     <div className="amount">Amount</div>
                     <br/>
                     <div className={reverse ? "refill-input flex-row-reverse" : "refill-input"}>
