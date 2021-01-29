@@ -272,6 +272,7 @@ main {
           text-align: center;
           display: flex;
           justify-content: flex-end;
+
           &:after {
             content: '';
             width: 15px;
@@ -283,6 +284,7 @@ main {
             position: absolute;
             top: 0;
             right: -20px;
+
             span {
               margin-right: 5px;
             }
@@ -358,17 +360,32 @@ main {
 
 .form-label {
   margin-bottom: 0;
-div {
-  .make-bet {
 
+  div {
+    text-align: right;
+    .make-bet {
+      animation-name: blinker;
+      animation-iteration-count: infinite;
+      animation-delay: 500ms;
+      animation-duration: 3s;
+    }
+    .time-bet {
+      font-weight: 500;
+      font-size: 24px;
+      color: var(--gold);
+    }
   }
-}
+
   p span {
     font-weight: 300;
   }
 
 }
-
+@keyframes blinker {
+  0% { color: var(--text-color)}
+  50% { color: var(--gold)}
+  100% { color: var(--text-color)}
+}
 form {
   text-align: center;
   //width: 430px;

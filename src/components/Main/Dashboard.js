@@ -16,13 +16,14 @@ class Dashboard extends React.Component {
             bet: .001,
             // predict: false,
             counter: 10,
+            counterBet: 10,
             // rate: '',
             initialOffset: 440,
             gameStart: undefined
         };
         this.setBet = this.setBet.bind(this);
         this.predictSubmit = this.predictSubmit.bind(this);
-        // this.setRate = this.setRate.bind(this);
+        this.countSec = this.countSec.bind(this);
         this.betDone = this.betDone.bind(this);
         // this.setPredict = this.setPredict.bind(this);
     }
@@ -49,6 +50,17 @@ class Dashboard extends React.Component {
         await rate === 'up' ? this.props.predictUp({value: this.state.bet.toString()}) : this.props.predictDown({value: this.state.bet.toString()});
     }
 
+    countSec() {
+        const betTimer = setInterval(() => {
+            this.setState((state) => ({...state, counterBet: state.counterBet - 1}));
+            // this.props.tic();
+        }, 1000)
+        return setTimeout(() => {
+            clearInterval(betTimer);
+            this.setState((state) => ({...state, counterBet: 10}));
+        }, 10000)
+    }
+
     predictSubmit() {
         const timer = setInterval(() => {
             this.setState((state) => ({...state, counter: state.counter - 1}));
@@ -71,12 +83,13 @@ class Dashboard extends React.Component {
                 })
             this.setState((state) => ({...state, gameStart: undefined}));
             this.props.predictClear();
+            this.countSec();
         }, 10000)
     }
 
     render() {
-        const {bet, counter, initialOffset} = this.state;
-        const {balance, click, currentTime, predict} = this.props;
+        const {bet, counter, initialOffset, counterBet} = this.state;
+        const {balance, currentTime, predict, upBets, downBets} = this.props;
         const time = 10;
         const i = 10 - counter || 1;
         const newBet = /*arrBet.length === 2 ? bet + '00' : arrBet.length === 3 ? bet + '0' : arrBet.length === 1 ? bet + '.000' :*/ bet;
@@ -88,7 +101,7 @@ class Dashboard extends React.Component {
             this.setState((state) => ({...state, gameStart: currentTimeSec}));
             this.predictSubmit();
         } else {
-            // muteToggle();
+
         }
         return (
             <div className="row bottom-container">
@@ -97,8 +110,9 @@ class Dashboard extends React.Component {
                     <div className="range">
                         <div className="form-label d-flex justify-content-between">
                             <div>
-                                <h2 className="make-bet text-left">Make your bet</h2>
-                                <span>{predict}</span>
+                                <h2 className={predict || startGame ? "text-left" : "make-bet text-left"}>Make your
+                                    bet</h2>
+                                <span className="time-bet">{timeBet ? counterBet : ''}</span>
                             </div>
                             <div>
                                 <span className={balance - bet >= 0 ? '' : 'red'}>
@@ -134,7 +148,7 @@ class Dashboard extends React.Component {
                                         }} className="up">
                                             <div className="profit">
                                                 <span className="green">Your profit</span>
-                                                <span>0.85</span>
+                                                <span>{(bet / upBets * downBets) > 0 ? bet / upBets * downBets : 0}</span>
                                                 <img src={bitcoin} width="15" height="20" alt="b"/>
                                             </div>
                                             <button disabled={predict || balance - bet < 0 || !timeBet}
@@ -201,7 +215,7 @@ class Dashboard extends React.Component {
                                                className="down">
                                             <div className="profit">
                                                 <span className="red">Your profit</span>
-                                                <span>0.85</span>
+                                                <span>{(bet / downBets * upBets) > 0 ? bet / downBets * upBets : 0}</span>
                                                 <img src={bitcoin} width="15" height="20" alt="b"/>
                                             </div>
                                             <button disabled={predict || balance - bet < 0 || !timeBet}
@@ -234,7 +248,9 @@ const mapStateToProps = state => {
         currentCourse: state.courseReducer.currentCourse,
         currentTime: state.courseReducer.currentTime,
         lastWin: state.balanceReducer.lastWin,
-        predict: state.balanceReducer.predict
+        predict: state.balanceReducer.predict,
+        downBets: state.balanceReducer.downBets,
+        upBets: state.balanceReducer.upBets
     }
 }
 const mapDispatchToProps = {
