@@ -180,6 +180,37 @@ main {
           align-items: flex-end;
           justify-content: center;
         }
+        .bank {
+          position: relative;
+          color: #E7AF1E;
+         .coin {
+           background-image: url(../../images/coinGold.svg);
+           background-repeat: no-repeat;
+           background-size: 99%;
+           background-position: bottom;
+           position: absolute;
+         }
+        }
+        .rates-down {
+          position: relative;
+         .coin {
+           background-image: url(../../images/coinDown.svg);
+           background-repeat: no-repeat;
+           background-size: 99%;
+           background-position: bottom;
+           position: absolute;
+         }
+        }
+        .rates-up {
+          position: relative;
+          .coin {
+            background-image: url(../../images/coinUp.svg);
+            background-repeat: no-repeat;
+            background-size: 99%;
+            background-position: bottom;
+            position: absolute;
+          }
+        }
       }
     }
 

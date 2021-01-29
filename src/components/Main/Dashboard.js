@@ -148,7 +148,7 @@ class Dashboard extends React.Component {
                                         }} className="up">
                                             <div className="profit">
                                                 <span className="green">Your profit</span>
-                                                <span>{(bet / upBets * downBets) > 0 ? bet / upBets * downBets : 0}</span>
+                                                <span>{((bet / (bet + upBets) * downBets + bet) * 0.97).toFixed(3)}</span>
                                                 <img src={bitcoin} width="15" height="20" alt="b"/>
                                             </div>
                                             <button disabled={predict || balance - bet < 0 || !timeBet}
@@ -215,7 +215,7 @@ class Dashboard extends React.Component {
                                                className="down">
                                             <div className="profit">
                                                 <span className="red">Your profit</span>
-                                                <span>{(bet / downBets * upBets) > 0 ? bet / downBets * upBets : 0}</span>
+                                                <span>{((bet / (bet + downBets) * upBets + bet) * 0.97).toFixed(3)}</span>
                                                 <img src={bitcoin} width="15" height="20" alt="b"/>
                                             </div>
                                             <button disabled={predict || balance - bet < 0 || !timeBet}

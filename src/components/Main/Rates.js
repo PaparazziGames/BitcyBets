@@ -7,6 +7,12 @@ import {rates} from "../../redux/actions/game";
 import {connect} from "react-redux";
 
 const Rates = ({rates, down, up, downBets, upBets}) => {
+    const bankCoin = new Array(up + down).fill('bank');
+    const upCoin = new Array(up).fill('up');
+    const downCoin = new Array(down).fill('down');
+    const fillBank = bankCoin.map((coin, index) => (<div key={index + coin} style={{height: "34px", width: "100%", bottom: index * 7 + "px"}} className="coin"/>))
+    const fillDown = downCoin.map((coin, index) => (<div key={index + coin} style={{height: "34px", width: "100%", bottom: index * 7 + "px"}} className="coin"/>))
+    const fillUp = upCoin.map((coin, index) => (<div key={index + coin} style={{height: "34px", width: "100%", bottom: index * 7 + "px"}} className="coin"/>))
     useEffect(() => {
         const getRates = setInterval(() => {
             rates();
@@ -22,7 +28,8 @@ const Rates = ({rates, down, up, downBets, upBets}) => {
             <div className="wrap-table">
                 <div className="rates-col rates-up">
                     <img className="arrow" src={arrup} alt="arrow"/>
-                    <div style={{height: `${rateUp <= 70 ? rateUp : 70}%`}} className="green-bg backgroundRate"/>
+                    {fillUp.length ? fillUp : <div style={{height: "34px", width: "100%", bottom: 0 + "px"}} className="coin"/>}
+                    {/*<div style={{height: `${rateUp <= 70 ? rateUp : 70}%`}} className="green-bg backgroundRate"/>*/}
                     <div className="text">
                         <span className="mb-1 persons">{up}<img className="mb-1" src={person} alt=""/></span>
                         {/*<span className='pr-2'>0.125<img className="mb-1" width="15" height="20" src={bitcoin} alt=""/></span>*/}
@@ -30,7 +37,8 @@ const Rates = ({rates, down, up, downBets, upBets}) => {
                 </div>
                 <div onClick={rates} className="rates-col bank">
                     <img className="arrow middle" src={bitcoin} alt="arrow"/>
-                    <div style={{height: '60%'}} className="gold-bg backgroundRate"/>
+                    {/*<div style={{height: '60%'}} className="gold-bg backgroundRate"/>*/}
+                    {fillBank.length ? fillBank : <div style={{height: "34px", width: "100%", bottom: 0 + "px"}} className="coin"/>}
                     <div className="text">
                         <span className="mb-1 nowrap persons">{bank || '0.000'}<img className="bank-img" width="15"
                                                                                     height="20"
@@ -39,7 +47,8 @@ const Rates = ({rates, down, up, downBets, upBets}) => {
                 </div>
                 <div className="rates-col rates-down">
                     <img className="arrow" src={arrdown} alt="arrow"/>
-                    <div style={{height: `${rateDown <= 70 ? rateDown : 70}%`}} className="red-bg backgroundRate"/>
+                    {fillDown.length ? fillDown : <div style={{height: "34px", width: "100%", bottom: 0 + "px"}} className="coin"/>}
+                    {/*<div style={{height: `${rateDown <= 70 ? rateDown : 70}%`}} className="red-bg backgroundRate"/>*/}
                     <div className="text">
                         <span className="mb-1 persons">{down}<img className="mb-1" src={person} alt=""/></span>
                         {/*<span className='pr-2'>0.185<img className="mb-1" width="15" height="20" src={bitcoin} alt=""/></span>*/}
