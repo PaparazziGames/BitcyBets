@@ -252,7 +252,6 @@ main {
           display: flex;
           flex-wrap: nowrap;
           //justify-content: flex-end;
-
           span {
             white-space: nowrap;
           }
@@ -269,9 +268,10 @@ main {
           width: 100%;
           position: absolute;
           top: -25px;
-          right: 0;
+          right: 10px;
           text-align: center;
-
+          display: flex;
+          justify-content: flex-end;
           &:after {
             content: '';
             width: 15px;
@@ -282,7 +282,10 @@ main {
             background-size: contain;
             position: absolute;
             top: 0;
-            right: 0;
+            right: -20px;
+            span {
+              margin-right: 5px;
+            }
           }
 
           &.down:after {
@@ -355,7 +358,11 @@ main {
 
 .form-label {
   margin-bottom: 0;
+div {
+  .make-bet {
 
+  }
+}
   p span {
     font-weight: 300;
   }

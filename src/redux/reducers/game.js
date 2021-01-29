@@ -1,4 +1,13 @@
-import {BET_LOSE, BET_WIN, CLOSE_CONGRATULATION, GET_RATES, GET_USER_DATA} from "../types";
+import {
+    BET_LOSE,
+    BET_WIN, CHANGE_DEMO,
+    CLEAR_BET,
+    CLOSE_CONGRATULATION,
+    GET_RATES,
+    GET_USER_DATA,
+    SET_BET_DOWN,
+    SET_BET_UP
+} from "../types";
 
 const initialState = {
     name: '',
@@ -10,7 +19,8 @@ const initialState = {
     btcWallet: '',
     isDemo: true,
     congratulation: false,
-    predict: 'white',
+    predict: '',
+    colorBlalance: 'white',
     down: 0,
     up: 0,
     upBets: 0,
@@ -19,8 +29,13 @@ const initialState = {
 export const balanceReducer = (state = initialState, action) => {
 
     switch (action.type) {
+        case CHANGE_DEMO:
+                return {
+                    ...state,
+                    isDemo: !state.isDemo
+                };
         case GET_USER_DATA:
-            if (!action.payload.isDemo) {
+            if (state.isDemo) {
                 return {
                     ...state,
                     '3wins': action.payload['3wins'],
@@ -30,7 +45,7 @@ export const balanceReducer = (state = initialState, action) => {
                     lastWin: action.payload.lastWin,
                     lastgame: action.payload.lastgame,
                     name: action.payload.name,
-                    isDemo: action.payload.isDemo
+                    // isDemo: action.payload.isDemo
                 };
             } else {
                 return {
@@ -42,7 +57,7 @@ export const balanceReducer = (state = initialState, action) => {
                     lastWin: action.payload.lastWin,
                     lastgame: action.payload.lastgame,
                     name: action.payload.name,
-                    isDemo: action.payload.isDemo
+                    // isDemo: action.payload.isDemo
                 };
             }
         case GET_RATES:
@@ -60,13 +75,31 @@ export const balanceReducer = (state = initialState, action) => {
                 // wins: state.wins + 1,
                 // lastWin: action.payload,
                 congratulation: true,
-                predict: 'green'
+                colorBlalance: 'green'
             };
         case BET_LOSE:
             return {
                 ...state,
                 // balance: state.balance - parseFloat(action.payload),
-                predict: 'red'
+                colorBlalance: 'red'
+            };
+        case SET_BET_UP:
+            return {
+                ...state,
+                // balance: state.balance - parseFloat(action.payload),
+                predict: 'up'
+            };
+        case SET_BET_DOWN:
+            return {
+                ...state,
+                // balance: state.balance - parseFloat(action.payload),
+                predict: 'down'
+            };
+        case CLEAR_BET:
+            return {
+                ...state,
+                // balance: state.balance - parseFloat(action.payload),
+                predict: ''
             };
         case CLOSE_CONGRATULATION:
             return {...state, congratulation: false};

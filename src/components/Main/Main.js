@@ -11,6 +11,7 @@ import {money, stop} from "../../redux/actions/music";
 import JS_FIREWORKS from "../fireworks";
 import Time from "./Time";
 import Preloader from "./Preloader";
+import {userdata} from "../../redux/actions/game";
 
 const fire = () => {
     document.getElementById('fireworks-canvas').style.width = '100%'
@@ -36,7 +37,7 @@ const fire = () => {
     firework.start();
 };
 
-const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition}) => {
+const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata}) => {
     useEffect(() => {
         fire();
     }, [])
@@ -52,12 +53,14 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                     <div className="win-btn">
                         <button onClick={() => {
                             closeCongratulation();
+                            userdata();
                             document.getElementById('fireworks').pause();
                             money();
                         }} className="btn btn-primary">ADD TO MY WALLET
                         </button>
                         <button disabled onClick={() => {
                             closeCongratulation();
+                            userdata();
                             document.getElementById('fireworks').pause();
                             money();
                         }} className="btn btn-primary">WITHDRAW
@@ -124,6 +127,7 @@ const mapDispatchToProps = {
     money,
     stop,
     logoutQuestion,
-    prohibition
+    prohibition,
+    userdata
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -24,4 +24,6 @@ export const GET_USER_DATA = 'GET_USER_DATA';
 export const GET_RATES = 'GET_RATES';
 export const SET_BET_UP = 'SET_BET_UP';
 export const SET_BET_DOWN = 'SET_BET_DOWN';
+export const CLEAR_BET = 'CLEAR_BET';
+export const CHANGE_DEMO = 'CHANGE_DEMO';
 

@@ -1,4 +1,4 @@
-import {GET_RATES, GET_USER_DATA, SET_BET_DOWN, SET_BET_UP} from "../types";
+import {CHANGE_DEMO, CLEAR_BET, GET_RATES, GET_USER_DATA, SET_BET_DOWN, SET_BET_UP} from "../types";
 import {User} from "../../api/User";
 
 export function userdata() {
@@ -18,17 +18,29 @@ export function rates() {
 export function predictUp(value) {
     return async dispatch => {
         const response = await User.predictUp(value);
-        const payload = await response.data.data;
-        // console.log('up', payload)
-        // await dispatch({type: SET_BET_UP, payload});
+        const payload = await response.data.status;
+        if(payload === "success") {
+            await dispatch({type: SET_BET_UP});
+        }
     }
 }
 export function predictDown(value) {
     return async dispatch => {
         const response = await User.predictDown(value);
-        const payload = await response.data.data;
-        // console.log('down', payload)
-        // await dispatch({type: SET_BET_DOWN, payload});
+        const payload = await response.data.status;
+        if(payload === "success") {
+            await dispatch({type: SET_BET_DOWN});
+        }
+    }
+}
+export function predictClear() {
+    return dispatch => {
+        dispatch({type: CLEAR_BET});
+    }
+}
+export function changeDemo() {
+    return dispatch => {
+        dispatch({type: CHANGE_DEMO})
     }
 }
 

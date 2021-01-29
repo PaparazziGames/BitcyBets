@@ -7,23 +7,24 @@ import {betLose, betWin, closeCongratulation} from "../../redux/actions";
 import {bell, click, tic, fireworks, muteToggle} from "../../redux/actions/music";
 import Rates from "./Rates";
 import {User} from "../../api/User";
-import {userdata} from "../../redux/actions/game";
+import {predictClear, predictDown, predictUp, userdata} from "../../redux/actions/game";
 
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             bet: .001,
-            predict: false,
+            // predict: false,
             counter: 10,
-            rate: '',
+            // rate: '',
             initialOffset: 440,
             gameStart: undefined
         };
         this.setBet = this.setBet.bind(this);
         this.predictSubmit = this.predictSubmit.bind(this);
-        this.setRate = this.setRate.bind(this);
+        // this.setRate = this.setRate.bind(this);
         this.betDone = this.betDone.bind(this);
+        // this.setPredict = this.setPredict.bind(this);
     }
 
     setBet(e) {
@@ -37,15 +38,15 @@ class Dashboard extends React.Component {
         this.setState((state) => ({...state, ...{bet: bet ? bet : 0.001}}));
     }
 
-    setRate(rate) {
-        this.setState((state) => ({...state, rate: rate}));
-    }
+    // setRate(rate) {
+    //     this.setState((state) => (Object.assign({rate: rate}, state)));
+    // }
 
-    betDone(e) {
-        this.setRate(e.target.id);
-        click();
-        e.target.id === 'up' ? User.predictUp({value: this.state.bet.toString()}) : User.predictDown({value: this.state.bet.toString()});
-        this.setState((state) => ({...state, predict: true}));
+    async betDone(e) {
+        let rate = e.target.id;
+        // this.setRate(rate);
+        this.props.click();
+        await rate === 'up' ? this.props.predictUp({value: this.state.bet.toString()}) : this.props.predictDown({value: this.state.bet.toString()});
     }
 
     predictSubmit() {
@@ -53,36 +54,29 @@ class Dashboard extends React.Component {
             this.setState((state) => ({...state, counter: state.counter - 1}));
             // this.props.tic();
         }, 1000)
-
+        const predict = this.props.predict;
         return setTimeout(() => {
             clearInterval(timer);
-            this.setState((state) => ({...state, predict: false, counter: 10}));
+            this.setState((state) => ({...state, counter: 10}));
             User.userdata()
-                .then(data =>{
-                    this.props.bell();
-                    if(+data.data.data.lastWin === 1 && !!this.state.rate) {
-                        console.log(data.data.data.lastWin)
+                .then(data => {
+                    if (+data.data.data.lastWin === 1 && predict !== '') {
+                        this.props.bell();
                         this.props.betWin();
                         this.props.fireworks();
-                    } else if(+data.data.data.lastWin === -1 && !!this.state.rate) {
-                        console.log(data.data.data.lastWin)
+                    } else if (+data.data.data.lastWin === -1 && predict !== '') {
+                        this.props.bell();
                         this.props.betLose();
                     }
-                    console.log(data.data.data.lastWin)
                 })
-            // if (this.props.congratulation) {
-            //     this.props.bell();
-            //     setTimeout(() => , 300);
-            // }
-            this.setRate('');
             this.setState((state) => ({...state, gameStart: undefined}));
-            this.props.userdata();
+            this.props.predictClear();
         }, 10000)
     }
 
     render() {
-        const {bet, predict, counter, rate, initialOffset} = this.state;
-        const {balance, click, currentTime, muteToggle} = this.props;
+        const {bet, counter, initialOffset} = this.state;
+        const {balance, click, currentTime, predict} = this.props;
         const time = 10;
         const i = 10 - counter || 1;
         const newBet = /*arrBet.length === 2 ? bet + '00' : arrBet.length === 3 ? bet + '0' : arrBet.length === 1 ? bet + '.000' :*/ bet;
@@ -103,8 +97,8 @@ class Dashboard extends React.Component {
                     <div className="range">
                         <div className="form-label d-flex justify-content-between">
                             <div>
-                                <h2 className="text-left">Make your bet</h2>
-                                <span>Set bet size</span>
+                                <h2 className="make-bet text-left">Make your bet</h2>
+                                <span>{predict}</span>
                             </div>
                             <div>
                                 <span className={balance - bet >= 0 ? '' : 'red'}>
@@ -131,12 +125,12 @@ class Dashboard extends React.Component {
                                 </div>
                                 <div className='wrap-btn'>
 
-                                    {startGame && (rate === 'up' || !rate)
-                                        ? <span style={{display: startGame && !rate ? 'flex' : 'none'}}
+                                    {startGame && (predict === 'down' || !predict)
+                                        ? <span style={{display: startGame && !predict ? 'flex' : 'none'}}
                                                 className="off">All bets are off</span>
                                         : <div style={{
-                                            display: rate === 'up' || !rate ? 'block' : 'none',
-                                            transform: startGame && (rate === 'down' || !rate) ? 'scale(0)' : 'scale(1)'
+                                            display: predict === 'up' || !predict ? 'block' : 'none',
+                                            transform: startGame && (predict === 'down' || !predict) ? 'scale(0)' : 'scale(1)'
                                         }} className="up">
                                             <div className="profit">
                                                 <span className="green">Your profit</span>
@@ -155,7 +149,7 @@ class Dashboard extends React.Component {
 
                                     <p
                                         style={{
-                                            display: startGame && rate === 'up' ? 'flex' : 'none',
+                                            display: startGame && predict === 'up' ? 'flex' : 'none',
                                             margin: '0 59px'
                                         }}
                                         id="predict"
@@ -179,7 +173,7 @@ class Dashboard extends React.Component {
 
 
                                     <p style={{
-                                        display: startGame && (rate === 'down' || !rate) ? 'flex' : 'none',
+                                        display: startGame && (predict === 'down' || !predict) ? 'flex' : 'none',
                                         margin: '0 59px'
                                     }}
                                        id="predict"
@@ -201,9 +195,9 @@ class Dashboard extends React.Component {
                                         </span>
                                     </p>
 
-                                    {startGame && (rate === 'up' || !rate)
+                                    {startGame && (predict === 'up' || !predict)
                                         ? <></>
-                                        : <div style={{display: (rate === 'down' || !rate) ? 'block' : 'none'}}
+                                        : <div style={{display: (predict === 'down' || !predict) ? 'block' : 'none'}}
                                                className="down">
                                             <div className="profit">
                                                 <span className="red">Your profit</span>
@@ -239,12 +233,16 @@ const mapStateToProps = state => {
         course: state.courseReducer.course,
         currentCourse: state.courseReducer.currentCourse,
         currentTime: state.courseReducer.currentTime,
-        lastWin: state.balanceReducer.lastWin
+        lastWin: state.balanceReducer.lastWin,
+        predict: state.balanceReducer.predict
     }
 }
 const mapDispatchToProps = {
     betWin,
     betLose,
+    predictUp,
+    predictDown,
+    predictClear,
     click,
     tic,
     bell,

@@ -1,12 +1,11 @@
 import React from 'react';
 
 const periods = [
-    {type: 'Hour', active: true},
+    {type: '5 minutes', active: true},
+    {type: '10 minutes', active: false},
+    {type: '20 minutes', active: false},
+    {type: 'Hour', active: false},
     {type: 'Day', active: false},
-    {type: 'Week', active: false},
-    {type: 'Month', active: false},
-    {type: '6 month', active: false},
-    {type: '12 month', active: false},
 ];
 
 class SelectList extends React.Component {
