@@ -37,7 +37,7 @@ const fire = () => {
     firework.start();
 };
 
-const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata}) => {
+const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastgame}) => {
     useEffect(() => {
         fire();
     }, [])
@@ -49,7 +49,7 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                 <canvas width="640" height="480" id="fireworks-canvas" style={{background: 'rgba(0,0,0, .2)'}}/>
                 <div className="round-dark win">
                     <h2>Congratulations</h2>
-                    <div className="text-center">You won {lastWin} <img src={bitcoin} width="15" alt="bit"/></div>
+                    <div className="text-center">You won {lastgame || 1} <img src={bitcoin} width="15" alt="bit"/></div>
                     <div className="win-btn">
                         <button onClick={() => {
                             closeCongratulation();
@@ -118,6 +118,7 @@ const mapStateToProps = state => {
         course: state.courseReducer.course,
         currentCourse: state.courseReducer.currentCourse,
         lastWin: state.balanceReducer.lastWin,
+        lastgame: state.balanceReducer.lastgame,
         congratulation: state.balanceReducer.congratulation,
         logout: state.authReducer.logoutQuestion,
     }

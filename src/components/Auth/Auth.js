@@ -3,10 +3,11 @@ import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
 import PhoneInput from 'react-phone-number-input';
 import './auth.scss';
-import {authorization, registration} from "../../redux/actions";
+import {authorization, betWin, registration} from "../../redux/actions";
 import {User} from "../../api/User";
+import {muteToggle, fireworks} from "../../redux/actions/music";
 
-const Auth = ({reg, authorization, registration}) => {
+const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks}) => {
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
     const [name, setName] = useState('')
@@ -36,6 +37,11 @@ const Auth = ({reg, authorization, registration}) => {
                     if (data.data.status === "success") {
                         localStorage.setItem('token', data.data.data.accessToken);
                         authorization();
+                        if (!mute) {
+                            muteToggle();
+                        }
+                        betWin();
+                        fireworks();
                     } else {
                         if (data.data.error) {
                             setErr(data.data.error);
@@ -168,12 +174,16 @@ const Auth = ({reg, authorization, registration}) => {
 
 const mapStateToProps = state => {
     return {
-        reg: state.authReducer.reg
+        reg: state.authReducer.reg,
+        mute: state.soundReducer.mute
     }
 }
 const mapDispatchToProps = {
     authorization,
-    registration
+    registration,
+    muteToggle,
+    betWin,
+    fireworks
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);

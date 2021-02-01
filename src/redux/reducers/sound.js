@@ -2,7 +2,7 @@ import {MUTE, PLAY_BELL, PLAY_CLACK, PLAY_CLICK, PLAY_FIREWORKS, PLAY_MONEY, PLA
 
 const initialState = {
     play: '',
-    mute: true
+    mute: false
 }
 export const soundReducer = (state = initialState, action) => {
     switch (action.type) {

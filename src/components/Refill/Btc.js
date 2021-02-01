@@ -15,11 +15,12 @@ const Btc = (props) => {
         <div>
             <Header/>
             <div className="refill btc">
-                <div className="round-dark qrcode">
-                    <h2>Our BTC wallet</h2>
-                    <img src="" alt="qr"/>
-                </div>
+
                 <div className="round-dark">
+                    <div className="qrcode">
+                        <h2>Our BTC wallet</h2>
+                        <img src={qrcode} alt="qr"/>
+                    </div>
                     <span onClick={() => props.history.goBack()} className="back"><img src={back} alt="back"/></span>
                     <h2>Payment by BTC</h2>
                     <div className="amount label-payment"><span className="nowrap">Our BTC address</span><span
@@ -27,7 +28,7 @@ const Btc = (props) => {
                     <div className="refill-input">
                         <div className="input-wrap">
                             <input id='link' className="card-number" readOnly
-                                   defaultValue="bitcoinwallet" type="text"/>
+                                   defaultValue="1FC2Jv4m2cEMi7RRzY34nNFgNkaDSonvcK" type="text"/>
                         </div>
                     </div>
 
