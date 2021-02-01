@@ -28,6 +28,7 @@ class Dashboard extends React.Component {
         // this.setPredict = this.setPredict.bind(this);
     }
 
+
     setBet(e) {
         let bet = +e.target.value.slice(0, 5);
         if (!bet) {
@@ -79,6 +80,7 @@ class Dashboard extends React.Component {
                     } else if (+data.data.data.lastWin === -1 && predict !== '') {
                         this.props.bell();
                         this.props.betLose();
+                        this.props.userdata();
                     }
                 })
             this.setState((state) => ({...state, gameStart: undefined}));
@@ -89,7 +91,7 @@ class Dashboard extends React.Component {
 
     render() {
         const {bet, counter, initialOffset, counterBet} = this.state;
-        const {balance, currentTime, predict, upBets, downBets} = this.props;
+        const {balance, currentTime, predict, upBets, downBets, up, down} = this.props;
         const time = 10;
         const i = 10 - counter || 1;
         const newBet = /*arrBet.length === 2 ? bet + '00' : arrBet.length === 3 ? bet + '0' : arrBet.length === 1 ? bet + '.000' :*/ bet;
@@ -148,7 +150,9 @@ class Dashboard extends React.Component {
                                         }} className="up">
                                             <div className="profit">
                                                 <span className="green">Your profit</span>
-                                                <span>{((bet / (bet + upBets) * downBets + bet) * 0.97).toFixed(3)}</span>
+                                                <span>
+                                                    {up || down ? ((bet / (bet + upBets) * downBets + bet) * 0.97).toFixed(3) : 0}
+                                                </span>
                                                 <img src={bitcoin} width="15" height="20" alt="b"/>
                                             </div>
                                             <button disabled={predict || balance - bet < 0 || !timeBet}
@@ -157,6 +161,16 @@ class Dashboard extends React.Component {
                                                         this.betDone(e);
                                                     }}
                                                     className="btn green predict-btn" id="up">PREDICT UP
+
+                                                {/*<svg id="rectUp" width="200" height="40">*/}
+                                                {/*    <rect x="2" y="2" rx="8" ry="8" width="195" height="36"*/}
+                                                {/*          style={{*/}
+                                                {/*              fill: 'none',*/}
+                                                {/*              stroke: 'lime',*/}
+                                                {/*              strokeWidth: 5,*/}
+                                                {/*              opacity: 0.5*/}
+                                                {/*          }}/>*/}
+                                                {/*</svg>*/}
                                                 <img src={arrowUp} width="15" height="20" alt="b"/>
                                             </button>
                                         </div>}
@@ -215,7 +229,9 @@ class Dashboard extends React.Component {
                                                className="down">
                                             <div className="profit">
                                                 <span className="red">Your profit</span>
-                                                <span>{((bet / (bet + downBets) * upBets + bet) * 0.97).toFixed(3)}</span>
+                                                <span>
+                                                    {up || down ? ((bet / (bet + downBets) * upBets + bet) * 0.97).toFixed(3) : 0}
+                                                </span>
                                                 <img src={bitcoin} width="15" height="20" alt="b"/>
                                             </div>
                                             <button disabled={predict || balance - bet < 0 || !timeBet}
@@ -250,7 +266,9 @@ const mapStateToProps = state => {
         lastWin: state.balanceReducer.lastWin,
         predict: state.balanceReducer.predict,
         downBets: state.balanceReducer.downBets,
-        upBets: state.balanceReducer.upBets
+        upBets: state.balanceReducer.upBets,
+        up: state.balanceReducer.up,
+        down: state.balanceReducer.down
     }
 }
 const mapDispatchToProps = {

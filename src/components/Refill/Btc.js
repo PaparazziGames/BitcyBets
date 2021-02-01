@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import back from "../../images/back.svg";
 import add from "../../images/add_photo_alternate.svg";
+import qrcode from "../../images/qrqcode.png";
 import Header from "../Header/Header";
 
 const Btc = (props) => {
@@ -14,7 +15,10 @@ const Btc = (props) => {
         <div>
             <Header/>
             <div className="refill btc">
-
+                <div className="round-dark qrcode">
+                    <h2>Our BTC wallet</h2>
+                    <img src="" alt="qr"/>
+                </div>
                 <div className="round-dark">
                     <span onClick={() => props.history.goBack()} className="back"><img src={back} alt="back"/></span>
                     <h2>Payment by BTC</h2>
@@ -23,7 +27,7 @@ const Btc = (props) => {
                     <div className="refill-input">
                         <div className="input-wrap">
                             <input id='link' className="card-number" readOnly
-                                   defaultValue="1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2" type="text"/>
+                                   defaultValue="bitcoinwallet" type="text"/>
                         </div>
                     </div>
 
@@ -45,7 +49,7 @@ const Btc = (props) => {
                                 <span className="nowrap">Transaction ID</span>
                                 <input required name="trans" id='trans' className="card-number"
                                        placeholder="11223344"
-                                        type="text"/>
+                                       type="text"/>
                             </div>
                         </div>
                         <button type="submit" onClick={() => {

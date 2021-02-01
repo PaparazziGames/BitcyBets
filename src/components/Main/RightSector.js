@@ -36,28 +36,25 @@ const RightSector = ({
                     {/*<div className="text-center">You are going to play on real <br/> money. Are you sure? </div>*/}
                     <div className="win-btn">
                         <button onClick={() => {
-                            if(isDemo) {
-                                changeDemo();
-                            }
+                            changeDemo();
                             userdata();
                             setSwitcher(false);
                         }}
-                            className="btn btn-primary">Switch on real money
+                                className="btn btn-primary">{!isDemo ? 'Bet real bitcoin' : 'Demo wallet'}
                         </button>
                         <button onClick={() => {
-                            if(!isDemo) {
-                                changeDemo();
-                            }
                             userdata();
                             setSwitcher(false);
-                        }} className="btn btn-primary">Contunue demo
+                        }} className="btn btn-primary">{isDemo ? 'Stay my wallet' : 'Continue demo'}
                         </button>
                     </div>
                 </div>
             </div>
             <div className="score-wrap round-dark">
-                <h2>{!isDemo ? "My wallet" : "Demo wallet"}
-                    <span onClick={() => {setSwitcher(true)}} className={!isDemo ? "switch-wrapper demo" : "switch-wrapper real"}>
+                <h2>{!isDemo ? "Demo wallet" : "My wallet"}
+                    <span onClick={() => {
+                        setSwitcher(true)
+                    }} className={!isDemo ? "switch-wrapper demo" : "switch-wrapper real"}>
                     <img src={switchWallet} alt=""/>
                 </span></h2>
                 <table>

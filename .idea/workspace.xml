@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/images/coinDown.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/coinGold.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/coinUp.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/qrqcode.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Rates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Rates.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/RightSector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/RightSector.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Refill/Btc.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Refill/Btc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/coinDown.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/coinUp.svg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +113,12 @@
       <workItem from="1611742007564" duration="25618000" />
       <workItem from="1611817139620" duration="9818000" />
       <workItem from="1611842534236" duration="11638000" />
-      <workItem from="1611904007526" duration="24972000" />
+      <workItem from="1611904007526" duration="26683000" />
+      <workItem from="1611950983221" duration="2398000" />
+      <workItem from="1612013845334" duration="746000" />
+      <workItem from="1612090593726" duration="3641000" />
+      <workItem from="1612102455696" duration="592000" />
+      <workItem from="1612165645594" duration="7818000" />
     </task>
     <servers />
   </component>
