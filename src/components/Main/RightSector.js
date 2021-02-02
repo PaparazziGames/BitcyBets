@@ -37,7 +37,6 @@ const RightSector = ({balance, lastWin, lastgame, wins, colorBlalance, click, us
                     <div className="win-btn">
                         <button onClick={() => {
                             changeDemo();
-                            userdata();
                             setSwitcher(false);
                         }}
                                 className="btn btn-primary">{!isDemo ? 'Bet real bitcoin' : 'Demo wallet'}
@@ -85,9 +84,7 @@ const RightSector = ({balance, lastWin, lastgame, wins, colorBlalance, click, us
                     <Link to="/refill" className="btn money-btn green">DEPOSIT
                         <img src={deposit} alt="deposit"/>
                     </Link>
-                    <button onClick={() => {
-                        User.changeWallet().then(data => console.log(data)).catch(e => console.log(e.response.data.error))
-                    }} type="btn" className="btn money-btn red">WITHDRAW
+                    <button type="btn" className="btn money-btn red">WITHDRAW
                         <img src={withdraw} alt="withdraw"/>
                     </button>
                 </div>

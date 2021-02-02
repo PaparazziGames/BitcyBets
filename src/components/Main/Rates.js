@@ -49,7 +49,7 @@ const Rates = ({rates, down, up, downBets, upBets}) => {
                     {/*<div style={{height: '60%'}} className="gold-bg backgroundRate"/>*/}
                     {fillBank.length ? fillBank : <div style={{height: "34px", width: "100%", bottom: 0 + "px"}} className="coin"/>}
                     <div className="text">
-                        <span className="mb-1 nowrap persons">{Math.trunc(bank * 1000 / 1000) || '0.000'}<img className="bank-img" width="15"
+                        <span className="mb-1 nowrap persons">{bank.toFixed(3)}<img className="bank-img" width="15"
                                                                                     height="20"
                                                                                     src={bitcoin} alt=""/></span>
                     </div>

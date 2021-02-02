@@ -28,7 +28,6 @@ class Dashboard extends React.Component {
         // this.setPredict = this.setPredict.bind(this);
     }
 
-
     setBet(e) {
         let bet = +e.target.value.slice(0, 5);
         if (!bet) {
