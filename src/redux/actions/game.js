@@ -46,6 +46,7 @@ export function changeDemo() {
         const payload = await response.data.status;
         if(payload === "success") {
             await dispatch({type: CHANGE_DEMO});
+            await dispatch(userdata());
         }
     }
 }
