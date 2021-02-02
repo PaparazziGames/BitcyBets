@@ -11,8 +11,9 @@ import {
 
 const initialState = {
     name: '',
-    balance: 1,
+    balance: 0,
     lastWin: 0,
+    lastWinGame: 0,
     lastgame: 0,
     wins: 0,
     '3wins': false,
@@ -43,6 +44,7 @@ export const balanceReducer = (state = initialState, action) => {
                     btcWallet: action.payload.btcWallet,
                     wins: action.payload.wins + 1,
                     lastWin: action.payload.lastWin,
+                    lastWinGame: action.payload.lastWinGame,
                     lastgame: action.payload.lastgame,
                     name: action.payload.name,
                     // isDemo: action.payload.isDemo
@@ -56,6 +58,7 @@ export const balanceReducer = (state = initialState, action) => {
                     btcWallet: action.payload.btcWallet,
                     wins: action.payload.wins,
                     lastWin: action.payload.lastWin,
+                    lastWinGame: action.payload.lastWinGame,
                     lastgame: action.payload.lastgame,
                     name: action.payload.name,
                     // isDemo: action.payload.isDemo

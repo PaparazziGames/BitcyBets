@@ -3,6 +3,7 @@ export const PROHIBITION = 'PROHIBITION';
 export const REGISTRATION = 'REGISTRATION';
 export const LOGOUT = 'LOGOUT';
 
+export const CREATE_AD = 'CREATE_AD';
 
 export const GET_LOCATION ='GET_LOCATION';
 export const GET_COURSE ='GET_COURSE';

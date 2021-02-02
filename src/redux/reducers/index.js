@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import {authReducer, courseReducer, geoReducer} from "./entry";
+import {authReducer, courseReducer, geoReducer, switchOptions} from "./entry";
 import {balanceReducer} from "./game";
 import {soundReducer} from "./sound";
 
@@ -8,5 +8,6 @@ export const rootReducer = combineReducers({
     geoReducer,
     courseReducer,
     balanceReducer,
-    soundReducer
+    soundReducer,
+    switchOptions
 })

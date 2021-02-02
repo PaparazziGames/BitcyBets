@@ -1,5 +1,5 @@
 import {
-    AUTHORIZATION,
+    AUTHORIZATION, CREATE_AD,
     GET_COURSE,
     GET_LOCATION, LOGOUT,
     PROHIBITION,
@@ -13,8 +13,19 @@ const initialState = {
     course: [],
     currentCourse: 0,
     currentTime: 0,
-    logoutQuestion: false
+    logoutQuestion: false,
+    createAd: false
 }
+
+export const switchOptions = (state = initialState, action) => {
+    switch (action.type) {
+        case CREATE_AD:
+            return {...state, createAd: !state.createAd};
+        default:
+            return state;
+    }
+}
+
 export const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case AUTHORIZATION:

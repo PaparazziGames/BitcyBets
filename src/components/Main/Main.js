@@ -6,7 +6,7 @@ import Graph from "../Graph";
 import RightSector from "./RightSector";
 import Dashboard from "./Dashboard";
 import SelectList from "./SelectList";
-import {closeCongratulation, logoutQuestion, prohibition} from "../../redux/actions";
+import {closeCongratulation, createAd, logoutQuestion, prohibition} from "../../redux/actions";
 import {money, stop} from "../../redux/actions/music";
 import JS_FIREWORKS from "../fireworks";
 import Time from "./Time";
@@ -37,7 +37,11 @@ const fire = () => {
     firework.start();
 };
 
-const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame}) => {
+const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp}) => {
+    useEffect(() => {
+        userdata();
+        fire();
+    }, [congratulation])
     useEffect(() => {
         fire();
     }, [])
@@ -81,7 +85,18 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                         </button>
                         <button onClick={() => {
                             logoutQuestion();
-                        }} className="btn btn-primary">CONTINUE
+                        }} className="btn btn-primary">STAY
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div style={{display: createAdProp ? "block" : "none"}} className="blur">
+                <div className="round-dark win">
+                    <div className="win-btn">
+                        <h2>This option will be soon</h2>
+                        <button onClick={() => {
+                            createAd();
+                        }} className="btn btn-primary">OK
                         </button>
                     </div>
                 </div>
@@ -121,6 +136,7 @@ const mapStateToProps = state => {
         lastWinGame: state.balanceReducer.lastWinGame,
         congratulation: state.balanceReducer.congratulation,
         logout: state.authReducer.logoutQuestion,
+        createAdProp: state.switchOptions.createAd
     }
 }
 const mapDispatchToProps = {
@@ -129,6 +145,7 @@ const mapDispatchToProps = {
     stop,
     logoutQuestion,
     prohibition,
-    userdata
+    userdata,
+    createAd
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

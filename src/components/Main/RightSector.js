@@ -8,7 +8,7 @@ import switchWallet from "../../images/switch_wallet.svg";
 import {changeDemo, userdata} from "../../redux/actions/game";
 import {User} from "../../api/User";
 
-const RightSector = ({balance, lastWin, lastgame, wins, colorBlalance, click, userdata, name, isDemo, threewins, changeDemo}) => {
+const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click, userdata, name, isDemo, threewins, changeDemo}) => {
     const [switcher, setSwitcher] = useState(false);
     const [banner, setBanner] = useState("banner one round-dark");
     const balanceColor = {color: colorBlalance === 'green' ? '#32D74B' : colorBlalance === 'red' ? '#FF453A' : '#FFFFFF'}
@@ -75,7 +75,7 @@ const RightSector = ({balance, lastWin, lastgame, wins, colorBlalance, click, us
                         </td>
                         <td>
                             <div className="label">Last Win</div>
-                            <div className="score" id="lastWin">{lastWin || '0.000'} BTC</div>
+                            <div className="score" id="lastWin">{lastWinGame || '0.000'} BTC</div>
                         </td>
                     </tr>
                     </tbody>
@@ -101,7 +101,7 @@ const RightSector = ({balance, lastWin, lastgame, wins, colorBlalance, click, us
 const mapStateToProps = state => {
     return {
         balance: state.balanceReducer.balance,
-        lastWin: state.balanceReducer.lastWin,
+        lastWinGame: state.balanceReducer.lastWinGame,
         lastgame: state.balanceReducer.lastgame,
         colorBlalance: state.balanceReducer.colorBlalance,
         wins: state.balanceReducer.wins,

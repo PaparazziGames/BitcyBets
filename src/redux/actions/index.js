@@ -2,12 +2,13 @@ import {
     AUTHORIZATION,
     BET_LOSE,
     BET_WIN,
-    CLOSE_CONGRATULATION,
+    CLOSE_CONGRATULATION, CREATE_AD,
     GET_COURSE, GET_CURRENT_COURSE,
     GET_LOCATION, LOGOUT,
     PROHIBITION,
     REGISTRATION
 } from "../types";
+import {userdata} from "./game";
 
 export function authorization() {
     return {type: AUTHORIZATION}
@@ -48,8 +49,9 @@ export function bitcoinCurrentCourse() {
     }
 }
 export function betWin(data) {
-    return dispatch => {
-        dispatch({type: BET_WIN, payload: data});
+    return async dispatch => {
+        await dispatch(userdata);
+        return dispatch({type: BET_WIN, payload: data});
     }
 }
 export function betLose(data) {
@@ -60,5 +62,10 @@ export function betLose(data) {
 export function closeCongratulation(data) {
     return dispatch => {
         dispatch({type: CLOSE_CONGRATULATION});
+    }
+}
+export function createAd() {
+    return dispatch => {
+        dispatch({type: CREATE_AD});
     }
 }

@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import './header.scss';
 import logo from '../../images/logoLeft.svg';
-import logo2 from '../../images/logoCentre.svg';
+// import logo2 from '../../images/logoCentre.svg';
 import burger from '../../images/burger.png';
 import sound from '../../images/volume-up-solid.svg';
 import noSound from '../../images/volume-mute-solid.svg';
 import {connect} from "react-redux";
-import {logoutQuestion} from "../../redux/actions";
+import {createAd, logoutQuestion} from "../../redux/actions";
 import {Link} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
 
-const Header = ({auth, mute, muteToggle, logoutQuestion}) => {
+const Header = ({auth, mute, muteToggle, logoutQuestion, createAd}) => {
     const [menu, setMenu] = useState(false);
     const handleMute = () => {
         muteToggle();
@@ -38,7 +38,7 @@ const Header = ({auth, mute, muteToggle, logoutQuestion}) => {
                             <img className="burger"
                                  src={burger} alt="icon"/>
                             <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
-                                <li className="burger-menu-item bord"><span>Create ad</span></li>
+                                <li onClick={createAd} className="burger-menu-item bord"><span>Create ad</span></li>
                                 <li className="burger-menu-item bord"><span>My ads</span></li>
                                 <li className="burger-menu-item" onClick={() => {
                                     logoutQuestion();
@@ -59,6 +59,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     muteToggle,
-    logoutQuestion
+    logoutQuestion,
+    createAd
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
