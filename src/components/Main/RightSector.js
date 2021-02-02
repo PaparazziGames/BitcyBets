@@ -6,26 +6,26 @@ import {Link} from "react-router-dom";
 import {click} from "../../redux/actions/music";
 import switchWallet from "../../images/switch_wallet.svg";
 import {changeDemo, userdata} from "../../redux/actions/game";
+import {User} from "../../api/User";
 
-const RightSector = ({
-                         balance,
-                         lastWin,
-                         lastgame,
-                         wins,
-                         colorBlalance,
-                         click,
-                         userdata,
-                         name,
-                         isDemo,
-                         threewins,
-                         changeDemo
-                     }) => {
+const RightSector = ({balance, lastWin, lastgame, wins, colorBlalance, click, userdata, name, isDemo, threewins, changeDemo}) => {
     const [switcher, setSwitcher] = useState(false);
+    const [banner, setBanner] = useState("banner one round-dark");
     const balanceColor = {color: colorBlalance === 'green' ? '#32D74B' : colorBlalance === 'red' ? '#FF453A' : '#FFFFFF'}
 
     useEffect(() => {
         userdata();
-    }, [])
+        const addBanner = setInterval(() => {
+            if(banner === "banner one round-dark") {
+                setBanner("banner two round-dark");
+            } else if (banner === "banner two round-dark") {
+                setBanner("banner three round-dark");
+            } else if(banner === "banner three round-dark") {
+                setBanner("banner one round-dark");
+            }
+        }, 30000)
+        return () => clearInterval(addBanner)
+    }, [banner])
 
     return (
         <div className="right-sector">
@@ -86,7 +86,7 @@ const RightSector = ({
                         <img src={deposit} alt="deposit"/>
                     </Link>
                     <button onClick={() => {
-                        userdata();
+                        User.changeWallet().then(data => console.log(data)).catch(e => console.log(e.response.data.error))
                     }} type="btn" className="btn money-btn red">WITHDRAW
                         <img src={withdraw} alt="withdraw"/>
                     </button>
@@ -94,7 +94,7 @@ const RightSector = ({
             </div>
             <div onClick={() => {
                 window.location.href = 'https://bitrxapp.com/?gb';
-            }} className="banner round-dark">
+            }} className={banner}>
                 <button className="btn learn-more">Learn more</button>
             </div>
         </div>

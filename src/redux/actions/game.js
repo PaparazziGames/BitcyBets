@@ -22,6 +22,7 @@ export function predictUp(value) {
         if(payload === "success") {
             await dispatch({type: SET_BET_UP});
         }
+        await dispatch(userdata())
     }
 }
 export function predictDown(value) {
@@ -31,6 +32,7 @@ export function predictDown(value) {
         if(payload === "success") {
             await dispatch({type: SET_BET_DOWN});
         }
+        await dispatch(userdata())
     }
 }
 export function predictClear() {
@@ -39,8 +41,12 @@ export function predictClear() {
     }
 }
 export function changeDemo() {
-    return dispatch => {
-        dispatch({type: CHANGE_DEMO})
+    return async dispatch => {
+        const response = await User.changeWallet();
+        const payload = await response.data.status;
+        if(payload === "success") {
+            await dispatch({type: CHANGE_DEMO});
+        }
     }
 }
 

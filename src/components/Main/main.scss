@@ -643,12 +643,21 @@ form {
   padding: 0;
   margin-bottom: 25px;
   height: 233px;
-  background-image: url("../../images/banner.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
   cursor: pointer;
-
+  transition: all 9s;
+  animation: banner linear infinite;
+  &.one {
+    background-image: url("../../images/Ad_banner_1.jpg");
+  }
+  &.two {
+    background-image: url("../../images/Ad_banner_2.png");
+  }
+  &.three {
+    background-image: url("../../images/Ad_banner_3.png");
+  }
   .learn-more {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
@@ -684,6 +693,7 @@ form {
     }
   }
 }
+
 
 .score-wrap {
   height: 345px;

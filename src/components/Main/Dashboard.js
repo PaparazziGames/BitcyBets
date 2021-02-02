@@ -91,7 +91,7 @@ class Dashboard extends React.Component {
 
     render() {
         const {bet, counter, initialOffset, counterBet} = this.state;
-        const {balance, currentTime, predict, upBets, downBets, up, down} = this.props;
+        const {balance, currentTime, predict, upBets, downBets, up, down, userdata} = this.props;
         const time = 10;
         const i = 10 - counter || 1;
         const newBet = /*arrBet.length === 2 ? bet + '00' : arrBet.length === 3 ? bet + '0' : arrBet.length === 1 ? bet + '.000' :*/ bet;

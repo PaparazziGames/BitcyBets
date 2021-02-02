@@ -96,7 +96,7 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                                     {currentCourse} <span>$</span>
                                 </h2>
                                 <div>
-                                    <SelectList/>
+                                    {/*<SelectList/>*/}
                                 </div>
                             </div>) : <h1 className="text-center">Loading...</h1>}
                             <div className="graph-wrapper">
