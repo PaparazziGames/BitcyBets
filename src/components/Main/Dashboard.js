@@ -15,10 +15,8 @@ class Dashboard extends React.Component {
         super(props);
         this.state = {
             bet: .001,
-            // predict: false,
             counter: 10,
             counterBet: 10,
-            // rate: '',
             initialOffset: 440,
             gameStart: undefined
         };
@@ -26,7 +24,6 @@ class Dashboard extends React.Component {
         this.predictSubmit = this.predictSubmit.bind(this);
         this.countSec = this.countSec.bind(this);
         this.betDone = this.betDone.bind(this);
-        // this.setPredict = this.setPredict.bind(this);
     }
 
     setBet(e) {
@@ -40,20 +37,14 @@ class Dashboard extends React.Component {
         this.setState((state) => ({...state, ...{bet: bet ? bet : 0.001}}));
     }
 
-    // setRate(rate) {
-    //     this.setState((state) => (Object.assign({rate: rate}, state)));
-    // }
-
     betDone(e) {
         let rate = e.target.id;
-        // this.setRate(rate);
         this.props.click();
-        console.log(rate)
         if(rate === 'up') {
             this.props.predictUp({value: this.state.bet.toString()});
         } else if(rate === 'down') {
             this.props.predictDown({value: this.state.bet.toString()});
-        };
+        }
     }
 
     countSec() {
@@ -98,7 +89,6 @@ class Dashboard extends React.Component {
         const {balance, currentTime, predict, upBets, downBets, up, down} = this.props;
         const time = 10;
         const i = 10 - counter || 1;
-        const newBet = /*arrBet.length === 2 ? bet + '00' : arrBet.length === 3 ? bet + '0' : arrBet.length === 1 ? bet + '.000' :*/ bet;
         const currentTimeSec = currentTime ? +currentTime.substr(6) : 0;
         let timeBet = currentTimeSec === 0 || currentTimeSec === 20 || currentTimeSec === 40 || currentTimeSec === 5 || currentTimeSec === 25 || currentTimeSec === 45;
         let startGame = currentTimeSec === 10 || currentTimeSec === 30 || currentTimeSec === 50 || currentTimeSec === 15 || currentTimeSec === 35 || currentTimeSec === 55;
@@ -126,7 +116,7 @@ class Dashboard extends React.Component {
                                        className={balance - bet >= 0 ? '' : 'red'}
                                        disabled={predict || !timeBet}
                                        onInput={this.setBet}
-                                       value={newBet}/>
+                                       value={bet}/>
                                 <img className="numberBet" width="15" src={bitcoin} alt="up"/>
                             </span>
                             </div>
@@ -137,7 +127,7 @@ class Dashboard extends React.Component {
                                     <input min="0.001" max="1" step="0.001"
                                            type="range"
                                            disabled={predict || !timeBet || startGame}
-                                           value={newBet}
+                                           value={bet}
                                            style={{backgroundImage: `linear-gradient(to right, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} 0%, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} ${bet * 100}%, #fff ${bet * 100}%, white 100%)`}}
                                            onChange={this.setBet}
                                            className={balance - bet >= 0 ? 'green-range' : 'red-range'}
