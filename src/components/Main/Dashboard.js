@@ -16,13 +16,13 @@ class Dashboard extends React.Component {
         this.state = {
             bet: .001,
             counter: 10,
-            counterBet: 10,
+            // counterBet: 10,
             initialOffset: 440,
             gameStart: undefined
         };
         this.setBet = this.setBet.bind(this);
         this.predictSubmit = this.predictSubmit.bind(this);
-        this.countSec = this.countSec.bind(this);
+        // this.countSec = this.countSec.bind(this);
         this.betDone = this.betDone.bind(this);
     }
 
@@ -47,16 +47,16 @@ class Dashboard extends React.Component {
         }
     }
 
-    countSec() {
-        const betTimer = setInterval(() => {
-            this.setState((state) => ({...state, counterBet: state.counterBet - 1}));
-            // this.props.tic();
-        }, 1000)
-        return setTimeout(() => {
-            clearInterval(betTimer);
-            this.setState((state) => ({...state, counterBet: 10}));
-        }, 10000)
-    }
+    // countSec() {
+    //     const betTimer = setInterval(() => {
+    //         this.setState((state) => ({...state, counterBet: state.counterBet - 1}));
+    //         // this.props.tic();
+    //     }, 1000)
+    //     return setTimeout(() => {
+    //         clearInterval(betTimer);
+    //         this.setState((state) => ({...state, counterBet: 10}));
+    //     }, 10000)
+    // }
 
     predictSubmit() {
         const timer = setInterval(() => {
@@ -81,11 +81,11 @@ class Dashboard extends React.Component {
                 })
             this.setState((state) => ({...state, gameStart: undefined}));
             this.props.predictClear();
-            this.countSec();
+            // this.countSec();
         }, 10000)
     }
     render() {
-        const {bet, counter, initialOffset, counterBet} = this.state;
+        const {bet, counter, initialOffset} = this.state;
         const {balance, currentTime, predict, upBets, downBets, up, down} = this.props;
         const time = 10;
         const i = 10 - counter || 1;
@@ -108,7 +108,7 @@ class Dashboard extends React.Component {
                             <div>
                                 <h2 className={predict || startGame ? "text-left" : "make-bet text-left"}>Make your
                                     bet</h2>
-                                <span className="time-bet">{timeBet ? counterBet : ''}</span>
+                                {/*<span className="time-bet">{timeBet ? counterBet : ''}</span>*/}
                             </div>
                             <div>
                                 <span className={balance - bet >= 0 ? '' : 'red'}>
