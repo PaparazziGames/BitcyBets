@@ -90,10 +90,10 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                     </div>
                 </div>
             </div>
-            <div style={{display: createAdProp ? "block" : "none"}} className="blur">
+            <div style={{display: createAdProp ? "block" : "none"}} className="blur soon">
                 <div className="round-dark win">
                     <div className="win-btn">
-                        <h2>This option will be soon</h2>
+                        <h2>This feature will be soon</h2>
                         <button onClick={() => {
                             createAd();
                         }} className="btn btn-primary">OK

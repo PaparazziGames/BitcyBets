@@ -42,7 +42,7 @@ export const balanceReducer = (state = initialState, action) => {
                     '3wins': action.payload['3wins'],
                     balance: action.payload.demoBalance,
                     btcWallet: action.payload.btcWallet,
-                    wins: action.payload.wins + 1,
+                    wins: action.payload.wins,
                     lastWin: action.payload.lastWin,
                     lastWinGame: action.payload.lastWinGame,
                     lastgame: action.payload.lastgame,

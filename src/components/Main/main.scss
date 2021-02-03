@@ -180,29 +180,35 @@ main {
           align-items: flex-end;
           justify-content: center;
         }
+
         .bank {
           position: relative;
           color: #E7AF1E;
-         .coin {
-           background-image: url(../../images/coinGold.svg);
-           background-repeat: no-repeat;
-           background-size: 99%;
-           background-position: bottom;
-           position: absolute;
-         }
+
+          .coin {
+            background-image: url(../../images/coinGold.svg);
+            background-repeat: no-repeat;
+            background-size: 99%;
+            background-position: bottom;
+            position: absolute;
+          }
         }
+
         .rates-down {
           position: relative;
-         .coin {
-           background-image: url(../../images/coinDown.svg);
-           background-repeat: no-repeat;
-           background-size: 99%;
-           background-position: bottom;
-           position: absolute;
-         }
+
+          .coin {
+            background-image: url(../../images/coinDown.svg);
+            background-repeat: no-repeat;
+            background-size: 99%;
+            background-position: bottom;
+            position: absolute;
+          }
         }
+
         .rates-up {
           position: relative;
+
           .coin {
             background-image: url(../../images/coinUp.svg);
             background-repeat: no-repeat;
@@ -349,8 +355,10 @@ main {
     padding-top: 0 !important;
   }
 }
+
 .predict-btn {
   position: relative;
+
   #rectUp {
     position: absolute;
   }
@@ -400,12 +408,14 @@ main {
 
   div {
     text-align: right;
+
     .make-bet {
       animation-name: blinker;
       animation-iteration-count: infinite;
       animation-delay: 500ms;
       animation-duration: 3s;
     }
+
     .time-bet {
       font-weight: 500;
       font-size: 24px;
@@ -418,11 +428,19 @@ main {
   }
 
 }
+
 @keyframes blinker {
-  0% { color: var(--text-color)}
-  50% { color: var(--gold)}
-  100% { color: var(--text-color)}
+  0% {
+    color: var(--text-color)
+  }
+  50% {
+    color: var(--gold)
+  }
+  100% {
+    color: var(--text-color)
+  }
 }
+
 form {
   text-align: center;
   //width: 430px;
@@ -646,17 +664,9 @@ form {
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;
-  transition: all 9s;
-  animation: banner linear infinite;
-  &.one {
-    background-image: url("../../images/Ad_banner_1.jpg");
-  }
-  &.two {
-    background-image: url("../../images/Ad_banner_2.png");
-  }
-  &.three {
-    background-image: url("../../images/Ad_banner_3.png");
-  }
+  //transition: all 9s;
+  //animation: banner linear infinite;
+
   .learn-more {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
@@ -692,7 +702,17 @@ form {
     }
   }
 }
+.one {
+  background-image: url("../../images/adbanner1.jpg");
+}
 
+.two {
+  background-image: url("../../images/adbanner2.jpg");
+}
+
+.three {
+  background-image: url("../../images/adbanner3.jpg");
+}
 
 .score-wrap {
   height: 345px;
@@ -808,7 +828,11 @@ form {
   }
 
 }
-
+.soon {
+  .win-btn {
+    padding: 30px 20px;
+  }
+}
 .blur {
   position: fixed;
   top: 0;
@@ -923,10 +947,38 @@ form {
   margin: 0 auto;
 
   .wrap-img-preload {
-    img {
+    .coin1 {
       opacity: 0;
-      transition: all .5s linear;
+      animation: loader 2s infinite linear;
+      animation-delay: 0s;
     }
+
+    .coin2 {
+      opacity: 0;
+      animation: loader 2s infinite linear;
+      animation-delay: .5s;
+    }
+
+    .coin3 {
+      opacity: 0;
+      animation: loader 2s infinite linear;
+      animation-delay: 1s;
+    }
+
+    .coin4 {
+      opacity: 0;
+      animation: loader 2s infinite linear;
+      animation-delay: 1.5s;
+    }
+  }
+}
+
+@keyframes loader {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
   }
 }
 

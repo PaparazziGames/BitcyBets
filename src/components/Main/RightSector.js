@@ -14,7 +14,6 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
     const balanceColor = {color: colorBlalance === 'green' ? '#32D74B' : colorBlalance === 'red' ? '#FF453A' : '#FFFFFF'}
 
     useEffect(() => {
-        userdata();
         const addBanner = setInterval(() => {
             if(banner === "banner one round-dark") {
                 setBanner("banner two round-dark");
@@ -26,6 +25,9 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
         }, 30000)
         return () => clearInterval(addBanner)
     }, [banner])
+    useEffect(() => {
+        userdata();
+    }, [])
 
     return (
         <div className="right-sector">

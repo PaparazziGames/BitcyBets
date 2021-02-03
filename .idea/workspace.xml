@@ -2,18 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Main/Rect/Rect.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Main/Rect/rect.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/adbanner2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/adbanner2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/adbanner3.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Rates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Rates.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Preloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Preloader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/RightSector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/RightSector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/entry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/Ad_banner_1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/adbanner1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/Ad_banner_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/adbanner2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/Ad_banner_3.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="SCSS File" />
         <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -65,11 +70,11 @@
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\components\Refill" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\components\Main\Rect" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\images" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\sound" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\components" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\public" />
-      <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\redux" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -121,7 +126,10 @@
       <workItem from="1612090593726" duration="3641000" />
       <workItem from="1612102455696" duration="592000" />
       <workItem from="1612165645594" duration="20550000" />
-      <workItem from="1612248063087" duration="15493000" />
+      <workItem from="1612248063087" duration="16590000" />
+      <workItem from="1612289824313" duration="394000" />
+      <workItem from="1612335472174" duration="8824000" />
+      <workItem from="1612357573094" duration="7323000" />
     </task>
     <servers />
   </component>

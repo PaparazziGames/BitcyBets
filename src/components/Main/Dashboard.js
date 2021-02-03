@@ -8,6 +8,7 @@ import {bell, click, tic, fireworks, muteToggle} from "../../redux/actions/music
 import Rates from "./Rates";
 import {User} from "../../api/User";
 import {predictClear, predictDown, predictUp, userdata} from "../../redux/actions/game";
+import Rect from "./Rect/Rect";
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -160,16 +161,8 @@ class Dashboard extends React.Component {
                                                     }}
                                                     className="btn green predict-btn" id="up">PREDICT UP
 
-                                                {/*<svg id="rectUp" width="200" height="40">*/}
-                                                {/*    <rect x="2" y="2" rx="8" ry="8" width="195" height="36"*/}
-                                                {/*          style={{*/}
-                                                {/*              fill: 'none',*/}
-                                                {/*              stroke: 'lime',*/}
-                                                {/*              strokeWidth: 5,*/}
-                                                {/*              opacity: 0.5*/}
-                                                {/*          }}/>*/}
-                                                {/*</svg>*/}
                                                 <img src={arrowUp} width="15" height="20" alt="b"/>
+                                                <Rect mode={'rectUp'}/>
                                             </button>
                                         </div>}
 
@@ -239,6 +232,7 @@ class Dashboard extends React.Component {
                                                     }}
                                                     className="btn red predict-btn" id="down">PREDICT DOWN
                                                 <img src={arrowDown} width="15" height="20" alt="b"/>
+                                                <Rect mode={'rectDown'}/>
                                             </button>
                                         </div>
                                     }

@@ -1,0 +1,62 @@
+.rectUp {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background-image: linear-gradient(#32D74B, #32D74B), linear-gradient(#32D74B, #32D74B), linear-gradient(#32D74B, #32D74B), linear-gradient(#32D74B, #32D74B);
+  background-repeat: no-repeat;
+  background-size: 100% 3px, 3px 100%, 100% 3px, 3px 100%;
+  background-position: right top, right bottom, left bottom, left top;
+  animation: border 10s 1 linear;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.rectDown {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background-image: linear-gradient(#FF453A, #FF453A), linear-gradient(#FF453A, #FF453A), linear-gradient(#FF453A, #FF453A), linear-gradient(#FF453A, #FF453A);
+  background-repeat: no-repeat;
+  background-size: 100% 3px, 3px 100%, 100% 3px, 3px 100%;
+  background-position: right top, right bottom, left bottom, left top;
+  animation: border 10s 1 linear;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes border {
+  0% {
+    background-size: 100% 3px, 3px 100%, 100% 3px, 3px 100%;
+  }
+  10% {
+    background-size: 75% 3px, 3px 100%, 100% 3px, 3px 100%;
+  }
+  20% {
+    background-size: 50% 3px, 3px 100%, 100% 3px, 3px 100%;
+  }
+  30% {
+    background-size: 25% 3px, 3px 100%, 100% 3px, 3px 100%;
+  }
+  40% {
+    background-size: 0 3px, 3px 100%, 100% 3px, 3px 100%;
+  }
+  50% {
+    background-size: 0 3px, 3px 0, 100% 3px, 3px 100%;
+  }
+  60% {
+    background-size: 0 3px, 3px 0, 75% 3px, 3px 100%;
+  }
+  70% {
+    background-size: 0 3px, 3px 0, 50% 3px, 3px 100%;
+  }
+  80% {
+    background-size: 0 3px, 3px 0, 25% 3px, 3px 100%;
+  }
+  90% {
+    background-size: 0 3px, 3px 0, 0 3px, 3px 100%;
+  }
+  100% {
+    background-size: 0 3px, 3px 0, 0 3px, 3px 0;
+  }
+}
