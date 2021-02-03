@@ -1,9 +1,9 @@
 import React from 'react';
 import './rect.scss';
 
-const Rect = ({mode}) => {
+const Rect = ({idButton, mode}) => {
     return (
-        <div className={mode}>
+        <div id={idButton} className={mode}>
 
         </div>
     );

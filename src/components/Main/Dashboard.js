@@ -44,11 +44,16 @@ class Dashboard extends React.Component {
     //     this.setState((state) => (Object.assign({rate: rate}, state)));
     // }
 
-    async betDone(e) {
+    betDone(e) {
         let rate = e.target.id;
         // this.setRate(rate);
         this.props.click();
-        await rate === 'up' ? this.props.predictUp({value: this.state.bet.toString()}) : this.props.predictDown({value: this.state.bet.toString()});
+        console.log(rate)
+        if(rate === 'up') {
+            this.props.predictUp({value: this.state.bet.toString()});
+        } else if(rate === 'down') {
+            this.props.predictDown({value: this.state.bet.toString()});
+        };
     }
 
     countSec() {
@@ -159,10 +164,10 @@ class Dashboard extends React.Component {
                                                         e.preventDefault();
                                                         this.betDone(e);
                                                     }}
-                                                    className="btn green predict-btn" id="up">PREDICT UP
+                                                    className="btn green predict-btn">PREDICT UP
 
                                                 <img src={arrowUp} width="15" height="20" alt="b"/>
-                                                <Rect mode={'rectUp'}/>
+                                                <Rect idButton={'up'} mode={timeBet ? 'rectUp' : ""}/>
                                             </button>
                                         </div>}
 
@@ -232,7 +237,7 @@ class Dashboard extends React.Component {
                                                     }}
                                                     className="btn red predict-btn" id="down">PREDICT DOWN
                                                 <img src={arrowDown} width="15" height="20" alt="b"/>
-                                                <Rect mode={'rectDown'}/>
+                                                <Rect idButton={'down'} mode={timeBet ? 'rectDown' : ""}/>
                                             </button>
                                         </div>
                                     }
