@@ -106,14 +106,14 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                     <div className="left-sector">
                         <div className="round globe">
                             <Time/>
-                            {flag ? (<div>
+                            <div>
                                 <h2 className="text-center"><img src={bitcoin} className="m-2" alt="course"/>
                                     {currentCourse} <span>$</span>
                                 </h2>
                                 <div>
                                     {/*<SelectList/>*/}
                                 </div>
-                            </div>) : <h1 className="text-center">Loading...</h1>}
+                            </div>
                             <div className="graph-wrapper">
                                 <div className="graph">
                                     <Graph/>

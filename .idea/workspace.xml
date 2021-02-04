@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Start/Start.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Start/start.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/bear_start.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/bull_start.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Graph.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Graph.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/RightSector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/RightSector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,11 +63,11 @@
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\components\Refill" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\components\Main\Rect" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\images" />
+      <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\components\Start" />
+      <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\components\Main\Rect" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\sound" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\components" />
-      <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\public" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -118,7 +123,7 @@
       <workItem from="1612289824313" duration="394000" />
       <workItem from="1612335472174" duration="8824000" />
       <workItem from="1612357573094" duration="12251000" />
-      <workItem from="1612422124218" duration="15011000" />
+      <workItem from="1612422124218" duration="23174000" />
     </task>
     <servers />
   </component>

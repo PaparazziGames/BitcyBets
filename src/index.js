@@ -11,6 +11,7 @@ import Refill from "./components/Refill/Refill";
 import Btc from "./components/Refill/Btc";
 import Usd from "./components/Refill/Usd";
 import Header from "./components/Header/Header";
+import Start from "./components/Start/Start";
 
 
 render(
@@ -22,6 +23,7 @@ render(
             <Route exact path="/refill" component={Refill}/>
             <Route exact path="/refill/btc" component={Btc}/>
             <Route exact path="/refill/usd" component={Usd}/>
+            <Route exact path="/start" component={Start}/>
         </Router>
     </Provider>,
     document.getElementById('root')

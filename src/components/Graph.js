@@ -158,7 +158,6 @@ let graph = (course, labels, ctx, color) => (exam = new Chart(ctx, {
 }))
 
 class Graph extends Component {
-
     componentDidMount() {
         if (socket.readyState !== 1) {
             socket = new WebSocket("wss://bitcybets.com:8080/serv");
@@ -202,9 +201,10 @@ class Graph extends Component {
     }
 
     render() {
-
+        const {chartHeight} = this.props;
+        console.log(chartHeight)
         return (
-            <canvas height="265" id="myChart"/>
+            <canvas height={chartHeight || "265"} id="myChart"/>
         )
     }
 }

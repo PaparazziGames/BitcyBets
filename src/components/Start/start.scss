@@ -1,0 +1,61 @@
+.start {
+  .round {
+    width: 1280px;
+    height: 720px;
+    background-color: rgba(26, 31, 52, 0.7);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    .graph {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .text {
+      margin-top: 80px;
+      margin-bottom: 60px;
+
+      * {
+        font-family: "roc-grotesk-wide", sans-serif;
+      }
+
+      .gold {
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 26px;
+      }
+
+      h2 {
+        width: 100%;
+        font-weight: 500;
+        font-size: 48px;
+        line-height: 69px;
+        margin-top: 20px;
+      }
+
+      p {
+        width: 50%;
+        margin: 0 auto;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .bg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url("../../images/bull_start.png"), url("../../images/bear_start.png");
+    background-position: .5% 5%, 99.5% 5%;
+    background-size: 25%, 25%;
+    background-repeat: no-repeat;
+    width: 1280px;
+    height: 720px;
+    filter: blur(2px);
+  }
+}
+

@@ -34,7 +34,7 @@ main {
 
       div {
         h2 {
-          font-family: "roc-grotesk-wide";
+          font-family: "roc-grotesk-wide", sans-serif;
           font-style: normal;
           font-weight: 400;
           font-size: 24px;
@@ -111,16 +111,6 @@ main {
             filter: blur(.8px);
           }
 
-          //#bank-sum {
-          //  position: absolute;
-          //  bottom: -7px;
-          //  margin: 0 auto;
-          //  left: 50%;
-          //  transform: translate(-50%, 0);
-          //  font-size: 24px;
-          //  letter-spacing: 0;
-          //  width: 100%;
-          //}
           span .bank-img {
             margin-top: 6px;
             margin-left: 5px;
@@ -233,7 +223,7 @@ main {
 
           h2 {
             width: 100%;
-            font-family: "roc-grotesk-wide";
+            font-family: "roc-grotesk-wide", sans-serif;
             font-style: normal;
             font-weight: 400;
             font-size: 24px;
