@@ -229,10 +229,7 @@ class Dashboard extends React.Component {
                                                 <img src={arrowDown} width="15" height="20" alt="b"/>
                                                 <Rect idButton={'down'} mode={timeBet ? 'rectDown' : ""}/>
                                             </button>
-                                        </div>
-                                    }
-
-
+                                        </div>}
                                 </div>
                             </div>
                         </form>

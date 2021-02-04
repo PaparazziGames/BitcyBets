@@ -44,7 +44,7 @@ const Rates = ({rates, down, up, downBets, upBets}) => {
                 </div>
                 <div onClick={rates} className="rates-col bank">
                     <img className="arrow middle" src={bitcoin} alt="arrow"/>
-                    {bankCoin[0] >= 1 ? fillBank : null}
+                    {bankCoin[0] > 0 ? fillBank : null}
                     <div className="text">
                         <span className="mb-1 nowrap persons">{bank.toFixed(3)}<img className="bank-img" width="15"
                                                                                     height="20"

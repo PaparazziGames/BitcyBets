@@ -16,9 +16,9 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
     useEffect(() => {
         const addBanner = setInterval(() => {
             if(banner === "banner one round-dark") {
-                setBanner("banner two round-dark");
-            } else if (banner === "banner two round-dark") {
                 setBanner("banner three round-dark");
+            // } else if (banner === "banner two round-dark") {
+            //     setBanner("banner three round-dark");
             } else if(banner === "banner three round-dark") {
                 setBanner("banner one round-dark");
             }
