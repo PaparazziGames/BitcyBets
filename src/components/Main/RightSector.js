@@ -6,10 +6,9 @@ import {Link} from "react-router-dom";
 import {click} from "../../redux/actions/music";
 import switchWallet from "../../images/switch_wallet.svg";
 import {changeDemo, userdata} from "../../redux/actions/game";
-import {User} from "../../api/User";
 import {createAd} from "../../redux/actions";
 
-const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click, userdata, name, isDemo, threewins, changeDemo, createAd}) => {
+const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click, userdata, name, isDemo, threewins, changeDemo, createAd, predict}) => {
     const [switcher, setSwitcher] = useState(false);
     const [banner, setBanner] = useState("banner one round-dark");
     const balanceColor = {color: colorBlalance === 'green' ? '#32D74B' : colorBlalance === 'red' ? '#FF453A' : '#FFFFFF'}
@@ -33,7 +32,6 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
     return (
         <div className="right-sector">
             <div style={{display: switcher ? "block" : "none"}} className="blur">
-
                 <div className="round-dark win">
                     <h2>My bitcoin wallet</h2>
                     {/*<div className="text-center">You are going to play on real <br/> money. Are you sure? </div>*/}
@@ -55,7 +53,9 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
             <div className="score-wrap round-dark">
                 <h2>{!isDemo ? "Demo wallet" : "My wallet"}
                     <span onClick={() => {
-                        setSwitcher(true)
+                        if(!predict) {
+                            setSwitcher(true)
+                        }
                     }} className={!isDemo ? "switch-wrapper demo" : "switch-wrapper real"}>
                     <img src={switchWallet} alt=""/>
                 </span></h2>
@@ -120,7 +120,8 @@ const mapStateToProps = state => {
         wins: state.balanceReducer.wins,
         name: state.balanceReducer.name,
         threewins: state.balanceReducer['3wins'],
-        isDemo: state.balanceReducer.isDemo
+        isDemo: state.balanceReducer.isDemo,
+        predict: state.balanceReducer.predict,
     }
 }
 const mapDispatchToProps = {

@@ -172,7 +172,7 @@ class Graph extends Component {
                 bitcoins.push(course.Bitcoin);
             });
             let ctx = document.getElementById('myChart').getContext('2d');
-            const my_gradient = ctx.createLinearGradient(0, 100, 0, 400);
+            const my_gradient = ctx.createLinearGradient(0, 100, 0, 250);
             my_gradient.addColorStop(0, "rgba(141,217,252,0.6)");
             my_gradient.addColorStop(1, "transparent");
             this.props.bitcoinCourse({bitcoins: bitcoins, times: times});

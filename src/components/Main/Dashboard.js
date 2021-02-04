@@ -96,9 +96,8 @@ class Dashboard extends React.Component {
         if (startGame && this.state.gameStart === undefined) {
             this.setState((state) => ({...state, gameStart: currentTimeSec}));
             this.predictSubmit();
-        } else {
-
         }
+
         return (
             <div className="row bottom-container">
                 <Rates/>
