@@ -7,8 +7,9 @@ import {click} from "../../redux/actions/music";
 import switchWallet from "../../images/switch_wallet.svg";
 import {changeDemo, userdata} from "../../redux/actions/game";
 import {User} from "../../api/User";
+import {createAd} from "../../redux/actions";
 
-const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click, userdata, name, isDemo, threewins, changeDemo}) => {
+const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click, userdata, name, isDemo, threewins, changeDemo, createAd}) => {
     const [switcher, setSwitcher] = useState(false);
     const [banner, setBanner] = useState("banner one round-dark");
     const balanceColor = {color: colorBlalance === 'green' ? '#32D74B' : colorBlalance === 'red' ? '#FF453A' : '#FFFFFF'}
@@ -82,14 +83,24 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
                     </tr>
                     </tbody>
                 </table>
-                <div>
+                {isDemo
+                    ? <div>
                     <Link to="/refill" className="btn money-btn green">DEPOSIT
-                        <img src={deposit} alt="deposit"/>
+                    <img src={deposit} alt="deposit"/>
                     </Link>
                     <button type="btn" className="btn money-btn red">WITHDRAW
-                        <img src={withdraw} alt="withdraw"/>
+                    <img src={withdraw} alt="withdraw"/>
                     </button>
-                </div>
+                    </div>
+                    : <div>
+                        <button onClick={() => {setSwitcher(true)}}  className="btn money-btn green">BET REAL BITCOIN
+                            {/*<img src={withdraw} alt="withdraw"/>*/}
+                        </button>
+                        <button onClick={createAd} className="btn money-btn red">BETS WITH FRIENDS
+                            {/*<img src={deposit} alt="deposit"/>*/}
+                        </button>
+
+                    </div>}
             </div>
             <div onClick={() => {
                 window.location.href = 'https://bitrxapp.com/?gb';
@@ -115,6 +126,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     click,
     userdata,
-    changeDemo
+    changeDemo,
+    createAd
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RightSector);

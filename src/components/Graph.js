@@ -198,6 +198,7 @@ class Graph extends Component {
         socket.close();
         this.props.bitcoinCourse([]);
         exam = '';
+        document.getElementById('chartjs-tooltip').style.opacity = '0';
     }
 
     render() {
