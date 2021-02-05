@@ -1,7 +1,10 @@
 .start {
+ width: 1280px;
   .round {
-    width: 1280px;
-    height: 720px;
+    width: 90%;
+    height: 80%;
+    max-width: 1280px;
+    max-height: 720px;
     background-color: rgba(26, 31, 52, 0.7);
     position: absolute;
     left: 50%;
@@ -82,13 +85,15 @@
     position: absolute;
     left: 50%;
     top: 50%;
+    width: 90%;
+    height: 78%;
     transform: translate(-50%, -50%);
     background-image: url("../../images/bull_start.png"), url("../../images/bear_start.png");
     background-position: .5% 5%, 99.5% 5%;
     background-size: 25%, 25%;
     background-repeat: no-repeat;
-    width: 1280px;
-    height: 720px;
+    max-width: 1280px;
+    max-height: 720px;
     filter: blur(2px);
   }
 }

@@ -7,8 +7,8 @@ header {
   background: var(--dark-gradient);
 
   .wrap-header {
+    width: 90%;
     height: 56px;
-    padding: 0 70px;
     max-width: 1280px;
     margin: 0 auto;
     display: flex;
@@ -61,12 +61,18 @@ header {
     }
 
     .header-right {
-      width: 64px;
+      //width: 64px;
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
       justify-content: space-between;
       align-items: center;
+
+      .startHeader {
+        .login {
+          margin: 0 30px;
+        }
+      }
 
       .sound {
         cursor: pointer;
@@ -76,6 +82,7 @@ header {
         position: relative;
         display: flex;
         cursor: pointer;
+
         &:after {
           content: '';
           position: absolute;

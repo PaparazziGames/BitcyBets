@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './start.scss';
 import Graph from "../Graph";
 import Time from "../Main/Time";
@@ -8,8 +8,7 @@ import arrowDown from "../../images/arrowDown.svg";
 import arrowUp from "../../images/arrowUp.svg";
 import Rect from "../Main/Rect/Rect";
 
-class Start extends Component {
-    render() {
+const Start = ({currentCourse}) => {
         return (
             <div className="start">
                 <div className="round round-dark">
@@ -27,7 +26,7 @@ class Start extends Component {
                         <Time/>
                         <div>
                             <h2 className="text-center"><img src={bitcoin} className="m-2" alt="course"/>
-                                {this.props.currentCourse} <span>$</span>
+                                {currentCourse} <span>$</span>
                             </h2>
                             <div>
                                 {/*<SelectList/>*/}
@@ -54,7 +53,6 @@ class Start extends Component {
                 <div className="bg"/>
             </div>
         );
-    }
 }
 
 const mapStateToProps = state => {

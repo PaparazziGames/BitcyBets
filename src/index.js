@@ -24,6 +24,8 @@ render(
             <Route exact path="/refill/btc" component={Btc}/>
             <Route exact path="/refill/usd" component={Usd}/>
             <Route exact path="/start" component={Start}/>
+            <Route exact path="/login" component={App}/>
+            <Route exact path="/signup" component={App}/>
         </Router>
     </Provider>,
     document.getElementById('root')

@@ -31,6 +31,10 @@ const Header = ({auth, mute, muteToggle, logoutQuestion, createAd}) => {
                     <div className="header-right">
                         <img onClick={handleMute} className="sound" src={mute ? sound : noSound} height="18" width="18"
                              alt="sound"/>
+                             <div className="startHeader">
+                                 <Link className="login" to="/login">LOG IN</Link>
+                                 <Link className="signup" to="/signup">SIGN UP</Link>
+                             </div>
                         <div onClick={(e) => {
                             setMenu(!menu)
                         }}

@@ -188,16 +188,17 @@ class Graph extends Component {
             } else {
                 graph(bitcoins, times, ctx, my_gradient)
             }
-
         }
-
     }
 
     componentWillUnmount() {
         socket.close();
         this.props.bitcoinCourse([]);
         exam = '';
-        document.getElementById('chartjs-tooltip').style.opacity = '0';
+        const tooltip = document.getElementById('chartjs-tooltip');
+        if (tooltip) {
+            tooltip.style.opacity = '0'
+        }
     }
 
     render() {
