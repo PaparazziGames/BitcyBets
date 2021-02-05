@@ -1,9 +1,9 @@
 import React from 'react';
 import './rect.scss';
 
-const Rect = ({idButton, mode}) => {
+const Rect = ({idButton, mode, infinite}) => {
     return (
-        <div id={idButton} className={mode}>
+        <div id={idButton} className={mode + ' ' + infinite}>
 
         </div>
     );

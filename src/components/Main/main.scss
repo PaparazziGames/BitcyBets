@@ -588,49 +588,49 @@ form {
       }
     }
 
-    .predict-btn {
-      color: var(--text-color);
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      border-radius: 8px;
-      background-color: var(--btn-color);
-      margin-top: 10px;
-      white-space: nowrap;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 23px;
-      width: 200px;
 
-      &.red {
-        color: var(--down);
-        border: 1px solid var(--down);
-        background-image: url("../../images/Bear_button.png");
-        background-repeat: no-repeat;
-        background-size: 20%;
-        background-position: right;
-        padding-right: 40px;
-      }
-
-      &.green {
-        color: var(--up);
-        border: 1px solid var(--up);
-        background-image: url("../../images/Bull_button.png");
-        background-repeat: no-repeat;
-        background-size: 20%;
-        background-position: left;
-        padding-left: 40px;
-      }
-
-      img {
-        margin-left: .3em;
-      }
-    }
   }
 
 }
+.predict-btn {
+  color: var(--text-color);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-radius: 8px;
+  background-color: var(--btn-color);
+  margin-top: 10px;
+  white-space: nowrap;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  width: 200px;
 
+  &.red {
+    color: var(--down);
+    border: 1px solid var(--down);
+    background-image: url("../../images/Bear_button.png");
+    background-repeat: no-repeat;
+    background-size: 20%;
+    background-position: right;
+    padding-right: 40px;
+  }
+
+  &.green {
+    color: var(--up);
+    border: 1px solid var(--up);
+    background-image: url("../../images/Bull_button.png");
+    background-repeat: no-repeat;
+    background-size: 20%;
+    background-position: left;
+    padding-left: 40px;
+  }
+
+  img {
+    margin-left: .3em;
+  }
+}
 .btn:active {
   transform: scale(0.97);
   //color: var(--alert);

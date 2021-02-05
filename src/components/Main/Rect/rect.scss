@@ -24,7 +24,9 @@
   top: 0;
   left: 0;
 }
-
+.infinity {
+  animation-iteration-count: infinite;
+}
 @keyframes border {
   0% {
     background-size: 100% 3px, 3px 100%, 100% 3px, 3px 100%;

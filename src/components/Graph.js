@@ -171,7 +171,7 @@ class Graph extends Component {
                 bitcoins.push(course.Bitcoin);
             });
             let ctx = document.getElementById('myChart').getContext('2d');
-            const my_gradient = ctx.createLinearGradient(0, 100, 0, 250);
+            const my_gradient = ctx.createLinearGradient(0, this.props.gradient1 || 100, 0, this.props.gradient2 || 250);
             my_gradient.addColorStop(0, "rgba(141,217,252,0.6)");
             my_gradient.addColorStop(1, "transparent");
             this.props.bitcoinCourse({bitcoins: bitcoins, times: times});
@@ -202,7 +202,6 @@ class Graph extends Component {
 
     render() {
         const {chartHeight} = this.props;
-        console.log(chartHeight)
         return (
             <canvas height={chartHeight || "265"} id="myChart"/>
         )

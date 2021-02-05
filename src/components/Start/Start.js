@@ -4,6 +4,9 @@ import Graph from "../Graph";
 import Time from "../Main/Time";
 import bitcoin from "../../images/bitcoin.svg";
 import {connect} from "react-redux";
+import arrowDown from "../../images/arrowDown.svg";
+import arrowUp from "../../images/arrowUp.svg";
+import Rect from "../Main/Rect/Rect";
 
 class Start extends Component {
     render() {
@@ -20,8 +23,7 @@ class Start extends Component {
                         </p>
                     </div>
 
-
-                    <div className="">
+                    <div className="dark">
                         <Time/>
                         <div>
                             <h2 className="text-center"><img src={bitcoin} className="m-2" alt="course"/>
@@ -31,10 +33,23 @@ class Start extends Component {
                                 {/*<SelectList/>*/}
                             </div>
                         </div>
-                            <div className=" graph">
-                                <Graph chartHeight={300}/>
-                            </div>
+                        <div className="graph">
+                            <Graph gradient1={20} gradient2={150} chartHeight={200}/>
+                        </div>
+                        <div className="buttons">
+                            <div className="wrap-btn">
+                            <button className="btn green predict-btn" id="down">PREDICT UP
+                                <img src={arrowUp} width="15" height="20" alt="b"/>
+                                <Rect infinite={'infinity'} idButton={'down'} mode={'rectUp'}/>
+                            </button>
+                            <button className="btn red predict-btn" id="down">PREDICT DOWN
+                                <img src={arrowDown} width="15" height="20" alt="b"/>
+                                <Rect infinite={'infinity'} idButton={'down'} mode={'rectDown'}/>
+                            </button>
+                        </div>
+                        </div>
                     </div>
+
                 </div>
                 <div className="bg"/>
             </div>

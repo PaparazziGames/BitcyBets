@@ -9,14 +9,48 @@
     transform: translate(-50%, -50%);
     z-index: 1;
 
+    .dark {
+      background-color: var(--dark-light);
+      border-radius: 24px;
+      width: 70%;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      h2 {
+        span {
+          color: var(--gold);
+          font-size: 24px;
+        }
+      }
+      .buttons {
+        margin-top: 10px;
+        .wrap-btn {
+          width: 60%;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-around;
+          .btn {
+            border-radius: 8px;
+          }
+          .green {
+            border: 1px solid var(--up);
+          }
+          .red {
+            border: 1px solid var(--down);
+          }
+        }
+
+      }
+    }
+
     .graph {
-      width: 80%;
+      width: 100%;
       margin: 0 auto;
     }
 
     .text {
-      margin-top: 80px;
-      margin-bottom: 60px;
+      margin-top: 50px;
+      margin-bottom: 50px;
 
       * {
         font-family: "roc-grotesk-wide", sans-serif;
