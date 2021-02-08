@@ -10,7 +10,6 @@ const Rates = ({rates, down, up, downBets, upBets}) => {
     const bankCoin = new Array(Math.ceil(downBets+upBets)).fill(downBets+upBets);
     const upCoin = new Array(up).fill('up');
     const downCoin = new Array(down).fill('down');
-    console.log(bankCoin)
     const fillBank = bankCoin.map((coin, index) => {
         if(index > 9) {return null;}
        return (<div key={index + coin} style={{height: "34px", width: "100%", bottom: index * 7 + "px"}} className="coin"/>);
