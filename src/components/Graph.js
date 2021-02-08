@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Chart from "chart.js";
+import 'chartjs-plugin-style';
 import {connect} from "react-redux";
 import {bitcoinCourse} from "../redux/actions";
 import bull from '../images/bull_tooltip.svg';
@@ -14,10 +15,18 @@ let graph = (course, labels, ctx, color) => (exam = new Chart(ctx, {
         datasets: [{
             label: '',
             backgroundColor: color,
-            borderColor: '#FFFFFF',//'#8DD9FC',
+            borderColor: '#8DD9FC',
             borderWidth: '1',
+            pointRadius: 1,
+            pointBackgroundColor: '#8DD9FC',
+            pointHoverBackgroundColor: '#8DD9FC',
+            pointHoverRadius: 4,
             data: course,
-            pointHitRadius: 20
+            pointHitRadius: 20,
+            shadowOffsetX: 0,
+            shadowOffsetY: 7,
+            shadowBlur: 15,
+            shadowColor: '#8DD9FC'
         }]
     },
     options: {
@@ -171,9 +180,9 @@ class Graph extends Component {
                 bitcoins.push(course.Bitcoin);
             });
             let ctx = document.getElementById('myChart').getContext('2d');
-            const my_gradient = ctx.createLinearGradient(0, this.props.gradient1 || 100, 0, this.props.gradient2 || 250);
-            my_gradient.addColorStop(0, "rgba(141,217,252,0.6)");
-            my_gradient.addColorStop(1, "transparent");
+            const my_gradient = ctx.createLinearGradient(0, this.props.gradient1 || 100, 0, this.props.gradient2 || 150);
+            my_gradient.addColorStop(0, "rgba(141,217,252,0.1)");
+            my_gradient.addColorStop(1, "rgba(141,217,252,0.1)");
             this.props.bitcoinCourse({bitcoins: bitcoins, times: times});
             if (exam) {
                 if (exam.config.data.datasets[0].data.length > 0) {

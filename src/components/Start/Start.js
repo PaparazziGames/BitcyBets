@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './start.scss';
 import Graph from "../Graph";
 import Time from "../Main/Time";
@@ -8,9 +8,50 @@ import arrowDown from "../../images/arrowDown.svg";
 import arrowUp from "../../images/arrowUp.svg";
 import Rect from "../Main/Rect/Rect";
 
-const Start = ({currentCourse}) => {
+const Start = ({currentCourse, course}) => {
+    const [bet, setBet] = useState('');
+    const [predict, setPredict] = useState('');
+    useEffect(() => {
+        console.log(123)
+        if(bet === 'down' && currentCourse < course[course.length - 2]) {
+            setPredict('win')
+        } else if(bet === 'down' && currentCourse > course[course.length - 2]) {
+            setPredict('lose')
+        } else if(bet === 'up' && currentCourse > course[course.length - 2]) {
+            setPredict('win')
+        } else if(bet === 'up' && currentCourse < course[course.length - 2]) {
+            setPredict('lose')
+        } else {
+            setBet('');
+        }
+
+    }, [currentCourse])
         return (
             <div className="start">
+                <div style={{display: bet && predict === 'win' ? "block" : "none"}} className="blur soon">
+                    <div className="round-dark win">
+                        <div className="win-btn">
+                            <h2>You lose</h2>
+                            <button onClick={() => {
+                                setPredict('');
+                                setBet('');
+                            }} className="btn btn-primary">OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div style={{display: bet && predict === 'lose' ? "block" : "none"}} className="blur soon">
+                    <div className="round-dark win">
+                        <div className="win-btn">
+                            <h2>You win</h2>
+                            <button onClick={() => {
+                                setPredict('');
+                                setBet('');
+                            }} className="btn btn-primary">OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 <div className="round round-dark">
                     <div className="text text-center">
                         <span className="gold">Real ICO</span>
@@ -37,11 +78,11 @@ const Start = ({currentCourse}) => {
                         </div>
                         <div className="buttons">
                             <div className="wrap-btn">
-                            <button className="btn green predict-btn" id="down">PREDICT UP
+                            <button disabled={bet} onClick={() => setBet('down')} className="btn green predict-btn" id="down">PREDICT UP
                                 <img src={arrowUp} width="15" height="20" alt="b"/>
                                 <Rect infinite={'infinity'} idButton={'down'} mode={'rectUp'}/>
                             </button>
-                            <button className="btn red predict-btn" id="down">PREDICT DOWN
+                            <button disabled={bet} onClick={() => setBet('up')} className="btn red predict-btn" id="down">PREDICT DOWN
                                 <img src={arrowDown} width="15" height="20" alt="b"/>
                                 <Rect infinite={'infinity'} idButton={'down'} mode={'rectDown'}/>
                             </button>
@@ -58,6 +99,7 @@ const Start = ({currentCourse}) => {
 const mapStateToProps = state => {
     return {
         currentCourse: state.courseReducer.currentCourse,
+        course: state.courseReducer.course
 
     }
 }

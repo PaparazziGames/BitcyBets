@@ -77,6 +77,8 @@ class Dashboard extends React.Component {
                         this.props.bell();
                         this.props.betLose();
                         this.props.userdata();
+                    } else if (this.props.up > 0 && this.props.down > 0) {
+                        this.props.bell();
                     }
                 })
             this.setState((state) => ({...state, gameStart: undefined}));

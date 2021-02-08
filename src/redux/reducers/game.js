@@ -18,7 +18,7 @@ const initialState = {
     wins: 0,
     '3wins': false,
     btcWallet: '',
-    isDemo: true,
+    isDemo: false,
     congratulation: false,
     predict: '',
     colorBlalance: 'white',

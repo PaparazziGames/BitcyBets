@@ -103,7 +103,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                         e.preventDefault();
                         registration();
                         clearData();
-                    }}>REGISTER
+                    }}>SIGN UP
                     </button>
                     <Link to="/support" className="support-link">Need support?</Link>
                 </form>
@@ -167,7 +167,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                required/>
                     </div>
                     <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                    <button><Link to="/game">REGISTER</Link></button>
+                    <button><Link to="/game">SIGN UP</Link></button>
                     <Link to='/support' className="support-link">Need support?</Link>
                 </form>
 
