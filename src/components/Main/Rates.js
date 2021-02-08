@@ -7,9 +7,10 @@ import {rates} from "../../redux/actions/game";
 import {connect} from "react-redux";
 
 const Rates = ({rates, down, up, downBets, upBets}) => {
-    const bankCoin = new Array((downBets+upBets).toFixed(0)).fill(downBets+upBets);
+    const bankCoin = new Array(Math.ceil(downBets+upBets)).fill(downBets+upBets);
     const upCoin = new Array(up).fill('up');
     const downCoin = new Array(down).fill('down');
+    console.log(bankCoin)
     const fillBank = bankCoin.map((coin, index) => {
         if(index > 9) {return null;}
        return (<div key={index + coin} style={{height: "34px", width: "100%", bottom: index * 7 + "px"}} className="coin"/>);
@@ -36,14 +37,14 @@ const Rates = ({rates, down, up, downBets, upBets}) => {
             <h2 className="text-center">Bets in progress</h2>
             <div className="wrap-table">
                 <div className="rates-col rates-up">
-                    <img className="arrow" src={arrup} alt="arrow"/>
+                    {/*<img className="arrow" src={arrup} alt="arrow"/>*/}
                     {fillUp.length ? fillUp : null}
                     <div className="text">
                         <span className="mb-1 persons">{up}<img className="mb-1" src={person} alt=""/></span>
                     </div>
                 </div>
                 <div onClick={rates} className="rates-col bank">
-                    <img className="arrow middle" src={bitcoin} alt="arrow"/>
+                    {/*<img className="arrow middle" src={bitcoin} alt="arrow"/>*/}
                     {bankCoin[0] > 0 ? fillBank : null}
                     <div className="text">
                         <span className="mb-1 nowrap persons">{bank.toFixed(3)}<img className="bank-img" width="15"
@@ -52,7 +53,7 @@ const Rates = ({rates, down, up, downBets, upBets}) => {
                     </div>
                 </div>
                 <div className="rates-col rates-down">
-                    <img className="arrow" src={arrdown} alt="arrow"/>
+                    {/*<img className="arrow" src={arrdown} alt="arrow"/>*/}
                     {fillDown.length ? fillDown : null}
                     <div className="text">
                         <span className="mb-1 persons">{down}<img className="mb-1" src={person} alt=""/></span>
