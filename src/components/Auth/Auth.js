@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
+import { withRouter  } from 'react-router-dom';
 import PhoneInput from 'react-phone-number-input';
 import './auth.scss';
 import {authorization, betWin, registration} from "../../redux/actions";
 import {User} from "../../api/User";
 import {muteToggle, fireworks} from "../../redux/actions/music";
 
-const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks}) => {
+const Auth = withRouter (({reg, authorization, registration, muteToggle, mute, betWin, fireworks}) => {
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
     const [name, setName] = useState('')
@@ -16,6 +17,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
     const [pass, setPass] = useState('')
     const [confpass, setConfpass] = useState('')
     const [err, setErr] = useState('')
+
     const clearData = () => {
         setName('');
         setPhone('');
@@ -170,7 +172,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
             </div>
         );
     }
-}
+})
 
 const mapStateToProps = state => {
     return {

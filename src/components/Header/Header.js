@@ -6,11 +6,11 @@ import burger from '../../images/burger.png';
 import sound from '../../images/volume-up-solid.svg';
 import noSound from '../../images/volume-mute-solid.svg';
 import {connect} from "react-redux";
-import {createAd, logoutQuestion} from "../../redux/actions";
+import {createAd, logoutQuestion, registration} from "../../redux/actions";
 import {Link} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
 
-const Header = ({auth, mute, muteToggle, logoutQuestion, createAd}) => {
+const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, registration}) => {
     const [menu, setMenu] = useState(false);
     const handleMute = () => {
         muteToggle();
@@ -29,12 +29,16 @@ const Header = ({auth, mute, muteToggle, logoutQuestion, createAd}) => {
                     {/*</Link>*/}
                     {/*<h4 style={auth ? {display: 'block'} : {display: 'none'}} className="text-center">Bitcoin Live price</h4>*/}
                     <div className="header-right">
-                        <img onClick={handleMute} className="sound" src={mute ? sound : noSound} height="18" width="18"
+                        <img onClick={handleMute} className="sound " src={mute ? sound : noSound} height="18" width="18"
                              alt="sound"/>
-                             <div className="startHeader">
-                                 <Link className="login" to="/login">LOG IN</Link>
-                                 <Link className="signup" to="/signup">SIGN UP</Link>
-                             </div>
+                        {!auth ? <div className="startHeader">
+                                 <Link onClick={() => {
+                                     if(reg) {
+                                         registration();
+                                     }
+                                 }} className="login" to="/login">LOG IN</Link>
+                                 <Link onClick={registration} className="signup" to="/signup">SIGN UP</Link>
+                             </div> : null }
                         <div onClick={(e) => {
                             setMenu(!menu)
                         }}
@@ -58,12 +62,14 @@ const Header = ({auth, mute, muteToggle, logoutQuestion, createAd}) => {
 const mapStateToProps = state => {
     return {
         auth: state.authReducer.auth,
+        reg: state.authReducer.reg,
         mute: state.soundReducer.mute
     }
 }
 const mapDispatchToProps = {
     muteToggle,
     logoutQuestion,
-    createAd
+    createAd,
+    registration
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
