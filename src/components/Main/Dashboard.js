@@ -70,7 +70,7 @@ class Dashboard extends React.Component {
             User.userdata()
                 .then(data => {
                     if (+data.data.data.lastWin === 1 && predict !== '') {
-                        this.props.bell();
+                        // this.props.bell();
                         this.props.betWin();
                         this.props.fireworks();
                     } else if (+data.data.data.lastWin === -1 && predict !== '') {

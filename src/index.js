@@ -12,20 +12,23 @@ import Btc from "./components/Refill/Btc";
 import Usd from "./components/Refill/Usd";
 import Header from "./components/Header/Header";
 import Start from "./components/Start/Start";
+import Support from "./components/Auth/Support";
 
 
 render(
     <Provider store={store}>
         <Router>
             <Header />
-            <Route exact path="/" component={App}/>
+            <Route exact path="/" component={Start}/>
+            <Route exact path="/game" component={App}/>
             <Route path="/restore" component={Restore}/>
-            <Route exact path="/refill" component={Refill}/>
-            <Route exact path="/refill/btc" component={Btc}/>
-            <Route exact path="/refill/usd" component={Usd}/>
-            <Route exact path="/start" component={Start}/>
-            <Route exact path="/login" component={App}/>
-            <Route exact path="/signup" component={App}/>
+            <Route path="/refill" component={Refill}/>
+            <Route path="/refill/btc" component={Btc}/>
+            <Route path="/refill/usd" component={Usd}/>
+            <Route path="/start" component={Start}/>
+            <Route path="/support" component={Support}/>
+            <Route path="/login" component={App}/>
+            <Route path="/signup" component={App}/>
         </Router>
     </Provider>,
     document.getElementById('root')

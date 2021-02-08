@@ -5,7 +5,7 @@ import bitcoin from '../../images/bitcoin.svg';
 import Graph from "../Graph";
 import RightSector from "./RightSector";
 import Dashboard from "./Dashboard";
-import SelectList from "./SelectList";
+// import SelectList from "./SelectList";
 import {closeCongratulation, createAd, logoutQuestion, prohibition} from "../../redux/actions";
 import {money, stop} from "../../redux/actions/music";
 import JS_FIREWORKS from "../fireworks";

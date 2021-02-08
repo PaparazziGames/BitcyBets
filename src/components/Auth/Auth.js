@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
-import { withRouter  } from 'react-router-dom';
 import PhoneInput from 'react-phone-number-input';
 import './auth.scss';
 import {authorization, betWin, registration} from "../../redux/actions";
 import {User} from "../../api/User";
 import {muteToggle, fireworks} from "../../redux/actions/music";
 
-const Auth = withRouter (({reg, authorization, registration, muteToggle, mute, betWin, fireworks}) => {
+const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks}) => {
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
     const [name, setName] = useState('')
@@ -98,7 +97,7 @@ const Auth = withRouter (({reg, authorization, registration, muteToggle, mute, b
                     </div>
                     <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
                     <Link to="/restore" className="forgot mb-3">Forgot password?</Link>
-                    <button>SIGN IN</button>
+                    <button><Link to="/game">SIGN IN</Link></button>
                     <span>or</span>
                     <button onClick={e => {
                         e.preventDefault();
@@ -106,6 +105,7 @@ const Auth = withRouter (({reg, authorization, registration, muteToggle, mute, b
                         clearData();
                     }}>REGISTER
                     </button>
+                    <Link to="/support" className="support-link">Need support?</Link>
                 </form>
             </div>
         );
@@ -167,12 +167,14 @@ const Auth = withRouter (({reg, authorization, registration, muteToggle, mute, b
                                required/>
                     </div>
                     <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                    <button>REGISTER</button>
+                    <button><Link to="/game">REGISTER</Link></button>
+                    <Link to='/support' className="support-link">Need support?</Link>
                 </form>
+
             </div>
         );
     }
-})
+}
 
 const mapStateToProps = state => {
     return {
