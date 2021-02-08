@@ -12,7 +12,7 @@ const Preloader = ({show}) => {
     if (!show) {
         return (
             <div  className="load">
-                <img src={bitsybets} alt=""/>
+                <img className="text" src={bitsybets} alt=""/>
                 <div className="wrap-img-preload">
                     <img className="coin1"  src={coin} alt=""/>
                     <img className="coin2"  src={coin} alt=""/>

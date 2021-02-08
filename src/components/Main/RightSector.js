@@ -16,9 +16,9 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
     useEffect(() => {
         const addBanner = setInterval(() => {
             if(banner === "banner one round-dark") {
+                setBanner("banner two round-dark");
+            } else if (banner === "banner two round-dark") {
                 setBanner("banner three round-dark");
-            // } else if (banner === "banner two round-dark") {
-            //     setBanner("banner three round-dark");
             } else if(banner === "banner three round-dark") {
                 setBanner("banner one round-dark");
             }
@@ -56,7 +56,8 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
                         if(!predict) {
                             setSwitcher(true)
                         }
-                    }} className={isDemo ? "switch-wrapper demo" : "switch-wrapper real"}>
+                    }} className={isDemo ? "switch-wrapper demo" : "switch-wrapper real"}
+                    style={predict ? {filter: 'grayscale(1)', opacity: .5} : null}>
                     <img src={switchWallet} alt=""/>
                 </span></h2>
                 <table>

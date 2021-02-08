@@ -698,11 +698,11 @@ form {
 }
 
 .two {
-  background-image: url("../../images/adbanner2.jpg");
+  background-image: url("../../images/adbanner2.png");
 }
 
 .three {
-  background-image: url("../../images/adbanner3.jpg");
+  background-image: url("../../images/adbanner3.png");
 }
 
 .score-wrap {
@@ -935,7 +935,9 @@ form {
   justify-content: space-around;
   align-items: center;
   margin: 0 auto;
-
+img.text {
+  width: 250px;
+}
   .wrap-img-preload {
     .coin1 {
       opacity: 0;
