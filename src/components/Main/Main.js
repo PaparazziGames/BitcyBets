@@ -12,6 +12,7 @@ import JS_FIREWORKS from "../fireworks";
 import Time from "./Time";
 import Preloader from "./Preloader";
 import {userdata} from "../../redux/actions/game";
+import {Link} from "react-router-dom";
 
 const fire = () => {
     document.getElementById('fireworks-canvas').style.width = '100%'
@@ -81,7 +82,7 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                             localStorage.removeItem('token');
                             prohibition();
                             // clearInterval();
-                        }} className="btn btn-primary">LOG OUT
+                        }} className="btn btn-primary"><Link to="/">LOG OUT</Link>
                         </button>
                         <button onClick={() => {
                             logoutQuestion();

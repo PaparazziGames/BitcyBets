@@ -4,11 +4,17 @@ import Main from "./components/Main/Main";
 import Auth from "./components/Auth/Auth";
 import Playlist from "./sound/Playlist";
 
-const App = ({auth}) => {
+const App = ({auth, history}) => {
     return (
         <div className="App">
             <Playlist />
-            {auth ? <Main /> : <Auth />}
+            {auth ? () => {
+                history.push('/game')
+                return <Main/>
+            } : () => {
+                history.push('/game')
+                return <Auth />
+            }}
         </div>
     );
 }

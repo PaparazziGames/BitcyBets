@@ -7,7 +7,7 @@ import {authorization, betWin, registration} from "../../redux/actions";
 import {User} from "../../api/User";
 import {muteToggle, fireworks} from "../../redux/actions/music";
 
-const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks}) => {
+const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks, history}) => {
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
     const [name, setName] = useState('')
@@ -38,6 +38,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                     if (data.data.status === "success") {
                         localStorage.setItem('token', data.data.data.accessToken);
                         authorization();
+                        history.push('/game');
                         if (!mute) {
                             muteToggle();
                         }
@@ -62,6 +63,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
             .then(data => {
                     if (data.data.status === "success") {
                         localStorage.setItem('token', data.data.data.accessToken);
+                        history.push('/game');
                         return authorization();
                     } else if (data.data.error) {
                         return setErr(data.data.error);
@@ -100,7 +102,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                     </div>
                     <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
                     <Link to="/restore" className="forgot mb-3">Forgot password?</Link>
-                    <button><Link to="/game">SIGN IN</Link></button>
+                    <button>SIGN IN</button>
                     <span>or</span>
                     <button onClick={e => {
                         e.preventDefault();

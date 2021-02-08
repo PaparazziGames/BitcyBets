@@ -13,6 +13,8 @@ import Usd from "./components/Refill/Usd";
 import Header from "./components/Header/Header";
 import Start from "./components/Start/Start";
 import Support from "./components/Auth/Support";
+import Main from "./components/Main/Main";
+import Auth from "./components/Auth/Auth";
 
 
 render(
@@ -20,15 +22,15 @@ render(
         <Router>
             <Header />
             <Route exact path="/" component={Start}/>
-            <Route exact path="/game" component={App}/>
+            <Route exact path="/game" component={Main}/>
             <Route path="/restore" component={Restore}/>
             <Route path="/refill" component={Refill}/>
             <Route path="/refill/btc" component={Btc}/>
             <Route path="/refill/usd" component={Usd}/>
-            <Route path="/start" component={Start}/>
+            {/*<Route path="/start" component={Start}/>*/}
             <Route path="/support" component={Support}/>
-            <Route path="/login" component={App}/>
-            <Route path="/signup" component={App}/>
+            <Route path="/login" component={Auth}/>
+            <Route path="/signup" component={Auth}/>
         </Router>
     </Provider>,
     document.getElementById('root')

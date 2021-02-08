@@ -50,8 +50,7 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, registra
                                 <li onClick={createAd} className="burger-menu-item bord"><span>My ads</span></li>
                                 <li className="burger-menu-item" onClick={() => {
                                     logoutQuestion();
-                                    prohibition();
-                                }}><Link to="/">Log out</Link></li>
+                                }}>Log out</li>
                             </ul>
                         </div>
                     </div>
