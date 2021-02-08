@@ -12,7 +12,6 @@ const Start = ({currentCourse, course}) => {
     const [bet, setBet] = useState('');
     const [predict, setPredict] = useState('');
     useEffect(() => {
-        console.log(123)
         if(bet === 'down' && currentCourse < course[course.length - 2]) {
             setPredict('win')
         } else if(bet === 'down' && currentCourse > course[course.length - 2]) {
@@ -24,7 +23,6 @@ const Start = ({currentCourse, course}) => {
         } else {
             setBet('');
         }
-
     }, [currentCourse])
         return (
             <div className="start">

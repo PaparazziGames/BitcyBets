@@ -175,15 +175,17 @@ class Graph extends Component {
         socket.onmessage = async e => {
             let bitcoins = [];
             let times = [];
+            let seconds = [];
             (JSON.parse(e.data)).forEach(course => {
                 times.push(new Date(course.Time * 1000).toLocaleTimeString());
+                seconds.push(new Date(course.Time * 1000).getSeconds());
                 bitcoins.push(course.Bitcoin);
             });
             let ctx = document.getElementById('myChart').getContext('2d');
             const my_gradient = ctx.createLinearGradient(0, this.props.gradient1 || 100, 0, this.props.gradient2 || 150);
             my_gradient.addColorStop(0, "rgba(141,217,252,0.1)");
             my_gradient.addColorStop(1, "rgba(141,217,252,0.1)");
-            this.props.bitcoinCourse({bitcoins: bitcoins, times: times});
+            this.props.bitcoinCourse({bitcoins: bitcoins, times: times, lastSeconds: seconds[seconds.length - 1]});
             if (exam) {
                 if (exam.config.data.datasets[0].data.length > 0) {
                     exam.config.data.datasets[0].data.splice(0, 1);

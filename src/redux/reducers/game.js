@@ -18,7 +18,7 @@ const initialState = {
     wins: 0,
     '3wins': false,
     btcWallet: '',
-    isDemo: false,
+    isDemo: undefined,
     congratulation: false,
     predict: '',
     colorBlalance: 'white',
@@ -47,7 +47,7 @@ export const balanceReducer = (state = initialState, action) => {
                     lastWinGame: action.payload.lastWinGame,
                     lastgame: action.payload.lastgame,
                     name: action.payload.name,
-                    // isDemo: action.payload.isDemo
+                    isDemo: action.payload.isDemo
                 };
 
             } else {
@@ -61,7 +61,7 @@ export const balanceReducer = (state = initialState, action) => {
                     lastWinGame: action.payload.lastWinGame,
                     lastgame: action.payload.lastgame,
                     name: action.payload.name,
-                    // isDemo: action.payload.isDemo
+                    isDemo: action.payload.isDemo
                 };
             }
         case GET_RATES:

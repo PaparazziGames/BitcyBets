@@ -76,6 +76,9 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
     if (!reg) {
         return (
             <div className="round-dark auth">
+               <span onClick={() => {
+                   clearData();
+               }} className="back"><Link to="/">&larr;</Link></span>
                 <h2>Welcome</h2>
                 <form onSubmit={handleLogin}>
                     <div className="">
@@ -115,7 +118,8 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                 <span onClick={() => {
                     registration();
                     clearData();
-                }} className="back">&larr;</span><h2 className="">Registration</h2>
+                }} className="back">&larr;</span>
+                <h2 className="">Registration</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="">
                         <label htmlFor="name">Name</label>

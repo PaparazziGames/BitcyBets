@@ -40,9 +40,9 @@ class Dashboard extends React.Component {
     betDone(e) {
         let rate = e.target.id;
         this.props.click();
-        if(rate === 'up') {
+        if (rate === 'up') {
             this.props.predictUp({value: this.state.bet.toString()});
-        } else if(rate === 'down') {
+        } else if (rate === 'down') {
             this.props.predictDown({value: this.state.bet.toString()});
         }
     }
@@ -86,17 +86,17 @@ class Dashboard extends React.Component {
             // this.countSec();
         }, 10000)
     }
+
     render() {
         const {bet, counter, initialOffset} = this.state;
-        const {balance, currentTime, predict, upBets, downBets, up, down} = this.props;
+        const {balance, predict, upBets, downBets, up, down, lastSeconds} = this.props;
         const time = 10;
         const i = 10 - counter || 1;
-        const currentTimeSec = currentTime ? +currentTime.substr(6) : 0;
-        let timeBet = currentTimeSec === 0 || currentTimeSec === 20 || currentTimeSec === 40 || currentTimeSec === 5 || currentTimeSec === 25 || currentTimeSec === 45;
-        let startGame = currentTimeSec === 10 || currentTimeSec === 30 || currentTimeSec === 50 || currentTimeSec === 15 || currentTimeSec === 35 || currentTimeSec === 55;
+        let timeBet = lastSeconds === 0 || lastSeconds === 20 || lastSeconds === 40 || lastSeconds === 5 || lastSeconds === 25 || lastSeconds === 45;
+        let startGame = lastSeconds === 10 || lastSeconds === 30 || lastSeconds === 50 || lastSeconds === 15 || lastSeconds === 35 || lastSeconds === 55;
 
         if (startGame && this.state.gameStart === undefined) {
-            this.setState((state) => ({...state, gameStart: currentTimeSec}));
+            this.setState((state) => ({...state, gameStart: lastSeconds}));
             this.predictSubmit();
         }
 
@@ -248,6 +248,7 @@ const mapStateToProps = state => {
         course: state.courseReducer.course,
         currentCourse: state.courseReducer.currentCourse,
         currentTime: state.courseReducer.currentTime,
+        lastSeconds: state.courseReducer.lastSeconds,
         lastWin: state.balanceReducer.lastWin,
         predict: state.balanceReducer.predict,
         downBets: state.balanceReducer.downBets,

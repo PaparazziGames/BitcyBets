@@ -6,11 +6,11 @@ import burger from '../../images/burger.png';
 import sound from '../../images/volume-up-solid.svg';
 import noSound from '../../images/volume-mute-solid.svg';
 import {connect} from "react-redux";
-import {createAd, logoutQuestion, registration} from "../../redux/actions";
+import {createAd, logoutQuestion, prohibition, registration} from "../../redux/actions";
 import {Link} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
 
-const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, registration}) => {
+const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, registration, prohibition}) => {
     const [menu, setMenu] = useState(false);
     const handleMute = () => {
         muteToggle();
@@ -50,7 +50,8 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, registra
                                 <li onClick={createAd} className="burger-menu-item bord"><span>My ads</span></li>
                                 <li className="burger-menu-item" onClick={() => {
                                     logoutQuestion();
-                                }}><span>Log out</span></li>
+                                    prohibition();
+                                }}><Link to="/">Log out</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -70,6 +71,7 @@ const mapDispatchToProps = {
     muteToggle,
     logoutQuestion,
     createAd,
-    registration
+    registration,
+    prohibition
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

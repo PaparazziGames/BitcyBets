@@ -40,23 +40,23 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
                             changeDemo();
                             setSwitcher(false);
                         }}
-                                className="btn btn-primary">{!isDemo ? 'Bet real bitcoin' : 'Demo wallet'}
+                                className="btn btn-primary">{isDemo ? 'Bet real bitcoin' : 'Demo wallet'}
                         </button>
                         <button onClick={() => {
                             userdata();
                             setSwitcher(false);
-                        }} className="btn btn-primary">{isDemo ? 'Stay my wallet' : 'Continue demo'}
+                        }} className="btn btn-primary">{!isDemo ? 'Stay my wallet' : 'Continue demo'}
                         </button>
                     </div>
                 </div>
             </div>
             <div className="score-wrap round-dark">
-                <h2>{!isDemo ? "Demo wallet" : "My wallet"}
+                <h2>{isDemo ? "Demo wallet" : "My wallet"}
                     <span onClick={() => {
                         if(!predict) {
                             setSwitcher(true)
                         }
-                    }} className={!isDemo ? "switch-wrapper demo" : "switch-wrapper real"}>
+                    }} className={isDemo ? "switch-wrapper demo" : "switch-wrapper real"}>
                     <img src={switchWallet} alt=""/>
                 </span></h2>
                 <table>
@@ -83,7 +83,7 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
                     </tr>
                     </tbody>
                 </table>
-                {isDemo
+                {!isDemo
                     ? <div>
                     <Link to="/refill" className="btn money-btn green">DEPOSIT
                     <img src={deposit} alt="deposit"/>

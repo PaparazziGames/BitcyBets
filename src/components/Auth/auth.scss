@@ -87,6 +87,7 @@
       min-height: 40px;
       font-weight: bold;
       margin-bottom: 10px;
+      margin-top: 10px;
     }
 
     .forgot {
@@ -107,32 +108,42 @@
     cursor: pointer;
     transition: all .5s;
 
+    a {
+      font-size: 24px;
+    }
+
     &:hover {
       transform: scale(1.2);
     }
   }
+
   .restore-arrow {
     left: 15px;
     top: 0.5em;
     font-size: 20px;
   }
 }
+
 .restore {
   form {
     a {
       text-transform: uppercase;
       margin-top: 16px;
     }
+
     p {
       text-align: justify;
     }
+
     button {
       text-transform: uppercase;
       margin-top: 16px;
     }
+
     input {
       margin-bottom: 16px;
     }
+
     div {
       h2 {
         font-size: 24px;
@@ -142,7 +153,8 @@
     }
   }
 }
-.support-link{
+
+.support-link {
   font-size: 12px;
   font-weight: 300;
   margin-top: 5px;
@@ -157,13 +169,16 @@
     flex-wrap: nowrap;
     width: 30px;
     position: absolute;
+
     .PhoneInputCountryIcon {
       position: relative;
+
       svg {
         height: 20px;
         margin-top: 10px;
         margin-left: 10px;
       }
+
       img {
         height: 20px;
         margin-top: 10px;
@@ -175,6 +190,7 @@
     }
 
   }
+
   #phone {
     background-color: inherit;
     border: 1px solid #FFFFFF;
@@ -182,6 +198,7 @@
     height: 40px;
     padding-left: 60px;
   }
+
   select {
     width: 55px;
     height: 40px;
@@ -194,9 +211,11 @@
     background: url('../../images/select.png') no-repeat right center;
     border: none;
     color: transparent;
+
     &:focus {
       background: url('../../images/select2.png') no-repeat right center;
     }
+
     option {
       background-color: var(--dark-light);
       font-weight: 300;
@@ -213,9 +232,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     form {
       height: 80%;
       justify-content: space-between;
+
       button {
         margin: 0;
       }
@@ -223,6 +244,7 @@
   }
   .restore {
     height: auto;
+
     input {
       margin: 10px 0 30px 0;
     }
