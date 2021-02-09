@@ -38,7 +38,7 @@ const fire = () => {
     firework.start();
 };
 
-const Main = ({course, lastWin, closeCongratulation, congratulation, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp}) => {
+const Main = ({history, course, lastWin, closeCongratulation, congratulation, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp}) => {
     useEffect(() => {
         userdata();
         fire();
@@ -81,7 +81,7 @@ const Main = ({course, lastWin, closeCongratulation, congratulation, currentCour
                             logoutQuestion();
                             localStorage.removeItem('token');
                             prohibition();
-                            // clearInterval();
+                            history.push('/');
                         }} className="btn btn-primary"><Link to="/">LOG OUT</Link>
                         </button>
                         <button onClick={() => {

@@ -788,6 +788,10 @@ form {
         border: 1px solid var(--up);
         margin-bottom: 15px;
       }
+      &.friends {
+        font-weight: 500;
+        background-image: url('../../images/btnbgFriends.png');
+      }
     }
   }
 

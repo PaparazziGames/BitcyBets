@@ -24,7 +24,7 @@ let graph = (course, labels, ctx, color) => (exam = new Chart(ctx, {
             data: course,
             pointHitRadius: 20,
             shadowOffsetX: 0,
-            shadowOffsetY: 7,
+            shadowOffsetY: 0,
             shadowBlur: 15,
             shadowColor: '#8DD9FC'
         }]

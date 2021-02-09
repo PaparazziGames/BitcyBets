@@ -80,6 +80,8 @@ class Dashboard extends React.Component {
                     } else if (this.props.up > 0 && this.props.down > 0) {
                         this.props.bell();
                         this.props.userdata();
+                    } else {
+                        this.props.userdata();
                     }
                 })
             this.setState((state) => ({...state, gameStart: undefined}));
@@ -93,8 +95,8 @@ class Dashboard extends React.Component {
         const {balance, predict, upBets, downBets, up, down, lastSeconds} = this.props;
         const time = 10;
         const i = 10 - counter || 1;
-        let timeBet = lastSeconds === 0 || lastSeconds === 20 || lastSeconds === 40 || lastSeconds === 5 || lastSeconds === 25 || lastSeconds === 45;
-        let startGame = lastSeconds === 10 || lastSeconds === 30 || lastSeconds === 50 || lastSeconds === 15 || lastSeconds === 35 || lastSeconds === 55;
+        let timeBet = lastSeconds % 20 === 0 || lastSeconds % 20 === 5;
+        let startGame = lastSeconds % 20 === 10 || lastSeconds % 20 === 15;
 
         if (startGame && this.state.gameStart === undefined) {
             this.setState((state) => ({...state, gameStart: lastSeconds}));

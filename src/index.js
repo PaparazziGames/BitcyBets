@@ -15,12 +15,14 @@ import Start from "./components/Start/Start";
 import Support from "./components/Auth/Support";
 import Main from "./components/Main/Main";
 import Auth from "./components/Auth/Auth";
+import Playlist from "./sound/Playlist";
 
 
 render(
     <Provider store={store}>
         <Router>
             <Header />
+            <Playlist />
             <Route exact path="/" component={Start}/>
             <Route exact path="/game" component={Main}/>
             <Route path="/restore" component={Restore}/>
