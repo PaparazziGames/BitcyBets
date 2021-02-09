@@ -652,6 +652,7 @@ form {
   padding: 0;
   margin-bottom: 25px;
   height: 233px;
+  background-color: transparent;
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;
@@ -695,14 +696,17 @@ form {
 }
 .one {
   background-image: url("../../images/adbanner1.jpg");
+  background-size: cover;
 }
 
 .two {
-  background-image: url("../../images/adbanner2.jpg");
+  background-image: url("../../images/adbanner2.png");
+  background-size: cover;
 }
 
 .three {
   background-image: url("../../images/adbanner3.png");
+  background-size: cover;
 }
 
 .score-wrap {
@@ -796,7 +800,16 @@ form {
   }
 
 }
-
+.peoples {
+  position: absolute;
+  right: 35px;
+  top: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: .5em;
+  align-items: center;
+}
 .time {
   display: flex;
   flex-wrap: nowrap;

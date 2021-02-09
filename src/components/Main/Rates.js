@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import arrup from "../../images/arrup.png";
+// import arrup from "../../images/arrup.png";
 import person from "../../images/person.svg";
 import bitcoin from "../../images/bitcoin.svg";
-import arrdown from "../../images/arrdown.png";
+// import arrdown from "../../images/arrdown.png";
 import {rates} from "../../redux/actions/game";
 import {connect} from "react-redux";
 

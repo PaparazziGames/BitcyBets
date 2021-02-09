@@ -102,7 +102,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                     </div>
                     <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
                     <Link to="/restore" className="forgot mb-3">Forgot password?</Link>
-                    <button>SIGN IN</button>
+                    <button>LOG IN</button>
                     <span>or</span>
                     <button onClick={e => {
                         e.preventDefault();

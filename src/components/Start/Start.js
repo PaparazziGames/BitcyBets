@@ -41,26 +41,26 @@ const Start = ({currentCourse, course, history, lastSeconds}) => {
     }, [currentCourse])
     return (
         <div className="start">
-            <div style={{display: predict === 'win' ? "block" : "none"}} className="blur soon">
-                <div className="round-dark win">
-                    <div className="win-btn">
-                        <h2>Sorry, you're out of luck! <br/> try again!</h2>
-                        <button onClick={() => {
-                            setPredict('');
-                            setBet('');
-                        }} className="btn btn-primary">OK
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div style={{display: predict === 'lose' ? "block" : "none"}} className="blur soon">
+            {/*<div style={{display: predict === 'win' ? "block" : "none"}} className="blur soon">*/}
+            {/*    <div className="round-dark win">*/}
+            {/*        <div className="win-btn">*/}
+            {/*            <h2>Sorry, you're out of luck! <br/> try again!</h2>*/}
+            {/*            <button onClick={() => {*/}
+            {/*                setPredict('');*/}
+            {/*                setBet('');*/}
+            {/*            }} className="btn btn-primary">OK*/}
+            {/*            </button>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+            <div style={{display: predict ? "block" : "none"}} className="blur soon">
                 <div className="round-dark win">
                     <div className="win-btn">
                        <span onClick={() => {
                            setPredict('');
                            setBet('');
                        }} className="back">&#10008;</span>
-                        <h2>You are doing a great job!</h2>
+                        <h2>You did great! <br/> Join now!</h2>
                         <button onClick={() => {
                             setPredict('');
                             setBet('');
@@ -81,12 +81,11 @@ const Start = ({currentCourse, course, history, lastSeconds}) => {
                 <div className="bear-start"><img src={bear} alt="bear"/></div>
                 <div className="text text-center">
                     <span className="gold">Real ICO</span>
-                    <h2>Make Bitcoin bets</h2>
-                    <p>
-                        Welcome to bytcybets.com
-                    </p>
+                    <h2>
+                        <span style={{fontSize: "48px", letterSpacing: "5px"}} className="gold">BITSY</span>BETS
+                    </h2>
+                    <p style={{fontSize: "36px"}} className="mt-3">Make real Bitcoin bets</p>
                 </div>
-
                 <div className="dark">
                     <Time/>
                     <div>

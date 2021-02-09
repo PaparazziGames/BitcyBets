@@ -16,7 +16,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
-
+overflow: hidden;
     .bull-start {
       width: 25%;
       position: absolute;
@@ -24,8 +24,6 @@
       top: 0;
       img {
         width: 100%;
-        border-top-left-radius: 50%;
-        border-bottom-left-radius: 50%;
       }
     }
 
@@ -36,8 +34,7 @@
       top: -25px;
       img {
         width: 100%;
-        border-top-right-radius: 50%;
-        border-bottom-right-radius: 10%;
+        //border-top-right-radius: 50%;
       }
     }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -17,22 +17,36 @@ import Main from "./components/Main/Main";
 import Auth from "./components/Auth/Auth";
 import Playlist from "./sound/Playlist";
 
-
+const routing = [
+    {path: "/", component: Start},
+    {path: "/game", component: Main},
+    {path: "/restore", component: Restore},
+    {path: "/refill", component: Refill},
+    {path: "/refill/btc", component: Btc},
+    {path: "/refill/usd", component: Usd},
+    {path: "/support", component: Support},
+    {path: "/login", component: Auth},
+    {path: "/signup", component: Auth},
+]
 render(
     <Provider store={store}>
         <Router>
             <Header />
             <Playlist />
-            <Route exact path="/" component={Start}/>
-            <Route exact path="/game" component={Main}/>
-            <Route path="/restore" component={Restore}/>
-            <Route path="/refill" component={Refill}/>
-            <Route path="/refill/btc" component={Btc}/>
-            <Route path="/refill/usd" component={Usd}/>
+            {routing.map((content, index) => {
+                return <Route key={index} exact path={content.path} component={content.component}/>
+            })}
+            <Redirect from="*" to={localStorage.getItem('token') ? "/game" : "/"} />
+            {/*<Route exact path="/" component={Start}/>*/}
+            {/*<Route exact path="/game" component={Main}/>*/}
+            {/*<Route path="/restore" component={Restore}/>*/}
+            {/*<Route path="/refill" component={Refill}/>*/}
+            {/*<Route path="/refill/btc" component={Btc}/>*/}
+            {/*<Route path="/refill/usd" component={Usd}/>*/}
             {/*<Route path="/start" component={Start}/>*/}
-            <Route path="/support" component={Support}/>
-            <Route path="/login" component={Auth}/>
-            <Route path="/signup" component={Auth}/>
+            {/*<Route path="/support" component={Support}/>*/}
+            {/*<Route path="/login" component={Auth}/>*/}
+            {/*<Route path="/signup" component={Auth}/>*/}
         </Router>
     </Provider>,
     document.getElementById('root')

@@ -25,16 +25,17 @@ const initialState = {
     down: 0,
     up: 0,
     upBets: 0,
-    downBets: 0
+    downBets: 0,
+    online: 0
 }
 export const balanceReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case CHANGE_DEMO:
-                return {
-                    ...state,
-                    isDemo: !state.isDemo
-                };
+            return {
+                ...state,
+                isDemo: !state.isDemo
+            };
         case GET_USER_DATA:
             if (action.payload.isDemo) {
                 return {
@@ -47,6 +48,7 @@ export const balanceReducer = (state = initialState, action) => {
                     lastWinGame: action.payload.lastWinGame,
                     lastgame: action.payload.lastgame,
                     name: action.payload.name,
+                    online: action.payload.online,
                     isDemo: action.payload.isDemo
                 };
 
@@ -61,17 +63,28 @@ export const balanceReducer = (state = initialState, action) => {
                     lastWinGame: action.payload.lastWinGame,
                     lastgame: action.payload.lastgame,
                     name: action.payload.name,
+                    online: action.payload.online,
                     isDemo: action.payload.isDemo
                 };
             }
         case GET_RATES:
-            return {
-                ...state,
-                down: action.payload.down.peoples,
-                up: action.payload.up.peoples,
-                upBets: action.payload.up.bitcoins,
-                downBets: action.payload.down.bitcoins,
-            };
+            if (state.isDemo) {
+                return {
+                    ...state,
+                    down: action.payload.demo.down.peoples,
+                    up: action.payload.demo.up.peoples,
+                    upBets: action.payload.demo.up.bitcoins,
+                    downBets: action.payload.demo.down.bitcoins,
+                }
+            } else {
+                return {
+                    ...state,
+                    down: action.payload.real.down.peoples,
+                    up: action.payload.real.up.peoples,
+                    upBets: action.payload.real.up.bitcoins,
+                    downBets: action.payload.real.down.bitcoins,
+                }
+            }
         case BET_WIN:
             return {
                 ...state,

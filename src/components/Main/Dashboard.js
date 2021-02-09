@@ -149,7 +149,7 @@ class Dashboard extends React.Component {
                                             <div className="profit">
                                                 <span className="green">Your profit</span>
                                                 <span>
-                                                    {up || down ? ((bet / (bet + upBets) * downBets + bet) * 0.97).toFixed(5) : 0}
+                                                    {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(5) : 0}
                                                 </span>
                                                 <img src={bitcoin} width="15" height="20" alt="b"/>
                                             </div>
@@ -220,7 +220,7 @@ class Dashboard extends React.Component {
                                             <div className="profit">
                                                 <span className="red">Your profit</span>
                                                 <span>
-                                                    {up || down ? ((bet / (bet + downBets) * upBets + bet) * 0.97).toFixed(5) : 0}
+                                                    {up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(5) : 0}
                                                 </span>
                                                 <img src={bitcoin} width="15" height="20" alt="b"/>
                                             </div>

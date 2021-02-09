@@ -12,6 +12,7 @@ import {userdata} from "./game";
 
 export function authorization() {
     return {type: AUTHORIZATION}
+
 }
 
 export function prohibition() {
@@ -21,6 +22,7 @@ export function prohibition() {
 export function registration() {
     return {type: REGISTRATION}
 }
+
 export function logoutQuestion() {
     return {type: LOGOUT}
 }
@@ -43,27 +45,32 @@ export function bitcoinCourse(data) {
         dispatch({type: GET_COURSE, payload: data});
     }
 }
+
 export function bitcoinCurrentCourse() {
     return dispatch => {
         dispatch({type: GET_CURRENT_COURSE});
     }
 }
+
 export function betWin(data) {
     return async dispatch => {
         await dispatch(userdata);
         return dispatch({type: BET_WIN, payload: data});
     }
 }
+
 export function betLose(data) {
     return dispatch => {
         dispatch({type: BET_LOSE, payload: data});
     }
 }
+
 export function closeCongratulation(data) {
     return dispatch => {
         dispatch({type: CLOSE_CONGRATULATION});
     }
 }
+
 export function createAd() {
     return dispatch => {
         dispatch({type: CREATE_AD});

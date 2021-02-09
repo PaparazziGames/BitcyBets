@@ -106,15 +106,22 @@
     left: 30px;
     top: .5em;
     cursor: pointer;
-    transition: all .5s;
+
+    &:hover {
+      left: 30px;
+      width: 15px;
+    }
+
+    img {
+      &:hover {
+        margin: 0 auto;
+      }
+    }
 
     a {
       font-size: 24px;
     }
 
-    &:hover {
-      transform: scale(1.2);
-    }
   }
 
   .restore-arrow {

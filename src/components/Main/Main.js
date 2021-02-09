@@ -13,6 +13,7 @@ import Time from "./Time";
 import Preloader from "./Preloader";
 import {userdata} from "../../redux/actions/game";
 import {Link} from "react-router-dom";
+import SelectList from "./SelectList";
 
 const fire = () => {
     document.getElementById('fireworks-canvas').style.width = '100%'
@@ -73,24 +74,7 @@ const Main = ({history, course, lastWin, closeCongratulation, congratulation, cu
                     </div>
                 </div>
             </div>
-            <div style={{display: logout ? "block" : "none"}} className="blur">
-                <div className="round-dark win">
-                    <h2>Are you sure?</h2>
-                    <div className="win-btn">
-                        <button onClick={() => {
-                            logoutQuestion();
-                            localStorage.removeItem('token');
-                            prohibition();
-                            history.push('/');
-                        }} className="btn btn-primary"><Link to="/">LOG OUT</Link>
-                        </button>
-                        <button onClick={() => {
-                            logoutQuestion();
-                        }} className="btn btn-primary">STAY
-                        </button>
-                    </div>
-                </div>
-            </div>
+
             <div style={{display: createAdProp ? "block" : "none"}} className="blur soon">
                 <div className="round-dark win">
                     <div className="win-btn">
@@ -112,7 +96,7 @@ const Main = ({history, course, lastWin, closeCongratulation, congratulation, cu
                                     {currentCourse} <span>$</span>
                                 </h2>
                                 <div>
-                                    {/*<SelectList/>*/}
+                                    <SelectList/>
                                 </div>
                             </div>
                             <div className="graph-wrapper">

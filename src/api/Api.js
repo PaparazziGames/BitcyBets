@@ -11,7 +11,6 @@ let Api = function() {
   // } else {
   //   delete BaseApi.defaults.headers.common['Authorization'];
   // }
-
   return BaseApi;
 };
 

@@ -30,7 +30,11 @@ export const switchOptions = (state = initialState, action) => {
 export const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case AUTHORIZATION:
-            return {...state, auth: true};
+            if (localStorage.getItem('token') !== null) {
+                return {...state, auth: true};
+            } else {
+                return {...state, auth: false};
+            }
         case PROHIBITION:
             return {...state, auth: false};
         case REGISTRATION:

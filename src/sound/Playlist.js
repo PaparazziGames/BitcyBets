@@ -8,7 +8,6 @@ import fireworks from './fireworks.mp3';
 import Sound from "./Sound";
 
 const Playlist = () => {
-    console.log(123456)
     return (
         <div>
             <Sound param={{id: 'click', effect: click}}/>
