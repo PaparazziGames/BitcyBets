@@ -14,7 +14,7 @@ const Time = ({geo, geoposition}) => {
     return (
         <div className="time">
             <h2 className="time-text">{time.slice(0, 5)}</h2>
-            <div className="label text-center">{geo || 'Israel'}</div>
+            <div className="label text-center">{geo || <span style={{fontSize: "10px"}}>Please, allow location access</span>}</div>
         </div>
     );
 };

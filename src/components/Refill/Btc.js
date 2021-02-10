@@ -1,21 +1,46 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import back from "../../images/back.svg";
 import add from "../../images/add_photo_alternate.svg";
 import qrcode from "../../images/qrqcode.png";
 import Header from "../Header/Header";
+import {User} from "../../api/User";
+import {Link} from "react-router-dom";
 
 const Btc = (props) => {
     const [copied, setCopied] = useState(false);
+    const [file, setFile] = useState(null);
+    const [transaction, setTransaction] = useState('');
+    const [fileName, setFileName] = useState('');
+    const [err, setErr] = useState('');
+    const fileRef = useRef(null);
+    const reader = new FileReader();
     const copy = (e) => {
         setCopied(true);
         document.getElementById('link').select();
         document.execCommand('copy');
     }
+    const saveFile = () => {
+        setErr('');
+        setFileName(fileRef.current.files[0].name);
+        setFile(fileRef.current.files[0]);
+    }
+    const submitScreen = () => {
+        if (file && transaction) {
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                User.sendDeposit({transactionId: transaction, transactionPhoto: reader.result})
+                    .then(res => res.status);
+            }
+        } else if (file && !transaction) {
+            setErr("Empty transaction ID");
+        } else {
+            setErr("Empty data");
+        }
+    }
     return (
         <div>
             <Header/>
             <div className="refill btc">
-
                 <div className="round-dark">
                     <div className="qrcode">
                         <h2>Our BTC wallet</h2>
@@ -37,25 +62,30 @@ const Btc = (props) => {
                         <div className="refill-btn">
                             <div className="">
                                 <span className="nowrap">Upload payment screenshot</span>
-                                <label className="label">
-                                    <span className="drag">Drag and drop file here or</span>
-                                    <img src={add} alt=""/>
+                                <label className="label overflow-hidden">
+                                    <span className="drag nowrap">{fileName || "Drag and drop file here or"}</span>
+                                    <img src={add} alt="add"/>
                                     <span className="title">Choose file</span>
-                                    <input type="file"/>
+                                    <input accept=".png, .jpg, .jpeg" ref={fileRef} onChange={saveFile} type="file"/>
                                 </label>
                             </div>
                         </div>
                         <div className="refill-input mt-5">
                             <div className="input-wrap">
                                 <span className="nowrap">Transaction ID</span>
-                                <input required name="trans" id='trans' className="card-number"
+                                <input value={transaction} onInput={(e) => {
+                                    setErr('');
+                                    setTransaction(e.target.value)
+                                }} required name="trans" id='trans' className="card-number"
                                        placeholder="11223344"
                                        type="text"/>
                             </div>
                         </div>
-                        <button type="submit" onClick={() => {
-                        }} className="pay mt-5">SEND
+
+                        <button onClick={submitScreen} className="pay mt-5">SEND
                         </button>
+                        <span style={{display: err ? "block" : "none"}} className="red mt-2 text-center">{err}</span>
+                        <Link to="/support" className="support-link text-center mt-4">Need support?</Link>
                     </div>
                 </div>
             </div>

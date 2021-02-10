@@ -25,5 +25,8 @@ export const User = {
   changeWallet() {
     return Api().post('/changeDemo', JSON.stringify({"accessToken": localStorage.getItem('token')}));
   },
+  sendDeposit(file) {
+    return Api().post('/user/sendDeposit', JSON.stringify({...{"accessToken": localStorage.getItem('token')}, ...file}));
+  },
 
 };
