@@ -16,6 +16,7 @@ import Support from "./components/Auth/Support";
 import Main from "./components/Main/Main";
 import Auth from "./components/Auth/Auth";
 import Playlist from "./sound/Playlist";
+import Ads from "./components/Ads/Ads";
 
 const routing = [
     {path: "/", component: Start},
@@ -27,6 +28,7 @@ const routing = [
     {path: "/support", component: Support},
     {path: "/login", component: Auth},
     {path: "/signup", component: Auth},
+    {path: "/ads", component: Ads},
 ]
 render(
     <Provider store={store}>

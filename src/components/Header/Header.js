@@ -3,6 +3,7 @@ import './header.scss';
 import logo from '../../images/logoLeft.svg';
 // import logo2 from '../../images/logoCentre.svg';
 import burger from '../../images/burger.png';
+import refreshIcon from '../../images/refresh.svg';
 import sound from '../../images/volume-up-solid.svg';
 import noSound from '../../images/volume-mute-solid.svg';
 import {connect} from "react-redux";
@@ -18,6 +19,9 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
     const handleMute = () => {
         muteToggle();
     }
+    const refresh = () => {
+        window.location.reload();
+    }
     return (
         <div>
             <header className="header">
@@ -29,9 +33,7 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
                                 logoutQuestion();
                                 localStorage.removeItem('token');
                                 prohibition();
-                                if(history !== undefined) {
-                                    history.push('/');
-                                }
+                                window.location.reload();
                             }} className="btn btn-primary"><Link to="/">LOG OUT</Link>
                             </button>
                             <button onClick={() => {
@@ -43,11 +45,12 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
                 </div>
                 <div className="wrap-header">
                     <nav className="navbar">
-                        <Link className="navbar-brand" to="/game">
-                            <img src={logo} alt="logo" height="32"/>
-                        </Link>
+                        <a onClick={refresh} className="navbar-brand">
+                            <img src={logo} alt="logo" height="23"/>
+                        </a>
                     </nav>
                     <div className="header-right">
+                        <img onClick={refresh} style={{marginRight: "30px"}} className="sound" height="18" width="18" src={refreshIcon} alt="refresh"/>
                         <img onClick={handleMute} className="sound " src={mute ? sound : noSound} height="18" width="18"
                              alt="sound"/>
                         {!auth ? <div className="startHeader">
@@ -65,7 +68,8 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
                             <img className="burger"
                                  src={burger} alt="icon"/>
                             <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
-                                <li onClick={createAd} className="burger-menu-item bord"><span>Create ad</span></li>
+                                {/*<li className="burger-menu-item bord"><Link to="/ads">Create ad</Link></li>*/}
+                                <li onClick={createAd} className="burger-menu-item bord">Create ad</li>
                                 <li onClick={createAd} className="burger-menu-item bord"><span>My ads</span></li>
                                 <li className="burger-menu-item" onClick={() => {
                                     logoutQuestion();

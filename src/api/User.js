@@ -1,6 +1,6 @@
 import Api from './Api';
 
-const token = JSON.stringify({"accessToken": localStorage.getItem('token')});
+// const token = JSON.stringify({"accessToken": localStorage.getItem('token')});
 export const User = {
   register(form) {
     return Api().post('/register', form);
@@ -11,10 +11,10 @@ export const User = {
   },
 
   rate() {
-    return Api().post('/rates', token);
+    return Api().post('/rates', JSON.stringify({"accessToken": localStorage.getItem('token')}));
   },
   userdata() {
-    return Api().post('/getUser', token);
+    return Api().post('/getUser', JSON.stringify({"accessToken": localStorage.getItem('token')}));
   },
   predictUp(value) {
     return Api().post('/predictUp', JSON.stringify(({...{"accessToken": localStorage.getItem('token')}, ...value})));
@@ -23,7 +23,7 @@ export const User = {
     return Api().post('/predictDown', JSON.stringify(({...{"accessToken": localStorage.getItem('token')}, ...value})));
   },
   changeWallet() {
-    return Api().post('/changeDemo', token);
+    return Api().post('/changeDemo', JSON.stringify({"accessToken": localStorage.getItem('token')}));
   },
 
 };
