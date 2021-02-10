@@ -94,7 +94,7 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
                     </button>
                     </div>
                     : <div>
-                        <button onClick={() => {setSwitcher(true)}}  className="btn money-btn green">BET REAL BITCOIN
+                        <button disabled={predict} onClick={() => {setSwitcher(true)}}  className="btn money-btn green">BET REAL BITCOIN
                             {/*<img src={withdraw} alt="withdraw"/>*/}
                         </button>
                         <button onClick={createAd} className="btn money-btn friends">BETS WITH FRIENDS

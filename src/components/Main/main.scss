@@ -2,6 +2,7 @@ main {
   padding: 60px 60px 0 60px;
   height: 100%;
   margin: 10px auto 0;
+  max-width: 1280px;
 
   .main {
     height: 100%;
@@ -46,7 +47,7 @@ main {
         top: 0;
         left: 0;
         content: '';
-        width: 90%;
+        width: 100%;
         height: 100%;
         background-image: url("../../images/globe.svg");
         background-repeat: no-repeat;
@@ -592,6 +593,7 @@ form {
   }
 
 }
+
 .predict-btn {
   color: var(--text-color);
   letter-spacing: 0.03em;
@@ -631,6 +633,7 @@ form {
     margin-left: .3em;
   }
 }
+
 .btn:active {
   transform: scale(0.97);
   //color: var(--alert);
@@ -694,6 +697,7 @@ form {
     }
   }
 }
+
 .one {
   background-image: url("../../images/adbanner1.jpg");
   background-size: cover;
@@ -729,6 +733,7 @@ form {
       background: linear-gradient(0deg, rgba(26, 31, 52, 0.7), rgba(26, 31, 52, 0.7)), #F7931A;
       cursor: pointer;
       display: flex;
+
       img {
         margin-left: -3px;
         border-radius: 50%;
@@ -771,6 +776,7 @@ form {
     flex-wrap: wrap;
     gap: 16px;
     width: 100%;
+
     .money-btn {
       border-radius: 8px;
       width: 100%;
@@ -792,6 +798,7 @@ form {
         border: 1px solid var(--up);
         margin-bottom: 15px;
       }
+
       &.friends {
         font-weight: 500;
         background-image: url('../../images/btnbgFriends.png');
@@ -800,6 +807,7 @@ form {
   }
 
 }
+
 .peoples {
   position: absolute;
   right: 35px;
@@ -810,6 +818,7 @@ form {
   gap: .5em;
   align-items: center;
 }
+
 .time {
   display: flex;
   flex-wrap: nowrap;
@@ -835,11 +844,13 @@ form {
   }
 
 }
+
 .soon {
   .win-btn {
     padding: 30px 20px;
   }
 }
+
 .blur {
   position: fixed;
   top: 0;
@@ -942,42 +953,46 @@ form {
 
 // <<<<<<<<<<<<<<<< PRELOADER  >>>>>>>>>>>>>>>>>
 
-.load {
-  height: 300px;
-  width: 600px;
-  background-color: rgba(26, 31, 52, 0.5);
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 auto;
-img.text {
-  width: 250px;
-}
-  .wrap-img-preload {
-    .coin1 {
-      opacity: 0;
-      animation: loader 2s infinite linear;
-      animation-delay: 0s;
+.main {
+  .load {
+    height: 300px;
+    width: 600px;
+    background-color: rgba(26, 31, 52, 0.5);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+
+    img.text {
+      width: 250px;
     }
 
-    .coin2 {
-      opacity: 0;
-      animation: loader 2s infinite linear;
-      animation-delay: .5s;
-    }
+    .wrap-img-preload {
+      .coin1 {
+        opacity: 0;
+        animation: loader 2s infinite linear;
+        animation-delay: 0s;
+      }
 
-    .coin3 {
-      opacity: 0;
-      animation: loader 2s infinite linear;
-      animation-delay: 1s;
-    }
+      .coin2 {
+        opacity: 0;
+        animation: loader 2s infinite linear;
+        animation-delay: .5s;
+      }
 
-    .coin4 {
-      opacity: 0;
-      animation: loader 2s infinite linear;
-      animation-delay: 1.5s;
+      .coin3 {
+        opacity: 0;
+        animation: loader 2s infinite linear;
+        animation-delay: 1s;
+      }
+
+      .coin4 {
+        opacity: 0;
+        animation: loader 2s infinite linear;
+        animation-delay: 1.5s;
+      }
     }
   }
 }

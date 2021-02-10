@@ -16,12 +16,14 @@
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
-overflow: hidden;
+    overflow: hidden;
+
     .bull-start {
       width: 25%;
       position: absolute;
       left: 0;
       top: 0;
+
       img {
         width: 100%;
       }
@@ -32,6 +34,7 @@ overflow: hidden;
       position: absolute;
       right: 0;
       top: -25px;
+
       img {
         width: 100%;
         //border-top-right-radius: 50%;
@@ -45,6 +48,7 @@ overflow: hidden;
       margin: 0 auto;
       padding: 20px;
       position: relative;
+      text-align: center;
 
       h2 {
         span {
@@ -139,3 +143,50 @@ span.back {
   cursor: pointer;
 }
 
+.load {
+  //background-color: rgba(26, 31, 52, 0.5);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 50px auto 50px;
+  padding-top: 0;
+  img.text {
+    width: 250px;
+  }
+  .wrap-img-preload {
+    .coin1 {
+      opacity: 0;
+      animation: loader 2s infinite linear;
+      animation-delay: 0s;
+    }
+
+    .coin2 {
+      opacity: 0;
+      animation: loader 2s infinite linear;
+      animation-delay: .5s;
+    }
+
+    .coin3 {
+      opacity: 0;
+      animation: loader 2s infinite linear;
+      animation-delay: 1s;
+    }
+
+    .coin4 {
+      opacity: 0;
+      animation: loader 2s infinite linear;
+      animation-delay: 1.5s;
+    }
+  }
+}
+
+@keyframes loader {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

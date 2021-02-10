@@ -9,18 +9,21 @@ import arrowUp from "../../images/arrowUp.svg";
 import bull from "../../images/bull_start.png";
 import bear from "../../images/bear_start.png";
 import Rect from "../Main/Rect/Rect";
+import Preloader from "../Main/Preloader";
+import bitsybets from "../../images/BITCYBETS.svg";
+import coin from "../../images/coin.svg";
 
 const Start = ({currentCourse, course, history, lastSeconds}) => {
     const [timeGame, setTimeGame] = useState(false);
     const [bet, setBet] = useState('');
     const [predict, setPredict] = useState('');
     useEffect(() => {
-        if(lastSeconds % 10 === 0) {
+        if (lastSeconds % 10 === 0) {
             setTimeGame(true);
         }
     }, [lastSeconds])
     useEffect(() => {
-        if(lastSeconds % 10 === 0) {
+        if (lastSeconds % 10 === 0) {
             if (bet === 'down' && currentCourse < course[course.length - 2]) {
                 setPredict('win');
                 setBet('');
@@ -82,7 +85,7 @@ const Start = ({currentCourse, course, history, lastSeconds}) => {
                 <div className="text text-center">
                     <span className="gold">Real ICO</span>
                     <h2>
-                        <span style={{fontSize: "48px", letterSpacing: "5px"}} className="gold">BITSY</span>BETS
+                        <span style={{fontSize: "48px", letterSpacing: "5px"}} className="gold">BITCY</span>BETS
                     </h2>
                     <p style={{fontSize: "36px"}} className="mt-3">Make real Bitcoin bets</p>
                 </div>
@@ -96,17 +99,28 @@ const Start = ({currentCourse, course, history, lastSeconds}) => {
                             {/*<SelectList/>*/}
                         </div>
                     </div>
-                    <div className="graph">
+                    <div style={{display: !currentCourse ? "none" : "block"}} className="graph">
                         <Graph gradient1={20} gradient2={150} chartHeight={200}/>
+                    </div>
+                    <div style={{display: currentCourse ? "none" : "block"}}  className="load">
+                        <div className="wrap-img-preload">
+                            <img className="coin1"  src={coin} alt=""/>
+                            <img className="coin2"  src={coin} alt=""/>
+                            <img className="coin3"  src={coin} alt=""/>
+                            <img className="coin4"  src={coin} alt=""/>
+                        </div>
                     </div>
                     <div className="buttons">
                         <div className="wrap-btn">
-                            <button disabled={bet} onClick={() => setBet('down')} className="btn green predict-btn"
+                            <button disabled={bet || !currentCourse} onClick={() => setBet('down')}
+                                    className="btn green predict-btn"
                                     id="down">PREDICT UP
                                 <img src={arrowUp} width="15" height="20" alt="b"/>
-                                <Rect start={timeGame} infinite={'infinity'} idButton={'down'} mode={timeGame ? 'rectUp' : ''}/>
+                                <Rect start={timeGame} infinite={'infinity'} idButton={'down'}
+                                      mode={timeGame ? 'rectUp' : ''}/>
                             </button>
-                            <button disabled={bet} onClick={() => setBet('up')} className="btn red predict-btn"
+                            <button disabled={bet || !currentCourse} onClick={() => setBet('up')}
+                                    className="btn red predict-btn"
                                     id="down">PREDICT DOWN
                                 <img src={arrowDown} width="15" height="20" alt="b"/>
                                 <Rect infinite={'infinity'} idButton={'down'} mode={timeGame ? 'rectDown' : ''}/>
