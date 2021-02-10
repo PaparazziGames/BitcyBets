@@ -6,7 +6,7 @@ import Header from "../Header/Header";
 import {User} from "../../api/User";
 import {Link} from "react-router-dom";
 
-const Btc = (props) => {
+const Btc = ({ history }) => {
     const [copied, setCopied] = useState(false);
     const [file, setFile] = useState(null);
     const [transaction, setTransaction] = useState('');
@@ -29,7 +29,11 @@ const Btc = (props) => {
             reader.readAsDataURL(file);
             reader.onload = () => {
                 User.sendDeposit({transactionId: transaction, transactionPhoto: reader.result})
-                    .then(res => res.status);
+                    .then(res => {
+                        if(res.data.status === "success") {
+                            history.push("/complete")
+                        }
+                    });
             }
         } else if (file && !transaction) {
             setErr("Empty transaction ID");
@@ -46,7 +50,7 @@ const Btc = (props) => {
                         <h2>Our BTC wallet</h2>
                         <img src={qrcode} alt="qr"/>
                     </div>
-                    <span onClick={() => props.history.goBack()} className="back"><img src={back} alt="back"/></span>
+                    <span onClick={() => history.goBack()} className="back"><img src={back} alt="back"/></span>
                     <h2>Payment by BTC</h2>
                     <div className="amount label-payment"><span className="nowrap">Our BTC address</span><span
                         style={{display: copied ? "block" : "none"}} className="green">Link is copied</span></div>

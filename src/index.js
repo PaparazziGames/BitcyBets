@@ -17,6 +17,7 @@ import Main from "./components/Main/Main";
 import Auth from "./components/Auth/Auth";
 import Playlist from "./sound/Playlist";
 import Ads from "./components/Ads/Ads";
+import Complete from "./components/Refill/Complete";
 
 const routing = [
     {path: "/", component: Start},
@@ -29,6 +30,7 @@ const routing = [
     {path: "/login", component: Auth},
     {path: "/signup", component: Auth},
     {path: "/ads", component: Ads},
+    {path: "/complete", component: Complete},
 ]
 render(
     <Provider store={store}>
