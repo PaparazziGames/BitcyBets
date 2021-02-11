@@ -26,6 +26,8 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
         setPass('');
         setConfpass('');
         setErr('');
+        setCode('');
+        setEnterCode(false);
     }
     const handleSubmit = event => {
         event.preventDefault();
@@ -60,6 +62,10 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                     }
                     betWin();
                     fireworks();
+                } else {
+                    if (res.data.error) {
+                        setErr(res.data.error);
+                    } else return false;
                 }
             })
             .catch(error => setErr(error.response.data.error))

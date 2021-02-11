@@ -5,12 +5,11 @@ export const User = {
   register(form) {
     return Api().post('/register', form);
   },
-
   login(form) {
     return Api().post('/login', form);
   },
-  code(file) {
-    return Api().post('/user/code', JSON.stringify({...{"accessToken": localStorage.getItem('token')}, ...file}));
+  code(code) {
+    return Api().post('/user/code', JSON.stringify(code));
   },
   rate() {
     return Api().post('/rates', JSON.stringify({"accessToken": localStorage.getItem('token')}));
@@ -30,9 +29,7 @@ export const User = {
   sendDeposit(file) {
     return Api().post('/user/sendDeposit', JSON.stringify({...{"accessToken": localStorage.getItem('token')}, ...file}));
   },
-  withdraw(file) {
-    return Api().post('/user/withdraw', JSON.stringify({...{"accessToken": localStorage.getItem('token')}, ...file}));
+  withdraw(wallet) {
+    return Api().post('/user/withdraw', JSON.stringify({...{"accessToken": localStorage.getItem('token')}, ...wallet}));
   },
-
-
 };
