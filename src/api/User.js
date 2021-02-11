@@ -9,7 +9,9 @@ export const User = {
   login(form) {
     return Api().post('/login', form);
   },
-
+  code(file) {
+    return Api().post('/user/code', JSON.stringify({...{"accessToken": localStorage.getItem('token')}, ...file}));
+  },
   rate() {
     return Api().post('/rates', JSON.stringify({"accessToken": localStorage.getItem('token')}));
   },
@@ -31,5 +33,6 @@ export const User = {
   withdraw(file) {
     return Api().post('/user/withdraw', JSON.stringify({...{"accessToken": localStorage.getItem('token')}, ...file}));
   },
+
 
 };
