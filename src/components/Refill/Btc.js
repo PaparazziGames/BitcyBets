@@ -31,7 +31,7 @@ const Btc = ({ history }) => {
                 User.sendDeposit({transactionId: transaction, transactionPhoto: reader.result})
                     .then(res => {
                         if(res.data.status === "success") {
-                            history.push("/complete")
+                            history.push("/complete/pay")
                         }
                     });
             }

@@ -6,6 +6,8 @@ import arrows from "../../images/arrows.svg";
 import back from "../../images/back.svg";
 import {Link} from "react-router-dom";
 import Header from "../Header/Header";
+import {createAd} from "../../redux/actions";
+import {connect} from "react-redux";
 
 let socket = new WebSocket("wss://bitcybets.com:8080/serv");
 let bitcoins = [];
@@ -14,7 +16,7 @@ socket.onmessage = async e => {
         bitcoins.push(course.Bitcoin);
     });
 }
-const Refill = (props) => {
+const Refill = ({createAd, createAdProp, history}) => {
     let currentCourse = bitcoins[bitcoins.length - 1];
     const [bit, setBit] = useState(0);
     const [usd, setUsd] = useState(0);
@@ -23,9 +25,20 @@ const Refill = (props) => {
     return (
         <div>
             <Header/>
+            <div style={{display: createAdProp ? "block" : "none"}} className="blur soon">
+                <div className="round-dark win">
+                    <div className="win-btn">
+                        <h2>This feature coming soon</h2>
+                        <button onClick={() => {
+                            createAd();
+                        }} className="btn btn-primary">OK
+                        </button>
+                    </div>
+                </div>
+            </div>
             <div className="refill">
                 <div className="round-dark">
-                    <span onClick={() => props.history.goBack()} className="back"><img src={back} alt="back"/></span>
+                    <span onClick={() => history.goBack()} className="back"><img src={back} alt="back"/></span>
                     {/*<h2>How to fulfill</h2>*/}
                     {/*<p>We are glad that you are going to be with us</p>*/}
                     <h2>Deposit options</h2>
@@ -57,13 +70,23 @@ const Refill = (props) => {
                         <Link to="/refill/btc" className="pay"><span>DEPOSIT</span><img src={bitcoin} width="15"
                                                                                         alt="bit"/></Link>
 
-                        <Link to="/refill/usd" className="pay"><span>DEPOSIT</span><img src={dollar} width="15"
-                                                                                        alt="bit"/></Link>
+                        <button onClick={createAd} className="pay"><span>DEPOSIT</span><img src={dollar} width="15"
+                                                                                        alt="bit"/></button>
                     </div>
+                    <div className="d-flex justify-content-center mt-3"><Link to="/support" className="support-link">Need
+                        support?</Link></div>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Refill;
+const mapStateToProps = state => {
+    return {
+        createAdProp: state.switchOptions.createAd
+    }
+}
+const mapDispatchToProps = {
+    createAd
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Refill);

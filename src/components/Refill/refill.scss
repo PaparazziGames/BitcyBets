@@ -1,29 +1,32 @@
 .refill {
-.qrcode {
-  width: 177px;
-  height: 196px;
-  position: absolute;
-  top: 0;
-  right: -377px;
-  background: var(--dark-gradient);
-  border-radius: 24px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  h2 {
-    font-size: 16px;
-    font-weight: 300;
-    margin-bottom: 0;
-    margin-top: -10px;
+  .qrcode {
+    width: 177px;
+    height: 196px;
+    position: absolute;
+    top: 0;
+    right: -377px;
+    background: var(--dark-gradient);
+    border-radius: 24px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      font-size: 16px;
+      font-weight: 300;
+      margin-bottom: 0;
+      margin-top: -10px;
+    }
   }
-}
 
   .main-usd {
     max-height: 540px;
+
     .false {
       height: 442px;
     }
+
     .done {
       height: 226px;
     }
@@ -32,9 +35,10 @@
   .back {
     position: absolute;
     left: 30px;
-    top: 36px;
+    top: 30px;
     cursor: pointer;
     z-index: 3;
+
     &:hover {
       left: 30px;
     }
@@ -48,7 +52,9 @@
     transform: translate(-50%, -50%);
     width: 376px;
     z-index: 3;
-
+form {
+  position: relative;
+}
     h2 {
       margin-bottom: 17px;
     }
@@ -170,7 +176,6 @@
 
       &:nth-child(1) {
         margin-top: 42px;
-        margin-bottom: 24px;
       }
 
       img {
@@ -211,7 +216,7 @@
   cursor: pointer;
   text-align: center;
   position: relative;
-  }
+}
 
 //.refill-btn .label i {
 //  display: block;
@@ -224,6 +229,7 @@
   display: block;
   margin-bottom: 10px;
 }
+
 .title {
   font-size: 16px;
   text-transform: uppercase;
@@ -238,3 +244,7 @@
 //  color: #000
 //}
 
+.support-link {
+  text-align: center;
+  margin: 0 auto;
+}

@@ -17,7 +17,9 @@ import Main from "./components/Main/Main";
 import Auth from "./components/Auth/Auth";
 import Playlist from "./sound/Playlist";
 import Ads from "./components/Ads/Ads";
-import Complete from "./components/Refill/Complete";
+import CompletePay from "./components/Refill/CompletePay";
+import Withdraw from "./components/Refill/Withdraw";
+import CompleteWith from "./components/Refill/CompleteWith";
 
 const routing = [
     {path: "/", component: Start},
@@ -30,7 +32,9 @@ const routing = [
     {path: "/login", component: Auth},
     {path: "/signup", component: Auth},
     {path: "/ads", component: Ads},
-    {path: "/complete", component: Complete},
+    {path: "/complete/pay", component: CompletePay},
+    {path: "/complete/withdraw", component: CompleteWith},
+    {path: "/withdraw", component: Withdraw},
 ]
 render(
     <Provider store={store}>

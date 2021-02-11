@@ -28,5 +28,8 @@ export const User = {
   sendDeposit(file) {
     return Api().post('/user/sendDeposit', JSON.stringify({...{"accessToken": localStorage.getItem('token')}, ...file}));
   },
+  withdraw(file) {
+    return Api().post('/user/withdraw', JSON.stringify({...{"accessToken": localStorage.getItem('token')}, ...file}));
+  },
 
 };

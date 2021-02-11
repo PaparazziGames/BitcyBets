@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './refill.scss';
 import {Link} from "react-router-dom";
 import Header from "../Header/Header";
 
 
 
-const Complete = (props) => {
+const CompletePay = (props) => {
 
     return (
         <div>
@@ -17,10 +17,12 @@ const Complete = (props) => {
                     <div className="refill-btn">
                         <Link to="/game" className="pay"><span>Go to bets</span></Link>
                     </div>
+                    <div className="d-flex justify-content-center mt-3"><Link to="/support" className="support-link">Need
+                        support?</Link></div>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Complete;
+export default CompletePay;
