@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import Main from "./components/Main/Main";
 import Auth from "./components/Auth/Auth";
@@ -16,6 +16,7 @@ import Ads from "./components/Ads/Ads";
 import CompletePay from "./components/Refill/CompletePay";
 import CompleteWith from "./components/Refill/CompleteWith";
 import Withdraw from "./components/Refill/Withdraw";
+import {prohibition} from "./redux/actions";
 
 const routing = [
     {path: "/", component: Start},
@@ -33,7 +34,12 @@ const routing = [
     {path: "/complete/withdraw", component: CompleteWith},
     {path: "/withdraw", component: Withdraw},
 ]
-const App = ({unauthorized}) => {
+const App = ({unauthorized, prohibition}) => {
+    useEffect(()=> {
+        if(unauthorized){
+            prohibition();
+        }
+    }, [unauthorized])
     return (
         <Router>
             {/* eslint-disable-next-line no-restricted-globals */}
@@ -43,8 +49,7 @@ const App = ({unauthorized}) => {
                 return <Route key={index} exact path={content.path} component={content.component}/>
             })}
             <Redirect from="*" to={localStorage.getItem('token') ? "/game" : "/"} />
-            {unauthorized ? <Redirect to='/login'/>: null};
-        }
+            {unauthorized ? <Redirect to='/login'/>: null}
         </Router>
     );
 }
@@ -55,4 +60,7 @@ const mapStateToProps = state => {
         unauthorized: state.authReducer.unauthorized
     }
 }
-export default connect(mapStateToProps, null)(App);
+const mapDispatchToProps = {
+    prohibition
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
