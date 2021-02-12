@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Auth/Reset.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/auth.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/auth.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/restore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/restore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Graph.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Graph.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Start/Start.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Start/Start.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/entry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +134,7 @@
       <workItem from="1612960172800" duration="15635000" />
       <workItem from="1613027217824" duration="21313000" />
       <workItem from="1613113014636" duration="4827000" />
-      <workItem from="1613127587282" duration="8959000" />
+      <workItem from="1613127587282" duration="12191000" />
     </task>
     <servers />
   </component>

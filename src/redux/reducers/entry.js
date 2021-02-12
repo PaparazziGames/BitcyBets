@@ -1,7 +1,7 @@
 import {
     AUTHORIZATION, CREATE_AD,
     GET_COURSE,
-    GET_LOCATION, LOGOUT,
+    GET_LOCATION, GOAWAY, LOGOUT,
     PROHIBITION,
     REGISTRATION
 } from "../types";
@@ -15,7 +15,8 @@ const initialState = {
     currentTime: 0,
     lastSeconds: undefined,
     logoutQuestion: false,
-    createAd: false
+    createAd: false,
+    unauthorized: false
 }
 
 export const switchOptions = (state = initialState, action) => {
@@ -31,10 +32,15 @@ export const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case AUTHORIZATION:
             if (localStorage.getItem('token') !== null) {
-                return {...state, auth: true};
+                return {...state, auth: true, unauthorized: false};
             } else {
                 return {...state, auth: false};
             }
+        case GOAWAY:
+            return {
+                ...state,
+                unauthorized: true
+            };
         case PROHIBITION:
             return {...state, auth: false};
         case REGISTRATION:

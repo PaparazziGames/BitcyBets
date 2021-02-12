@@ -12,8 +12,9 @@ import Rect from "../Main/Rect/Rect";
 import Preloader from "../Main/Preloader";
 import bitsybets from "../../images/BITCYBETS.svg";
 import coin from "../../images/coin.svg";
+import {userdata} from "../../redux/actions/game";
 
-const Start = ({currentCourse, course, history, lastSeconds}) => {
+const Start = ({currentCourse, course, history, lastSeconds, userdata}) => {
     const [timeGame, setTimeGame] = useState(false);
     const [bet, setBet] = useState('');
     const [predict, setPredict] = useState('');
@@ -143,4 +144,7 @@ const mapStateToProps = state => {
 
     }
 }
-export default connect(mapStateToProps, null)(Start);
+const mapDispatchToProps = {
+    userdata
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Start);

@@ -4,7 +4,7 @@ import {
     CLEAR_BET,
     CLOSE_CONGRATULATION,
     GET_RATES,
-    GET_USER_DATA,
+    GET_USER_DATA, GOAWAY,
     SET_BET_DOWN,
     SET_BET_UP
 } from "../types";
@@ -31,6 +31,7 @@ const initialState = {
 export const balanceReducer = (state = initialState, action) => {
 
     switch (action.type) {
+
         case CHANGE_DEMO:
             return {
                 ...state,

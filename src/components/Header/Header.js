@@ -11,7 +11,7 @@ import {authorization, createAd, logoutQuestion, prohibition, registration} from
 import {Link} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
 
-const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, history}) => {
+const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, history, unauthorized}) => {
     const [menu, setMenu] = useState(false);
     useEffect(() => {
         authorization();
@@ -88,6 +88,7 @@ const mapStateToProps = state => {
         reg: state.authReducer.reg,
         mute: state.soundReducer.mute,
         logout: state.authReducer.logoutQuestion,
+        unauthorized: state.authReducer.unauthorized,
     }
 }
 const mapDispatchToProps = {
