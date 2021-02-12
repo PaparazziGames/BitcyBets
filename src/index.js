@@ -20,11 +20,13 @@ import Ads from "./components/Ads/Ads";
 import CompletePay from "./components/Refill/CompletePay";
 import Withdraw from "./components/Refill/Withdraw";
 import CompleteWith from "./components/Refill/CompleteWith";
+import Reset from "./components/Auth/Reset";
 
 const routing = [
     {path: "/", component: Start},
     {path: "/game", component: Main},
     {path: "/restore", component: Restore},
+    {path: "/reset", component: Reset},
     {path: "/refill", component: Refill},
     {path: "/refill/btc", component: Btc},
     {path: "/refill/usd", component: Usd},

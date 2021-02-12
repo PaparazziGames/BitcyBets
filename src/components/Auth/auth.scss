@@ -98,7 +98,14 @@
       cursor: pointer;
     }
   }
-
+.restore-arrow {
+  font-size: 24px;
+  width: 15px;
+  position: absolute;
+  left: 30px;
+  top: .5em;
+  cursor: pointer;
+}
   .back {
     font-size: 24px;
     width: 15px;
