@@ -53,7 +53,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
         e.preventDefault();
         User.code({code: code})
             .then(res => {
-                if(res.data.status === "success") {
+                if (res.data.status === "success") {
                     localStorage.setItem('token', res.data.data.accessToken);
                     authorization();
                     history.push('/game');
@@ -85,7 +85,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                     } else if (data.data.error) {
                         return setErr(data.data.error);
                     } else {
-                        return setErr('error, try again after 2-3 minutes')
+                        return setErr('error, try again later')
                     }
                 }
             )
@@ -94,121 +94,129 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
     }
     if (reg) {
 
-            if(enterCode) {
-                 return (
-                     <div className="round-dark auth">
-                     <h2>Enter code</h2>
-                         <form onSubmit={e => codeSubmit(e)}><div className="">
-                             <input value={code} onInput={e => setCode(e.target.value)} id="code" name="code" type="text" required/>
-                         </div>
-                             <button type="submit">SEND</button>
-                         </form>
-                 </div>
-                 );
-            } else {
-                return (
-                    <div className="round-dark auth">
+        if (enterCode) {
+            return (
+                <div className="round-dark auth">
+                         <span onClick={() => {
+                             setEnterCode(false);
+                             clearData();
+                         }} className="back">&larr;</span>
+                    <h2>Enter code</h2>
+                    <form onSubmit={e => codeSubmit(e)}>
+                        <div className="">
+                            <input value={code} onInput={e => setCode(e.target.value)} id="code" name="code" type="text"
+                                   required/>
+                        </div>
+                        <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
+                        <button type="submit">SEND</button>
+                    </form>
+                </div>
+            );
+        } else {
+            return (
+                <div className="round-dark auth">
                 <span onClick={() => {
                     registration();
                     clearData();
                 }} className="back">&larr;</span>
-                        <h2 className="">Registration</h2>
-                        <form onSubmit={handleSubmit}>
-                            <div className="">
-                                <label htmlFor="name">Name</label>
-                                <input onChange={e => {
-                                    setName(e.target.value);
-                                    setErr('');
-                                }}
-                                       value={name}
-                                       placeholder="John Lucky"
-                                       id="name" name="name" type="text" required/>
-                            </div>
-                            <div className="">
-                                <label htmlFor="phone">Phone</label>
-                                <PhoneInput onChange={e => {
-                                    setPhone(e);
-                                    setErr('');
-                                }} id="phone" limitMaxLength={true} placeholder='+123-456-78-90' value={phone} international
-                                            displayInitialValueAsLocalNumber required/>
-                            </div>
-                            <div className="">
-                                <label htmlFor="email">Email</label>
-                                <input onChange={e => {
-                                    setEmail(e.target.value);
-                                    setErr('');
-                                }}
-                                       value={email}
-                                       placeholder="lucky@mail.com"
-                                       id="email" name="email" type="email" required/>
-                            </div>
-                            <div className={password ? 'pass' : 'text'}>
-                                <span onClick={() => setPassword(!password)} className="eye"/>
-                                <label htmlFor="password">Password</label>
-                                <input min='8' onChange={e => {
-                                    setPass(e.target.value);
-                                    setErr('');
-                                }}
-                                       value={pass}
-                                       id="password" name="password" type={password ? 'password' : 'text'} required/>
-                            </div>
-                            <div className={passwordConfirm ? 'pass' : 'text'}>
-                                <span onClick={() => setPasswordConfirm(!passwordConfirm)} className="eye"/>
-                                <label htmlFor="passwordConfirm">Repeat password</label>
-                                <input min='8' onChange={e => {
-                                    setConfpass(e.target.value);
-                                    setErr('');
-                                }}
-                                       value={confpass}
-                                       id="passwordConfirm" name="passwordConfirm" type={passwordConfirm ? 'password' : 'text'}
-                                       required/>
-                            </div>
-                            <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                            <button>SIGN UP</button>
-                            <Link to='/support' className="support-link">Need support?</Link>
-                        </form>
+                    <h2 className="">Registration</h2>
+                    <form onSubmit={handleSubmit}>
+                        <div className="">
+                            <label htmlFor="name">Name</label>
+                            <input onChange={e => {
+                                setName(e.target.value);
+                                setErr('');
+                            }}
+                                   value={name}
+                                   placeholder="John Lucky"
+                                   id="name" name="name" type="text" required/>
+                        </div>
+                        <div className="">
+                            <label htmlFor="phone">Phone</label>
+                            <PhoneInput onChange={e => {
+                                setPhone(e);
+                                setErr('');
+                            }} id="phone" limitMaxLength={true} placeholder='+123-456-78-90' value={phone} international
+                                        displayInitialValueAsLocalNumber required/>
+                        </div>
+                        <div className="">
+                            <label htmlFor="email">Email</label>
+                            <input onChange={e => {
+                                setEmail(e.target.value);
+                                setErr('');
+                            }}
+                                   value={email}
+                                   placeholder="lucky@mail.com"
+                                   id="email" name="email" type="email" required/>
+                        </div>
+                        <div className={password ? 'pass' : 'text'}>
+                            <span onClick={() => setPassword(!password)} className="eye"/>
+                            <label htmlFor="password">Password</label>
+                            <input min='8' onChange={e => {
+                                setPass(e.target.value);
+                                setErr('');
+                            }}
+                                   value={pass}
+                                   id="password" name="password" type={password ? 'password' : 'text'} required/>
+                        </div>
+                        <div className={passwordConfirm ? 'pass' : 'text'}>
+                            <span onClick={() => setPasswordConfirm(!passwordConfirm)} className="eye"/>
+                            <label htmlFor="passwordConfirm">Repeat password</label>
+                            <input min='8' onChange={e => {
+                                setConfpass(e.target.value);
+                                setErr('');
+                            }}
+                                   value={confpass}
+                                   id="passwordConfirm" name="passwordConfirm"
+                                   type={passwordConfirm ? 'password' : 'text'}
+                                   required/>
+                        </div>
+                        <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
+                        <button>SIGN UP</button>
+                        <Link to='/support' className="support-link">Need support?</Link>
+                    </form>
 
-                    </div>
-                );
-            }
+                </div>
+            );
+        }
     } else {
         return (
             <div className="round-dark auth">
                <span onClick={() => {
                    clearData();
                }} className="back"><Link to="/">&larr;</Link></span>
-            <h2>Welcome</h2>
-            <form onSubmit={handleLogin}>
-                <div className="">
-                    <label htmlFor="phone">Phone</label>
-                    <PhoneInput onChange={e => {
-                        setPhone(e);
-                        setErr('');
-                    }} id="phone" limitMaxLength={true} placeholder='+123-456-78-90' value={phone} international
-                                displayInitialValueAsLocalNumber required/>
-                </div>
-                <div className={password ? 'pass' : 'text'}>
-                    <span onClick={() => setPassword(!password)} className="eye"/>
-                    <label htmlFor="password">Password</label>
-                    <input onInput={e => {
-                        setPass(e.target.value);
-                        setErr('');
-                    }} id="password" name="password"
-                           type={password ? 'password' : 'text'} required/>
-                </div>
-                <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                <Link to="/restore" className="forgot mb-3">Forgot password?</Link>
-                <button>LOG IN</button>
-                <span>or</span>
-                <button onClick={e => {
-                    e.preventDefault();
-                    registration();
-                    clearData();
-                }}>SIGN UP
-                </button>
-                <Link to="/support" className="support-link">Need support?</Link>
-            </form>
-        </div>
+                <h2>Welcome</h2>
+                <form onSubmit={handleLogin}>
+                    <div className="">
+                        <label htmlFor="phone">Phone</label>
+                        <PhoneInput onChange={e => {
+                            setPhone(e);
+                            setErr('');
+                        }} id="phone" limitMaxLength={true} placeholder='+123-456-78-90' value={phone} international
+                                    displayInitialValueAsLocalNumber required/>
+                    </div>
+                    <div className={password ? 'pass' : 'text'}>
+                        <span onClick={() => setPassword(!password)} className="eye"/>
+                        <label htmlFor="password">Password</label>
+                        <input onInput={e => {
+                            setPass(e.target.value);
+                            setErr('');
+                        }} id="password" name="password"
+                               type={password ? 'password' : 'text'} required/>
+                    </div>
+                    <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
+                    <Link to="/restore" className="forgot mb-3">Forgot password?</Link>
+                    <button>LOG IN</button>
+                    <span>or</span>
+                    <button onClick={e => {
+                        e.preventDefault();
+                        registration();
+                        clearData();
+                    }}>SIGN UP
+                    </button>
+                    <Link to="/support" className="support-link">Need support?</Link>
+                </form>
+            </div>
         );
     }
 }

@@ -120,9 +120,9 @@ let graph = (course, labels, ctx, color) => (exam = new Chart(ctx, {
                     innerHtml += '</thead><tbody>';
 
                     bodyLines.forEach(function (body, i) {
-                        currentHover = body;
-                        item = course.filter((item, i) => +item === +currentHover) + '';
-                        index = course.indexOf(item);
+                        currentHover = +body;
+                        item = course.filter(item => item === currentHover);
+                        index = course.indexOf(item[0]);
                         courseDirection = course[index] - course[index - 1] < 0;
                         const icon = !courseDirection ? bull : bear;
                         var colors = tooltipModel.labelColors[i];
