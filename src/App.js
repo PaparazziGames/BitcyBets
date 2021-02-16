@@ -17,6 +17,7 @@ import CompletePay from "./components/Refill/CompletePay";
 import CompleteWith from "./components/Refill/CompleteWith";
 import Withdraw from "./components/Refill/Withdraw";
 import {prohibition} from "./redux/actions";
+import Invite from "./components/Refill/Invite";
 
 document.addEventListener("DOMContentLoaded", () => {
     if(!sessionStorage.getItem("saveReload")) {
@@ -32,6 +33,7 @@ const routing = [
     {path: "/restore", component: Restore},
     {path: "/reset", component: Reset},
     {path: "/refill", component: Refill},
+    {path: "/invite", component: Invite},
     {path: "/refill/btc", component: Btc},
     {path: "/refill/usd", component: Usd},
     {path: "/support", component: Support},

@@ -2,20 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Refill/Invite.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/social/gplus.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/social/sms.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/social/telegram.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/social/twitter.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/social/viber.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/RightSector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/RightSector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Refill/Btc.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Refill/Btc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/peoples.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/entry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Refill/refill.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Refill/refill.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +43,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Refill" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/images/social" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -62,16 +59,17 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\images\social" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\components\Refill" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\images" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\redux\actions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\images\social" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\components\Refill" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\images" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\components\Start" />
       <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\components\Main\Rect" />
-      <recent name="C:\Users\PC-002\WebstormProjects\AndreyPrudnikoff.github.io\src\sound" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -141,7 +139,7 @@
       <workItem from="1613127587282" duration="13487000" />
       <workItem from="1613164861362" duration="464000" />
       <workItem from="1613374242521" duration="3211000" />
-      <workItem from="1613458324833" duration="12520000" />
+      <workItem from="1613458324833" duration="21197000" />
     </task>
     <servers />
   </component>
