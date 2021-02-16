@@ -12,6 +12,7 @@ export const GET_CURRENT_COURSE ='GET_CURRENT_COURSE';
 export const BET_WIN ='BET_WIN';
 export const BET_LOSE ='BET_LOSE';
 export const CLOSE_CONGRATULATION ='CLOSE_CONGRATULATION';
+export const CLOSE_YOURLOSE ='CLOSE_YOURLOSE';
 
 export const PLAY_CLICK ='PLAY_CLICK';
 export const PLAY_CLACK ='PLAY_CLACK';

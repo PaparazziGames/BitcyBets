@@ -54,7 +54,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
         User.code({code: code})
             .then(res => {
                 if (res.data.status === "success") {
-                    localStorage.setItem('token', res.data.data.accessToken);
+                    sessionStorage.setItem('token', res.data.data.accessToken);
                     authorization();
                     history.push('/game');
                     if (!mute) {
@@ -79,7 +79,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
             .then(res => res)
             .then(data => {
                     if (data.data.status === "success") {
-                        localStorage.setItem('token', data.data.data.accessToken);
+                        sessionStorage.setItem('token', data.data.data.accessToken);
                         history.push('/game');
                         return authorization();
                     } else if (data.data.error) {

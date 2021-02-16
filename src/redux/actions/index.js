@@ -2,12 +2,13 @@ import {
     AUTHORIZATION,
     BET_LOSE,
     BET_WIN,
-    CLOSE_CONGRATULATION, CREATE_AD,
+    CLOSE_CONGRATULATION, CLOSE_YOURLOSE, CREATE_AD,
     GET_COURSE, GET_CURRENT_COURSE,
     GET_LOCATION, LOGOUT,
     PROHIBITION,
     REGISTRATION
 } from "../types";
+
 import {userdata} from "./game";
 
 export function authorization() {
@@ -68,6 +69,12 @@ export function betLose(data) {
 export function closeCongratulation(data) {
     return dispatch => {
         dispatch({type: CLOSE_CONGRATULATION});
+    }
+}
+
+export function closeYourLose(data) {
+    return dispatch => {
+        dispatch({type: CLOSE_YOURLOSE});
     }
 }
 

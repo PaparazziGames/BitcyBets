@@ -1,6 +1,6 @@
 import Api from './Api';
 
-// const token = JSON.stringify({"accessToken": localStorage.getItem('token')});
+// const token = JSON.stringify({"accessToken": sessionStorage.getItem('token')});
 export const User = {
     register(form) {
         return Api().post('/register', form);
@@ -18,24 +18,24 @@ export const User = {
         return Api().post('/user/updatePassword', JSON.stringify(user));
     },
     rate() {
-        return Api().post('/rates', JSON.stringify({"accessToken": localStorage.getItem('token')}));
+        return Api().post('/rates', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
     },
     userdata() {
-        return Api().post('/getUser', JSON.stringify({"accessToken": localStorage.getItem('token')}));
+        return Api().post('/getUser', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
     },
     predictUp(value) {
-        return Api().post('/predictUp', JSON.stringify(({...{"accessToken": localStorage.getItem('token')}, ...value})));
+        return Api().post('/predictUp', JSON.stringify(({...{"accessToken": sessionStorage.getItem('token')}, ...value})));
     },
     predictDown(value) {
-        return Api().post('/predictDown', JSON.stringify(({...{"accessToken": localStorage.getItem('token')}, ...value})));
+        return Api().post('/predictDown', JSON.stringify(({...{"accessToken": sessionStorage.getItem('token')}, ...value})));
     },
     changeWallet() {
-        return Api().post('/changeDemo', JSON.stringify({"accessToken": localStorage.getItem('token')}));
+        return Api().post('/changeDemo', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
     },
     sendDeposit(file) {
-        return Api().post('/user/sendDeposit', JSON.stringify({...{"accessToken": localStorage.getItem('token')}, ...file}));
+        return Api().post('/user/sendDeposit', JSON.stringify({...{"accessToken": sessionStorage.getItem('token')}, ...file}));
     },
     withdraw(wallet) {
-        return Api().post('/user/withdraw', JSON.stringify({...{"accessToken": localStorage.getItem('token')}, ...wallet}));
+        return Api().post('/user/withdraw', JSON.stringify({...{"accessToken": sessionStorage.getItem('token')}, ...wallet}));
     },
 };

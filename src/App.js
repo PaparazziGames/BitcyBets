@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {connect} from "react-redux";
 import Main from "./components/Main/Main";
 import Auth from "./components/Auth/Auth";
@@ -18,6 +18,14 @@ import CompleteWith from "./components/Refill/CompleteWith";
 import Withdraw from "./components/Refill/Withdraw";
 import {prohibition} from "./redux/actions";
 
+document.addEventListener("DOMContentLoaded", () => {
+    if(!sessionStorage.getItem("saveReload")) {
+        sessionStorage.removeItem("token");
+    } else {
+        sessionStorage.removeItem("saveReload");
+    }
+})
+
 const routing = [
     {path: "/", component: Start},
     {path: "/game", component: Main},
@@ -34,24 +42,36 @@ const routing = [
     {path: "/complete/withdraw", component: CompleteWith},
     {path: "/withdraw", component: Withdraw},
 ]
-const App = ({unauthorized, prohibition}) => {
-    useEffect(()=> {
-        if(unauthorized){
-            prohibition();
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.refresh = this.refresh.bind(this);
+    }
+
+    refresh() {
+        this.forceUpdate();
+    }
+
+    componentDidMount() {
+        if (this.props.unauthorized) {
+            this.props.prohibition();
         }
-    }, [unauthorized])
-    return (
-        <Router>
-            {/* eslint-disable-next-line no-restricted-globals */}
-            <Header />
-            <Playlist />
-            {routing.map((content, index) => {
-                return <Route key={index} exact path={content.path} component={content.component}/>
-            })}
-            <Redirect from="*" to={localStorage.getItem('token') ? "/game" : "/"} />
-            {unauthorized ? <Redirect to='/login'/>: null}
-        </Router>
-    );
+    }
+
+    render() {
+        return (
+            <Router>
+                <Header refresh={this.refresh}/>
+                <Playlist/>
+                {routing.map((content, index) => {
+                    return <Route key={index} exact path={content.path} component={content.component}/>
+                })}
+                <Redirect from="*" to={sessionStorage.getItem('token') ? "/game" : "/"}/>
+                {this.props.unauthorized ? <Redirect to='/login'/> : null}
+            </Router>
+        );
+    }
 }
 
 const mapStateToProps = state => {

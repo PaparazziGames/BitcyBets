@@ -2,7 +2,7 @@ import {
     BET_LOSE,
     BET_WIN, CHANGE_DEMO,
     CLEAR_BET,
-    CLOSE_CONGRATULATION,
+    CLOSE_CONGRATULATION, CLOSE_YOURLOSE,
     GET_RATES,
     GET_USER_DATA, GOAWAY,
     SET_BET_DOWN,
@@ -26,7 +26,9 @@ const initialState = {
     up: 0,
     upBets: 0,
     downBets: 0,
-    online: 0
+    online: 0,
+    yourlose: false
+
 }
 export const balanceReducer = (state = initialState, action) => {
 
@@ -95,7 +97,8 @@ export const balanceReducer = (state = initialState, action) => {
         case BET_LOSE:
             return {
                 ...state,
-                colorBlalance: 'red'
+                colorBlalance: 'red',
+                yourlose: true
             };
         case SET_BET_UP:
             return {
@@ -114,6 +117,8 @@ export const balanceReducer = (state = initialState, action) => {
             };
         case CLOSE_CONGRATULATION:
             return {...state, congratulation: false};
+        case CLOSE_YOURLOSE:
+            return {...state, yourlose: false};
         default:
             return state;
     }

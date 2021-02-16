@@ -6,7 +6,7 @@ import Header from "../Header/Header";
 import {User} from "../../api/User";
 import {Link} from "react-router-dom";
 
-const Btc = ({ history }) => {
+const Btc = ({history}) => {
     const [copied, setCopied] = useState(false);
     const [file, setFile] = useState(null);
     const [transaction, setTransaction] = useState('');
@@ -26,14 +26,37 @@ const Btc = ({ history }) => {
     }
     const submitScreen = () => {
         if (file && transaction) {
+            const width = 300;
+            const height = 150;
             reader.readAsDataURL(file);
-            reader.onload = () => {
-                User.sendDeposit({transactionId: transaction, transactionPhoto: reader.result})
-                    .then(res => {
-                        if(res.data.status === "success") {
-                            history.push("/complete/pay")
+            reader.onload = (event) => {
+                const img = new Image();
+
+                img.src = event.target.result;
+                img.onload = () => {
+                    const elem = document.createElement('canvas');
+                    elem.width = width;
+                    elem.height = height;
+                    const ctx = elem.getContext('2d');
+                    // img.width и img.height будет содержать оригинальные размеры
+                    ctx.drawImage(img, 0, 0, width, height);
+                    ctx.canvas.toBlob((blob) => {
+                        const file1 = new File([blob], fileName, {
+                            type: 'image/jpeg',
+                            lastModified: Date.now()
+                        });
+                        reader.readAsDataURL(file1);
+                        reader.onload = () => {
+                            User.sendDeposit({transactionId: transaction, transactionPhoto: reader.result})
+                                .then(res => {
+                                    if (res.data.status === "success") {
+                                        history.push("/complete/pay")
+                                    }
+                                });
                         }
-                    });
+                    }, 'image/jpeg', 0.2);
+                };
+                reader.onerror = error => console.log(error);
             }
         } else if (file && !transaction) {
             setErr("Empty transaction ID");

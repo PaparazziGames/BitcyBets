@@ -11,16 +11,28 @@ import {authorization, createAd, logoutQuestion, prohibition, registration} from
 import {Link} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
 
-const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, history, unauthorized}) => {
+const Header = ({
+                    auth,
+                    reg,
+                    mute,
+                    muteToggle,
+                    logoutQuestion,
+                    createAd,
+                    logout,
+                    registration,
+                    prohibition,
+                    authorization,
+                    history,
+                    unauthorized,
+                    predict,
+                    refresh
+                }) => {
     const [menu, setMenu] = useState(false);
     useEffect(() => {
         authorization();
     }, [])
     const handleMute = () => {
         muteToggle();
-    }
-    const refresh = () => {
-        window.location.reload();
     }
     return (
         <div>
@@ -31,7 +43,7 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
                         <div className="win-btn">
                             <button onClick={() => {
                                 logoutQuestion();
-                                localStorage.removeItem('token');
+                                sessionStorage.removeItem('token');
                                 prohibition();
                                 window.location.reload();
                             }} className="btn btn-primary"><Link to="/">LOG OUT</Link>
@@ -45,26 +57,37 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
                 </div>
                 <div className="wrap-header">
                     <nav className="navbar">
-                        <a onClick={refresh} className="navbar-brand">
+                        <a onClick={() => {
+                            sessionStorage.setItem("saveReload", "0");
+                            sessionStorage.removeItem('token');
+                            window.location.reload();
+                        }} className="navbar-brand">
                             <img src={logo} alt="logo" height="23"/>
                         </a>
                     </nav>
                     <div className="header-right">
-                        <img onClick={refresh} style={{marginRight: "30px"}} className="sound" height="18" width="18" src={refreshIcon} alt="refresh"/>
+                        <img onClick={() => {
+                            if (sessionStorage.getItem("token")) {
+                                sessionStorage.setItem("saveReload", "1");
+                            }
+                            window.location.reload();
+                        }} style={{marginRight: "30px"}} className="sound" height="18" width="18" src={refreshIcon}
+                             alt="refresh"/>
                         <img onClick={handleMute} className="sound " src={mute ? sound : noSound} height="18" width="18"
                              alt="sound"/>
                         {!auth ? <div className="startHeader">
-                                 <Link onClick={() => {
-                                     if(reg) {
-                                         registration();
-                                     }
-                                 }} className="login" to="/login">LOG IN</Link>
-                                 <Link onClick={registration} className="signup" to="/signup">SIGN UP</Link>
-                             </div> : null }
+                            <Link onClick={() => {
+                                if (reg) {
+                                    registration();
+                                }
+                            }} className="login" to="/login">LOG IN</Link>
+                            <Link onClick={registration} className="signup" to="/signup">SIGN UP</Link>
+                        </div> : null}
                         <div onClick={(e) => {
                             setMenu(!menu)
                         }}
-                             style={auth ? {display: 'flex'} : {display: 'none'}} className="menu">
+                             style={{display: auth ? 'flex' : 'none', pointerEvents: predict ? "none" : "auto"}}
+                             className="menu">
                             <img className="burger"
                                  src={burger} alt="icon"/>
                             <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
@@ -73,7 +96,8 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
                                 <li onClick={createAd} className="burger-menu-item bord"><span>My ads</span></li>
                                 <li className="burger-menu-item" onClick={() => {
                                     logoutQuestion();
-                                }}>Log out</li>
+                                }}>Log out
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -89,6 +113,7 @@ const mapStateToProps = state => {
         mute: state.soundReducer.mute,
         logout: state.authReducer.logoutQuestion,
         unauthorized: state.authReducer.unauthorized,
+        predict: state.balanceReducer.predict,
     }
 }
 const mapDispatchToProps = {
