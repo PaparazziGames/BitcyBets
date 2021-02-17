@@ -1,4 +1,5 @@
 import React from 'react';
+import "./auth.scss";
 
 const styles = {
     backgroundColor: 'inherit',
@@ -10,7 +11,7 @@ const styles = {
 const arrow = {
     position: 'absolute',
     fontSize: '24px',
-    top: '5px',
+    top: '8px',
     left: '30px',
     cursor: 'pointer'
 }

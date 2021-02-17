@@ -66,7 +66,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                        <span onClick={() => {
                            setPredict('');
                            setBet('');
-                       }} className="back">&#10008;</span>
+                       }} className="chross">&#10008;</span>
                         <h2>You did great! <br/> Join now!</h2>
                         <button onClick={() => {
                             setPredict('');
@@ -96,7 +96,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                 <div className="dark">
                     <Time/>
                     <div className="course">
-                        <h2 className="text-center"><img src={bitcoin} alt="course"/>
+                        <h2 style={{opacity: !currentCourse ? 0 : 1}} className="text-center"><img src={bitcoin} alt="course"/>
                             {currentCourse} <span>$</span>
                         </h2>
                         <div>
