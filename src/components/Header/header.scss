@@ -5,6 +5,7 @@ header {
   width: 100%;
   height: 56px;
   background: var(--dark-gradient);
+  z-index: 9999;
 
   .wrap-header {
     width: 90%;
