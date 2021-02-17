@@ -98,22 +98,28 @@
 
       .gold {
         font-weight: 300;
-        font-size: 18px;
+        font-size: 24px;
         line-height: 26px;
+
       }
 
       h2 {
         width: 100%;
         font-weight: 500;
-        font-size: 48px;
+        font-size: 24px;
         line-height: 69px;
         margin-top: 20px;
+
+        .gold {
+          letter-spacing: 5px;
+          font-size: 48px;
+        }
       }
 
       p {
         width: 50%;
         margin: 0 auto;
-        font-size: 18px;
+        font-size: 36px;
       }
     }
   }
@@ -152,9 +158,11 @@ span.back {
   align-items: center;
   margin: 50px auto 50px;
   padding-top: 0;
+
   img.text {
     width: 250px;
   }
+
   .wrap-img-preload {
     .coin1 {
       opacity: 0;
@@ -182,11 +190,109 @@ span.back {
   }
 }
 
+.bull-start-mobile {
+  display: none;
+}
+
+.bear-start-mobile {
+  display: none;
+}
+
 @keyframes loader {
   0% {
     opacity: 1;
   }
   50% {
     opacity: 0;
+  }
+}
+
+
+@media screen and (max-width: 756px) {
+  .start {
+    width: 100%;
+
+    .round.round-dark {
+      background-color: transparent;
+      margin-top: 0;
+      padding: 0 16px;
+      width: 100%;
+
+      .text {
+        margin-top: 24px;
+        margin-bottom: 0;
+
+        .gold {
+          font-size: 18px;
+        }
+
+        h2 {
+          font-size: 24px;
+
+          .gold {
+            font-size: 24px;
+            letter-spacing: 2px;
+          }
+        }
+
+        p {
+          font-size: 18px;
+          width: 90%;
+          margin-top: 0 !important;
+        }
+      }
+
+      .dark {
+        background-color: transparent;
+        width: 100%;
+        padding: 0;
+
+        .time {
+          display: none;
+        }
+
+        div {
+          margin-top: 25px;
+          h2 {
+            white-space: nowrap;
+            img {
+              width: 24px;
+              margin-right: .5em;
+              margin-top: -5px;
+            }
+          }
+        }
+      }
+
+      .bull-start {
+        display: none;
+      }
+
+      .bear-start {
+        display: none;
+      }
+    }
+  }
+  .bull-start-mobile {
+    display: block;
+    width: 25%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+
+    img {
+      width: 100%;
+    }
+  }
+  .bear-start-mobile {
+    display: block;
+    width: 25%;
+    position: fixed;
+    top: 65px;
+    right: 0;
+
+    img {
+      width: 100%;
+    }
   }
 }

@@ -4,8 +4,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 10px 30px;
-  min-width: 376px;
-  max-height: 80%;
+  margin-top: 30px;
+  min-width: 328px;
+  max-height: 568px;
 
   form {
     display: flex;
@@ -171,7 +172,7 @@
 .support-link {
   font-size: 12px;
   font-weight: 300;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 .PhoneInput {
@@ -239,10 +240,9 @@
 
 
 @media screen and (min-width: 320px) and (max-width: 756px) {
-  .auth {
+  div.round-dark.auth {
     height: 90%;
-    width: 50%;
-    max-width: 376px;
+    width: 328px;
     display: flex;
     flex-direction: column;
     align-items: center;

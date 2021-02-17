@@ -6,6 +6,8 @@ import burger from '../../images/burger.png';
 import refreshIcon from '../../images/refresh.svg';
 import sound from '../../images/volume-up-solid.svg';
 import noSound from '../../images/volume-mute-solid.svg';
+import signup from '../../images/user_plus.svg';
+import login from '../../images/sign_in.svg';
 import {connect} from "react-redux";
 import {authorization, createAd, logoutQuestion, prohibition, registration} from "../../redux/actions";
 import {Link} from "react-router-dom";
@@ -71,7 +73,7 @@ const Header = ({
                                 sessionStorage.setItem("saveReload", "1");
                             }
                             window.location.reload();
-                        }} style={{marginRight: "30px"}} className="sound" height="18" width="18" src={refreshIcon}
+                        }} style={{marginRight: "30px"}} className="sound reload" height="18" width="18" src={refreshIcon}
                              alt="refresh"/>
                         <img onClick={handleMute} className="sound " src={mute ? sound : noSound} height="18" width="18"
                              alt="sound"/>
@@ -80,8 +82,17 @@ const Header = ({
                                 if (reg) {
                                     registration();
                                 }
-                            }} className="login" to="/login">LOG IN</Link>
-                            <Link onClick={registration} className="signup" to="/signup">SIGN UP</Link>
+                            }} className="login auth-header" to="/login">LOG IN</Link>
+                            <Link onClick={() => {
+                                if (reg) {
+                                    registration();
+                                }
+                            }} className="login auth-header-icon" to="/login">
+                                <img width={18} src={login} alt="signin"/>
+                            </Link>
+                            <Link onClick={registration} className="signup auth-header" to="/signup">SIGN UP</Link>
+                            <Link onClick={registration} className="signup auth-header-icon" to="/signup">
+                                <img width={18} src={signup} alt="signup"/></Link>
                         </div> : null}
                         <div onClick={(e) => {
                             setMenu(!menu)

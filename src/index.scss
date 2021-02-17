@@ -23,13 +23,16 @@
   color: var(--text-color);
   letter-spacing: 1px;
 }
+
 a {
   text-decoration: none;
   color: var(--text-color);
+
   &:hover {
     color: var(--text-color);
   }
 }
+
 button {
   transition: all 0.2s !important;
 }
@@ -43,33 +46,51 @@ button {
   align-items: center;
   justify-content: center;
 }
+
 #chartjs-tooltip {
   transition: all .5s;
 }
+
 .nowrap {
   white-space: nowrap;
 }
+
 .red {
   color: var(--down);
 }
+
 .green {
   color: var(--up);
 }
+
 .gold {
   color: var(--gold);
 }
+
 .red-bg {
   background-color: var(--down);
 }
+
 .green-bg {
   background-color: var(--up);
 }
+
 .gold-bg {
   background-color: var(--gold);
 }
+
 @media screen and (max-width: 1200px) {
   *, *:after, *:before {
   }
 }
+
+@media screen and (max-width: 756px) {
+  #root {
+    background-image: url("images/mobile_bg.png");
+    background-position: center;
+  }
+}
+
+
 
 

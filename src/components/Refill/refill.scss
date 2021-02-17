@@ -248,13 +248,13 @@
 
 .support-link {
   text-align: center;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 
 .invite {
   position: relative;
-
+  margin-top: 60px;
   input {
     width: 100%;
     height: 100%;
@@ -336,3 +336,9 @@
   }
 }
 
+
+@media screen and (max-width: 756px) {
+  .round-dark.auth {
+    max-width: 328px;
+  }
+}

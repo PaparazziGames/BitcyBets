@@ -18,6 +18,25 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata}) => {
     const [timeGame, setTimeGame] = useState(false);
     const [bet, setBet] = useState('');
     const [predict, setPredict] = useState('');
+    const [screenWidth, setScreenWidth] = useState("desktop");
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            if(window.outerWidth <= 756) {
+                setScreenWidth("mobile");
+            } else if(window.outerWidth > 756) {
+                setScreenWidth("desktop");
+            }
+            console.log("listener")
+        })
+        if(window.outerWidth <= 756) {
+            setScreenWidth("mobile");
+        } else if(window.outerWidth > 756) {
+            setScreenWidth("desktop");
+        }
+        return window.removeEventListener("resize", ()=> {
+            console.log("Removed")
+        });
+    }, [window.outerWidth])
     useEffect(() => {
         if (lastSeconds % 10 === 0) {
             setTimeGame(true);
@@ -45,6 +64,8 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata}) => {
     }, [currentCourse])
     return (
         <div className="start">
+            <div className="bull-start-mobile"><img src={bull} width="" alt="bull"/></div>
+            <div className="bear-start-mobile"><img src={bear} width="" alt="bear"/></div>
             {/*<div style={{display: predict === 'win' ? "block" : "none"}} className="blur soon">*/}
             {/*    <div className="round-dark win">*/}
             {/*        <div className="win-btn">*/}
@@ -86,14 +107,14 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata}) => {
                 <div className="text text-center">
                     <span className="gold">Real ICO</span>
                     <h2>
-                        <span style={{fontSize: "48px", letterSpacing: "5px"}} className="gold">BITCY</span>BETS
+                        <span className="gold">BITCY</span>BETS
                     </h2>
-                    <p style={{fontSize: "36px"}} className="mt-3">Make real Bitcoin bets</p>
+                    <p className="mt-3">Make real Bitcoin bets</p>
                 </div>
                 <div className="dark">
                     <Time/>
                     <div>
-                        <h2 className="text-center"><img src={bitcoin} className="m-2" alt="course"/>
+                        <h2 className="text-center"><img src={bitcoin} alt="course"/>
                             {currentCourse} <span>$</span>
                         </h2>
                         <div>
@@ -101,7 +122,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata}) => {
                         </div>
                     </div>
                     <div style={{display: !currentCourse ? "none" : "block"}} className="graph">
-                        <Graph gradient1={20} gradient2={150} chartHeight={200}/>
+                        <Graph screenwidth={screenWidth}  gradient1={20} gradient2={150} chartHeight={200}/>
                     </div>
                     <div style={{display: currentCourse ? "none" : "block"}}  className="load">
                         <div className="wrap-img-preload">

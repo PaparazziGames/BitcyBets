@@ -173,6 +173,7 @@ class Graph extends Component {
         }
 
         socket.onmessage = async e => {
+            // console.log(this.props.screenwidth)
             let bitcoins = [];
             let times = [];
             let seconds = [];
