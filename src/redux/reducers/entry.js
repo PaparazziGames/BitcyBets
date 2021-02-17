@@ -1,5 +1,5 @@
 import {
-    AUTHORIZATION, CREATE_AD,
+    AUTHORIZATION, CREATE_AD, DEVICE_WIDTH,
     GET_COURSE,
     GET_LOCATION, GOAWAY, LOGOUT,
     PROHIBITION,
@@ -16,13 +16,16 @@ const initialState = {
     lastSeconds: undefined,
     logoutQuestion: false,
     createAd: false,
-    unauthorized: false
+    unauthorized: false,
+    widthMode: window.outerWidth > 756 ? "desktop" : "mobile"
 }
 
 export const switchOptions = (state = initialState, action) => {
     switch (action.type) {
         case CREATE_AD:
             return {...state, createAd: !state.createAd};
+        case DEVICE_WIDTH:
+            return {...state, widthMode: action.payload};
         default:
             return state;
     }

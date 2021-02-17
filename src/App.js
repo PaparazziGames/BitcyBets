@@ -16,7 +16,7 @@ import Ads from "./components/Ads/Ads";
 import CompletePay from "./components/Refill/CompletePay";
 import CompleteWith from "./components/Refill/CompleteWith";
 import Withdraw from "./components/Refill/Withdraw";
-import {prohibition} from "./redux/actions";
+import {prohibition, resizeScreen} from "./redux/actions";
 import Invite from "./components/Refill/Invite";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -59,6 +59,16 @@ class App extends React.Component {
         if (this.props.unauthorized) {
             this.props.prohibition();
         }
+        window.addEventListener("resize", () => {
+            if(window.outerWidth <= 756) {
+                this.props.resizeScreen("mobile");
+            } else if(window.outerWidth > 756) {
+                this.props.resizeScreen("desktop");
+            }
+        })
+    }
+    componentWillUnmount() {
+        window.removeEventListener("resize", ()=>{}, false);
     }
 
     render() {
@@ -83,6 +93,7 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    prohibition
+    prohibition,
+    resizeScreen
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

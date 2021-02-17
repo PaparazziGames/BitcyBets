@@ -2,7 +2,7 @@ import {
     AUTHORIZATION,
     BET_LOSE,
     BET_WIN,
-    CLOSE_CONGRATULATION, CLOSE_YOURLOSE, CREATE_AD,
+    CLOSE_CONGRATULATION, CLOSE_YOURLOSE, CREATE_AD, DEVICE_WIDTH,
     GET_COURSE, GET_CURRENT_COURSE,
     GET_LOCATION, LOGOUT,
     PROHIBITION,
@@ -22,6 +22,9 @@ export function prohibition() {
 
 export function registration() {
     return {type: REGISTRATION}
+}
+export function resizeScreen(width) {
+    return {type: DEVICE_WIDTH, payload: width}
 }
 
 export function logoutQuestion() {

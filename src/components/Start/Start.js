@@ -14,29 +14,11 @@ import bitsybets from "../../images/BITCYBETS.svg";
 import coin from "../../images/coin.svg";
 import {userdata} from "../../redux/actions/game";
 
-const Start = ({currentCourse, course, history, lastSeconds, userdata}) => {
+const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode}) => {
     const [timeGame, setTimeGame] = useState(false);
     const [bet, setBet] = useState('');
     const [predict, setPredict] = useState('');
-    const [screenWidth, setScreenWidth] = useState("desktop");
-    useEffect(() => {
-        window.addEventListener("resize", () => {
-            if(window.outerWidth <= 756) {
-                setScreenWidth("mobile");
-            } else if(window.outerWidth > 756) {
-                setScreenWidth("desktop");
-            }
-            console.log("listener")
-        })
-        if(window.outerWidth <= 756) {
-            setScreenWidth("mobile");
-        } else if(window.outerWidth > 756) {
-            setScreenWidth("desktop");
-        }
-        return window.removeEventListener("resize", ()=> {
-            console.log("Removed")
-        });
-    }, [window.outerWidth])
+
     useEffect(() => {
         if (lastSeconds % 10 === 0) {
             setTimeGame(true);
@@ -113,7 +95,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata}) => {
                 </div>
                 <div className="dark">
                     <Time/>
-                    <div>
+                    <div className="course">
                         <h2 className="text-center"><img src={bitcoin} alt="course"/>
                             {currentCourse} <span>$</span>
                         </h2>
@@ -122,7 +104,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata}) => {
                         </div>
                     </div>
                     <div style={{display: !currentCourse ? "none" : "block"}} className="graph">
-                        <Graph screenwidth={screenWidth}  gradient1={20} gradient2={150} chartHeight={200}/>
+                        <Graph gradient1={20} gradient2={150} chartHeight={widthMode === "desktop" ? 200 : 150}/>
                     </div>
                     <div style={{display: currentCourse ? "none" : "block"}}  className="load">
                         <div className="wrap-img-preload">
@@ -161,8 +143,8 @@ const mapStateToProps = state => {
     return {
         currentCourse: state.courseReducer.currentCourse,
         course: state.courseReducer.course,
-        lastSeconds: state.courseReducer.lastSeconds
-
+        lastSeconds: state.courseReducer.lastSeconds,
+        widthMode: state.switchOptions.widthMode
     }
 }
 const mapDispatchToProps = {

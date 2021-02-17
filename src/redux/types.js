@@ -5,6 +5,8 @@ export const LOGOUT = 'LOGOUT';
 export const GOAWAY = 'GOAWAY';
 
 export const CREATE_AD = 'CREATE_AD';
+export const DEVICE_WIDTH = 'DEVICE_WIDTH';
+
 
 export const GET_LOCATION ='GET_LOCATION';
 export const GET_COURSE ='GET_COURSE';
