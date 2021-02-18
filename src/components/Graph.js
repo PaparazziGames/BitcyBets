@@ -235,7 +235,7 @@ class Graph extends Component {
     render() {
         const {chartHeight} = this.props;
         return (
-            <canvas height={chartHeight || "265"} id="myChart"/>
+            <canvas height={chartHeight || "300"} id="myChart"/>
         )
     }
 }

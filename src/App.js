@@ -18,6 +18,7 @@ import CompleteWith from "./components/Refill/CompleteWith";
 import Withdraw from "./components/Refill/Withdraw";
 import {prohibition, resizeScreen} from "./redux/actions";
 import Invite from "./components/Refill/Invite";
+import gotodesktop from "./components/Auth/gotodesktop";
 
 document.addEventListener("DOMContentLoaded", () => {
     if(!sessionStorage.getItem("saveReload")) {
@@ -43,6 +44,7 @@ const routing = [
     {path: "/complete/pay", component: CompletePay},
     {path: "/complete/withdraw", component: CompleteWith},
     {path: "/withdraw", component: Withdraw},
+    {path: "/gotodesktop", component: gotodesktop},
 ]
 
 class App extends React.Component {

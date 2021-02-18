@@ -97,7 +97,7 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
                         <button disabled={predict} onClick={() => {setSwitcher(true)}}  className="btn money-btn green">BET REAL BITCOIN
                             {/*<img src={withdraw} alt="withdraw"/>*/}
                         </button>
-                        <Link to="/invite" style={{pointerEvents: predict ? "none" : "auto"}} className="btn money-btn friends">BETS WITH FRIENDS
+                        <Link to="/ads" style={{pointerEvents: predict ? "none" : "auto"}} className="btn money-btn friends">BETS WITH FRIENDS
                             {/*<img src={deposit} alt="deposit"/>*/}
                         </Link>
 

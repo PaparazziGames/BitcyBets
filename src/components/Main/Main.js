@@ -38,26 +38,7 @@ const fire = () => {
     firework.start();
 };
 
-const Main = ({
-                  history,
-                  course,
-                  lastWin,
-                  closeCongratulation,
-                  congratulation,
-                  yourlose,
-                  closeYourLose,
-                  currentCourse,
-                  money,
-                  muteToggle,
-                  logout,
-                  logoutQuestion,
-                  prohibition,
-                  userdata,
-                  lastWinGame,
-                  createAd,
-                  createAdProp,
-                  widthMode
-              }) => {
+const Main = ({history, course, lastWin, closeCongratulation, congratulation, yourlose, closeYourLose, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp, widthMode}) => {
     useEffect(() => {
         userdata();
         fire();
@@ -67,7 +48,7 @@ const Main = ({
     }, [])
     let flag = course ? course.length : false;
     return (
-        <div className={`${widthMode} main`}>
+        <div className={`${widthMode}-bg main`}>
             <Preloader show={flag}/>
             <div style={{display: congratulation ? "block" : "none"}} className="blur">
                 <canvas width="640" height="480" id="fireworks-canvas" style={{background: 'rgba(0,0,0, .2)'}}/>
@@ -131,7 +112,7 @@ const Main = ({
                             </div>
                             <div className="graph-wrapper">
                                 <div className="graph">
-                                    <Graph gradient1={widthMode === "desktop" ? undefined : 20} gradient2={widthMode === "desktop" ? undefined : 150} chartHeight={widthMode === "desktop" ? 200 : 150}/>
+                                    <Graph gradient1={widthMode === "desktop" ? undefined : 20} gradient2={widthMode === "desktop" ? undefined : 150} chartHeight={widthMode === "desktop" ? 250 : 150}/>
                                 </div>
                             </div>
                         </div>

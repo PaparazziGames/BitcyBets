@@ -7,7 +7,7 @@ import {authorization, betWin, registration} from "../../redux/actions";
 import {User} from "../../api/User";
 import {fireworks, muteToggle} from "../../redux/actions/music";
 
-const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks, history}) => {
+const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks, history, widthMode}) => {
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
     const [name, setName] = useState('')
@@ -66,14 +66,18 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
         User.code({code: code})
             .then(res => {
                 if (res.data.status === "success") {
-                    sessionStorage.setItem('token', res.data.data.accessToken);
-                    authorization();
-                    history.push('/game');
-                    if (!mute) {
-                        muteToggle();
+                    if(widthMode === "desktop") {
+                        sessionStorage.setItem('token', res.data.data.accessToken);
+                        authorization();
+                        history.push('/game');
+                        if (!mute) {
+                            muteToggle();
+                        }
+                        betWin();
+                        fireworks();
+                    } else {
+                        history.push("/gotodesktop")
                     }
-                    betWin();
-                    fireworks();
                 } else {
                     if (res.data.error) {
                         setErr(res.data.error);
@@ -238,7 +242,8 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
 const mapStateToProps = state => {
     return {
         reg: state.authReducer.reg,
-        mute: state.soundReducer.mute
+        mute: state.soundReducer.mute,
+        widthMode: state.switchOptions.widthMode
     }
 }
 const mapDispatchToProps = {

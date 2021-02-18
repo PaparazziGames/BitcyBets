@@ -84,7 +84,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                     </div>
                 </div>
             </div>
-            <div className={`${widthMode} round round-dark`}>
+            <div className={`${widthMode}-start round round-dark`}>
                 <div className="bull-start-mobile"><img src={bull} width="" alt="bull"/></div>
                 <div className="bear-start-mobile"><img src={bear} width="" alt="bear"/></div>
                 <div className="bull-start"><img src={bull} alt="bull"/></div>

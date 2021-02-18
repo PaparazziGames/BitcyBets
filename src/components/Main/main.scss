@@ -1,16 +1,15 @@
+.mobile-bg {
+  background-image: url("../../images/mobile_bg.png");
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
+  border-radius: 0;
+}
 main {
   padding: 60px 60px 0 60px;
   height: 100%;
   margin: 10px auto 0;
   max-width: 1280px;
-
-  &mobile {
-    background-image: url("../../images/mobile_bg.png");
-    background-position: center;
-    background-size: cover;
-    background-color: transparent;
-    border-radius: 0;
-  }
 
   .main {
     height: 100%;
@@ -35,13 +34,13 @@ main {
         flex-wrap: nowrap;
       }
     }
-
-    .globe, .bottom-container {
-      height: 70%;
+    .bottom-container {
+      height: auto;
+    }
+    .bottom-container, .globe {
+      height: 345px;
       min-width: 100%;
-      padding-bottom: 10px !important;
-
-
+      //padding-bottom: 10px !important;
 
       div {
         h2 {
@@ -356,16 +355,19 @@ main {
     padding-top: 0 !important;
   }
 }
+
 .bottom-container.mobile:after,
-.globe.mobile.round:after{
-  background-color: transparent!important;
-  background-image: none!important;
+.globe.mobile.round:after {
+  background-color: transparent !important;
+  background-image: none !important;
 }
+
 .bottom-container.mobile:before,
-.globe.mobile.round:before{
-  background-color: transparent!important;
-  background-image: none!important;
+.globe.mobile.round:before {
+  background-color: transparent !important;
+  background-image: none !important;
 }
+
 .predict-btn {
   position: relative;
 
@@ -666,7 +668,8 @@ form {
   width: 300px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 8px;
+  //justify-content: space-between;
 }
 
 .banner {
@@ -738,7 +741,7 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin: 10px 0;
+  margin: 10px 0 0 0;
 
   h2 {
     display: flex;
