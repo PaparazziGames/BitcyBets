@@ -104,7 +104,7 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
                     </div>}
             </div>
             <div onClick={() => {
-                window.location.href = 'https://bitrxapp.com/?gb';
+                window.open('https://bitrxapp.com/?gb', '_blank')
             }} className={banner}>
                 <button style={{display: banner !== "banner one round-dark" ? "none" : "block"}} className="btn learn-more">Learn more</button>
             </div>

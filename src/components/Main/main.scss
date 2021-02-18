@@ -4,6 +4,14 @@ main {
   margin: 10px auto 0;
   max-width: 1280px;
 
+  &mobile {
+    background-image: url("../../images/mobile_bg.png");
+    background-position: center;
+    background-size: cover;
+    background-color: transparent;
+    border-radius: 0;
+  }
+
   .main {
     height: 100%;
   }
@@ -32,6 +40,8 @@ main {
       height: 70%;
       min-width: 100%;
       padding-bottom: 10px !important;
+
+
 
       div {
         h2 {
@@ -346,7 +356,16 @@ main {
     padding-top: 0 !important;
   }
 }
-
+.bottom-container.mobile:after,
+.globe.mobile.round:after{
+  background-color: transparent!important;
+  background-image: none!important;
+}
+.bottom-container.mobile:before,
+.globe.mobile.round:before{
+  background-color: transparent!important;
+  background-image: none!important;
+}
 .predict-btn {
   position: relative;
 
@@ -1083,7 +1102,7 @@ form {
 
 }
 
-@media screen and (max-width: 756px) {
+@media screen and (max-width: 768px) {
   .wrap-img-preload {
     img {
       width: 20vw;

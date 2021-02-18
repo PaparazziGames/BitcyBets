@@ -55,7 +55,8 @@ const Main = ({
                   userdata,
                   lastWinGame,
                   createAd,
-                  createAdProp
+                  createAdProp,
+                  widthMode
               }) => {
     useEffect(() => {
         userdata();
@@ -66,7 +67,7 @@ const Main = ({
     }, [])
     let flag = course ? course.length : false;
     return (
-        <div className="main">
+        <div className={`${widthMode} main`}>
             <Preloader show={flag}/>
             <div style={{display: congratulation ? "block" : "none"}} className="blur">
                 <canvas width="640" height="480" id="fireworks-canvas" style={{background: 'rgba(0,0,0, .2)'}}/>
@@ -118,7 +119,7 @@ const Main = ({
             <main style={{display: flag ? 'block' : 'none'}}>
                 <div className="row main">
                     <div className="left-sector">
-                        <div className="round globe">
+                        <div className={`${widthMode} round globe`}>
                             <Time/>
                             <div>
                                 <h2 className="text-center"><img src={bitcoin} className="m-2" alt="course"/>
@@ -130,13 +131,13 @@ const Main = ({
                             </div>
                             <div className="graph-wrapper">
                                 <div className="graph">
-                                    <Graph/>
+                                    <Graph gradient1={widthMode === "desktop" ? undefined : 20} gradient2={widthMode === "desktop" ? undefined : 150} chartHeight={widthMode === "desktop" ? 200 : 150}/>
                                 </div>
                             </div>
                         </div>
                         <Dashboard/>
                     </div>
-                    <RightSector/>
+                    {widthMode === "desktop" ? <RightSector/> : <></>}
                 </div>
             </main>
         </div>
@@ -151,7 +152,8 @@ const mapStateToProps = state => {
         congratulation: state.balanceReducer.congratulation,
         yourlose: state.balanceReducer.yourlose,
         logout: state.authReducer.logoutQuestion,
-        createAdProp: state.switchOptions.createAd
+        createAdProp: state.switchOptions.createAd,
+        widthMode: state.switchOptions.widthMode
     }
 }
 const mapDispatchToProps = {

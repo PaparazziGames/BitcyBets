@@ -13,8 +13,9 @@ import Preloader from "../Main/Preloader";
 import bitsybets from "../../images/BITCYBETS.svg";
 import coin from "../../images/coin.svg";
 import {userdata} from "../../redux/actions/game";
+import {registration} from "../../redux/actions";
 
-const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode}) => {
+const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode, registration}) => {
     const [timeGame, setTimeGame] = useState(false);
     const [bet, setBet] = useState('');
     const [predict, setPredict] = useState('');
@@ -45,9 +46,8 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
 
     }, [currentCourse])
     return (
-        <div className="start">
-            <div className="bull-start-mobile"><img src={bull} width="" alt="bull"/></div>
-            <div className="bear-start-mobile"><img src={bear} width="" alt="bear"/></div>
+        <div  className="start">
+
             {/*<div style={{display: predict === 'win' ? "block" : "none"}} className="blur soon">*/}
             {/*    <div className="round-dark win">*/}
             {/*        <div className="win-btn">*/}
@@ -77,13 +77,16 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                         <button onClick={() => {
                             setPredict('');
                             setBet('');
-                            history.push('/signup')
+                            history.push('/signup');
+                            registration();
                         }} className="btn btn-primary">SIGN UP
                         </button>
                     </div>
                 </div>
             </div>
-            <div className="round round-dark">
+            <div className={`${widthMode} round round-dark`}>
+                <div className="bull-start-mobile"><img src={bull} width="" alt="bull"/></div>
+                <div className="bear-start-mobile"><img src={bear} width="" alt="bear"/></div>
                 <div className="bull-start"><img src={bull} alt="bull"/></div>
                 <div className="bear-start"><img src={bear} alt="bear"/></div>
                 <div className="text text-center">
@@ -148,6 +151,7 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    userdata
+    userdata,
+    registration
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Start);

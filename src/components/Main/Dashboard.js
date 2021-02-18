@@ -92,7 +92,7 @@ class Dashboard extends React.Component {
 
     render() {
         const {bet, counter, initialOffset} = this.state;
-        const {balance, predict, upBets, downBets, up, down, lastSeconds} = this.props;
+        const {balance, predict, upBets, downBets, up, down, lastSeconds, widthMode} = this.props;
         const time = 10;
         const i = 10 - counter || 1;
         let timeBet = lastSeconds % 20 === 0 || lastSeconds % 20 === 5;
@@ -104,9 +104,9 @@ class Dashboard extends React.Component {
         }
 
         return (
-            <div className="row bottom-container">
+            <div className={`${widthMode} row bottom-container`}>
                 <Rates/>
-                <div className="round dashboard">
+                <div className={`${widthMode} round dashboard`}>
                     <div className="range">
                         <div className="form-label d-flex justify-content-between">
                             <div>
@@ -257,7 +257,8 @@ const mapStateToProps = state => {
         downBets: state.balanceReducer.downBets,
         upBets: state.balanceReducer.upBets,
         up: state.balanceReducer.up,
-        down: state.balanceReducer.down
+        down: state.balanceReducer.down,
+        widthMode: state.switchOptions.widthMode
     }
 }
 const mapDispatchToProps = {

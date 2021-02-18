@@ -13,9 +13,8 @@ const CompletePay = (props) => {
             <div className="refill">
                 <div style={{height: "250px"}} className="round-dark">
                     <h2 className="pay-header">Payment complete</h2>
-                    <div className="text-center">Have a luck in your bets</div>
                     <div className="refill-btn">
-                        <Link to="/game" className="pay"><span>Go to bets</span></Link>
+                        <Link to="/game" className="pay"><span>Bet now</span></Link>
                     </div>
                     <div className="d-flex justify-content-center mt-3"><Link to="/support" className="support-link">Need
                         support?</Link></div>

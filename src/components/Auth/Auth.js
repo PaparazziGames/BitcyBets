@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
 import PhoneInput from 'react-phone-number-input';
 import './auth.scss';
 import {authorization, betWin, registration} from "../../redux/actions";
 import {User} from "../../api/User";
-import {muteToggle, fireworks} from "../../redux/actions/music";
+import {fireworks, muteToggle} from "../../redux/actions/music";
 
 const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks, history}) => {
     const [password, setPassword] = useState(true)
@@ -19,6 +19,14 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
     const [enterCode, setEnterCode] = useState(false)
     const [err, setErr] = useState('')
 
+    const phoneRef = useRef(null);
+    const moveCaretToEnd = () => {
+        if (phoneRef.createTextRange) {
+            const r = phoneRef.createTextRange();
+            r.collapse(false);
+            r.select();
+        }
+    }
     const clearData = () => {
         setName('');
         setPhone('');
@@ -29,6 +37,10 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
         setCode('');
         setEnterCode(false);
     }
+    const setPhoneNumber = (value) => {
+        setPhone(value);
+    }
+
     const handleSubmit = event => {
         event.preventDefault();
 
@@ -134,9 +146,11 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                         <div className="">
                             <label htmlFor="phone">Phone</label>
                             <PhoneInput onChange={e => {
-                                setPhone(e);
                                 setErr('');
-                            }} id="phone" limitMaxLength={true} placeholder='+123-456-78-90' value={phone} international
+                                setPhoneNumber(e);
+                                moveCaretToEnd();
+                            }} id="phone" ref={phoneRef} limitMaxLength={true} placeholder='+123-456-78-90'
+                                        value={phone} international
                                         displayInitialValueAsLocalNumber required/>
                         </div>
                         <div className="">

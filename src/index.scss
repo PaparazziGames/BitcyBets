@@ -41,7 +41,7 @@ button {
   min-height: 100vh;
   background-image: url("images/main_bg.png");
   background-size: cover;
-  background-repeat: no-repeat;
+  //background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,12 +84,12 @@ button {
   }
 }
 
-@media screen and (max-width: 756px) {
-  #root {
-    background-image: url("images/mobile_bg.png");
-    background-position: center;
-  }
-}
+//@media screen and (max-width: 756px) {
+//  #root {
+//    background-image: url("images/mobile_bg.png");
+//    background-position: center;
+//  }
+//}
 
 
 

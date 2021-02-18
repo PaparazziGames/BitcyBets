@@ -62,7 +62,7 @@ let graph = (course, labels, ctx, color, widthMode) => {
                         color: "rgba(255, 255, 255, 0.1)",
                         zeroLineWidth: 1,
                         zeroLineColor: "rgba(255, 255, 255, 0.1)",
-                        drawTicks: false
+                        drawTicks: widthMode === "desktop"
 
                     }
                 }],
@@ -79,7 +79,7 @@ let graph = (course, labels, ctx, color, widthMode) => {
                         color: "rgba(255, 255, 255, 0.1)",
                         zeroLineWidth: 1,
                         zeroLineColor: "rgba(255, 255, 255, 0.1)",
-                        drawTicks: false,
+                        drawTicks: widthMode === "desktop",
                         drawBorder: false
                     }
                 }]
@@ -233,7 +233,7 @@ class Graph extends Component {
     }
 
     render() {
-        const {chartHeight, widthMode} = this.props;
+        const {chartHeight} = this.props;
         return (
             <canvas height={chartHeight || "265"} id="myChart"/>
         )

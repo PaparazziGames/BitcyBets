@@ -60,9 +60,9 @@ class App extends React.Component {
             this.props.prohibition();
         }
         window.addEventListener("resize", () => {
-            if(window.outerWidth <= 756) {
+            if(window.outerWidth < 768) {
                 this.props.resizeScreen("mobile");
-            } else if(window.outerWidth > 756) {
+            } else if(window.outerWidth >= 768) {
                 this.props.resizeScreen("desktop");
             }
         })
