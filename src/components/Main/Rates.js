@@ -6,21 +6,21 @@ import bitcoin from "../../images/bitcoin.svg";
 import {rates} from "../../redux/actions/game";
 import {connect} from "react-redux";
 
-const Rates = ({rates, down, up, downBets, upBets}) => {
+const Rates = ({rates, down, up, downBets, upBets, widthMode}) => {
     const bankCoin = new Array(Math.ceil(downBets+upBets)).fill(downBets+upBets);
     const upCoin = new Array(up).fill('up');
     const downCoin = new Array(down).fill('down');
     const fillBank = bankCoin.map((coin, index) => {
         if(index > 9) {return null;}
-       return (<div key={index + coin} style={{height: "34px", width: "100%", bottom: index * 7 + "px"}} className="coin"/>);
+       return (<div key={index + coin} style={{height: "36px", width: "100%", bottom: index * 7 + "px"}} className="coin"/>);
     })
     const fillDown = downCoin.map((coin, index) => {
         if(index > 9) {return null;}
-        return (<div key={index + coin} style={{height: "34px", width: "100%", bottom: index * 7 + "px"}} className="coin"/>)
+        return (<div key={index + coin} style={{height: "36px", width: "100%", bottom: index * 7 + "px"}} className="coin"/>)
     })
     const fillUp = upCoin.map((coin, index) => {
         if(index > 9) {return null}
-        return (<div key={index + coin} style={{height: "34px", width: "100%", bottom: index * 7 + "px"}} className="coin"/>)
+        return (<div key={index + coin} style={{height: "36px", width: "100%", bottom: index * 7 + "px"}} className="coin"/>)
     })
     useEffect(() => {
         const getRates = setInterval(() => {
@@ -67,7 +67,8 @@ const mapStateToProps = state => {
         down: state.balanceReducer.down,
         up: state.balanceReducer.up,
         downBets: state.balanceReducer.downBets,
-        upBets: state.balanceReducer.upBets
+        upBets: state.balanceReducer.upBets,
+        widthMode: state.switchOptions.widthMode
     }
 }
 const mapDispatchToProps = {
