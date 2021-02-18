@@ -352,7 +352,7 @@ span.chross {
   .predict-btn.red{
     z-index: 0;
   }
-  .predict-btn.green:after {
+  .predict-btn.green.green-start:after {
     content: "";
     position: absolute;
     left: -1px;
@@ -366,7 +366,7 @@ span.chross {
     background-size: 40px;
     z-index: -1;
   }
-  .predict-btn.red:after {
+  .predict-btn.red.red-start:after {
     content: "";
     position: absolute;
     right: -1px;

@@ -105,7 +105,7 @@ class Dashboard extends React.Component {
 
         return (
             <div className={`${widthMode} row bottom-container`}>
-                <Rates/>
+                {widthMode === "desktop" ? <Rates/> : <></>}
                 <div className={`${widthMode} round dashboard`}>
                     <div className="range">
                         <div className="form-label d-flex justify-content-between">

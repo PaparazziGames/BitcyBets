@@ -56,7 +56,7 @@ const Usd = (props) => {
                 <Header/>
                 <div className="refill done">
                     <div className="round-dark main-usd">
-                        <h2>Payment complete</h2>
+                        <h2>Payment completed</h2>
                         <p>Have a luck in your bets</p>
                         <div className="refill-btn">
                             <button onClick={() => props.history.push('/')} className="pay">Go to bets</button>

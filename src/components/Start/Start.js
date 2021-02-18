@@ -120,14 +120,14 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                     <div className="buttons">
                         <div className="wrap-btn">
                             <button disabled={bet || !currentCourse} onClick={() => setBet('down')}
-                                    className="btn green predict-btn"
+                                    className="btn green green-start predict-btn"
                                     id="down">PREDICT UP
                                 <img src={arrowUp} width="15" height="20" alt="b"/>
                                 <Rect start={timeGame} infinite={'infinity'} idButton={'down'}
                                       mode={timeGame ? 'rectUp' : ''}/>
                             </button>
                             <button disabled={bet || !currentCourse} onClick={() => setBet('up')}
-                                    className="btn red predict-btn"
+                                    className="btn red red-start predict-btn"
                                     id="down">PREDICT DOWN
                                 <img src={arrowDown} width="15" height="20" alt="b"/>
                                 <Rect infinite={'infinity'} idButton={'down'} mode={timeGame ? 'rectDown' : ''}/>

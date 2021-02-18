@@ -4,6 +4,7 @@
   background-size: cover;
   background-color: transparent;
   border-radius: 0;
+  width: 100%;
 }
 main {
   padding: 60px 60px 0 60px;
@@ -1109,6 +1110,53 @@ form {
   .wrap-img-preload {
     img {
       width: 20vw;
+    }
+  }
+  main {
+    padding: 56px 0 0 0;
+    margin: 0;
+    .main {
+      .rates {
+        width: 100%;
+        height: auto;
+        padding: 0!important;
+        margin: 0;
+        background-color: transparent;
+        .wrap-table {
+          height: 80px;
+          align-items: baseline;
+          .rates-col {
+            height: 46px;
+          }
+        }
+      }
+      .globe {
+        padding: 0;
+        margin: 0;
+      }
+      .left-sector {
+        width: 100%;
+        padding: 20px 30px;
+      }
+      .bottom-container {
+        .dashboard {
+          width: 100%;
+          max-width: 100%;
+          padding: 0;
+          margin: 0;
+          height: auto;
+          background-color: transparent;
+          .range {
+            width: 100%;
+          }
+          .down, .up {
+            width: 45%;
+            button {
+              width: 100%;
+            }
+          }
+        }
+      }
     }
   }
 }

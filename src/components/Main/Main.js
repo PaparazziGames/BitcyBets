@@ -13,6 +13,7 @@ import Time from "./Time";
 import Preloader from "./Preloader";
 import {userdata} from "../../redux/actions/game";
 import SelectList from "./SelectList";
+import Rates from "./Rates";
 
 const fire = () => {
     document.getElementById('fireworks-canvas').style.width = '100%'
@@ -100,14 +101,15 @@ const Main = ({history, course, lastWin, closeCongratulation, congratulation, yo
             <main style={{display: flag ? 'block' : 'none'}}>
                 <div className="row main">
                     <div className="left-sector">
+                        {widthMode === "mobile" ? <Rates/> : <></>}
                         <div className={`${widthMode} round globe`}>
-                            <Time/>
+                            {widthMode === "desktop" ? <Time/> : <></>}
                             <div>
                                 <h2 className="text-center"><img src={bitcoin} className="m-2" alt="course"/>
                                     {currentCourse} <span>$</span>
                                 </h2>
                                 <div>
-                                    <SelectList/>
+                                    {widthMode === "desktop" ? <SelectList/> : <></>}
                                 </div>
                             </div>
                             <div className="graph-wrapper">
