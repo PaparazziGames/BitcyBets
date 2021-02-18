@@ -564,7 +564,7 @@ form {
     width: 100%;
     display: flex;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
     padding-left: 0;
     padding-right: 0;
     justify-content: space-around;
@@ -1154,6 +1154,7 @@ form {
             top: 50px;
           }
           .wrap-btn {
+            margin-top: 0;
             .off {
               font-size: 16px;
               margin: 0;
@@ -1182,6 +1183,7 @@ form {
               max-width: 200px;
               padding: 10px 0;
               background-image: none;
+              margin-top: 3px;
 
             }
           }
