@@ -66,7 +66,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
         User.code({code: code})
             .then(res => {
                 if (res.data.status === "success") {
-                    if(widthMode === "desktop") {
+                    if (widthMode === "desktop") {
                         sessionStorage.setItem('token', res.data.data.accessToken);
                         authorization();
                         history.push('/game');
@@ -94,15 +94,19 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
         User.login(body)
             .then(res => res)
             .then(data => {
-                    if (data.data.status === "success") {
-                        sessionStorage.setItem('token', data.data.data.accessToken);
-                        history.push('/game');
-                        return authorization();
-                    } else if (data.data.error) {
-                        return setErr(data.data.error);
-                    } else {
-                        return setErr('error, try again later')
-                    }
+                    // if (widthMode === "desktop") {
+                        if (data.data.status === "success") {
+                            sessionStorage.setItem('token', data.data.data.accessToken);
+                            history.push('/game');
+                            return authorization();
+                        } else if (data.data.error) {
+                            return setErr(data.data.error);
+                        } else {
+                            return setErr('error, try again later')
+                        }
+                    // } else {
+                    //     history.push("/gotodesktop")
+                    // }
                 }
             )
             .catch(error => setErr(error.response.data.error));

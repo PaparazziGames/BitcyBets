@@ -54,7 +54,7 @@ const Btc = ({history}) => {
                                     }
                                 });
                         }
-                    }, 'image/jpeg', 0.2);
+                    }, 'image/jpeg', 0.8);
                 };
                 reader.onerror = error => console.log(error);
             }

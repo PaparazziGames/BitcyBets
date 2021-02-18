@@ -9,6 +9,7 @@ import Rates from "./Rates";
 import {User} from "../../api/User";
 import {predictClear, predictDown, predictUp, userdata} from "../../redux/actions/game";
 import Rect from "./Rect/Rect";
+import SelectList from "./SelectList";
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -115,6 +116,7 @@ class Dashboard extends React.Component {
                                 {/*<span className="time-bet">{timeBet ? counterBet : ''}</span>*/}
                             </div>
                             <div>
+                                {widthMode === "mobile" ? <SelectList/> : <></>}
                                 <span className={balance - bet >= 0 ? '' : 'red'}>
                                 <input id="numberBet" type="number" step="0.001" min="0.001" max="1"
                                        className={balance - bet >= 0 ? '' : 'red'}
@@ -147,7 +149,7 @@ class Dashboard extends React.Component {
                                             transform: startGame && (predict === 'down' || !predict) ? 'scale(0)' : 'scale(1)'
                                         }} className="up">
                                             <div className="profit">
-                                                <span className="green">Your profit</span>
+                                                <span className="green">Your profit</span> <br/>
                                                 <span>
                                                     {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(5) : 0}
                                                 </span>
@@ -167,8 +169,7 @@ class Dashboard extends React.Component {
 
                                     <p
                                         style={{
-                                            display: startGame && predict === 'up' ? 'flex' : 'none',
-                                            margin: '0 59px'
+                                            display: startGame && predict === 'up' ? 'flex' : 'none'
                                         }}
                                         id="predict"
                                         className="btn bet-btn col-sm-4">
@@ -191,8 +192,7 @@ class Dashboard extends React.Component {
 
 
                                     <p style={{
-                                        display: startGame && (predict === 'down' || !predict) ? 'flex' : 'none',
-                                        margin: '0 59px'
+                                        display: startGame && (predict === 'down' || !predict) ? 'flex' : 'none'
                                     }}
                                        id="predict"
                                        className="btn bet-btn col-sm-4">
@@ -218,7 +218,7 @@ class Dashboard extends React.Component {
                                         : <div style={{display: (predict === 'down' || !predict) ? 'block' : 'none'}}
                                                className="down">
                                             <div className="profit">
-                                                <span className="red">Your profit</span>
+                                                <span className="red">Your profit</span> <br/>
                                                 <span>
                                                     {up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(5) : 0}
                                                 </span>
