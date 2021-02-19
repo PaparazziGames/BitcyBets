@@ -82,8 +82,11 @@ class App extends React.Component {
                     }, false);
                 } else if (e.path[0].id !== "range") {
                     end = e.changedTouches[0].screenX;
-                    this.props.switchView(start - end > 0);
-                    console.log(start, end)
+                    if (start - end > 100) {
+                        this.props.switchView(false);
+                    } else if (start - end < -100) {
+                        this.props.switchView(true);
+                    }
                     document.removeEventListener("touchstart", () => {
                     }, false);
                     document.removeEventListener("touchend", () => {
