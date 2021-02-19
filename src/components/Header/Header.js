@@ -43,7 +43,11 @@ const Header = ({
     }
     let location = useLocation();
     let isGame = location.pathname === "/game";
-
+    useEffect(() => {
+        if (location.pathname === "/" || location.pathname === "/login") {
+            prohibition();
+        }
+    }, [location.pathname])
     return (
         <div>
             <header className="header">
@@ -106,7 +110,10 @@ const Header = ({
                         <div onClick={(e) => {
                             setMenu(!menu)
                         }}
-                             style={{display: auth && isGame ? 'flex' : 'none', pointerEvents: predict ? "none" : "auto"}}
+                             style={{
+                                 display: auth && isGame ? 'flex' : 'none',
+                                 pointerEvents: predict ? "none" : "auto"
+                             }}
                              className="menu">
                             <img className="burger"
                                  src={burger} alt="icon"/>
