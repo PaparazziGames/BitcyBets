@@ -12,7 +12,7 @@ import bets from '../../images/bets.png';
 import wallet from '../../images/wallet.png';
 import {connect} from "react-redux";
 import {authorization, createAd, logoutQuestion, prohibition, registration, switchView} from "../../redux/actions";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
 
 const Header = ({
@@ -41,8 +41,9 @@ const Header = ({
     const handleMute = () => {
         muteToggle();
     }
-    let currentLocation = window.location.href;
-    let isGame = "game" === currentLocation.substring(currentLocation.length - 4);
+    let location = useLocation();
+    let isGame = location.pathname === "/game";
+
     return (
         <div>
             <header className="header">
@@ -105,7 +106,7 @@ const Header = ({
                         <div onClick={(e) => {
                             setMenu(!menu)
                         }}
-                             style={{display: auth ? 'flex' : 'none', pointerEvents: predict ? "none" : "auto"}}
+                             style={{display: auth && isGame ? 'flex' : 'none', pointerEvents: predict ? "none" : "auto"}}
                              className="menu">
                             <img className="burger"
                                  src={burger} alt="icon"/>
