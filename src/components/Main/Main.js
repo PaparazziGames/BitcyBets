@@ -39,7 +39,7 @@ const fire = () => {
     firework.start();
 };
 
-const Main = ({history, course, lastWin, closeCongratulation, congratulation, yourlose, closeYourLose, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp, widthMode}) => {
+const Main = ({history, view, course, lastWin, closeCongratulation, congratulation, yourlose, closeYourLose, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp, widthMode}) => {
     useEffect(() => {
         userdata();
         fire();
@@ -100,7 +100,7 @@ const Main = ({history, course, lastWin, closeCongratulation, congratulation, yo
             </div>
             <main style={{display: flag ? 'block' : 'none'}}>
                 <div className="row main">
-                    <div className="left-sector">
+                    {widthMode === "mobile" && !view ? <div className="left-sector">
                         {widthMode === "mobile" ? <Rates/> : <></>}
                         <div className={`${widthMode} round globe`}>
                             {widthMode === "desktop" ? <Time/> : <></>}
@@ -119,8 +119,10 @@ const Main = ({history, course, lastWin, closeCongratulation, congratulation, yo
                             </div>
                         </div>
                         <Dashboard/>
-                    </div>
+                    </div> : <></>}
                     {widthMode === "desktop" ? <RightSector/> : <></>}
+                    {widthMode === "mobile" && view ? <RightSector/> : <></>}
+
                 </div>
             </main>
         </div>
@@ -136,7 +138,8 @@ const mapStateToProps = state => {
         yourlose: state.balanceReducer.yourlose,
         logout: state.authReducer.logoutQuestion,
         createAdProp: state.switchOptions.createAd,
-        widthMode: state.switchOptions.widthMode
+        widthMode: state.switchOptions.widthMode,
+        view: state.switchOptions.view
     }
 }
 const mapDispatchToProps = {

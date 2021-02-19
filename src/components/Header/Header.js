@@ -8,8 +8,10 @@ import sound from '../../images/volume-up-solid.svg';
 import noSound from '../../images/volume-mute-solid.svg';
 import signup from '../../images/user_plus.svg';
 import login from '../../images/sign_in.svg';
+import bets from '../../images/bets.png';
+import wallet from '../../images/wallet.png';
 import {connect} from "react-redux";
-import {authorization, createAd, logoutQuestion, prohibition, registration} from "../../redux/actions";
+import {authorization, createAd, logoutQuestion, prohibition, registration, switchView} from "../../redux/actions";
 import {Link} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
 
@@ -27,7 +29,9 @@ const Header = ({
                     history,
                     unauthorized,
                     predict,
-                    refresh
+                    refresh,
+                    view,
+                    switchView
                 }) => {
     const [menu, setMenu] = useState(false);
     useEffect(() => {
@@ -73,7 +77,8 @@ const Header = ({
                                 sessionStorage.setItem("saveReload", "1");
                             }
                             window.location.reload();
-                        }} style={{marginRight: "30px"}} className="sound reload" height="18" width="18" src={refreshIcon}
+                        }} style={{marginRight: "30px"}} className="sound reload" height="18" width="18"
+                             src={refreshIcon}
                              alt="refresh"/>
                         <img onClick={handleMute} className="sound " src={mute ? sound : noSound} height="18" width="18"
                              alt="sound"/>
@@ -112,6 +117,18 @@ const Header = ({
                             </ul>
                         </div>
                     </div>
+
+                </div>
+                <div className="tabs">
+                    <div className="wrap-tabs">
+                        <div onClick={switchView} className={view ? "tab bets" : "tab bets active"}>
+                            {view}
+                            <img src={bets} alt="tab"/>
+                        </div>
+                        <div onClick={switchView} className={!view ? "tab wallet" : "tab wallet active"}>
+                            <img src={wallet} alt="tab"/>
+                        </div>
+                    </div>
                 </div>
             </header>
         </div>
@@ -125,6 +142,7 @@ const mapStateToProps = state => {
         logout: state.authReducer.logoutQuestion,
         unauthorized: state.authReducer.unauthorized,
         predict: state.balanceReducer.predict,
+        view: state.switchOptions.view
     }
 }
 const mapDispatchToProps = {
@@ -133,6 +151,7 @@ const mapDispatchToProps = {
     createAd,
     registration,
     prohibition,
-    authorization
+    authorization,
+    switchView
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

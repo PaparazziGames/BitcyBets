@@ -149,7 +149,7 @@ class Dashboard extends React.Component {
                                             transform: startGame && (predict === 'down' || !predict) ? 'scale(0)' : 'scale(1)'
                                         }} className="up">
                                             <div className="profit">
-                                                <span className="green">Your profit</span> <br/>
+                                                <span className="green">Your profit</span>
                                                 <span>
                                                     {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(5) : 0}
                                                 </span>
@@ -218,7 +218,7 @@ class Dashboard extends React.Component {
                                         : <div style={{display: (predict === 'down' || !predict) ? 'block' : 'none'}}
                                                className="down">
                                             <div className="profit">
-                                                <span className="red">Your profit</span> <br/>
+                                                <span className="red">Your profit</span>
                                                 <span>
                                                     {up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(5) : 0}
                                                 </span>

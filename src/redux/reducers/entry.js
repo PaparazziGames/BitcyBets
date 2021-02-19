@@ -3,7 +3,7 @@ import {
     GET_COURSE,
     GET_LOCATION, GOAWAY, LOGOUT,
     PROHIBITION,
-    REGISTRATION
+    REGISTRATION, VIEW_MODE
 } from "../types";
 
 const initialState = {
@@ -17,7 +17,8 @@ const initialState = {
     logoutQuestion: false,
     createAd: false,
     unauthorized: false,
-    widthMode: window.outerWidth > 756 ? "desktop" : "mobile"
+    widthMode: window.outerWidth > 756 ? "desktop" : "mobile",
+    view: false
 }
 
 export const switchOptions = (state = initialState, action) => {
@@ -26,6 +27,8 @@ export const switchOptions = (state = initialState, action) => {
             return {...state, createAd: !state.createAd};
         case DEVICE_WIDTH:
             return {...state, widthMode: action.payload};
+        case VIEW_MODE:
+            return {...state, view: !state.view};
         default:
             return state;
     }

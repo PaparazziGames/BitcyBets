@@ -6,7 +6,7 @@ import {
     GET_COURSE, GET_CURRENT_COURSE,
     GET_LOCATION, LOGOUT,
     PROHIBITION,
-    REGISTRATION
+    REGISTRATION, VIEW_MODE
 } from "../types";
 
 import {userdata} from "./game";
@@ -84,5 +84,10 @@ export function closeYourLose(data) {
 export function createAd() {
     return dispatch => {
         dispatch({type: CREATE_AD});
+    }
+}
+export function switchView() {
+    return dispatch => {
+        dispatch({type: VIEW_MODE});
     }
 }
