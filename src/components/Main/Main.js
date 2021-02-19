@@ -39,7 +39,27 @@ const fire = () => {
     firework.start();
 };
 
-const Main = ({history, view, course, lastWin, closeCongratulation, congratulation, yourlose, closeYourLose, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp, widthMode}) => {
+const Main = ({
+                  history,
+                  view,
+                  course,
+                  lastWin,
+                  closeCongratulation,
+                  congratulation,
+                  yourlose,
+                  closeYourLose,
+                  currentCourse,
+                  money,
+                  muteToggle,
+                  logout,
+                  logoutQuestion,
+                  prohibition,
+                  userdata,
+                  lastWinGame,
+                  createAd,
+                  createAdProp,
+                  widthMode
+              }) => {
     useEffect(() => {
         userdata();
         fire();
@@ -100,7 +120,7 @@ const Main = ({history, view, course, lastWin, closeCongratulation, congratulati
             </div>
             <main style={{display: flag ? 'block' : 'none'}}>
                 <div className="row main">
-                    {widthMode === "mobile" && !view ? <div className="left-sector">
+                    <div style={{display: widthMode === "mobile" && view ? "none" : "flex"}} className="left-sector">
                         {widthMode === "mobile" ? <Rates/> : <></>}
                         <div className={`${widthMode} round globe`}>
                             {widthMode === "desktop" ? <Time/> : <></>}
@@ -114,12 +134,14 @@ const Main = ({history, view, course, lastWin, closeCongratulation, congratulati
                             </div>
                             <div className="graph-wrapper">
                                 <div className="graph">
-                                    <Graph gradient1={widthMode === "desktop" ? undefined : 20} gradient2={widthMode === "desktop" ? undefined : 150} chartHeight={widthMode === "desktop" ? 250 : 150}/>
+                                    <Graph gradient1={widthMode === "desktop" ? undefined : 20}
+                                           gradient2={widthMode === "desktop" ? undefined : 150}
+                                           chartHeight={widthMode === "desktop" ? 250 : 150}/>
                                 </div>
                             </div>
                         </div>
                         <Dashboard/>
-                    </div> : <></>}
+                    </div>
                     {widthMode === "desktop" ? <RightSector/> : <></>}
                     {widthMode === "mobile" && view ? <RightSector/> : <></>}
 

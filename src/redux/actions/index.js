@@ -86,8 +86,8 @@ export function createAd() {
         dispatch({type: CREATE_AD});
     }
 }
-export function switchView() {
+export function switchView(param) {
     return dispatch => {
-        dispatch({type: VIEW_MODE});
+        dispatch({type: VIEW_MODE, payload: param});
     }
 }

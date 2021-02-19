@@ -31,7 +31,8 @@ const Header = ({
                     predict,
                     refresh,
                     view,
-                    switchView
+                    switchView,
+                    widthMode
                 }) => {
     const [menu, setMenu] = useState(false);
     useEffect(() => {
@@ -40,6 +41,8 @@ const Header = ({
     const handleMute = () => {
         muteToggle();
     }
+    let currentLocation = window.location.href;
+    let isGame = "game" === currentLocation.substring(currentLocation.length - 4);
     return (
         <div>
             <header className="header">
@@ -119,13 +122,12 @@ const Header = ({
                     </div>
 
                 </div>
-                <div className="tabs">
+                <div style={{display: isGame && widthMode !== "desktop" ? "block" : "none"}} className="tabs">
                     <div className="wrap-tabs">
-                        <div onClick={switchView} className={view ? "tab bets" : "tab bets active"}>
-                            {view}
+                        <div onClick={() => switchView(false)} className={view ? "tab bets" : "tab bets active"}>
                             <img src={bets} alt="tab"/>
                         </div>
-                        <div onClick={switchView} className={!view ? "tab wallet" : "tab wallet active"}>
+                        <div onClick={() => switchView(true)} className={!view ? "tab wallet" : "tab wallet active"}>
                             <img src={wallet} alt="tab"/>
                         </div>
                     </div>
@@ -142,6 +144,7 @@ const mapStateToProps = state => {
         logout: state.authReducer.logoutQuestion,
         unauthorized: state.authReducer.unauthorized,
         predict: state.balanceReducer.predict,
+        widthMode: state.switchOptions.widthMode,
         view: state.switchOptions.view
     }
 }

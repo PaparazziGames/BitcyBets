@@ -5,7 +5,9 @@
   background-color: transparent;
   border-radius: 0;
   width: 100%;
+  min-height: 100vh;
 }
+
 main {
   padding: 60px 60px 0 60px;
   height: 100%;
@@ -35,9 +37,11 @@ main {
         flex-wrap: nowrap;
       }
     }
+
     .bottom-container {
       height: auto;
     }
+
     .bottom-container, .globe {
       height: 345px;
       min-width: 100%;
@@ -825,6 +829,8 @@ form {
       &.friends {
         font-weight: 500;
         background-image: url('../../images/btnbgFriends.png');
+        background-repeat: no-repeat;
+        background-size: cover;
       }
     }
   }
@@ -1115,33 +1121,42 @@ form {
   main {
     padding: 80px 0 0 0;
     margin: 0;
+
     .main {
+      margin: 10px;
+
       .rates {
         width: 100%;
         height: auto;
-        padding: 0!important;
+        padding: 0 !important;
         margin: 0 auto;
         background-color: transparent;
+
         .wrap-table {
           height: 80px;
           align-items: baseline;
+
           .rates-col {
             height: 46px;
             width: 90px;
           }
         }
       }
+
       .globe {
         padding: 0;
         margin: 0;
         height: auto;
       }
+
       .left-sector {
         width: 100%;
-        padding: 20px 30px;
+        padding: 10px 15px;
       }
+
       .bottom-container {
         height: auto;
+
         .dashboard {
           width: 100%;
           max-width: 100%;
@@ -1149,35 +1164,45 @@ form {
           margin: 20px 0 0 0;
           height: auto;
           background-color: transparent;
+
           .peoples {
             left: 5px;
             top: 50px;
           }
+
           .wrap-btn {
             margin-top: 0;
+
             .off {
               font-size: 16px;
               margin: 0;
             }
+
             #predict {
               margin: 0;
             }
           }
+
           .range {
             width: 100%;
+
             .profit .red,
             .profit .green {
               font-size: 12px;
             }
+
             .form-label {
               flex-direction: column;
+
               div h2 {
                 text-align: center;
               }
             }
           }
+
           .down, .up {
             width: 45%;
+
             button {
               width: 100%;
               max-width: 200px;
@@ -1187,6 +1212,18 @@ form {
 
             }
           }
+        }
+      }
+
+      .right-sector {
+        width: auto;
+        max-width: 100%;
+        height: 100%;
+        justify-content: space-between;
+        margin: 20px auto;
+
+        .banner {
+          height: 320px;
         }
       }
     }

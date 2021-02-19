@@ -28,7 +28,7 @@ export const switchOptions = (state = initialState, action) => {
         case DEVICE_WIDTH:
             return {...state, widthMode: action.payload};
         case VIEW_MODE:
-            return {...state, view: !state.view};
+            return {...state, view: action.payload};
         default:
             return state;
     }
