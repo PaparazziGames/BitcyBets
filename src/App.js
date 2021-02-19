@@ -16,17 +16,18 @@ import Ads from "./components/Ads/Ads";
 import CompletePay from "./components/Refill/CompletePay";
 import CompleteWith from "./components/Refill/CompleteWith";
 import Withdraw from "./components/Refill/Withdraw";
-import {prohibition, resizeScreen} from "./redux/actions";
+import {prohibition, resizeScreen, switchView} from "./redux/actions";
 import Invite from "./components/Refill/Invite";
 import gotodesktop from "./components/Auth/gotodesktop";
 
 document.addEventListener("DOMContentLoaded", () => {
-    if(!sessionStorage.getItem("saveReload")) {
+    if (!sessionStorage.getItem("saveReload")) {
         sessionStorage.removeItem("token");
     } else {
         sessionStorage.removeItem("saveReload");
     }
 })
+
 
 const routing = [
     {path: "/", component: Start},
@@ -62,15 +63,29 @@ class App extends React.Component {
             this.props.prohibition();
         }
         window.addEventListener("resize", () => {
-            if(window.outerWidth < 768) {
+            if (window.outerWidth < 768) {
                 this.props.resizeScreen("mobile");
-            } else if(window.outerWidth >= 768) {
+            } else if (window.outerWidth >= 768) {
                 this.props.resizeScreen("desktop");
             }
         })
+
+        let start = "";
+        let end = "";
+        document.addEventListener("touchstart", (e) => {
+            start = e.changedTouches[0].screenX;
+
+            document.addEventListener("touchend", (e) => {
+                end = e.changedTouches[0].screenX;
+                this.props.switchView(start - end < 0);
+                console.log(start - end < 0)
+            })
+        })
     }
+
     componentWillUnmount() {
-        window.removeEventListener("resize", ()=>{}, false);
+        window.removeEventListener("resize", () => {
+        }, false);
     }
 
     render() {
@@ -96,6 +111,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     prohibition,
-    resizeScreen
+    resizeScreen,
+    switchView
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);
