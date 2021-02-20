@@ -6,7 +6,14 @@ import Graph from "../Graph";
 import RightSector from "./RightSector";
 import Dashboard from "./Dashboard";
 // import SelectList from "./SelectList";
-import {closeCongratulation, closeYourLose, createAd, logoutQuestion, prohibition} from "../../redux/actions";
+import {
+    closeCongratulation,
+    closeYourLose,
+    createAd,
+    logoutQuestion,
+    prohibition,
+    switchView
+} from "../../redux/actions";
 import {money, stop} from "../../redux/actions/music";
 import JS_FIREWORKS from "../fireworks";
 import Time from "./Time";
@@ -42,6 +49,7 @@ const fire = () => {
 const Main = ({
                   history,
                   view,
+                  switchView,
                   course,
                   lastWin,
                   closeCongratulation,
@@ -67,6 +75,7 @@ const Main = ({
     useEffect(() => {
         fire();
     }, [])
+    useEffect(()=> switchView(false), [])
     let flag = course ? course.length : false;
     return (
         <div className={`${widthMode}-bg main`}>
@@ -172,6 +181,7 @@ const mapDispatchToProps = {
     logoutQuestion,
     prohibition,
     userdata,
-    createAd
+    createAd,
+    switchView
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
