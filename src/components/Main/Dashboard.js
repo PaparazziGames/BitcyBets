@@ -15,7 +15,7 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            bet: .001,
+            bet: .0001,
             counter: 10,
             // counterBet: 10,
             initialOffset: 440,
@@ -30,12 +30,12 @@ class Dashboard extends React.Component {
     setBet(e) {
         let bet = +e.target.value.slice(0, 5);
         if (!bet) {
-            bet = 0.001;
+            bet = 0.0001;
         }
         if (bet > 1) {
             bet = 1;
         }
-        this.setState((state) => ({...state, ...{bet: bet ? bet : 0.001}}));
+        this.setState((state) => ({...state, ...{bet: bet ? bet : 0.0001}}));
     }
 
     betDone(e) {
@@ -118,7 +118,7 @@ class Dashboard extends React.Component {
                             <div>
                                 {widthMode === "mobile" ? <SelectList/> : <></>}
                                 <span className={balance - bet >= 0 ? '' : 'red'}>
-                                <input id="numberBet" type="number" step="0.001" min="0.001" max="1"
+                                <input id="numberBet" type="number" step="0.0001" min="0.0001" max="1"
                                        className={balance - bet >= 0 ? '' : 'red'}
                                        disabled={predict || !timeBet}
                                        onInput={this.setBet}
@@ -130,7 +130,7 @@ class Dashboard extends React.Component {
                         <form onSubmit={e => e.preventDefault()}>
                             <div className="form">
                                 <div className="bet">
-                                    <input min="0.001" max="1" step="0.001"
+                                    <input min="0.0001" max="1" step="0.0001"
                                            type="range"
                                            disabled={predict || !timeBet || startGame}
                                            value={bet}
@@ -151,7 +151,7 @@ class Dashboard extends React.Component {
                                             <div className="profit">
                                                 <span style={{display: widthMode === "mobile" ? "block" : "inline"}}g className="green">Your profit</span>
                                                 <span>
-                                                    {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(5) : 0}
+                                                    {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(4) : 0}
                                                 </span>
                                                 <img src={bitcoin} width="15" height="20" alt="b"/>
                                             </div>
@@ -220,7 +220,7 @@ class Dashboard extends React.Component {
                                             <div className="profit">
                                                 <span style={{display: widthMode === "mobile" ? "block" : "inline"}} className="red">Your profit</span>
                                                 <span>
-                                                    {up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(5) : 0}
+                                                    {up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(4) : 0}
                                                 </span>
                                                 <img src={bitcoin} width="15" height="20" alt="b"/>
                                             </div>
