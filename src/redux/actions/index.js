@@ -4,7 +4,7 @@ import {
     BET_WIN,
     CLOSE_CONGRATULATION, CLOSE_YOURLOSE, CREATE_AD, DEVICE_WIDTH,
     GET_COURSE, GET_CURRENT_COURSE,
-    GET_LOCATION, LOGOUT,
+    GET_LOCATION, LANG_MODE, LOGOUT,
     PROHIBITION,
     REGISTRATION, VIEW_MODE
 } from "../types";
@@ -72,6 +72,11 @@ export function betLose(data) {
 export function closeCongratulation(data) {
     return dispatch => {
         dispatch({type: CLOSE_CONGRATULATION});
+    }
+}
+export function chooseLang(lang) {
+    return dispatch => {
+        dispatch({type: LANG_MODE, payload: lang});
     }
 }
 
