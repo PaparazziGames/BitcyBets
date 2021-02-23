@@ -10,6 +10,7 @@ import {User} from "../../api/User";
 import {predictClear, predictDown, predictUp, userdata} from "../../redux/actions/game";
 import Rect from "./Rect/Rect";
 import SelectList from "./SelectList";
+import Timer from "./Timer";
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -104,20 +105,30 @@ class Dashboard extends React.Component {
             this.predictSubmit();
         }
 
-        return (
-            <div className={`${widthMode} row bottom-container`}>
-                {widthMode === "desktop" ? <Rates/> : <></>}
-                <div className={`${widthMode} round dashboard`}>
-                    <div className="range">
-                        <div className="form-label d-flex justify-content-between">
-                            <div>
-                                <h2 className={predict || startGame ? "text-left" : "make-bet text-left"}>Make your
-                                    bet</h2>
-                                {/*<span className="time-bet">{timeBet ? counterBet : ''}</span>*/}
-                            </div>
-                            <div>
-                                {widthMode === "mobile" ? <SelectList/> : <></>}
-                                <span className={balance - bet >= 0 ? '' : 'red'}>
+        if (true) {
+            return (
+                <div className={`${widthMode} row bottom-container`}>
+                    {widthMode === "desktop" ? <Rates/> : <></>}
+                    <div className={`${widthMode} round dashboard big-timer`}>
+                        <Timer />
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <div className={`${widthMode} row bottom-container`}>
+                    {widthMode === "desktop" ? <Rates/> : <></>}
+                    <div className={`${widthMode} round dashboard`}>
+                        <div className="range">
+                            <div className="form-label d-flex justify-content-between">
+                                <div>
+                                    <h2 className={predict || startGame ? "text-left" : "make-bet text-left"}>Make your
+                                        bet</h2>
+                                    {/*<span className="time-bet">{timeBet ? counterBet : ''}</span>*/}
+                                </div>
+                                <div>
+                                    {widthMode === "mobile" ? <SelectList/> : <></>}
+                                    <span className={balance - bet >= 0 ? '' : 'red'}>
                                 <input id="numberBet" type="number" step="0.0001" min="0.0001" max="1"
                                        className={balance - bet >= 0 ? '' : 'red'}
                                        disabled={predict || !timeBet}
@@ -125,122 +136,125 @@ class Dashboard extends React.Component {
                                        value={bet}/>
                                 <img className="numberBet" width="15" src={bitcoin} alt="up"/>
                             </span>
-                            </div>
-                        </div>
-                        <form onSubmit={e => e.preventDefault()}>
-                            <div className="form">
-                                <div className="bet">
-                                    <input min="0.0001" max="1" step="0.0001"
-                                           type="range"
-                                           disabled={predict || !timeBet || startGame}
-                                           value={bet}
-                                           style={{backgroundImage: `linear-gradient(to right, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} 0%, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} ${bet * 100}%, #fff ${bet * 100}%, white 100%)`}}
-                                           onChange={this.setBet}
-                                           className={balance - bet >= 0 ? 'green-range' : 'red-range'}
-                                           id="range"/>
                                 </div>
-                                <div className='wrap-btn'>
+                            </div>
+                            <form onSubmit={e => e.preventDefault()}>
+                                <div className="form">
+                                    <div className="bet">
+                                        <input min="0.0001" max="1" step="0.0001"
+                                               type="range"
+                                               disabled={predict || !timeBet || startGame}
+                                               value={bet}
+                                               style={{backgroundImage: `linear-gradient(to right, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} 0%, ${balance - bet >= 0 ? '#32D74B' : '#FF453A'} ${bet * 100}%, #fff ${bet * 100}%, white 100%)`}}
+                                               onChange={this.setBet}
+                                               className={balance - bet >= 0 ? 'green-range' : 'red-range'}
+                                               id="range"/>
+                                    </div>
+                                    <div className='wrap-btn'>
 
-                                    {startGame && (predict === 'down' || !predict)
-                                        ? <span style={{display: startGame && !predict ? 'flex' : 'none'}}
-                                                className="off">All bets are off</span>
-                                        : <div style={{
-                                            display: predict === 'up' || !predict ? 'block' : 'none',
-                                            transform: startGame && (predict === 'down' || !predict) ? 'scale(0)' : 'scale(1)'
-                                        }} className="up">
-                                            <div className="profit">
-                                                <span style={{display: widthMode === "mobile" ? "block" : "inline"}}g className="green">Your profit</span>
-                                                <span>
+                                        {startGame && (predict === 'down' || !predict)
+                                            ? <span style={{display: startGame && !predict ? 'flex' : 'none'}}
+                                                    className="off">All bets are off</span>
+                                            : <div style={{
+                                                display: predict === 'up' || !predict ? 'block' : 'none',
+                                                transform: startGame && (predict === 'down' || !predict) ? 'scale(0)' : 'scale(1)'
+                                            }} className="up">
+                                                <div className="profit">
+                                                    <span style={{display: widthMode === "mobile" ? "block" : "inline"}}
+                                                          className="green">Your profit</span>
+                                                    <span>
                                                     {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(4) : 0}
                                                 </span>
-                                                <img src={bitcoin} width="15" height="20" alt="b"/>
-                                            </div>
-                                            <button disabled={predict || balance - bet < 0 || !timeBet}
-                                                    onClick={(e) => {
-                                                        e.preventDefault();
-                                                        this.betDone(e);
-                                                    }}
-                                                    className="btn green predict-btn">PREDICT UP
+                                                    <img src={bitcoin} width="15" height="20" alt="b"/>
+                                                </div>
+                                                <button disabled={predict || balance - bet < 0 || !timeBet}
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            this.betDone(e);
+                                                        }}
+                                                        className="btn green predict-btn">PREDICT UP
 
-                                                <img src={arrowUp} width="15" height="20" alt="b"/>
-                                                <Rect idButton={'up'} mode={timeBet ? 'rectUp' : ""}/>
-                                            </button>
-                                        </div>}
+                                                    <img src={arrowUp} width="15" height="20" alt="b"/>
+                                                    <Rect idButton={'up'} mode={timeBet ? 'rectUp' : ""}/>
+                                                </button>
+                                            </div>}
 
-                                    <p
-                                        style={{
-                                            display: startGame && predict === 'up' ? 'flex' : 'none'
-                                        }}
-                                        id="predict"
-                                        className="btn bet-btn col-sm-4">
-                                        <span className="gold">{counter}
-                                            <span className='circle'>
-                                                <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
-                                                <g>
-                                                    <title>Layer 1</title>
-                                                    <circle
-                                                        strokeDasharray={440}
-                                                        strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}
-                                                        id="circle" className="circle_animation" r="69.85699" cy="81"
-                                                        cx="81" strokeWidth="6"
-                                                        stroke="#F7931A" fill="none"/>
-                                                </g>
-                                            </svg>
-                                            </span>
-                                        </span>
-                                    </p>
+                                        {/*<p*/}
+                                        {/*    style={{*/}
+                                        {/*        display: startGame && predict === 'up' ? 'flex' : 'none'*/}
+                                        {/*    }}*/}
+                                        {/*    id="predict"*/}
+                                        {/*    className="btn bet-btn col-sm-4">*/}
+                                        {/*    <span className="gold">{counter}*/}
+                                        {/*        <span className='circle'>*/}
+                                        {/*            <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">*/}
+                                        {/*            <g>*/}
+                                        {/*                <title>Layer 1</title>*/}
+                                        {/*                <circle*/}
+                                        {/*                    strokeDasharray={440}*/}
+                                        {/*                    strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}*/}
+                                        {/*                    id="circle" className="circle_animation" r="69.85699" cy="81"*/}
+                                        {/*                    cx="81" strokeWidth="6"*/}
+                                        {/*                    stroke="#F7931A" fill="none"/>*/}
+                                        {/*            </g>*/}
+                                        {/*        </svg>*/}
+                                        {/*        </span>*/}
+                                        {/*    </span>*/}
+                                        {/*</p>*/}
 
+                                        {/*<p style={{*/}
+                                        {/*    display: startGame && (predict === 'down' || !predict) ? 'flex' : 'none'*/}
+                                        {/*}}*/}
+                                        {/*   id="predict"*/}
+                                        {/*   className="btn bet-btn col-sm-4">*/}
+                                        {/*    <span className="gold">{counter}*/}
+                                        {/*        <span className='circle'>*/}
+                                        {/*            <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">*/}
+                                        {/*            <g>*/}
+                                        {/*                <title>Layer 1</title>*/}
+                                        {/*                <circle*/}
+                                        {/*                    strokeDasharray={440}*/}
+                                        {/*                    strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}*/}
+                                        {/*                    id="circle" className="circle_animation" r="69.85699" cy="81"*/}
+                                        {/*                    cx="81" strokeWidth="6"*/}
+                                        {/*                    stroke="#F7931A" fill="none"/>*/}
+                                        {/*            </g>*/}
+                                        {/*        </svg>*/}
+                                        {/*        </span>*/}
+                                        {/*    </span>*/}
+                                        {/*</p>*/}
 
-                                    <p style={{
-                                        display: startGame && (predict === 'down' || !predict) ? 'flex' : 'none'
-                                    }}
-                                       id="predict"
-                                       className="btn bet-btn col-sm-4">
-                                        <span className="gold">{counter}
-                                            <span className='circle'>
-                                                <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
-                                                <g>
-                                                    <title>Layer 1</title>
-                                                    <circle
-                                                        strokeDasharray={440}
-                                                        strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}
-                                                        id="circle" className="circle_animation" r="69.85699" cy="81"
-                                                        cx="81" strokeWidth="6"
-                                                        stroke="#F7931A" fill="none"/>
-                                                </g>
-                                            </svg>
-                                            </span>
-                                        </span>
-                                    </p>
-
-                                    {startGame && (predict === 'up' || !predict)
-                                        ? <></>
-                                        : <div style={{display: (predict === 'down' || !predict) ? 'block' : 'none'}}
-                                               className="down">
-                                            <div className="profit">
-                                                <span style={{display: widthMode === "mobile" ? "block" : "inline"}} className="red">Your profit</span>
-                                                <span>
+                                        {startGame && (predict === 'up' || !predict)
+                                            ? <></>
+                                            :
+                                            <div style={{display: (predict === 'down' || !predict) ? 'block' : 'none'}}
+                                                 className="down">
+                                                <div className="profit">
+                                                    <span style={{display: widthMode === "mobile" ? "block" : "inline"}}
+                                                          className="red">Your profit</span>
+                                                    <span>
                                                     {up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(4) : 0}
                                                 </span>
-                                                <img src={bitcoin} width="15" height="20" alt="b"/>
-                                            </div>
-                                            <button disabled={predict || balance - bet < 0 || !timeBet}
-                                                    onClick={(e) => {
-                                                        e.preventDefault();
-                                                        this.betDone(e);
-                                                    }}
-                                                    className="btn red predict-btn" id="down">PREDICT DOWN
-                                                <img src={arrowDown} width="15" height="20" alt="b"/>
-                                                <Rect idButton={'down'} mode={timeBet ? 'rectDown' : ""}/>
-                                            </button>
-                                        </div>}
+                                                    <img src={bitcoin} width="15" height="20" alt="b"/>
+                                                </div>
+                                                <button disabled={predict || balance - bet < 0 || !timeBet}
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            this.betDone(e);
+                                                        }}
+                                                        className="btn red predict-btn" id="down">PREDICT DOWN
+                                                    <img src={arrowDown} width="15" height="20" alt="b"/>
+                                                    <Rect idButton={'down'} mode={timeBet ? 'rectDown' : ""}/>
+                                                </button>
+                                            </div>}
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        }
     }
 }
 

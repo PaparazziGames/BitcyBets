@@ -665,7 +665,23 @@ form {
   transform: scale(0.97);
   //color: var(--alert);
 }
-
+.big-timer {
+  position: relative;
+  background-image: url("../../images/bg_timer.png");
+  background-position: 0 0;
+  .timer-item h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 500;
+    font-size: 64px;
+    font-family: 'roc-grotesk-wide';
+    line-height: 69px;
+    text-transform: uppercase;
+    color:#CEA132;
+  }
+}
 /*<<<<<<<<<<<<<<<<<   RIGHT SECTOR   >>>>>>>>>>>>>>>>>>*/
 .right-sector {
   height: auto;
